@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data >
+        <!-- Resource: project.project -->
+        <record id="all_case_account" model="account.analytic.account">
+            <field name="name">Cases</field>
+            <field name="code">E000</field>
+            <field name="type">view</field>
+        </record>
+        <record id="project_tt_analysis" model="project.task.type">
+            <field name="sequence">1</field>
+            <field name="name">Analysis</field>
+            <field name="case_default" eval="False"/>
+        </record>
+        <record id="project_tt_specification" model="project.task.type">
+            <field name="sequence">10</field>
+            <field name="name">Specification</field>
+            <field name="case_default" eval="False"/>
+        </record>
+        <record id="project_tt_testing" model="project.task.type">
+            <field name="sequence">13</field>
+            <field name="name">Testing</field>
+            <field name="case_default" eval="False"/>
+        </record>
+
+    </data>
+</openerp>

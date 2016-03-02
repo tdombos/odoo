@@ -1,0 +1,517 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+    <!-- Top menu item -->
+    <!-- Decision Types Search View-->
+    <record model="ir.ui.view" id="view_committee_decisiontype_search">
+        <field name="name">committee.decisiontype.search</field>
+        <field name="model">committee.decisiontype</field>
+        <field name="arch" type="xml">
+            <search string="Decision Types">
+                <field name="name" string="Decision Type"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Decision Types Form View -->
+        <record model="ir.ui.view" id="view_committee_decisiontype_form">
+            <field name="name">committee.decisiontype.form</field>
+            <field name="model">committee.decisiontype</field>
+            <field name="arch" type="xml">
+                <form string="Decision Types" version="7.0">
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+   <!-- Decision Types Tree View -->
+        <record model="ir.ui.view" id="view_committee_decisiontype_tree">
+            <field name="name">committee.decisiontype.tree</field>
+            <field name="model">committee.decisiontype</field>
+            <field name="field_parent"></field>
+            <field name="arch" type="xml">
+                <tree string="Decision Types">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+    <!-- Decision Types Action -->
+    <record model="ir.actions.act_window" id="action_committee_decisiontype">
+        <field name="name">Decision Types</field>
+        <field name="res_model">committee.decisiontype</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_committee_decisiontype_search"/>
+    </record>
+   
+    <!-- Committees Search View-->
+    <record model="ir.ui.view" id="view_committee_committee_search">
+        <field name="name">committee.committee.search</field>
+        <field name="model">committee.committee</field>
+        <field name="arch" type="xml">
+            <search string="Committees">
+                <field name="name" string="Committee"/>
+                <filter string="Active" domain="[('state','=', 'open')]" help="Active committees" />
+                <filter string="Member" domain="['|',('user_id', '=', uid),('members', '=', uid)]"/>
+                <filter string="Manager" domain="[('user_id','=',uid)]"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Committees Form View -->
+        <record id="view_committee_form" model="ir.ui.view">
+            <field name="name">committee.committee.form</field>
+            <field name="model">committee.committee</field>
+            <field name="arch" type="xml">
+                <form string="Committee">
+                <header>
+                    <button name="set_done" string="Close committee" type="object" states="open" groups="base.group_user"/>
+                    <button name="set_open" string="Re-open committee" type="object" states="close" groups="base.group_user"/>
+                    <button name="set_cancel" string="Cancel committee" type="object" states="open" groups="base.group_user"/>
+                    <field name="state" widget="statusbar" statusbar_visible="open,close" statusbar_colors='{"pending":"blue"}' readonly="1"/>
+                </header>
+                <sheet string="Committee">
+                    <field name="analytic_account_id" invisible="1" required="0"/>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only" string="Project Name"/>
+                        <h1>
+                            <field name="name" string="Commitee Name"/>
+                        </h1>
+                    </div>
+                    <div class="oe_right oe_button_box" name="buttons" groups="base.group_user">
+                         <button class="oe_inline oe_stat_button" type="action" name="action_committee_committee_meetings" icon="fa-calendar">
+                            <field string="Meetings" name="meeting_count" widget="statinfo"/>
+                        </button>
+                        <button  class="oe_inline oe_stat_button" type="action" name="action_committee_committee_agendaitems" icon="fa-list-ol">
+                            <field string="Agenda Items" name="agendaitem_count" widget="statinfo"/>
+                        </button>
+                        <button  class="oe_inline oe_stat_button" type="action" name="action_committee_committee_decisions" icon="fa-check">
+                            <field string="Decisions" name="decision_count" widget="statinfo"/>
+                        </button>
+                    </div>
+                    <group>
+                        <group col="4">
+                            <field name="shortname" string="Code" />
+                            <newline/>
+                            <field name="user_id" string="Manager"
+                                    attrs="{'readonly':[('state','in',['close', 'cancelled'])]}"
+                                    context="{'default_groups_ref': ['base.group_user', 'base.group_partner_manager', 'project.group_project_manager']}"/>
+                            <newline/>
+                            <field name="description" />
+                        </group>
+                        
+                    </group>
+                    <notebook>
+                        <page string="Team" name="team">
+                            <field colspan="4" name="members" widget="many2many_kanban" context="{'default_groups_ref': ['base.group_user', 'base.group_partner_manager', 'project.group_project_user']}">
+                                <kanban quick_create="false" create="true" delete="true">
+                                    <field name="name"/>
+                                    <templates>
+                                        <t t-name="kanban-box">
+                                            <div style="position: relative">
+                                                <a t-if="! read_only_mode" type="delete" style="position: absolute; right: 0; padding: 4px; diplay: inline-block">X</a>
+                                                <div class="oe_module_vignette">
+                                                    <img t-att-src="kanban_image('res.users', 'image_small', record.id.value)" class="oe_avatar oe_kanban_avatar_smallbox"/>
+                                                    <div class="oe_module_desc">
+                                                        <field name="name"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </t>
+                                    </templates>
+                                </kanban>
+                            </field>
+                        </page>
+                        <page string="Other Info">
+                            <group string="Administration">
+                                <field name="privacy_visibility" widget="radio"/>
+                                <field name="planned_hours" widget="float_time"
+                                        groups="project.group_time_work_estimation_tasks"/>
+                                <field name="effective_hours" widget="float_time"
+                                        groups="project.group_time_work_estimation_tasks"/>
+                                <field name="resource_calendar_id"
+                                        groups="project.group_time_work_estimation_tasks"/>
+                            </group>
+                            <group string="Miscellaneous" name="misc">
+                                <field name="date_start"/>
+                                <field name="date" string="End Date"/>
+                                <field name="sequence" groups="base.group_no_one"/>
+                                <field name="active" attrs="{'invisible':[('state','in',['open', 'pending', 'template'])]}"/>
+                                <field name="currency_id" groups="base.group_multi_currency" required="1"/>
+                                <field name="parent_id" string="Parent" help="Append this project to another one using analytic accounts hierarchy" domain="[('id','!=',analytic_account_id)]" context="{'current_model': 'project.project'}" />
+                            </group>
+                            <group name="group_alias" attrs="{'invisible': [('alias_domain', '=', False)]}">
+                                <label for="alias_name" string="Email Alias"/>
+                                <div name="alias_def">
+                                    <field name="alias_id" class="oe_read_only oe_inline"
+                                            string="Email Alias" required="0"/>
+                                    <div class="oe_edit_only oe_inline" name="edit_alias" style="display: inline;" >
+                                        <field name="alias_name" class="oe_inline"/>@<field name="alias_domain" class="oe_inline" readonly="1"/>
+                                    </div>
+                                </div>
+                                <label for="alias_model" string="Incoming Emails create"/>
+                                <field name="alias_model" class="oe_inline" nolabel="1"/>
+                                <field name="alias_contact" class="oe_inline"
+                                        string="Accept Emails From"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" help="Follow this project to automatically track the events associated to tasks and issues of this project." groups="base.group_user"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+                </form>
+            </field>
+        </record>
+
+    <!-- Committees Tree View -->
+        <record model="ir.ui.view" id="view_committee_committee_tree">
+            <field name="name">committee.committee.tree</field>
+            <field name="model">committee.committee</field>
+            <field name="field_parent"></field>
+            <field name="arch" type="xml">
+                <tree string="Committees">
+                    <field name="name" string="Full name"/>
+                    <field name="shortname" string="Short name"/>
+                </tree>
+            </field>
+        </record>
+
+    <!-- Committees Action -->
+    <record model="ir.actions.act_window" id="action_committee_committee">
+        <field name="name">Committees</field>
+        <field name="res_model">committee.committee</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_committee_committee_search"/>
+        <field name="context">{"search_default_active":1,}</field>
+    </record>
+
+    <!-- Meetings Search View-->
+    <record model="ir.ui.view" id="view_committee_meeting_search">
+        <field name="name">committee.meeting.search</field>
+        <field name="model">committee.meeting</field>
+        <field name="arch" type="xml">
+            <search string="Meetings">
+                <field name="name" string="Meeting"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Meetings Form View -->
+    <record model="ir.ui.view" id="view_committee_meeting_form">
+        <field name="name">Committee Meeting Form</field>
+        <field name="model">committee.meeting</field>
+        <field name="priority" eval="1"/>
+        <field name="arch" type="xml">
+            <form string="Meetings">
+                <header>
+                        <button name="do_open" string="Announce" type="object" states="draft" class="oe_highlight" groups="base.group_user"/>
+                        <button name="do_done" string="Held" type="object" states="open" class="oe_highlight" groups="base.group_user"/>
+                        <button name="do_cancel" string="Cancel" type="object" states="draft,open" groups="base.group_user"/>
+                        <button name="do_close" string="Memo done" type="object" states="done" groups="base.group_user" class="oe_highlight"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,open,done,close" statusbar_colors='{"pending":"blue"}' />
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <div class="oe_edit_only">
+                            <label for="name" string="Title"/>
+                        </div>
+                        <h1>
+                            <field name="name" />
+                        </h1>
+                    </div>
+                        <group>
+                            <group>
+                                <field name="committee_id" />
+                                <field name="start_datetime" string="Start"/>
+                                <field name="stop_datetime" string="End"/>
+                                <field name="location" />
+                            </group>
+                            <group>  
+                            </group>
+                        </group>
+                    <notebook>
+                        <page string="Agenda" >
+                            <field name="agendaline_ids" widget="one2many" >
+                                <tree string="Agenda items" editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="agendaitem_id" string="Agenda Item" options="{'no_open': False}"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Invitations" groups="base.group_no_one">
+                            <button name="do_sendmail" type="object" string="Send mail" icon="terp-mail-message-new" class="oe_link"/>
+                            <field name="attendee_ids" widget="one2many" >
+                                <tree string="Invitation details" editable="top" create="false" delete="false">
+                                    <field name="partner_id" />
+                                    <field name="state" />
+                                    <field name="email" widget="email"/>
+                                     
+                                    <button name="do_tentative" states="needsAction,declined,accepted" string="Uncertain" type="object" icon="terp-crm" />
+                                    <button name="do_accept" string="Accept" states="needsAction,tentative,declined" type="object" icon="gtk-apply"/>
+                                    <button name="do_decline" string="Decline" states="needsAction,tentative,accepted" type="object" icon="gtk-cancel"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Meetings Tree View -->
+    <record model="ir.ui.view" id="view_committee_meeting_tree">
+        <field name="name">committee.meeting.tree</field>
+        <field name="model">committee.meeting</field>
+        <field name="field_parent"></field>
+        <field name="arch" type="xml">
+            <tree string="Meetings">
+                <field name="name" string="Title"/>
+                <field name="committee_id"/>
+                <field name="start_datetime"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Meetings Action -->
+    <record model="ir.actions.act_window" id="action_committee_meeting">
+        <field name="name">Meetings</field>
+        <field name="res_model">committee.meeting</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_committee_meeting_search"/>
+    </record>
+    
+    <!-- Agenda Search View-->
+    <record model="ir.ui.view" id="view_committee_agendaitem_search">
+        <field name="name">committee.agendaitem.search</field>
+        <field name="model">committee.agendaitem</field>
+        <field name="arch" type="xml">
+            <search string="Agenda Items">
+                <field name="name" string="Agenda Items"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Agenda Form View -->
+    <record model="ir.ui.view" id="view_committee_agendaitem_form">
+        <field name="name">committee.agendaitem.form</field>
+        <field name="model">committee.agendaitem</field>
+        <field name="arch" type="xml">
+           <form string="Project">
+                <header>
+                    <button name="do_open" string="Schedule" type="object" states="draft,postpone" class="oe_highlight" groups="base.group_user"/>
+                    <button name="do_done" string="Close" type="object" states="open" class="oe_highlight" groups="base.group_user"/>
+                    <button name="do_cancel" string="Cancel" type="object" states="draft,open,postpone" groups="base.group_user"/>
+                    <button name="do_postpone" string="Postpone" type="object" states="open" groups="base.group_user"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,open,postpone,close" statusbar_colors='{"pending":"blue"}' />
+                </header>
+                <sheet string="Agenda item">
+                <h1>
+                    <field name="name" placeholder="Agenda item..." class="oe_inline"/>
+                </h1>
+                <group>
+                    <group>
+                        <field name="committee_id" />
+                        <field name="user_id"
+                            options='{"no_open": True}'
+                            context="{'default_groups_ref': ['base.group_user', 'base.group_partner_manager', 'project.group_project_user']}"/>
+                        <field name="categ_ids" widget="many2many_tags"/>
+                    </group>
+                    <group>
+                        <field name="date_deadline"/>
+                        <field name="priority" widget="priority"/>
+                    </group>
+                </group>
+                <notebook>
+                    <page string="Description">
+                        <field name="description" placeholder="Add a description of what needs to be discussed..."/>
+                        <field name="notes" placeholder="Add a summary of what has been discussed..."/>
+                    </page>
+                    <page string="Decisions">
+                        <field name="decision_ids" />
+                    </page>
+                </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Agenda Tree View -->
+        <record model="ir.ui.view" id="view_committee_agendaitem_tree">
+            <field name="name">committee.agendaitem.tree</field>
+            <field name="model">committee.agendaitem</field>
+            <field name="field_parent"></field>
+            <field name="arch" type="xml">
+                <tree string="Agenda Items">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+    <!-- Agenda Action -->
+    <record model="ir.actions.act_window" id="action_committee_agendaitem">
+        <field name="name">Agenda Items</field>
+        <field name="res_model">committee.agendaitem</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_committee_agendaitem_search"/>
+    </record>
+    
+    <!-- Decisions Search View-->
+    <record model="ir.ui.view" id="view_committee_decision_search">
+        <field name="name">committee.decision.search</field>
+        <field name="model">committee.decision</field>
+        <field name="arch" type="xml">
+            <search string="Decisions">
+                <field name="name" string="decision"/>
+            </search>
+        </field>
+    </record>
+    
+    <!-- Decisions Form View -->
+    <record model="ir.ui.view" id="view_committee_decision_form">
+        <field name="name">committee.decision.form</field>
+        <field name="model">committee.decision</field>
+        <field name="arch" type="xml">
+            <form string="Decisions" version="7.0">
+                <header>
+                    <button name="set_done" string="Close committee" type="object" states="open" groups="base.group_user"/>
+                    <button name="set_open" string="Re-open committee" type="object" states="close" groups="base.group_user"/>
+                    <button name="set_cancel" string="Cancel committee" type="object" states="open" groups="base.group_user"/>
+                    <field name="state" widget="statusbar" statusbar_visible="open,close,done" statusbar_colors='{"pending":"blue"}' readonly="1"/>
+                </header>
+                <sheet string="Decision">
+                <h1>
+                    <field name="name" placeholder="Decision number" class="oe_inline"/>
+                </h1>
+                    <group>
+                        <group>
+                            <field name="committee_id"> </field>
+                            <field name="meeting_id"> </field>
+                            <field name="agendaitem_id"></field>
+                        </group>
+                        <group>
+                            <field name="date"> </field>
+                            <field name="partner_ids" widget="many2many_tags"> </field>
+                            <field name="type_id"> </field>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="text"> </field>
+                        <field name="vote"> </field>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Decisions Tree View -->
+    <record model="ir.ui.view" id="view_committee_decision_tree">
+        <field name="name">committee.decision.tree</field>
+        <field name="model">committee.decision</field>
+        <field name="field_parent"></field>
+        <field name="arch" type="xml">
+            <tree string="Decisions">
+                <field name="name"/>
+                <field name="committee_id"/>
+                <field name="date"/>
+                <field name="text"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Decisions Action -->
+    <record model="ir.actions.act_window" id="action_committee_decision">
+        <field name="name">Decisions</field>
+        <field name="res_model">committee.decision</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_committee_decision_search"/>
+    </record>
+
+    <!-- Link Buttons for Committee -->
+    <record model="ir.actions.act_window" id="action_committee_committee_meetings">
+        <field name="name">Meetings</field>
+        <field name="res_model">committee.meeting</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('committee_id','=',[active_id])]</field>
+        <field name="search_view_id" ref="view_committee_meeting_search"/>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_committee_committee_agendaitems">
+        <field name="name">Agenda Items</field>
+        <field name="res_model">committee.agendaitem</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('committee_id','=',[active_id])]</field>
+        <field name="search_view_id" ref="view_committee_agendaitem_search"/>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_committee_committee_decisions">
+        <field name="name">Decisions</field>
+        <field name="res_model">committee.decision</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('committee_id','=',[active_id])]</field>
+        <field name="search_view_id" ref="view_committee_decision_search"/>
+    </record>
+    
+    <!-- Link Buttons for Meetings -->
+    <record model="ir.actions.act_window" id="action_committee_meeting_agendaitems">
+        <field name="name">Agenda Items</field>
+        <field name="res_model">committee.agendaitem</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('meeting_id','=',[active_id])]</field>
+        <field name="search_view_id" ref="view_committee_agendaitem_search"/>
+    </record>
+    
+    <record model="ir.actions.act_window" id="action_committee_meeting_decisions">
+        <field name="name">Decisions</field>
+        <field name="res_model">committee.decision</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('meeting_id','=',[active_id])]</field>
+        <field name="search_view_id" ref="view_committee_decision_search"/>
+    </record>
+    
+    <!-- Link Buttons for Agenda Items -->
+    <record model="ir.actions.act_window" id="action_committee_agendaitem_decisions">
+        <field name="name">Decisions</field>
+        <field name="res_model">committee.decision</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('agendaitem_id','=',[active_id])]</field>
+        <field name="search_view_id" ref="view_committee_decision_search"/>
+    </record>
+
+    <menuitem name="Committees" parent="docregister.menu_office_configuration" id="menu_committee_configuration" sequence="3"/>
+    <menuitem name="Decision Types" parent="menu_committee_configuration" id="menu_tags" action="action_committee_decisiontype" />
+    <menuitem name="Committees" parent="docregister.menu_office" id="menu_committees" sequence="1"/>
+    <menuitem name="Committees" parent="menu_committees" id="menu_committee" action="action_committee_committee" />
+    <menuitem name="Meetings" parent="menu_committees" id="menu_meeting" action="action_committee_meeting" />
+    <menuitem name="Agenda Items" parent="menu_committees" id="menu_agenda" action="action_committee_agendaitem" />
+    <menuitem name="Decisions" parent="menu_committees" id="menu_decision" action="action_committee_decision" />
+  
+    </data>
+</openerp>

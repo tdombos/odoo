@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_account_analytic_line_form" model="ir.ui.view">
+            <field name="name">account.analytic.line.form</field>
+            <field name="model">account.analytic.line</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="account.view_account_analytic_line_form"></field>
+            <field name="arch" type="xml">
+                <field name="move_id" position="after">
+                    <separator colspan="2" string="Invoice"/>
+                    <field name="deferred_invoice_id"/>
+                    <field name="deferred_invoice_line_id"/>
+                    <separator colspan="2" string="Account Entry"/>
+                    <field name="deferred_account_move_id"/>
+                    <field name="deferred_account_move_line_id"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>

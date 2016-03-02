@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<openerp>
+<data>
+    <record model="res.groups" id="base.group_user">
+        <field name="comment">the user will be able to manage his own human resources stuff (leave request, timesheets, ...), if he is linked to an employee in the system.</field>
+    </record>
+    <record model="res.groups" id="base.group_office_user">
+        <field name="name">Office user</field>
+        <field name="category_id" ref="base.module_category_office_management"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+</data>
+</openerp>
+

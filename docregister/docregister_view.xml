@@ -1,0 +1,437 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+    <!-- Top menu item -->
+    <menuitem name="Office" id="menu_office" sequence="120" groups="base.group_system"/>
+
+    <!-- Tags Search View-->
+    <record model="ir.ui.view" id="view_docregister_tag_search">
+        <field name="name">docregister.tag.search</field>
+        <field name="model">docregister.tag</field>
+        <field name="arch" type="xml">
+            <search string="Tags">
+                <field name="name" string="Tag"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Tags Form View -->
+    <record model="ir.ui.view" id="view_docregister_tag_form">
+            <field name="name">docregister.tag.form</field>
+            <field name="model">docregister.tag</field>
+            <field name="arch" type="xml">
+                <form string="Tags" version="7.0">
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </form>
+            </field>
+    </record>
+
+    <!-- Tags Tree View -->
+    <record model="ir.ui.view" id="view_docregister_tag_tree">
+            <field name="name">docregister.tag.tree</field>
+            <field name="model">docregister.tag</field>
+            <field name="field_parent"></field>
+            <field name="arch" type="xml">
+                <tree string="Tags">
+                    <field name="name"/>
+                </tree>
+            </field>
+    </record>
+
+    <!-- Tags Action -->
+    <record model="ir.actions.act_window" id="action_docregister_tag">
+        <field name="name">Tags</field>
+        <field name="res_model">docregister.tag</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_docregister_tag_search"/>
+    </record>
+
+    <!-- Document Form View -->
+    <record model="ir.ui.view" id="view_docregister_doc_form">
+        <field name="name">docregister.doc.form</field>
+        <field name="model">docregister.doc</field>
+        <field name="arch" type="xml">
+            <form string="doc" version="7.0">
+                <header>
+                    <button name="doc_open" type="object" string="Register and Open" states="draft" />
+                    <button name="doc_close" type="object" string="Register and Close" states="draft" class="oe_highlight" />
+                    <button name="doc_close" type="object" string="Close" states="open" class="oe_highlight" />
+                    <button name="doc_cancel" type="object" string="Delete" states="draft,open" />
+                    <button name="doc_fail" type="object" string="Postage failure" states="draft,open,close" />
+                    <field name="state" widget="statusbar" statusbar_visible="draft,open,close" />
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="subject" class="oe_edit_only" string="Subject"/>
+                        <h1>
+                            <field name="subject" />
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                           <field name="refcode" states="open,close,cancel"/>
+                            <field name="tag_ids" widget="many2many_tags"/> 
+                            <field name="partner_id"/>
+                            <field name="partner_ids" widget="many2many_tags"/>
+                            <field name="date_done" /> 
+                            <field name="attachmentno"/>
+                            <field name="predoc_id"/>
+                            <field name="postdoc_ids" widget="many2many_tags"/>
+                        </group>
+                        <group>
+                            <field name="direction"/>
+                            <field name="date"/>
+                            <field name="externalref"/>
+                            <field name="type_id" options="{'no_create': true, 'no_open': true}" />
+                            <field name="registered"/> 
+                            <field name="date_delivery" attrs="{'invisible':[('registered', '!=', 'return')]}" /> 
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="archivalcateg_id" options="{'no_create': true, 'no_open': true}" required="1"/>
+                            <field name="folder_id" options="{'no_create': true, 'no_open': true}" required="1"/>
+                            <field name="folderplace"/>
+                        </group>
+                        <group>
+                            <field name="user_id"/>
+                            <field name="deadline"/>
+                            <field name="basedoc_id"/>
+                            <field name="protected"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="note"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Document Tree View -->
+
+    <record model="ir.ui.view" id="view_docregister_doc_tree">
+        <field name="name">docregister.doc.tree</field>
+        <field name="model">docregister.doc</field>
+        <field name="arch" type="xml">
+            <tree colors="blue:state == 'draft';black:state in ('open','close');gray:state == 'cancel'" string="Documents">
+                <field name="refcode" />
+                <field name="externalref" />
+                <field name="subject" />
+                <field name="partner_id" />
+                <field name="date" />
+                <field name="user_id" />
+                <field name="state" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- Search Document  -->
+
+    <record model="ir.ui.view" id="view_docregister_doc_search">
+        <field name="name">docregister.doc.search</field>
+        <field name="model">docregister.doc</field>
+        <field name="arch" type="xml">
+            <search string="Documents">
+                <field name="refcode" string="Reference Code" />
+                <field name="externalref" />
+                <field name="subject" string="Subject" />
+                <field name="direction" string="Direction" />
+                <field name="partner_id" string="Partner" filter_domain="['|',('partner_id','ilike',self),('partner_ids','ilike',self)" />
+                <field name="tag_ids" string="Tags"/>
+                <field name="archivalcateg_id" string="Archival category" />
+                <filter name="draft" string="To be registered" domain="[('state','=', 'draft')]" help="Document waiting to be registered" />
+                <filter name="open" string="To be answered" domain="[('state','=', 'open')]" help="Document waiting to be answered" />
+                <filter name="mydoc" string="My documents" domain="[('user_id','=',uid)]" help="Documents assigned to me" />
+                <filter name="deleted" string="Deleted" domain="[('state','=','cancel')]" help="Deleted documents" />
+                <filter name="active" string="Active" domain="[('state','!=','cancel')]" help="Active documents" />
+                <group expand="0" string="Group by...">
+                    <filter string="State" help="By State" context="{'group_by':'state'}" />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Document Action -->
+
+    <record model="ir.actions.act_window" id="action_docregister_doc">
+        <field name="name">Documents</field>
+        <field name="res_model">docregister.doc</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_docregister_doc_search"/>
+    </record>
+    
+    <record model="ir.actions.act_window" id="action_docregister_mydoc">
+        <field name="name">My Documents</field>
+        <field name="res_model">docregister.doc</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{"search_default_mydoc":1,}</field>
+        <field name="search_view_id" ref="view_docregister_doc_search"/>
+    </record>
+    
+    <record model="ir.actions.act_window" id="action_docregister_folderdoc">
+        <field name="name">Documents</field>
+        <field name="res_model">docregister.doc</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('folder_id','=',[active_id])]</field>
+        <field name="search_view_id" ref="view_docregister_doc_search"/>
+    </record>
+    
+    <!-- Folder Form View -->
+
+    <record model="ir.ui.view" id="view_docregister_folder_form">
+        <field name="name">docregister.folder.form</field>
+        <field name="model">docregister.folder</field>
+        <field name="arch" type="xml">
+            <form string="folder" version="7.0">
+                <header>
+                    <button name="folder_close" type="object" string="Archive" states="open" class="oe_highlight"/>
+                    <field name="state" widget="statusbar" statusbar_visible="open,close"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only" string="Title"/>
+                        <h1>
+                            <field name="name" />
+                        </h1>
+                    </div>
+                    <div class="oe_right oe_button_box" name="buttons" groups="base.group_user">
+                        <button class="oe_inline oe_stat_button" name="%(action_docregister_folderdoc)d" type="action" icon="fa-files-o">
+                            <field string="Documents" name="doc_count" widget="statinfo"/>
+                        </button>
+                    </div>
+                    <group>
+                        <field name="description" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Folder Tree View -->
+
+    <record model="ir.ui.view" id="view_docregister_folder_tree">
+        <field name="name">docregister.folder.tree</field>
+        <field name="model">docregister.folder</field>
+        <field name="arch" type="xml">
+        <tree string="Folders">
+            <field name="name" />
+        </tree>
+        </field>
+    </record>
+
+    <!-- Search Folder  -->
+
+    <record model="ir.ui.view" id="view_docregister_folder_search">
+        <field name="name">docregister.folder.search</field>
+        <field name="model">docregister.folder</field>
+        <field name="arch" type="xml">
+            <search string="Folders">
+                <field name="name" string="Folder Name" />
+                <filter icon="terp-document-new" string="Active" domain="[('state','=', 'open')]" help="Active Folders" />
+            </search>
+        </field>
+    </record>
+
+    <!-- Folder Action -->
+
+    <record model="ir.actions.act_window" id="action_docregister_folder">
+        <field name="name">Folders</field>
+        <field name="res_model">docregister.folder</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_docregister_folder_search"/>
+    </record>
+    
+    <!-- Archival Category Form View -->
+
+    <record model="ir.ui.view" id="view_docregister_archivalcateg_form">
+        <field name="name">docregister.archivalcateg.form</field>
+        <field name="model">docregister.archivalcateg</field>
+        <field name="arch" type="xml">
+            <form string="Archival Category" version="7.0">
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="code" />
+                        <field name="parent_id" />
+                        <field name="description" />
+                        <field name="heading" />
+                        <field name="active" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Archival Category Tree View -->
+
+    <record model="ir.ui.view" id="view_docregister_archivalcateg_tree">
+        <field name="name">docregister.archivalcateg.tree</field>
+        <field name="model">docregister.archivalcateg</field>
+        <field name="arch" type="xml">
+        <tree string="Archical Categories">
+            <field name="code" />
+            <field name="name" />
+            <field name="sequence" widget="handle" />
+        </tree>
+        </field>
+    </record>
+
+    <!-- Search Archival Category -->
+
+    <record model="ir.ui.view" id="view_docregister_archivalcateg_search">
+        <field name="name">docregister.archivalcateg.search</field>
+        <field name="model">docregister.archivalcateg</field>
+        <field name="arch" type="xml">
+            <search string="Archival Category">
+                <field name="name" string="Category Name" />
+                <field name="code" string="Code" />
+                <filter icon="terp-document-new" string="Active" domain="[('state','=', 'open')]" help="Active Categories" />
+            </search>
+        </field>
+    </record>
+
+    <!-- Archival Category Action -->
+
+    <record model="ir.actions.act_window" id="action_docregister_archivalcateg">
+        <field name="name">Archival Categories</field>
+        <field name="res_model">docregister.archivalcateg</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_docregister_archivalcateg_search"/>
+    </record>
+    
+    <!-- Letter Type Form View -->
+
+    <record model="ir.ui.view" id="view_docregister_type_form">
+        <field name="name">docregister.type.form</field>
+        <field name="model">docregister.type</field>
+        <field name="arch" type="xml">
+            <form string="Letter Type" version="7.0">
+                <sheet>
+                    <group>
+                        <field name="name" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <!-- Letter Type Tree View -->
+
+    <record model="ir.ui.view" id="view_docregister_type_tree">
+        <field name="name">docregister.type.tree</field>
+        <field name="model">docregister.type</field>
+        <field name="arch" type="xml">
+        <tree string="Letter Types">
+            <field name="name" />
+        </tree>
+        </field>
+    </record>
+    
+    <!-- Search Letter Types  -->
+
+    <record model="ir.ui.view" id="view_docregister_type_search">
+        <field name="name">docregister.type.search</field>
+        <field name="model">docregister.type</field>
+        <field name="arch" type="xml">
+            <search string="Letter Types">
+                <field name="name" string="Type" />
+            </search>
+        </field>
+    </record>
+    
+    <!-- Document Action -->
+    
+    <record model="ir.actions.act_window" id="action_docregister_type">
+        <field name="name">Letter Types</field>
+        <field name="res_model">docregister.type</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_docregister_type_search"/>
+    </record>
+    
+    <!-- Partner Actions -->
+    
+    <record model="ir.actions.act_window" id="action_docregister_partner">
+        <field name="name">Partners</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">kanban,tree,form</field>
+    </record>
+    
+    <record model="ir.actions.act_window" id="action_docregister_partnerdoc">
+        <field name="name">Documents</field>
+        <field name="res_model">docregister.doc</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('partner_ids','=',[active_id])]</field>
+        <field name="search_view_id" ref="view_docregister_doc_search"/>
+    </record>
+   
+    <!-- Docreg link to Partner Form-->
+    
+    <record id="view_docregister_partner_form" model="ir.ui.view">
+            <field name="name">Docreg link to Partner Form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr='//div[@name="buttons"]' position='inside'>
+                <button class="oe_inline oe_stat_button" type="action"
+                        icon="fa-files-o"
+                        name="%(docregister.action_docregister_partnerdoc)d">
+                    <field string="Documents" name="docs_count" widget="statinfo"/>
+                </button>
+            </xpath>
+            </field>
+    </record>
+    
+    <record id="view_office_configuration" model="ir.ui.view">
+            <field name="name">Office settings</field>
+            <field name="model">docregister.config.settings</field>
+            <field name="arch" type="xml">
+                <form string="Configure Office Settings" class="oe_form_configuration">
+                    <header>
+                        <button string="Apply" type="object" name="execute" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" type="object" name="cancel" class="oe_link"/>
+                    </header>
+                    <group name="docregister_grp" string="Document registry">
+                            <field name="default_reftype"/>
+                    </group>
+                </form>
+            </field>
+    </record>
+
+    <record id="action_office_configuration" model="ir.actions.act_window">
+            <field name="name">Configure Office</field>
+            <field name="res_model">docregister.config.settings</field>
+            <field name="view_id" ref="view_office_configuration"/>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+    </record>
+    <menuitem id="menu_office_config" name="Office" parent="base.menu_config" sequence="15" action="action_office_configuration"/>
+    
+    <menuitem name="Document Registry" parent="menu_office" id="menu_docregister" sequence="1"/>
+    <menuitem name="Documents" parent="menu_docregister" id="menu_docregister_doc" action="action_docregister_doc" sequence="1"/>
+    <menuitem name="My Documents" parent="menu_docregister" id="menu_docregister_mydoc" action="action_docregister_mydoc" sequence="2"/>
+    <menuitem name="Folders" parent="menu_docregister" id="menu_docregister_folder" action="action_docregister_folder" sequence="3"/>
+    <menuitem name="Partners" parent="menu_docregister" id="menu_docregister_partner" action="action_docregister_partner" sequence="3"/>
+    <menuitem name="Configuration" parent="menu_office" id="menu_office_configuration" sequence="20" groups="base.group_system"/>
+    <menuitem name="Document Registry" parent="menu_office_configuration" id="menu_docregister_configuration" sequence="3"/>
+    <menuitem name="Tags" parent="menu_docregister_configuration" id="menu_tags" action="action_docregister_tag" />
+    <menuitem name="Archival Categories" parent="menu_docregister_configuration" id="menu_docregister_archivalcateg" action="action_docregister_archivalcateg" />
+    <menuitem name="Letter Types" parent="menu_docregister_configuration" id="menu_docregister_type" action="action_docregister_type" />
+   </data>
+</openerp>

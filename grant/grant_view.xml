@@ -1,0 +1,486 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+    
+    <record model="ir.actions.act_window" id="action_grant_installmenttogrant">
+        <field name="name">Installments</field>
+        <field name="res_model">grant.installment</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('fund_id','=',[active_id])]</field>
+    </record>
+    <record model="ir.actions.act_window" id="action_grant_reporttogrant">
+        <field name="name">Reports</field>
+        <field name="res_model">grant.report</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('fund_id','=',[active_id])]</field>
+    </record>
+    <record model="ir.actions.act_window" id="action_grant_createproposal">
+        <field name="name">Proposals</field>
+        <field name="res_model">grant.proposal</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form,tree</field>
+    </record>
+    <record model="ir.actions.act_window" id="action_grant_partnertofund">
+            <field name="name">Partners</field>
+            <field name="res_model">project_partner.partnerline</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree</field>
+            <field name="domain">[('project_id','=',[project_id])]</field>
+        </record>
+    <!-- Fund Tree View -->
+        <record model="ir.ui.view" id="view_grant_fund_tree">
+            <field name="name">grant.fund.tree</field>
+            <field name="model">grant.fund</field>
+            <field name="field_parent"></field>
+            <field name="arch" type="xml">
+                <tree string="Funds">
+                    <field name="name" string="Code"/>
+                    <field name="title"/>
+                    <field name="call_id"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+    <!-- Fund Form View -->
+        <record id="view_grant_fund_form" model="ir.ui.view">
+            <field name="name">grant.fund.form</field>
+            <field name="model">grant.fund</field>
+            <field name="arch" type="xml">
+                <form string="Fund">
+                <header>
+                    <button name="do_open" string="Start implementation" type="object" states="draft" groups="base.group_user" class="oe_highlight"/>
+                    <button name="do_cancel" string="Cancel" type="object" states="open" groups="base.group_user"/>
+                    <button name="do_done" string="Implementation over" type="object" states="open" groups="base.group_user" class="oe_highlight"/>
+                    <button name="do_close" string="Reports accepted" type="object" states="done" groups="base.group_user" class="oe_highlight"/>
+                    <field name="state" widget="statusbar" statusbar_visible="open,done,close" statusbar_colors='{"pending":"blue"}' readonly="1"/>
+                </header>
+                <sheet string="Fund">
+                    <field name="analytic_account_id" invisible="1" required="0"/>
+                    <field name="project_id" invisible="1" required="0" />
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only" string="Internal Code"/>
+                        <h1>
+                            <field name="name" string="Internal Code"/>
+                        </h1>
+                    </div>
+                    <div class="oe_right oe_button_box" name="buttons" groups="base.group_user">
+                        <button class="oe_inline oe_stat_button" name="%(action_grant_partnertofund)d" type="action" icon="fa-users" context="{'default_project_id': project_id,'project_id': project_id,'search_default_active':1}" >
+                            <field string="Partners" name="partner_count" widget="statinfo"/>
+                        </button>
+                        <button class="oe_inline oe_stat_button" name="%(action_grant_installmenttogrant)d" type="action" icon="fa-dollar" context="{'default_fund_id': active_id}" >
+                            <field string="Installments" name="installment_received" widget="statinfo"/>
+                        </button>
+                        <button class="oe_inline oe_stat_button" name="%(action_grant_reporttogrant)d" type="action" icon="fa-file-text-o" context="{'default_fund_id': active_id}" >
+                            <field string="Reports" name="report_count" widget="statinfo"/>
+                        </button>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="donor_id" context="{'default_customer': 0, 'search_default_donor': 1, 'default_donor': 1}" domain="[('donor', '=', True)]"/>
+                            <field name="code_contract" />
+                            <field name="user_id" string="Responsible"
+                                    attrs="{'readonly':[('state','in',['close', 'cancelled'])]}"
+                                    context="{'default_groups_ref': ['base.group_user', 'base.group_partner_manager', 'project.group_project_manager']}"/>
+                        </group>
+                        <group>    
+                            <field name="date_start" string="Start"/>
+                            <field name="date" string="End"/>
+                            <field name="amount_granted" widget="monetary" options="{'currency_field': 'fundcurrency_id'}"/>
+                            <field name="fundcurrency_id" class="oe_edit_only"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Content">
+                            <group >
+                                <field name="title" />
+                                <field name="title_orig" />
+                                <field name="description" />
+                                <field name="categ_ids" widget="many2many_tags"/>
+                            </group>
+                        </page>
+                        <page string="Proposal Data">
+                            <group >
+                                <field name="proposal_id" />
+                                <field name="call_id" />
+                                <field name="amount_requested" widget="monetary" options="{'currency_field': 'fundcurrency_id'}" string="Amount requested"/>
+
+                            </group>
+                        </page>
+                        <page string="Other Info">
+                            <group string="Administration">
+                                <field name="privacy_visibility" widget="radio"/>
+                                <field name="planned_hours" widget="float_time"
+                                        groups="project.group_time_work_estimation_tasks"/>
+                                <field name="effective_hours" widget="float_time"
+                                        groups="project.group_time_work_estimation_tasks"/>
+                                <field name="resource_calendar_id"
+                                        groups="project.group_time_work_estimation_tasks"/>
+                            </group>
+                            <group string="Miscellaneous" name="misc">
+                                <field name="sequence" groups="base.group_no_one"/>
+                                <field name="active" attrs="{'invisible':[('state','in',['open', 'pending', 'template'])]}"/>
+                                <field name="parent_id" string="Parent" help="Append this project to another one using analytic accounts hierarchy" domain="[('id','!=',analytic_account_id)]" context="{'current_model': 'project.project'}" />
+                            </group>
+                            <group name="group_alias" attrs="{'invisible': [('alias_domain', '=', False)]}">
+                                <label for="alias_name" string="Email Alias"/>
+                                <div name="alias_def">
+                                    <field name="alias_id" class="oe_read_only oe_inline"
+                                            string="Email Alias" required="0"/>
+                                    <div class="oe_edit_only oe_inline" name="edit_alias" style="display: inline;" >
+                                        <field name="alias_name" class="oe_inline"/>@<field name="alias_domain" class="oe_inline" readonly="1"/>
+                                    </div>
+                                </div>
+                                <label for="alias_model" string="Incoming Emails create"/>
+                                <field name="alias_model" class="oe_inline" nolabel="1"/>
+                                <field name="alias_contact" class="oe_inline"
+                                        string="Accept Emails From"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+                </form>
+            </field>
+        </record>
+    <!-- Proposal Tree View -->
+        <record model="ir.ui.view" id="view_grant_proposal_tree">
+            <field name="name">grant.proposal.tree</field>
+            <field name="model">grant.proposal</field>
+            <field name="field_parent"></field>
+            <field name="arch" type="xml">
+                <tree string="Proposals">
+                    <field name="name" string="Title"/>
+                    <field name="call_id"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+    <!-- Proposal Form View -->
+        <record id="view_grant_proposal_form" model="ir.ui.view">
+            <field name="name">grant.proposal.form</field>
+            <field name="model">grant.proposal</field>
+            <field name="arch" type="xml">
+                <form string="Proposal">
+                <header>
+                    <button name="do_open" string="Submit" type="object" states="draft" groups="base.group_user" class="oe_highlight"/>
+                    <button name="do_done" string="Proposal won" type="object" states="open" groups="base.group_user"/>
+                    <button name="do_close" string="Proposal lost" type="object" states="open" groups="base.group_user"/>
+                    <button name="do_cancel" string="Cancel" type="object" states="draft" groups="base.group_user"/>
+                    <button name="createfund" string="Create fund" states="done" type="object" groups="base.group_user" class="oe_highlight" />
+                    <field name="state" widget="statusbar" statusbar_visible="open,done" statusbar_colors='{"pending":"blue"}' readonly="1"/>
+                </header>
+                <sheet string="Proposal">
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only" string="Short title"/>
+                        <h1>
+                            <field name="name" string="Short title"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="call_id" /> 
+                            <field name="donor_id" context="{'default_customer': 0, 'search_default_donor': 1, 'default_donor': 1}" domain="[('donor', '=', True)]" />
+                            <field name="code_proposal" />
+                            <field name="user_id" string="Responsible"
+                                    attrs="{'readonly':[('state','in',['close', 'cancelled'])]}"
+                                    context="{'default_groups_ref': ['base.group_user', 'base.group_partner_manager', 'project.group_project_manager']}"/>
+                            <field name="coordinator_id" />
+                        </group>
+                        <group>
+                            <field name="date_submitted" states="open,done"/>
+                            <field name="date_decision" />
+                            <field name="date_start" />
+                            <field name="date" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Content">
+                            <group >
+                                <field name="title" />
+                                <field name="description" />
+                                <field name="categ_ids" widget="many2many_tags"/>
+                            </group>
+                        </page>
+                        <page string="Financial data">
+                            <group >
+                                <field name="amount_requested" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                <field name="cofinannce" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                <field name="cofinannce_inkind" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                                <field name="currency_id" />
+                            </group>
+                        </page>
+                        <page string="Partners">
+                            <group >
+                                <field name="partner_ids" />
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+                </form>
+            </field>
+        </record>
+    <!-- Calls Tree View -->
+        <record model="ir.ui.view" id="view_grant_call_tree">
+            <field name="name">grant.call.tree</field>
+            <field name="model">grant.call</field>
+            <field name="field_parent"></field>
+            <field name="arch" type="xml">
+                <tree string="Calls">
+                    <field name="name" />
+                    <field name="donor_id"/>
+                    <field name="date"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+    <!-- Calls Form View -->    
+        <record id="view_grant_call_form" model="ir.ui.view">
+            <field name="name">grant.call.form</field>
+            <field name="model">grant.call</field>
+            <field name="arch" type="xml">
+                <form string="Call">
+                <header>
+                    <button name="do_open" string="Open" type="object" states="draft" groups="base.group_user" />
+                    <button name="do_cancel" string="Cancel" type="object" states="draft,open" groups="base.group_user"/>
+                    <button name="%(grant.action_grant_createproposal)d" string="Create proposal" states="draft,open,close" type="action" groups="base.group_user" class="oe_highlight"  context="{'default_call_id': active_id}"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,open, close" statusbar_colors='{"pending":"blue"}' readonly="1"/>
+                </header>
+                <sheet string="Call">
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only" string="Name"/>
+                        <h1>
+                            <field name="name" string="Name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="donor_id" context="{'default_customer': 0, 'search_default_donor': 1, 'default_donor': 1}" domain="[('donor', '=', True)]" /> 
+                            <field name="code" />
+                        </group>
+                        <group>
+                            <field name="date" />
+                            <field name="date_decision" />
+                        </group>
+                    </group>
+                    <group>
+                        <field name="description" /> 
+                        <field name="categ_ids" widget="many2many_tags" />
+                        <field name="url" />
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+                </form>
+            </field>
+        </record>
+    <!-- Installments Tree View -->
+        <record model="ir.ui.view" id="view_grant_installment_tree">
+            <field name="name">grant.installment.tree</field>
+            <field name="model">grant.installment</field>
+            <field name="field_parent"></field>
+            <field name="arch" type="xml">
+                <tree string="Calls"  >
+                    <field name="fund_id"/>
+                    <field name="name" />
+                    <field name="date_expected"/>
+                    <field name="fundcurrency_id" invisible="1" />
+                    <field name="currency_id" invisible="1" />
+                    <field name="amount_expected"/>
+                    <field name="amount_received_local" />
+
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+    <!-- Installments Form View -->
+        <record id="view_grant_installment_form" model="ir.ui.view">
+            <field name="name">grant.installment.form</field>
+            <field name="model">grant.installment</field>
+            <field name="arch" type="xml">
+                <form string="Installment">
+                <header>
+                    <button name="do_done" string="Receive" type="object" states="draft" groups="base.group_user" class="oe_highlight"/>
+                    <button name="do_cancel" string="Cancel" type="object" states="draft" groups="base.group_user"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,done" statusbar_colors='{"pending":"blue"}' readonly="1"/>
+                </header>
+                <sheet string="Installment">
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only" string="Name"/>
+                        <h1>
+                            <field name="name" string="Name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="fund_id" /> 
+                            <field name="date_expected" />
+                            <field name="amount_expected" widget="monetary" options="{'currency_field': 'fundcurrency_id'}"/>
+                            <field name="fundcurrency_id" invisible="1" />
+                            <field name="currency_id" invisible="1" />
+                        </group>
+                        <group>
+                            <field name="date_received" states="done"/>
+                            <field name="amount_received" states="done" widget="monetary" options="{'currency_field': 'fundcurrency_id'}"/>
+                            <field name="amount_received_local" states="done" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+                </form>
+            </field>
+        </record>
+    <!-- Report Tree View -->
+        <record model="ir.ui.view" id="view_grant_report_tree">
+            <field name="name">grant.report.tree</field>
+            <field name="model">grant.report</field>
+            <field name="field_parent"></field>
+            <field name="arch" type="xml">
+                <tree string="Reports">
+                    <field name="fund_id"/>
+                    <field name="name" />
+                    <field name="date_open"/>
+                    <field name="date_close"/>
+                    <field name="date_due"/>
+                    <field name="reportcontent_id" widget="many2many_tags"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+    <!-- Report Form View -->
+        <record id="view_grant_report_form" model="ir.ui.view">
+            <field name="name">grant.report.form</field>
+            <field name="model">grant.report</field>
+            <field name="arch" type="xml">
+                <form string="Report">
+                <header>
+                    <button name="do_open" string="Submit" type="object" states="draft" groups="base.group_user" class="oe_highlight"/>
+                    <button name="do_close" string="Accept" type="object" states="open,revise" groups="base.group_user" class="oe_highlight"/>
+                    <button name="do_revise" string="Revise" type="object" states="revise" groups="base.group_user" />
+                    <button name="do_cancel" string="Cancel" type="object" states="draft" groups="base.group_user"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,open,close" statusbar_colors='{"pending":"blue"}' readonly="1"/>
+                </header>
+                <sheet string="Report">
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only" string="Name"/>
+                        <h1>
+                            <field name="name" string="Name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="fund_id" /> 
+                            <field name="date_open" />
+                            <field name="date_close" />
+                            <field name="reportcontent_id" widget="many2many_tags"/>
+                        </group>
+                        <group>
+                            <field name="type" widget="radio"/>
+                            <field name="date_due" />
+                            <field name="date_submit" states="open,revise,close" />
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+                </form>
+            </field>
+        </record>    
+    <!-- Report Search View-->
+    <record model="ir.ui.view" id="view_grant_report_search">
+        <field name="name">grant.report.search</field>
+        <field name="model">grant.report</field>
+        <field name="arch" type="xml">
+            <search string="Report">
+                <field name="name" string="Name"/>
+                <field name="fund_id" string="Fund"/>
+                <filter string="Due" domain="[('state','=', 'draft')]" help="Reports to submit" />
+                <filter string="Overdue" domain="[('date_due','&lt;', ((context_today())).strftime('%%Y-%%m-%%d 00:00:00')), ('state','=','draft')]" help="Reports overdue" />
+            </search>
+        </field>
+    </record>
+    <!-- Donor flag to Partner Form-->
+    <record id="view_grant_donor_partnermod_form" model="ir.ui.view">
+            <field name="name">Donor flag on partner form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <field name="website" position="after" >
+                    <field name="donor" />
+                </field>
+            </field>
+    </record>
+    <!-- Donor filter to Partner Tree-->
+    <record id="view_grant_donor_partnermod_search" model="ir.ui.view">
+            <field name="name">Donor filter on partner tree</field>
+            <field name="model">res.partner</field>
+            <field name="priority">2</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="arch" type="xml">
+                <filter name="supplier" position="after" >
+                    <filter string="Donors" name="donor" domain="[('donor','=',1)]" help="Donor Partners"/>
+                </filter>
+            </field>
+    </record>
+    <record model="ir.actions.act_window" id="action_grant_fund">
+        <field name="name">Funds</field>
+        <field name="res_model">grant.fund</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id="action_grant_call">
+        <field name="name">Calls for proposals</field>
+        <field name="res_model">grant.call</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id="action_grant_installment">
+        <field name="name">Calls</field>
+        <field name="res_model">grant.installment</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id="action_grant_report">
+        <field name="name">Reports</field>
+        <field name="res_model">grant.report</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id="action_grant_proposal">
+        <field name="name">Proposals</field>
+        <field name="res_model">grant.proposal</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id="action_grant_donor">
+        <field name="name">Donors</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{"search_default_donor":1,}</field>
+    </record>
+    <menuitem name="Grants" parent="account.menu_finance_configuration" id="menu_grant_configuration" sequence="3"/>
+    <menuitem name="Grants" parent="account.menu_finance" id="menu_grant" sequence="1"/>
+    <menuitem name="Funds" parent="menu_grant" id="menu_grant_fund" action="action_grant_fund" />
+    <menuitem name="Calls" parent="menu_grant" id="menu_grant_calls" action="action_grant_call" />
+    <menuitem name="Proposals" parent="menu_grant" id="menu_grant_proposal" action="action_grant_proposal" />
+    <menuitem name="Installments" parent="menu_grant" id="menu_grant_installments" action="action_grant_installment" />
+    <menuitem name="Reports" parent="menu_grant" id="menu_grant_reports" action="action_grant_report" />
+    <menuitem name="Donors" parent="menu_grant" id="menu_grant_donor"  action="action_grant_donor" sequence="100"/>
+   </data>
+</openerp>

@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <!-- Project Partner Line Tree View -->
+        <record model="ir.ui.view" id="view_project_partner_partnerline_tree">
+            <field name="name">project_partner.partnerline.tree</field>
+            <field name="model">project_partner.partnerline</field>
+            <field name="arch" type="xml">
+                <tree string="Partners" editable="top">
+                    <field name="partner_id" />
+                    <field name="role_id" />
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="action_project_partner_partnertoproject">
+            <field name="name">Partners</field>
+            <field name="res_model">project_partner.partnerline</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree</field>
+            <field name="domain">[('project_id','=',[project_id])]</field>
+        </record>
+        <!-- Project Partners Button -->
+        <record id="project_partner_button" model="ir.ui.view">
+            <field name="name">Partners button for project</field>
+            <field name="model">project.project</field>
+            <field name="priority">2</field>
+            <field name="inherit_id" ref="project.edit_project"/>
+            <field name="arch" type="xml">
+                <button name="attachment_tree_view" position="after" >
+                    <button  class="oe_inline oe_stat_button" name="%(project_partner.action_project_partner_partnertoproject)d"  type="action" icon="fa-users" context="{'default_project_id': active_id,'project_id': active_id,'search_default_active':1}">
+                            <field string="Partners" name="partner_count" widget="statinfo"/>
+                        </button>
+                </button>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_project_partner_partnerline_search">
+            <field name="name">project_partner.partnerline.search</field>
+            <field name="model">project_partner.partnerline</field>
+            <field name="arch" type="xml">
+                <search string="Partner">
+                    <field name="role_id" string="Role"/>
+                    <field name="project_id" string="Project"/>
+                    <field name="state" string="State"/>
+                    <filter name="active" string="Active" domain="[('state','=', 'open')]" help="Active partners" />
+                </search>
+            </field>
+    </record>
+    </data>
+</openerp>

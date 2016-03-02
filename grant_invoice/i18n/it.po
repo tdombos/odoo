@@ -1,0 +1,193 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* account_analytic_deferred_choice
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 6.0.4\n"
+"Report-Msgid-Bugs-To: support@openerp.com\n"
+"POT-Creation-Date: 2012-05-08 08:09+0000\n"
+"PO-Revision-Date: 2012-05-08 10:24+0100\n"
+"Last-Translator: Franco Tampieri <info@francotampieri.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+
+#. module: account_analytic_deferred_choice
+#: constraint:account.move:0
+msgid "You cannot create entries on different periods/journals in the same move"
+msgstr "Non si possono creare scritture in sezionali differenti con una stessa registrazione."
+
+#. module: account_analytic_deferred_choice
+#: view:account.invoice:0
+#: view:account.move:0
+msgid "Create analytic lines"
+msgstr "Crea righe analitiche"
+
+#. module: account_analytic_deferred_choice
+#: code:addons/account_analytic_deferred_choice/invoice.py:69
+#: code:addons/account_analytic_deferred_choice/invoice.py:148
+#, python-format
+msgid "You have to define an analytic journal on the '%s' journal!"
+msgstr "E' necessario definite un giornale analitico per il sezionale '%s'!"
+
+#. module: account_analytic_deferred_choice
+#: code:addons/account_analytic_deferred_choice/invoice.py:63
+#, python-format
+msgid "Analytic lines yet generated for invoice %s. Remove them first"
+msgstr "Righe analitiche già generate per la fattura %s. Rimuoverle prima di crearne altre"
+
+#. module: account_analytic_deferred_choice
+#: code:addons/account_analytic_deferred_choice/invoice.py:142
+#, python-format
+msgid "Analytic lines yet generated for Account Entry %s. Remove them first"
+msgstr "Righe analitiche già generate per il Movimento %s. Rimuoverle prima di crearne altre"
+
+#. module: account_analytic_deferred_choice
+#: model:ir.module.module,description:account_analytic_deferred_choice.module_meta_information
+msgid ""
+"User can assign the invoice amount to one or more analytic accounts, subsequently (or previously) to invoice confirmation.\n"
+"    The invoice has a new field, containing the analytic plan to be used. The related button generates tha analytic lines, related to the invoice. The invoice lines have new fields too, containing the analytic plan. If the line's field is not filled, the invoice's one is used.\n"
+"    On the invoice form, another button allows to delete the previously generated analytic lines.\n"
+"    Every analytic line contains a reference to the invoice line that generated it."
+msgstr ""
+"User can assign the invoice amount to one or more analytic accounts, subsequently (or previously) to invoice confirmation.\n"
+"    The invoice has a new field, containing the analytic plan to be used. The related button generates tha analytic lines, related to the invoice. The invoice lines have new fields too, containing the analytic plan. If the line's field is not filled, the invoice's one is used.\n"
+"    On the invoice form, another button allows to delete the previously generated analytic lines.\n"
+"    Every analytic line contains a reference to the invoice line that generated it."
+
+#. module: account_analytic_deferred_choice
+#: model:ir.model,name:account_analytic_deferred_choice.model_account_analytic_line
+msgid "Analytic Line"
+msgstr "Linea conto analitico"
+
+#. module: account_analytic_deferred_choice
+#: constraint:account.move.line:0
+msgid "You can not create move line on closed account."
+msgstr "Non si puo' inserire una voce per una registrazione su un conto chiuso."
+
+#. module: account_analytic_deferred_choice
+#: field:account.invoice,deferred_analytics_id:0
+#: field:account.invoice.line,deferred_analytics_id:0
+#: field:account.move,deferred_analytics_id:0
+#: field:account.move.line,deferred_analytics_id:0
+msgid "Deferred Analytic Distribution"
+msgstr "Distribuzione analitica differita"
+
+#. module: account_analytic_deferred_choice
+#: code:addons/account_analytic_deferred_choice/invoice.py:66
+#, python-format
+msgid "Invoice %s and line %s have no Deferred Analytic Distribution"
+msgstr "La fattura %s e la riga %s non hanno una distribuzione analitica differita"
+
+#. module: account_analytic_deferred_choice
+#: model:ir.module.module,shortdesc:account_analytic_deferred_choice.module_meta_information
+msgid "Analytic Deferred Choice for Invoices"
+msgstr "Scelta analitica differita per le fatture"
+
+#. module: account_analytic_deferred_choice
+#: view:account.move:0
+#: model:ir.model,name:account_analytic_deferred_choice.model_account_move_line
+msgid "Journal Items"
+msgstr "Voci sezionale"
+
+#. module: account_analytic_deferred_choice
+#: constraint:account.move.line:0
+msgid "Company must be same for its related account and period."
+msgstr "L'azienda deve essere la stessa per il periodo ed il conto ad essa correlato."
+
+#. module: account_analytic_deferred_choice
+#: code:addons/account_analytic_deferred_choice/invoice.py:145
+#, python-format
+msgid "Account Entry %s and line %s have no Deferred Analytic Distribution"
+msgstr "Il Movimento Sezionale %s e la riga %s non hanno una distribuzione analitica differita"
+
+#. module: account_analytic_deferred_choice
+#: field:account.invoice,deferred_line_ids:0
+#: field:account.invoice.line,deferred_line_ids:0
+#: field:account.move,deferred_line_ids:0
+#: field:account.move.line,deferred_line_ids:0
+msgid "Analytic Lines"
+msgstr "Righe analitiche"
+
+#. module: account_analytic_deferred_choice
+#: constraint:account.move:0
+#: constraint:account.move.line:0
+msgid "The date of your Journal Entry is not in the defined period!"
+msgstr "La data del Movimento Sezionale non è inclusa nel periodo definito!"
+
+#. module: account_analytic_deferred_choice
+#: field:account.analytic.line,deferred_account_move_line_id:0
+msgid "Account Entry Line"
+msgstr "Linea Movimento Sezionale"
+
+#. module: account_analytic_deferred_choice
+#: constraint:account.move:0
+msgid "You cannot create more than one move per period on centralized journal"
+msgstr "Non si puo' creare piu' di un movimento per periodo su un sezionale centralizzato"
+
+#. module: account_analytic_deferred_choice
+#: sql_constraint:account.move.line:0
+msgid "Wrong credit or debit value in accounting entry !"
+msgstr "Valore di credito o debito errato nella registrazione contabile !"
+
+#. module: account_analytic_deferred_choice
+#: view:account.invoice:0
+msgid "Payments"
+msgstr "Pagamenti"
+
+#. module: account_analytic_deferred_choice
+#: code:addons/account_analytic_deferred_choice/invoice.py:62
+#: code:addons/account_analytic_deferred_choice/invoice.py:66
+#: code:addons/account_analytic_deferred_choice/invoice.py:141
+#: code:addons/account_analytic_deferred_choice/invoice.py:145
+#, python-format
+msgid "Error"
+msgstr "Errore"
+
+#. module: account_analytic_deferred_choice
+#: view:account.invoice:0
+#: view:account.move:0
+msgid "Deferred analytic lines"
+msgstr "Righe analitiche differite"
+
+#. module: account_analytic_deferred_choice
+#: view:account.invoice:0
+#: view:account.move:0
+msgid "Delete analytic lines"
+msgstr "Rimuovi righe analitiche"
+
+#. module: account_analytic_deferred_choice
+#: view:account.analytic.line:0
+#: field:account.analytic.line,deferred_account_move_id:0
+#: model:ir.model,name:account_analytic_deferred_choice.model_account_move
+msgid "Account Entry"
+msgstr "Movimento Sezionale"
+
+#. module: account_analytic_deferred_choice
+#: code:addons/account_analytic_deferred_choice/invoice.py:69
+#: code:addons/account_analytic_deferred_choice/invoice.py:148
+#, python-format
+msgid "No Analytic Journal !"
+msgstr "Nessun giornale analitico!"
+
+#. module: account_analytic_deferred_choice
+#: field:account.analytic.line,deferred_invoice_line_id:0
+#: model:ir.model,name:account_analytic_deferred_choice.model_account_invoice_line
+msgid "Invoice Line"
+msgstr "Riga fattura"
+
+#. module: account_analytic_deferred_choice
+#: view:account.analytic.line:0
+#: field:account.analytic.line,deferred_invoice_id:0
+#: model:ir.model,name:account_analytic_deferred_choice.model_account_invoice
+msgid "Invoice"
+msgstr "Fattura"
+
+#. module: account_analytic_deferred_choice
+#: constraint:account.move.line:0
+msgid "You can not create move line on view account."
+msgstr "Non si possono inserire movimenti in un conto di tipo \"vista\""
+

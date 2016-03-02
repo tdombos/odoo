@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="invoice_supplier_form" model="ir.ui.view">
+            <field name="name">account.invoice.supplier.form</field>
+            <field name="model">account.invoice</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="account.invoice_supplier_form"></field>
+            <field name="arch" type="xml">
+                <field name="move_id" position="after">
+                    <group colspan="2" col="4" groups="analytic.group_analytic_accounting">
+                        <field name="deferred_analytics_id" />
+                        <button name="create_analytic_lines" type="object" string="Create analytic lines" groups="account.group_account_user"/>
+                        <button name="delete_analytic_lines" type="object" string="Delete analytic lines" groups="account.group_account_user"/>
+                    </group>
+                </field>
+                <page string="Payments" position="after">
+                    <page string="Deferred analytic lines" groups="account.group_account_user">
+                        <field name="deferred_line_ids" nolabel="1" colspan="4"/>
+                    </page>
+                    <page string="Links to grants" groups="account.group_account_user">
+                        <field name="grant_line">
+                                <tree string="Grant links" editable="bottom">
+                                    <field name="name"/>
+                                    <field name="price_subtotal"/>
+                                    <field name="deferred_analytics_id"/>
+                                    <field name="account_id"/>
+                                </tree>
+                            </field>
+                    </page>
+                </page>
+            </field>
+        </record>
+
+        <record id="invoice_form" model="ir.ui.view">
+            <field name="name">account.invoice.form</field>
+            <field name="model">account.invoice</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="account.invoice_form"></field>
+            <field name="arch" type="xml">
+                <field name="move_id" position="after">
+                    <group colspan="2" col="4" groups="analytic.group_analytic_accounting">
+                        <field name="deferred_analytics_id" />
+                        <button name="create_analytic_lines" type="object" string="Create analytic lines" groups="account.group_account_user"/>
+                        <button name="delete_analytic_lines" type="object" string="Delete analytic lines" groups="account.group_account_user"/>
+                    </group>
+                </field>
+                <page string="Payments" position="after">
+                    <page string="Deferred analytic lines" groups="account.group_account_user">
+                        <field name="deferred_line_ids" nolabel="1" colspan="4"/>
+                    </page>
+                    <page string="Links to grants" groups="account.group_account_user">
+                        <field name="grant_line" nolabel="1" colspan="4"/>
+                    </page>
+                </page>
+            </field>
+        </record>
+
+
+
+    </data>
+</openerp>

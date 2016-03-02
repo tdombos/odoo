@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data >
+
+        <!-- Resource: committee.committee -->
+        <record id="all_committees_account" model="account.analytic.account">
+            <field name="name">Committees</field>
+            <field name="code">BI000</field>
+            <field name="type">view</field>
+        </record>
+        <function id="parent_committee_default_set" model="ir.values" name="set" eval="('default',False,'parent_id', [('committee.committee', False)], all_committees_account, True, False, False, False, True)"/>
+    </data>
+</openerp>

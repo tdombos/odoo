@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+        <!-- Sequence for Cases -->
+        
+        <record id="seq_type_case_case" model="ir.sequence.type">
+            <field name="name">Cases</field>
+            <field name="code">case.case</field>
+        </record>
+        
+    </data>
+</openerp>

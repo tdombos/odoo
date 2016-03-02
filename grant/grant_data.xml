@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data >
+        <!-- Resource: project.project -->
+        <record id="all_fund_account" model="account.analytic.account">
+            <field name="name">Funds</field>
+            <field name="code">F000</field>
+            <field name="type">view</field>
+        </record>
+        <record id="grant_role_coordinator" model="project_partner.role">
+            <field name="name">coordinator</field>
+            <field name="description">Coordinating organization for the project</field>
+        </record>
+        <record id="grant_role_partner" model="project_partner.role">
+            <field name="name">partner</field>
+            <field name="description">Project partner organization for the project</field>
+        </record>
+        <function id="parent_fund_default_set" model="ir.values" name="set" eval="('default',False,'parent_id', [('grant.fund', False)], all_fund_account, True, False, False, False, True)"/>
+        <record id="action_expire_grant_call" model="ir.actions.server">
+            <field name="name">Expire call</field>
+            <field name="model_id" ref="model_grant_call"/>
+            <field name="condition">True</field>
+            <field name="type">ir.actions.server</field>
+            <field name="state">object_write</field>
+            <field name="use_write">current</field>
+            <field name="fields_lines">[(0, 0, {'col1': 'state', 'value': 'close'})]</field> 
+
+        </record>
+        <record id="rule_grant_call_deadline_expired" model="base.action.rule">
+            <field name="name">Expire calls with deadlines passed.</field>
+            <field name="model_id" ref="model_grant_call"/>
+            <field name="sequence">1</field>
+            <field name="kind">on_time</field>
+            <field name="trg_date_id" ref="field_grant_call_date"/>
+            <field name="server_action_ids" eval="[(6,0,[ref('action_expire_grant_call')])]"/>
+        </record>
+
+    </data>
+</openerp>
