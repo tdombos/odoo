@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+<record id="personalextrainfo" model="ir.ui.view">
+    <field name="name">Personal Extra Info</field>
+    <field name="model">res.partner</field>
+    <field name="inherit_id" ref="partner_contact_personal_information_page.personal_information"/>
+    <field name="arch" type="xml">
+        <data>
+            <xpath expr="//group[@name='personal_information_group']" position="replace">
+                <group name="personal_information_group" >
+                    <group>
+                        <field name="birthplace"/>
+                        <field name="birthdate_date"/>
+                        <field name="nationality_id"/>
+                        <field name="birthname"/>
+                        <field name="mothername"/>
+                    </group>
+                    <group>
+                        <field name="passportnumber"/>
+                        <field name="idnumber"/>
+                        <field name="socsecnumber"/>
+                        <field name="personaltaxnumber"/>
+                    </group>
+                </group>
+            </xpath>
+            <xpath expr="//label[@string='Address']" position="before">
+                <field name="fullname"/>
+            </xpath>
+        </data>
+  </field>
+</record>
+
+</data>
+</openerp>
