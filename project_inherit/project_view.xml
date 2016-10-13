@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+    <!-- Inherit filter to Project Tree-->
+    <record id="view_project_inherit_project_search" model="ir.ui.view">
+            <field name="name">Inherited model filter on project tree</field>
+            <field name="model">project.project</field>
+            <field name="priority">2</field>
+            <field name="inherit_id" ref="project.view_project_project_filter"/>
+            <field name="arch" type="xml">
+                <filter name="inactive" position="after" >
+                    <filter string="Standalone" name="noinherit" domain="[('project_inherit','=','Nanu')]" help="Only projects not inherited"/>
+                </filter>
+            </field>
+    </record>
+    </data>
+</openerp>
