@@ -22,7 +22,7 @@
 
 {
     'name': 'Document Registry',
-    'version': '0.1',
+    'version': '0.2',
     'category': 'Tools',
     'description': 'Registering incoming and outgoing documents',
     'author': 'Dombos Tamás',

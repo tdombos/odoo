@@ -25,7 +25,7 @@ from openerp import api, fields, models
 
 class crm_phonecall(models.Model):
 
-    _inherit = 'crm.phonecall'
+    _inherit = 'phonecall.phonecall'
 
     project_id = fields.Many2one('project.project', 'Project')
 
@@ -36,10 +36,10 @@ class Project(models.Model):
 
     @api.one
     def _project_phonecall_count(self):
-        self.project_phonecall_count = self.env['crm.phonecall'].search_count(
+        self.project_phonecall_count = self.env['phonecall.phonecall'].search_count(
             [('project_id', 'in', self.ids)])
 
     phonecalls = fields.One2many(
-        'crm.phonecall', 'project_id', string='Phonecalls')
+        'phonecall.phonecall', 'project_id', string='Phonecalls')
     project_phonecall_count = fields.Integer(
         compute="_project_phonecall_count", string="Phonecalls")

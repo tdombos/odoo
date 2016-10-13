@@ -57,6 +57,7 @@ class committee_committee(models.Model):
             record.agendaitem_count = len(record.agendaitem_ids)
     shortname = fields.Char('Short name', size=64, select=True)
     project_id = fields.Many2one('project.project', required=True, string='Related Project', ondelete='restrict', help='Project-related data of the committee', auto_join=True)
+    description = fields.Html('Description', track_visibility='onchange')
     type_ids = fields.Char('Types', size=16, select=True)
     agendaitem_ids = fields.One2many('committee.agendaitem', 'committee_id', 'Agenda Items')
     meeting_ids = fields.One2many('committee.meeting', 'committee_id', 'Meetings')
@@ -64,6 +65,15 @@ class committee_committee(models.Model):
     meeting_count = fields.Integer(compute='_meeting_count', string='Meetings')
     decision_count = fields.Integer(compute='_decision_count', string='Decisions')
     agendaitem_count = fields.Integer(compute='_agendaitem_count', string='Agenda Items')
+    
+    def unlink(self, cr, uid, ids, context=None):
+        project_to_delete = set()
+        for committee in self.browse(cr, uid, ids, context=context):
+            if committee.project_id:
+                project_to_delete.add(committee.project_id.id)
+        res = super(committee_committee, self).unlink(cr, uid, ids, context=context)
+        self.pool['project.project'].unlink(cr, uid, list(project_to_delete), context=context)
+        return res
 
 class committee_meeting(models.Model):
     _name = 'committee.meeting'
@@ -73,9 +83,16 @@ class committee_meeting(models.Model):
     }
     _description = 'Meeting'
 
+    @api.depends('decision_ids')
+    def _decision_count(self):
+        for record in self:
+            record.decision_count = len(record.decision_ids)
+
     committee_id = fields.Many2one('committee.committee', 'Committee', required=True, ondelete='restrict',)
-    meeting_id = fields.Many2one('calendar.event', 'Event', require=True)
+    meeting_id = fields.Many2one('calendar.event', 'Event', require=True, ondelete='restrict')
     agendaline_ids = fields.One2many('committee.agendaline', 'meeting_id', string='Agenda')
+    decision_ids = fields.One2many('committee.decision', 'meeting_id', 'Decisions')
+    decision_count = fields.Integer(compute='_decision_count', string='Decisions')
     state = fields.Selection([
         ('draft', 'Planned'),
         ('open', 'Invitation sent'),
@@ -83,7 +100,7 @@ class committee_meeting(models.Model):
         ('close', 'Memo Done'),
         ('cancel', 'Cancelled')],
         string='State', size=16, readonly=True, track_visibility='onchange')
-
+    
     _defaults = {
         'state': 'draft',
     }
@@ -91,10 +108,18 @@ class committee_meeting(models.Model):
     @api.one
     def do_open(self):
         self.state = 'open'
+        agendaitems = self.agendaline_ids.mapped('agendaitem_id')
+        for agendaitem in agendaitems:
+            if agendaitem.state in ('draft','postpone'):
+                agendaitem.state = 'open'
         return True
     @api.one
     def do_done(self):
         self.state = 'done'
+        agendaitems = self.agendaline_ids.mapped('agendaitem_id')
+        for agendaitem in agendaitems:
+            if agendaitem.state in ('draft','open'):
+                agendaitem.state = 'done'
         return True
     @api.one
     def do_close(self):
@@ -104,6 +129,10 @@ class committee_meeting(models.Model):
     def do_cancel(self):
         self.state = 'cancel'
         return True
+
+class calendar_event(models.Model):
+    _inherit = 'calendar.event'
+
 
 class committee_attendance(models.Model):
     _inherit = ['calendar.attendee']
@@ -123,13 +152,13 @@ class committee_attendance(models.Model):
 class committee_agendaitem(models.Model):
     _name = 'committee.agendaitem'
     _inherit = ['mail.thread']
-    _description = 'Agenda Items'
+    _description = 'Agenda Item'
     
     name = fields.Char('Item Title', size=128, required=True, select=True)
     committee_id = fields.Many2one('committee.committee', 'Committee', required=True)
     notes = fields.Text('Memo')
     decision_ids = fields.One2many('committee.decision', 'agendaitem_id', 'Decisions')
-    categ_ids = fields.Many2many('project.category', string='Tags')
+    tag_ids = fields.Many2many('docregister.tag', string='Tag(s)', track_visibility='onchange')
     user_id = fields.Many2one('res.users', 'Assigned to', select=True, track_visibility='onchange')
     description = fields.Text('Description')
     notes = fields.Text('Notes')
@@ -146,27 +175,38 @@ class committee_agendaitem(models.Model):
     _defaults = {
         'state': 'draft',
     }
+    @api.one
     def do_open(self):
         self.state = 'open'
         return True
+    @api.one
     def do_done(self):
         self.state = 'done'
         return True
+    @api.one
     def do_cancel(self):
         self.state = 'cancel'
         return True
+    @api.one
     def do_postpone(self):
         self.state = 'postpone'
         return True
         
 class committee_agendaline(models.Model):
     _name = 'committee.agendaline'
-    _description = 'Agenda Lines'
+    _description = 'Agenda Line'
     
     sequence = fields.Integer('Sequence', select=True, help='Gives the sequence order when displaying a list of tasks.')
     meeting_id  = fields.Many2one('committee.meeting', string='Meeting',required=True)
     agendaitem_id  = fields.Many2one('committee.agendaitem', string='Agenda item',required=True)
+    late = fields.Boolean('Late')
+    state = fields.Selection(related='agendaitem_id.state',string='State')
     
+    @api.one
+    def do_postpone(self):
+        self.agendaitem_id.state = 'postpone'
+        return True
+        
 class committee_decision(models.Model):
     _name = 'committee.decision'
     _inherit = ['mail.thread']
@@ -196,7 +236,17 @@ class committee_decision(models.Model):
     def do_done(self):
         self.state = 'done'
         return True
-        
+    @api.onchange('meeting_id') 
+    def set_meetingdata(self):
+        if self.meeting_id: 
+            self.committee_id = self.meeting_id.committee_id
+            self.date = self.meeting_id.start
+    @api.onchange('agendaitem_id') 
+    def set_agendadata(self):
+        if self.agendaitem_id: 
+            self.committee_id = self.agendaitem_id.committee_id
+
+
 class committee_decisiontype(models.Model):
     _name = 'committee.decisiontype'
     _description = 'Decision Type'
@@ -207,3 +257,6 @@ class committee_decisiontype(models.Model):
         ('name', 'unique(name)', 'Name of Decision Type has to be unique')
     ]
     _order = 'name asc'
+class project(models.Model):
+    _inherit = 'project.project'
+    committee_ids = fields.One2many('committee.committee', 'project_id', 'Committees')

@@ -1,45 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data noupdate="1">
-        <!-- Sequences for Incoming Documents -->
-        
-        <record id="seq_type_doc_in" model="ir.sequence.type">
-            <field name="name">Incoming documents</field>
-            <field name="code">doc.in</field>
-        </record>
-        
+        <!-- Sequences for Incoming Documents --> 
         <record id="seq_doc_in" model="ir.sequence">
             <field name="name">Incoming documents</field>
-            <field name="code">doc.in</field>
-            <field name="prefix">%(year)s/IN/</field>
+            <field name="code">docregister.doc.in</field>
+            <field name="prefix">%(range_year)s/IN/</field>
             <field name="padding">4</field>
         </record>
         
         <!-- Sequences for Outgoing Documents -->
         
-        <record id="seq_type_doc_out" model="ir.sequence.type">
-            <field name="name">Outgoing documents</field>
-            <field name="code">doc.out</field>
-        </record>
-        
         <record id="seq_doc_out" model="ir.sequence">
             <field name="name">Outgoing documents</field>
-            <field name="code">doc.out</field>
-            <field name="prefix">%(year)s/OUT/</field>
+            <field name="code">docregister.doc.out</field>
+            <field name="prefix">%(range_year)s/OUT/</field>
             <field name="padding">4</field>
         </record>
 		
 		<!-- Sequences for Mixed Documents -->
         
-        <record id="seq_type_doc_mix" model="ir.sequence.type">
-            <field name="name">Documents</field>
-            <field name="code">doc.mix</field>
-        </record>
-        
         <record id="seq_doc_mix" model="ir.sequence">
             <field name="name">Documents</field>
-            <field name="code">doc.mix</field>
-            <field name="prefix">%(year)s/</field>
+            <field name="code">docregister.doc.mix</field>
+            <field name="prefix">%(range_year)s/</field>
             <field name="padding">4</field>
         </record>
         

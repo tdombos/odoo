@@ -64,11 +64,12 @@ class project_partner_role(models.Model):
 
 class project_project(models.Model):
     _inherit = ['project.project']
-    partnerline_ids = fields.One2many('project_partner.partnerline', 'project_id', "Partners")
     
     @api.depends('partnerline_ids')
     def _partner_count(self):
         for record in self:
-            record.count = len(record.partnerline_ids)
+            record.partner_count = len(record.partnerline_ids)
+            
+    partnerline_ids = fields.One2many('project_partner.partnerline', 'project_id', "Partners")
     partner_count = fields.Integer(compute='_partner_count', string="Partners",)
 

@@ -149,7 +149,7 @@ class docregister_config_settings(models.TransientModel):
     _name = 'docregister.config.settings'
     _inherit = 'res.config.settings'
 
-    default_reftype = fields.Boolean('Separating in & out',default_model='docregister.config.settings', help ="""Separate reference numbers for incoming & outgoing documents.""")
+    default_reftype = fields.Boolean('Separating in & out', help ="""Separate reference numbers for incoming & outgoing documents.""")
 
     
 class docregister_doc(models.Model):
@@ -164,7 +164,7 @@ class docregister_doc(models.Model):
     subject = fields.Char('Subject', size=128, required=True, help="Short summary of the subject of the document", track_visibility='onchange',select=True)
     externalref = fields.Char('External Code', size=128, help="Document reference code used by partner", track_visibility='onchange',select=True)
     partner_id = fields.Many2one('res.partner', string='Primary partner', required=True, track_visibility='onchange',select=True)
-    partner_ids = fields.Many2many('res.partner', string='Other partner(s)', required=True, track_visibility='onchange',select=True)
+    partner_ids = fields.Many2many('res.partner', string='Other partner(s)', track_visibility='onchange')
     tag_ids = fields.Many2many('docregister.tag', string='Tag(s)', track_visibility='onchange',select=True)
     archivalcateg_id = fields.Many2one('docregister.archivalcateg', 'Archival Category', select=True, domain=[('heading', '=', False)],track_visibility='onchange')
     date_done = fields.Date('Done Date', select=True, help="Date when the document was created and signed", track_visibility='onchange')
@@ -210,12 +210,12 @@ class docregister_doc(models.Model):
         ir_values = self.pool.get('ir.values')
         reftype = ir_values.get_default(cr, uid,'docregister.config.settings', 'reftype')
         if not reftype:
-            refcode = self.pool.get('ir.sequence').get(cr, uid,'doc.mix')
+            refcode = self.pool.get('ir.sequence').get(cr, uid,'docregister.doc.mix')
         else:
             if self.direction == 'in':
-                refcode = self.pool.get('ir.sequence').get(cr, uid, 'doc.in')
+                refcode = self.pool.get('ir.sequence').get(cr, uid, 'docregister.doc.in')
             else:
-                refcode = self.pool.get('ir.sequence').get(cr, uid,'doc.out')
+                refcode = self.pool.get('ir.sequence').get(cr, uid,'docregister.doc.out')
         return refcode
     @api.one
     def doc_cancel(self):
@@ -239,38 +239,36 @@ class docregister_doc(models.Model):
             vals['refcode'] = self._get_refcode()
         self.write(vals)
         return True
-    def message_new(self, cr, uid, msg, custom_values=None, context=None):
-        """ Overrides mail_thread message_new that is called by the mailgateway
-            through message_process.
-            This override updates the document according to the email.
-        """
-        desc=1
-        if custom_values is None:
-            custom_values = {}
-        desc = html2plaintext(msg.get('body')) if msg.get('body') else ''
-        defaults = {
-            'subject':  msg.get('subject') or _("No Subject"),
-            'partner_ids': [(6, 0, msg.get('author_id', False))],
-            'date': lambda *a: time.strftime('%Y-%m-%d'),
-            'type_id':1, 
-            'direction':'in',           
-        }
-#         if msg.get('author_id'):
-#             defaults.update(self.on_change_partner(cr, uid, None, msg.get('author_id'), context=context)['value'])
+    # def message_new(self, cr, uid, msg, custom_values=None, context=None):
+        # """ Overrides mail_thread message_new that is called by the mailgateway
+            # through message_process.
+            # This override updates the document according to the email.
+        # """
+        # desc=1
+        # if custom_values is None:
+            # custom_values = {}
+        # desc = html2plaintext(msg.get('body')) if msg.get('body') else ''
+        # defaults = {
+            # 'subject':  msg.get('subject') or _("No Subject"),
+            # 'partner_ids': [(6, 0, msg.get('author_id', False))],
+            # 'date': lambda *a: time.strftime('%Y-%m-%d'),
+            # 'type_id':1, 
+            # 'direction':'in',           
+        # }
+# #         if msg.get('author_id'):
+# #             defaults.update(self.on_change_partner(cr, uid, None, msg.get('author_id'), context=context)['value'])
         
-        defaults.update(custom_values)
-        return super(docregister_doc, self).message_new(cr, uid, msg, custom_values=defaults, context=context)
+        # defaults.update(custom_values)
+        # return super(docregister_doc, self).message_new(cr, uid, msg, custom_values=defaults, context=context)
 
 class res_partner(models.Model):
 
     _inherit = "res.partner"
 
-    @api.one
+    @api.depends('doc_ids')
     def _docregister_doc_count(self):
-        self.docs_count = self.env['docregister.doc'].search_count(
-            [('partner_ids', 'in', self.ids)])
+        for record in self:
+            record.doc_count = len(record.doc_ids)
 
-    doc_ids = fields.Many2many(
-        'docregister.doc', 'docregister_doc_res_partner_rel', 'docregister_doc_id', 'res_partner_id', string='Registered Documents')
-    docs_count = fields.Integer(
-        compute="_docregister_doc_count", string="Registered Documents Counts")
+    doc_ids = fields.Many2many('docregister.doc', 'docregister_doc_res_partner_rel', 'docregister_doc_id', 'res_partner_id', string='Registered Documents')
+    doc_count = fields.Integer(compute="_docregister_doc_count", string="Registered Documents Counts")

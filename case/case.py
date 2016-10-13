@@ -37,9 +37,10 @@ class case_case(models.Model):
     title = fields.Char('Title', select=True)
     project_id = fields.Many2one('project.project', required=True, string='Related Project', ondelete='restrict', help='Project-related data of the case', auto_join=True)
     externalref = fields.Text('External References', track_visibility='onchange')
-    description_anon = fields.Text('Anonymized Summary')
+    description = fields.Html('Description', track_visibility='onchange')
+    description_anon = fields.Html('Anonymized Summary')
     servicelevel_ids = fields.Many2many('case.servicelevel', string='Service level', track_visibility='onchange')
-    tag_ids = fields.Many2many('case.tag', string='Tags', track_visibility='onchange')
+    casetag_ids = fields.Many2many('case.tag', string='Tags', track_visibility='onchange')
     gender = fields.Selection([('male', 'Male'), ('female', 'Female'), ('other', 'Other'), ('unknown', 'Unknown'),],'Gender', required=True)
     sexorient  = fields.Selection([('homo', 'Homosexual'), ('bi', 'Bisexual'), ('hetero', 'Heterosexual'), ('quest', 'Questioning'), ('unknown', 'Unknown'),],'Sexual Orientation', required=True)
     trans  = fields.Selection([('trans', 'Yes'), ('nottrans', 'No'),('unknown', 'Unknown'),],'Transgender', required=True)
@@ -60,13 +61,15 @@ class case_case(models.Model):
         'gender': 'unknown',
         'sexorient': 'unknown',
         'trans': 'unknown',
-        'settlement': 'unknown'
+        'settlement': 'unknown',
 
     }
            
     @api.one
     def do_open(self):
-        vals['state'] = 'open'
+        vals={'state': 'open'}
+        if not self.code:
+            vals['code'] = self._get_code()
         self.write(vals)
         return True
     @api.one
@@ -74,11 +77,22 @@ class case_case(models.Model):
         self.state = 'close'
         return True
     def unlink(self, cr, uid, ids, context=None):
-        project_id = self.project_id
+        project_to_delete = set()
+        for case in self.browse(cr, uid, ids, context=context):
+            if case.project_id:
+                project_to_delete.add(case.project_id.id)
         res = super(case_case, self).unlink(cr, uid, ids, context=context)
-        res = self.pool.get('project.project').unlink(cr, uid, project_id, context=context)
+        self.pool['project.project'].unlink(cr, uid, list(project_to_delete), context=context)
         return res
-
+    @api.multi
+    def _get_code(self):
+        self.ensure_one()
+        code = ''
+        if self.department_id.code: 
+            seq_name = 'case.case.' + self.department_id.code.lower()
+            if self.env['ir.sequence'].search([('code', '=', seq_name)]):
+                code = self.env['ir.sequence'].next_by_code(seq_name)
+        return code
 class case_servicelevel(models.Model):
     _name = 'case.servicelevel'
     _description = 'Service level'
@@ -142,7 +156,6 @@ class res_partner(models.Model):
 class hr_department(models.Model):
     _inherit = ['hr.department']
     code = fields.Char('Code',size=128,required=True)
-    
 class case_document(models.Model):
     _name = 'case.document'
     _description = 'Case Document'
@@ -151,11 +164,13 @@ class case_document(models.Model):
     }
     document_id = fields.Many2one('ir.attachment', required=True, string='Related Document', ondelete='restrict', help='Document-related data of the case document', auto_join=True)
     date_done = fields.Date('Done Date', select=True, help="Date when the document was created and signed", track_visibility='onchange')
-    date = fields.Date('Date',  select=True, help="Date of arrival (for incoming) or date of sending (for outgoing)", track_visibility='onchange')
-    doctype_id = fields.Many2one('case.doctype', 'Type', required=True, select=True, track_visibility='onchange')
-    direction = fields.Selection([('in', 'Incoming'), ('out', 'Outgoing'),('local', 'Helyi') ],'Direction', required=True,select=True)
-    channel_id = fields.Many2one('docregister.type', 'Channel', required=True, select=True, track_visibility='onchange')
-    partner_ids = fields.Many2many('res.partner', string='Other partner(s)', required=True, track_visibility='onchange',select=True)
+    date = fields.Date('Date', select=True, help="Date of arrival (for incoming) or date of sending (for outgoing)", track_visibility='onchange')
+    doctype_id = fields.Many2one('case.doctype', 'Type', select=True, track_visibility='onchange')
+    direction = fields.Selection([('in', 'Incoming'), ('out', 'Outgoing'),('local', 'Helyi') ],'Direction', select=True, track_visibility='onchange')
+    channel_id = fields.Many2one('docregister.type', 'Channel', select=True, track_visibility='onchange')
+    partner_id = fields.Many2one('res.partner', string='Partner', track_visibility='onchange',select=True)
+    partner_ids = fields.Many2many('res.partner', string='Other partner(s)', track_visibility='onchange',select=True)
+    doc_id = fields.Many2one('docregister.doc', string='Document', track_visibility='onchange',select=True)
     
 class case_doctype(models.Model):
     _name = 'case.doctype'
@@ -173,4 +188,4 @@ class case_doctype(models.Model):
     
 class project(models.Model):
     _inherit = 'project.project'
-    
+    case_ids = fields.One2many('case.case', 'project_id', 'Cases')

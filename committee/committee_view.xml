@@ -75,22 +75,28 @@
                 </header>
                 <sheet string="Committee">
                     <field name="analytic_account_id" invisible="1" required="0"/>
+                    <field name="project_id" invisible="1" required="0" />
+                    <div class="oe_right oe_button_box" name="buttons" groups="base.group_user">
+                         <button class="oe_inline oe_stat_button" type="action" name="%(action_committee_committee_meetings)d" icon="fa-calendar" context="{'default_committee_id': active_id}" >
+                            <field string="Meetings" name="meeting_count" widget="statinfo"/>
+                        </button>
+                        <button  class="oe_inline oe_stat_button" type="action" name="%(action_committee_committee_agendaitems)d" icon="fa-list-ol" context="{'default_committee_id': active_id}" >
+                            <field string="Agenda Items" name="agendaitem_count" widget="statinfo"/>
+                        </button>
+                        <button  class="oe_inline oe_stat_button" type="action" name="%(action_committee_committee_decisions)d" icon="fa-check" context="{'default_committee_id': active_id}" >
+                            <field string="Decisions" name="decision_count" widget="statinfo"/>
+                        </button>
+                    </div>
                     <div class="oe_title">
                         <label for="name" class="oe_edit_only" string="Project Name"/>
                         <h1>
                             <field name="name" string="Commitee Name"/>
                         </h1>
-                    </div>
-                    <div class="oe_right oe_button_box" name="buttons" groups="base.group_user">
-                         <button class="oe_inline oe_stat_button" type="action" name="action_committee_committee_meetings" icon="fa-calendar">
-                            <field string="Meetings" name="meeting_count" widget="statinfo"/>
-                        </button>
-                        <button  class="oe_inline oe_stat_button" type="action" name="action_committee_committee_agendaitems" icon="fa-list-ol">
-                            <field string="Agenda Items" name="agendaitem_count" widget="statinfo"/>
-                        </button>
-                        <button  class="oe_inline oe_stat_button" type="action" name="action_committee_committee_decisions" icon="fa-check">
-                            <field string="Decisions" name="decision_count" widget="statinfo"/>
-                        </button>
+                        <div name="options_active" class="oe_edit_only">
+                            <div>
+                                <field name="use_tasks" class="oe_inline" string="Use Tasks" invisible="1"/>
+                            </div>
+                        </div>
                     </div>
                     <group>
                         <group col="4">
@@ -105,45 +111,25 @@
                         
                     </group>
                     <notebook>
-                        <page string="Team" name="team">
-                            <field colspan="4" name="members" widget="many2many_kanban" context="{'default_groups_ref': ['base.group_user', 'base.group_partner_manager', 'project.group_project_user']}">
-                                <kanban quick_create="false" create="true" delete="true">
-                                    <field name="name"/>
-                                    <templates>
-                                        <t t-name="kanban-box">
-                                            <div style="position: relative">
-                                                <a t-if="! read_only_mode" type="delete" style="position: absolute; right: 0; padding: 4px; diplay: inline-block">X</a>
-                                                <div class="oe_module_vignette">
-                                                    <img t-att-src="kanban_image('res.users', 'image_small', record.id.value)" class="oe_avatar oe_kanban_avatar_smallbox"/>
-                                                    <div class="oe_module_desc">
-                                                        <field name="name"/>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </t>
-                                    </templates>
-                                </kanban>
-                            </field>
-                        </page>
-                        <page string="Other Info">
-                            <group string="Administration">
+                        <page string="Settings">
+                            <group>
                                 <field name="privacy_visibility" widget="radio"/>
-                                <field name="planned_hours" widget="float_time"
-                                        groups="project.group_time_work_estimation_tasks"/>
-                                <field name="effective_hours" widget="float_time"
-                                        groups="project.group_time_work_estimation_tasks"/>
-                                <field name="resource_calendar_id"
-                                        groups="project.group_time_work_estimation_tasks"/>
+                                <field name="user_id" string="Project Manager"
+                                        attrs="{'readonly':[('state','in',['close', 'cancelled'])]}"
+                                        context="{'default_groups_ref': ['base.group_user', 'base.group_partner_manager', 'project.group_project_manager']}"
+                                        groups="base.group_no_one"/>
                             </group>
-                            <group string="Miscellaneous" name="misc">
-                                <field name="date_start"/>
-                                <field name="date" string="End Date"/>
-                                <field name="sequence" groups="base.group_no_one"/>
-                                <field name="active" attrs="{'invisible':[('state','in',['open', 'pending', 'template'])]}"/>
-                                <field name="currency_id" groups="base.group_multi_currency" required="1"/>
-                                <field name="parent_id" string="Parent" help="Append this project to another one using analytic accounts hierarchy" domain="[('id','!=',analytic_account_id)]" context="{'current_model': 'project.project'}" />
+                            <group name="misc">
+                                <group string="Time Scheduling" groups="project.group_time_work_estimation_tasks">
+                                    <field name="resource_calendar_id"/>
+                                </group>
+                                <group string="Configuration" groups="base.group_no_one">
+                                    <field name="sequence" groups="base.group_no_one"/>
+                                </group>
                             </group>
-                            <group name="group_alias" attrs="{'invisible': [('alias_domain', '=', False)]}">
+                        </page>
+                        <page string="Emails" attrs="{'invisible': [('alias_domain', '=', False)]}">
+                            <group name="group_alias">
                                 <label for="alias_name" string="Email Alias"/>
                                 <div name="alias_def">
                                     <field name="alias_id" class="oe_read_only oe_inline"
@@ -152,9 +138,9 @@
                                         <field name="alias_name" class="oe_inline"/>@<field name="alias_domain" class="oe_inline" readonly="1"/>
                                     </div>
                                 </div>
-                                <label for="alias_model" string="Incoming Emails create"/>
-                                <field name="alias_model" class="oe_inline" nolabel="1"/>
-                                <field name="alias_contact" class="oe_inline"
+                                <label for="alias_model" string="Incoming Emails create" groups="base.group_no_one"/>
+                                <field name="alias_model" class="oe_inline" nolabel="1" groups="base.group_no_one"/>
+                                <field name="alias_contact" class="oe_inline" groups="base.group_no_one"
                                         string="Accept Emails From"/>
                             </group>
                         </page>
@@ -217,6 +203,11 @@
                         <field name="state" widget="statusbar" statusbar_visible="draft,open,done,close" statusbar_colors='{"pending":"blue"}' />
                 </header>
                 <sheet>
+                    <div class="oe_right oe_button_box" name="buttons" groups="base.group_user">
+                        <button  class="oe_inline oe_stat_button" type="action" name="%(action_committee_meeting_decisions)d" icon="fa-check" context="{'default_meeting_id': active_id, 'default_committee_id': committee_id}" >
+                            <field string="Decisions" name="decision_count" widget="statinfo"/>
+                        </button>
+                    </div>
                     <div class="oe_title">
                         <div class="oe_edit_only">
                             <label for="name" string="Title"/>
@@ -237,10 +228,13 @@
                         </group>
                     <notebook>
                         <page string="Agenda" >
-                            <field name="agendaline_ids" widget="one2many" >
+                            <field name="agendaline_ids" widget="one2many" context="{'committee_id': committee_id}">
                                 <tree string="Agenda items" editable="bottom">
                                     <field name="sequence" widget="handle"/>
-                                    <field name="agendaitem_id" string="Agenda Item" options="{'no_open': False}"/>
+                                    <field name="agendaitem_id" string="Agenda Item" options="{'no_open': False}" domain="[('state','in',('draft','postpone')),('committee_id','=',[committee_id])]" context="{'default_committee_id': committee_id}" />
+                                    <field name="late" />
+                                    <field name="state" />
+                                    <button string="Postpone" states="draft,open" icon="fa-repeat" name="do_postpone" type="object"/>
                                 </tree>
                             </field>
                         </page>
@@ -299,6 +293,9 @@
         <field name="arch" type="xml">
             <search string="Agenda Items">
                 <field name="name" string="Agenda Items"/>
+                <field name="state" string="State"/>
+                <field name="committee_id" string="Committee"/>
+                <filter name="current" string="Current" domain="[('state','in',('draft','open','postpone'))]"/>
             </search>
         </field>
     </record>
@@ -326,7 +323,7 @@
                         <field name="user_id"
                             options='{"no_open": True}'
                             context="{'default_groups_ref': ['base.group_user', 'base.group_partner_manager', 'project.group_project_user']}"/>
-                        <field name="categ_ids" widget="many2many_tags"/>
+                        <field name="tag_ids" widget="many2many_tags"/>
                     </group>
                     <group>
                         <field name="date_deadline"/>
@@ -359,6 +356,8 @@
             <field name="arch" type="xml">
                 <tree string="Agenda Items">
                     <field name="name"/>
+                    <field name="committee_id" />
+                    <field name="state" />
                 </tree>
             </field>
         </record>
@@ -369,6 +368,7 @@
         <field name="res_model">committee.agendaitem</field>
         <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
+        <field name="context">{"search_default_current":1,}</field>
         <field name="search_view_id" ref="view_committee_agendaitem_search"/>
     </record>
     

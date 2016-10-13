@@ -25,7 +25,7 @@
     'version': '8.0.1.0.0',
     'author': 'Dombos Tamas',
     'category': 'Project',
-    'depends': ['crm', 'project'],
+    'depends': ['phonecall', 'project'],
     'description': """
 Project Calls
 ============================
