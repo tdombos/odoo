@@ -19,15 +19,15 @@
 #
 ##############################################################################
 
-from openerp import models, fields, api
-from openerp import exceptions
-from openerp.tools.translate import _
+from odoo import models, fields, api
+from odoo import exceptions
+
 import datetime
 
 class docregister_tag(models.Model):
     _name = "docregister.tag"
     _description = "Tag"
-    
+
     name = fields.Char('Name', size=64, required=True)
     description = fields.Text('Description', help='Detailed description for the tagging label')
 
@@ -35,7 +35,7 @@ class docregister_tag(models.Model):
         ('name', 'unique(name)', 'Tag name has to be unique')
     ]
     _order = 'name asc'
-    
+
 class docregister_type(models.Model):
     _name = "docregister.type"
     _description = "Letter Type"
@@ -46,12 +46,12 @@ class docregister_type(models.Model):
         ('name', 'unique(name)', 'Name of Letter Type has to be unique')
     ]
     _order = 'name asc'
-    
+
 class docregister_folder(models.Model):
     """ folder """
     _name = "docregister.folder"
     _description = "Document Folder"
-    
+
     @api.depends('doc_ids')
     def _doc_count(self):
         for record in self:
@@ -61,15 +61,14 @@ class docregister_folder(models.Model):
     description = fields.Text('Description', help='Description of content and internal organization of folder')
     doc_ids = fields.One2many('docregister.doc', 'folder_id', "Documents")
     doc_count = fields.Integer(compute='_doc_count', string="Documents",)
-    state = fields.Selection([('open', 'Active'), ('close', 'Archived')],'State')
     active = fields.Boolean('Active', help="If the active field is set to False, it will allow you to hide the folder without removing it.")
-    
+
     _sql_constraints = [
         ('name', 'unique(name)', 'Foler name has to be unique')
     ]
     _defaults = {
         'state': 'open',
-        'active': 1
+        'active': True
     }
     _order = 'name asc'
     @api.one
@@ -80,7 +79,7 @@ class docregister_folder(models.Model):
     def folder_open(self):
         self.state = 'open'
         return True
-    
+
 class docregister_archivalcateg(models.Model):
     """ doctari tetel"""
     _name = "docregister.archivalcateg"
@@ -95,16 +94,15 @@ class docregister_archivalcateg(models.Model):
     parent_id = fields.Many2one('docregister.archivalcateg', 'Parent', ondelete='restrict')
     parent_left = fields.Integer('Parent left', index=True)
     parent_right = fields.Integer('Parent right', index=True)
-    state = fields.Selection([('open', 'Active'),('close', 'Archived')],'State')
     complete_name = fields.Char(compute='compute_complete_name')
     active = fields.Boolean('Active', help="If the active field is set to False, it will allow you to hide the archival category without removing it.")
-    
+
     _sql_constraints = [
         ('name', 'unique(name)', 'Name for Archival Category has to be unique')
     ]
     _defaults = {
         'state': 'open',
-        'active': 1
+        'active': True
     }
     _order = 'sequence'
     @api.one
@@ -144,14 +142,7 @@ class docregister_archivalcateg(models.Model):
         if self.code:
             return self.code + ' - ' + self.name
         return self.name
-     
-class docregister_config_settings(models.TransientModel):
-    _name = 'docregister.config.settings'
-    _inherit = 'res.config.settings'
 
-    default_reftype = fields.Boolean('Separating in & out', help ="""Separate reference numbers for incoming & outgoing documents.""")
-
-    
 class docregister_doc(models.Model):
     _inherit = ['mail.thread']
     _name = 'docregister.doc'
@@ -183,40 +174,41 @@ class docregister_doc(models.Model):
     note = fields.Text('Note', help='Notes related to the document', track_visibility='onchange')
     protected= fields.Boolean('Protected data', help='Document contains protected data', track_visibility='onchange')
     state = fields.Selection([('draft', 'Draft'),('open', 'To be answered'),('cancel', 'Deleted'),('fail', 'Postage failed'),('close', 'Closed')],'State', track_visibility='onchange')
-        
+
     _rec_name = 'refcode'
     _defaults = {
         'state': 'draft',
         'registered': 'no',
         'register_uid' : lambda self, cr, uid, ctx:uid,
         'register_date' :  datetime.datetime.now(),
-        'protected' : 0
+        'protected' : False
     }
     _sql_constraints = [
         ('refcode', 'unique(refcode)', 'Document Reference Code has to be unique')
     ]
     _order = 'date desc'
-    def name_get(self, cr, uid, ids, context={}):
-        if not len(ids):
-            return []
-        res=[]
-        for doc in self.browse(cr, uid, ids,context=context):
+
+    @api.multi
+    def name_get(self):
+        res = []
+        for doc in self:
             if doc.refcode:
                 res.append((doc.id, doc.refcode + ' ' + doc.subject))
             else:
                 res.append((doc.id, doc.subject))
         return res
-    def _get_refcode (self, cr, uid, ids, context={}):
-        ir_values = self.pool.get('ir.values')
-        reftype = ir_values.get_default(cr, uid,'docregister.config.settings', 'reftype')
+
+    def _get_refcode (self):
+        reftype = False
         if not reftype:
-            refcode = self.pool.get('ir.sequence').get(cr, uid,'docregister.doc.mix')
+            refcode = self.env['ir.sequence'].next_by_code('docregister.doc.mix')
         else:
             if self.direction == 'in':
-                refcode = self.pool.get('ir.sequence').get(cr, uid, 'docregister.doc.in')
+                refcode = self.env['ir.sequence'].next_by_code('docregister.doc.in')
             else:
-                refcode = self.pool.get('ir.sequence').get(cr, uid,'docregister.doc.out')
+                refcode = self.env['ir.sequence'].next_by_code('docregister.doc.out')
         return refcode
+
     @api.one
     def doc_cancel(self):
         self.state = 'cancel'

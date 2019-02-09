@@ -2,7 +2,7 @@
 <openerp>
     <data>
     <!-- Top menu item -->
-    <menuitem name="Office" id="menu_office" sequence="120" groups="base.group_system"/>
+    <menuitem name="Document Registry" id="menu_docregister" sequence="120" groups="base.group_system" web_icon="docregister,static/description/icon.png"/>
 
     <!-- Tags Search View-->
     <record model="ir.ui.view" id="view_docregister_tag_search">
@@ -54,7 +54,7 @@
         <field name="name">docregister.doc.form</field>
         <field name="model">docregister.doc</field>
         <field name="arch" type="xml">
-            <form string="doc" version="7.0">
+            <form string="doc">
                 <header>
                     <button name="doc_open" type="object" string="Register and Open" states="draft" />
                     <button name="doc_close" type="object" string="Register and Close" states="draft" class="oe_highlight" />
@@ -72,7 +72,7 @@
                     </div>
                     <group>
                         <group>
-                           <field name="refcode" states="open,close,cancel,fail"/>
+                            <field name="refcode" states="open,close,cancel,fail"/>
                             <field name="tag_ids" widget="many2many_tags"/> 
                             <field name="partner_id"/>
                             <field name="partner_ids" widget="many2many_tags"/>
@@ -168,7 +168,7 @@
         <field name="view_mode">tree,form</field>
         <field name="search_view_id" ref="view_docregister_doc_search"/>
     </record>
-    
+
     <record model="ir.actions.act_window" id="action_docregister_mydoc">
         <field name="name">My Documents</field>
         <field name="res_model">docregister.doc</field>
@@ -177,7 +177,7 @@
         <field name="context">{"search_default_mydoc":1,}</field>
         <field name="search_view_id" ref="view_docregister_doc_search"/>
     </record>
-    
+
     <record model="ir.actions.act_window" id="action_docregister_folderdoc">
         <field name="name">Documents</field>
         <field name="res_model">docregister.doc</field>
@@ -186,7 +186,7 @@
         <field name="domain">[('folder_id','=',[active_id])]</field>
         <field name="search_view_id" ref="view_docregister_doc_search"/>
     </record>
-    
+
     <!-- Folder Form View -->
 
     <record model="ir.ui.view" id="view_docregister_folder_form">
@@ -194,21 +194,22 @@
         <field name="model">docregister.folder</field>
         <field name="arch" type="xml">
             <form string="folder" version="7.0">
-                <header>
-                    <button name="folder_close" type="object" string="Archive" states="open" class="oe_highlight"/>
-                    <field name="state" widget="statusbar" statusbar_visible="open,close"/>
-                </header>
                 <sheet>
+                    <div class="oe_button_box" name="buttons" groups="base.group_user">
+                        <button class="oe_inline oe_stat_button" name="%(action_docregister_folderdoc)d" type="action" icon="fa-files-o">
+                            <field string="Documents" name="doc_count" widget="statinfo"/>
+                        </button>
+                        <button name="toggle_active" type="object" groups="base.group_user"
+                                class="oe_stat_button" icon="fa-archive">
+                            <field name="active" widget="boolean_button"
+                                options='{"terminology": "archive"}'/>
+                        </button>
+                    </div>
                     <div class="oe_title">
                         <label for="name" class="oe_edit_only" string="Title"/>
                         <h1>
                             <field name="name" />
                         </h1>
-                    </div>
-                    <div class="oe_right oe_button_box" name="buttons" groups="base.group_user">
-                        <button class="oe_inline oe_stat_button" name="%(action_docregister_folderdoc)d" type="action" icon="fa-files-o">
-                            <field string="Documents" name="doc_count" widget="statinfo"/>
-                        </button>
                     </div>
                     <group>
                         <field name="description" />
@@ -238,7 +239,6 @@
         <field name="arch" type="xml">
             <search string="Folders">
                 <field name="name" string="Folder Name" />
-                <filter icon="terp-document-new" string="Active" domain="[('state','=', 'open')]" help="Active Folders" />
             </search>
         </field>
     </record>
@@ -252,7 +252,7 @@
         <field name="view_mode">tree,form</field>
         <field name="search_view_id" ref="view_docregister_folder_search"/>
     </record>
-    
+
     <!-- Archival Category Form View -->
 
     <record model="ir.ui.view" id="view_docregister_archivalcateg_form">
@@ -261,14 +261,31 @@
         <field name="arch" type="xml">
             <form string="Archival Category" version="7.0">
                 <sheet>
+                    <div class="oe_button_box" name="buttons" groups="base.group_user">
+                        <button name="toggle_active" type="object" groups="base.group_user"
+                                class="oe_stat_button" icon="fa-archive">
+                            <field name="active" widget="boolean_button"
+                                options='{"terminology": "archive"}'/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only" string="Title"/>
+                        <h1>
+                            <field name="name" />
+                        </h1>
+                    </div>
                     <group>
-                        <field name="name" />
-                        <field name="code" />
-                        <field name="parent_id" />
-                        <field name="description" />
-                        <field name="heading" />
-                        <field name="active" />
+                        <group>
+			    <field name="code" />
+                            <field name="heading" />
+			</group>
+                        <group>
+			    <field name="parent_id" />
+			</group>
                     </group>
+                    <group>
+		        <field name="description" />
+		    </group>
                 </sheet>
             </form>
         </field>
@@ -297,7 +314,6 @@
             <search string="Archival Category">
                 <field name="name" string="Category Name" />
                 <field name="code" string="Code" />
-                <filter icon="terp-document-new" string="Active" domain="[('state','=', 'open')]" help="Active Categories" />
             </search>
         </field>
     </record>
@@ -311,7 +327,7 @@
         <field name="view_mode">tree,form</field>
         <field name="search_view_id" ref="view_docregister_archivalcateg_search"/>
     </record>
-    
+
     <!-- Letter Type Form View -->
 
     <record model="ir.ui.view" id="view_docregister_type_form">
@@ -327,7 +343,7 @@
             </form>
         </field>
     </record>
-    
+
     <!-- Letter Type Tree View -->
 
     <record model="ir.ui.view" id="view_docregister_type_tree">
@@ -339,7 +355,7 @@
         </tree>
         </field>
     </record>
-    
+
     <!-- Search Letter Types  -->
 
     <record model="ir.ui.view" id="view_docregister_type_search">
@@ -351,9 +367,9 @@
             </search>
         </field>
     </record>
-    
+
     <!-- Document Action -->
-    
+
     <record model="ir.actions.act_window" id="action_docregister_type">
         <field name="name">Letter Types</field>
         <field name="res_model">docregister.type</field>
@@ -361,16 +377,16 @@
         <field name="view_mode">tree,form</field>
         <field name="search_view_id" ref="view_docregister_type_search"/>
     </record>
-    
+
     <!-- Partner Actions -->
-    
+
     <record model="ir.actions.act_window" id="action_docregister_partner">
         <field name="name">Partners</field>
         <field name="res_model">res.partner</field>
         <field name="view_type">form</field>
         <field name="view_mode">kanban,tree,form</field>
     </record>
-    
+
     <record model="ir.actions.act_window" id="action_docregister_partnerdoc">
         <field name="name">Documents</field>
         <field name="res_model">docregister.doc</field>
@@ -379,9 +395,9 @@
         <field name="domain">[('partner_ids','=',[active_id])]</field>
         <field name="search_view_id" ref="view_docregister_doc_search"/>
     </record>
-   
+
     <!-- Docreg link to Partner Form-->
-    
+
     <record id="view_docregister_partner_form" model="ir.ui.view">
             <field name="name">Docreg link to Partner Form</field>
             <field name="model">res.partner</field>
@@ -396,40 +412,13 @@
             </xpath>
             </field>
     </record>
-    
-    <record id="view_office_configuration" model="ir.ui.view">
-            <field name="name">Office settings</field>
-            <field name="model">docregister.config.settings</field>
-            <field name="arch" type="xml">
-                <form string="Configure Office Settings" class="oe_form_configuration">
-                    <header>
-                        <button string="Apply" type="object" name="execute" class="oe_highlight"/>
-                        or
-                        <button string="Cancel" type="object" name="cancel" class="oe_link"/>
-                    </header>
-                    <group name="docregister_grp" string="Document registry">
-                            <field name="default_reftype"/>
-                    </group>
-                </form>
-            </field>
-    </record>
 
-    <record id="action_office_configuration" model="ir.actions.act_window">
-            <field name="name">Configure Office</field>
-            <field name="res_model">docregister.config.settings</field>
-            <field name="view_id" ref="view_office_configuration"/>
-            <field name="view_mode">form</field>
-            <field name="target">inline</field>
-    </record>
-    <menuitem id="menu_office_config" name="Office" parent="base.menu_config" sequence="15" action="action_office_configuration"/>
-    
-    <menuitem name="Document Registry" parent="menu_office" id="menu_docregister" sequence="1"/>
+
     <menuitem name="Documents" parent="menu_docregister" id="menu_docregister_doc" action="action_docregister_doc" sequence="1"/>
     <menuitem name="My Documents" parent="menu_docregister" id="menu_docregister_mydoc" action="action_docregister_mydoc" sequence="2"/>
-    <menuitem name="Folders" parent="menu_docregister" id="menu_docregister_folder" action="action_docregister_folder" sequence="3"/>
     <menuitem name="Partners" parent="menu_docregister" id="menu_docregister_partner" action="action_docregister_partner" sequence="3"/>
-    <menuitem name="Configuration" parent="menu_office" id="menu_office_configuration" sequence="20" groups="base.group_system"/>
-    <menuitem name="Document Registry" parent="menu_office_configuration" id="menu_docregister_configuration" sequence="3"/>
+    <menuitem name="Configuration" parent="menu_docregister" id="menu_docregister_configuration" sequence="20" groups="base.group_system"/>
+    <menuitem name="Folders" parent="menu_docregister_configuration" id="menu_docregister_folder" action="action_docregister_folder" sequence="3"/>
     <menuitem name="Tags" parent="menu_docregister_configuration" id="menu_tags" action="action_docregister_tag" />
     <menuitem name="Archival Categories" parent="menu_docregister_configuration" id="menu_docregister_archivalcateg" action="action_docregister_archivalcateg" />
     <menuitem name="Letter Types" parent="menu_docregister_configuration" id="menu_docregister_type" action="action_docregister_type" />

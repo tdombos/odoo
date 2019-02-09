@@ -13,7 +13,7 @@
                 <button class="oe_inline oe_stat_button" type="action"
                         icon="fa-calendar"
                         name="project_meetings.action_project_meeting_eventtoproject"
-                        context="{'search_default_project_id': [active_id],'project_id': [active_id],
+                        context="{'search_default_project_id': [active_id],'project_id': active_id,
                                   'default_project_id': active_id}">
                     <field string="Meetings" name="project_meeting_count" widget="statinfo"/>
                 </button>

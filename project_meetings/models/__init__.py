@@ -20,4 +20,4 @@
 #
 ##############################################################################
 
-import project_meetings
+from . import project_meetings
