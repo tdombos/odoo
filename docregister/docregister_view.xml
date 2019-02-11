@@ -1,8 +1,6 @@
 <?xml version="1.0"?>
 <openerp>
     <data>
-    <!-- Top menu item -->
-    <menuitem name="Document Registry" id="menu_docregister" sequence="120" groups="base.group_system" web_icon="docregister,static/description/icon.png"/>
 
     <!-- Tags Search View-->
     <record model="ir.ui.view" id="view_docregister_tag_search">
@@ -59,12 +57,18 @@
                     <button name="doc_open" type="object" string="Register and Open" states="draft" />
                     <button name="doc_close" type="object" string="Register and Close" states="draft" class="oe_highlight" />
                     <button name="doc_close" type="object" string="Close" states="open" class="oe_highlight" />
-                    <button name="doc_cancel" type="object" string="Delete" states="draft,open" />
                     <button name="doc_fail" type="object" string="Postage failure" states="draft,open,close" />
                     <field name="state" widget="statusbar" statusbar_visible="draft,open,close" />
                 </header>
                 <sheet>
-                    <div class="oe_title">
+                    <div class="oe_button_box" name="button_box" groups="base.group_user"> 
+                        <button name="toggle_active" type="object"
+                                class="oe_stat_button" icon="fa-archive">
+                            <field name="active" widget="boolean_button"
+                                options='{"terminology": "archive"}'/>
+                        </button>
+                    </div>
+					<div class="oe_title">
                         <label for="subject" class="oe_edit_only" string="Subject"/>
                         <h1>
                             <field name="subject" />
@@ -74,7 +78,7 @@
                         <group>
                             <field name="refcode" states="open,close,cancel,fail"/>
                             <field name="tag_ids" widget="many2many_tags"/> 
-                            <field name="partner_id"/>
+                            <field name="partner_id" required="1"/>
                             <field name="partner_ids" widget="many2many_tags"/>
                             <field name="date_done" /> 
                             <field name="attachmentno"/>
@@ -109,6 +113,7 @@
                 </sheet>
                 <div class="oe_chatter">
                     <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+					<field name="activity_ids" widget="mail_activity"/>
                     <field name="message_ids" widget="mail_thread"/>
                 </div>
             </form>
@@ -116,7 +121,6 @@
     </record>
 
     <!-- Document Tree View -->
-
     <record model="ir.ui.view" id="view_docregister_doc_tree">
         <field name="name">docregister.doc.tree</field>
         <field name="model">docregister.doc</field>
@@ -134,7 +138,6 @@
     </record>
 
     <!-- Search Document  -->
-
     <record model="ir.ui.view" id="view_docregister_doc_search">
         <field name="name">docregister.doc.search</field>
         <field name="model">docregister.doc</field>
@@ -153,14 +156,13 @@
                 <filter name="deleted" string="Deleted" domain="[('state','=','cancel')]" help="Deleted documents" />
                 <filter name="active" string="Active" domain="[('state','!=','cancel')]" help="Active documents" />
                 <group expand="0" string="Group by...">
-                    <filter string="State" help="By State" context="{'group_by':'state'}" />
+                    <filter name="state" string="State" help="By State" context="{'group_by':'state'}" />
                 </group>
             </search>
         </field>
     </record>
 
     <!-- Document Action -->
-
     <record model="ir.actions.act_window" id="action_docregister_doc">
         <field name="name">Documents</field>
         <field name="res_model">docregister.doc</field>
@@ -188,7 +190,6 @@
     </record>
 
     <!-- Folder Form View -->
-
     <record model="ir.ui.view" id="view_docregister_folder_form">
         <field name="name">docregister.folder.form</field>
         <field name="model">docregister.folder</field>
@@ -220,7 +221,6 @@
     </record>
 
     <!-- Folder Tree View -->
-
     <record model="ir.ui.view" id="view_docregister_folder_tree">
         <field name="name">docregister.folder.tree</field>
         <field name="model">docregister.folder</field>
@@ -232,7 +232,6 @@
     </record>
 
     <!-- Search Folder  -->
-
     <record model="ir.ui.view" id="view_docregister_folder_search">
         <field name="name">docregister.folder.search</field>
         <field name="model">docregister.folder</field>
@@ -244,7 +243,6 @@
     </record>
 
     <!-- Folder Action -->
-
     <record model="ir.actions.act_window" id="action_docregister_folder">
         <field name="name">Folders</field>
         <field name="res_model">docregister.folder</field>
@@ -254,7 +252,6 @@
     </record>
 
     <!-- Archival Category Form View -->
-
     <record model="ir.ui.view" id="view_docregister_archivalcateg_form">
         <field name="name">docregister.archivalcateg.form</field>
         <field name="model">docregister.archivalcateg</field>
@@ -292,7 +289,6 @@
     </record>
 
     <!-- Archival Category Tree View -->
-
     <record model="ir.ui.view" id="view_docregister_archivalcateg_tree">
         <field name="name">docregister.archivalcateg.tree</field>
         <field name="model">docregister.archivalcateg</field>
@@ -306,7 +302,6 @@
     </record>
 
     <!-- Search Archival Category -->
-
     <record model="ir.ui.view" id="view_docregister_archivalcateg_search">
         <field name="name">docregister.archivalcateg.search</field>
         <field name="model">docregister.archivalcateg</field>
@@ -319,7 +314,6 @@
     </record>
 
     <!-- Archival Category Action -->
-
     <record model="ir.actions.act_window" id="action_docregister_archivalcateg">
         <field name="name">Archival Categories</field>
         <field name="res_model">docregister.archivalcateg</field>
@@ -329,7 +323,6 @@
     </record>
 
     <!-- Letter Type Form View -->
-
     <record model="ir.ui.view" id="view_docregister_type_form">
         <field name="name">docregister.type.form</field>
         <field name="model">docregister.type</field>
@@ -345,7 +338,6 @@
     </record>
 
     <!-- Letter Type Tree View -->
-
     <record model="ir.ui.view" id="view_docregister_type_tree">
         <field name="name">docregister.type.tree</field>
         <field name="model">docregister.type</field>
@@ -357,7 +349,6 @@
     </record>
 
     <!-- Search Letter Types  -->
-
     <record model="ir.ui.view" id="view_docregister_type_search">
         <field name="name">docregister.type.search</field>
         <field name="model">docregister.type</field>
@@ -369,7 +360,6 @@
     </record>
 
     <!-- Document Action -->
-
     <record model="ir.actions.act_window" id="action_docregister_type">
         <field name="name">Letter Types</field>
         <field name="res_model">docregister.type</field>
@@ -379,7 +369,6 @@
     </record>
 
     <!-- Partner Actions -->
-
     <record model="ir.actions.act_window" id="action_docregister_partner">
         <field name="name">Partners</field>
         <field name="res_model">res.partner</field>
@@ -397,7 +386,6 @@
     </record>
 
     <!-- Docreg link to Partner Form-->
-
     <record id="view_docregister_partner_form" model="ir.ui.view">
             <field name="name">Docreg link to Partner Form</field>
             <field name="model">res.partner</field>
@@ -413,7 +401,7 @@
             </field>
     </record>
 
-
+    <menuitem name="Document Registry" id="menu_docregister" sequence="120" groups="docregister.group_office_user" web_icon="docregister,static/description/icon.png"/>
     <menuitem name="Documents" parent="menu_docregister" id="menu_docregister_doc" action="action_docregister_doc" sequence="1"/>
     <menuitem name="My Documents" parent="menu_docregister" id="menu_docregister_mydoc" action="action_docregister_mydoc" sequence="2"/>
     <menuitem name="Partners" parent="menu_docregister" id="menu_docregister_partner" action="action_docregister_partner" sequence="3"/>

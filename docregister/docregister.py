@@ -61,15 +61,11 @@ class docregister_folder(models.Model):
     description = fields.Text('Description', help='Description of content and internal organization of folder')
     doc_ids = fields.One2many('docregister.doc', 'folder_id', "Documents")
     doc_count = fields.Integer(compute='_doc_count', string="Documents",)
-    active = fields.Boolean('Active', help="If the active field is set to False, it will allow you to hide the folder without removing it.")
+    active = fields.Boolean('Active', help="If the active field is set to False, it will allow you to hide the folder without removing it.", default=True)
 
     _sql_constraints = [
         ('name', 'unique(name)', 'Foler name has to be unique')
     ]
-    _defaults = {
-        'state': 'open',
-        'active': True
-    }
     _order = 'name asc'
     @api.one
     def folder_close(self):
@@ -89,21 +85,19 @@ class docregister_archivalcateg(models.Model):
     code = fields.Char('Code', size=16, required=True)
     name = fields.Char('Name', size=128, required=True)
     description = fields.Text('Description', help='Description for archival category')
-    sequence = fields.Integer('Order')
+    sequence = fields.Integer(default=10,
+        help="Gives the sequence of this category when displaying the category list.")
     heading = fields.Boolean('Heading')
     parent_id = fields.Many2one('docregister.archivalcateg', 'Parent', ondelete='restrict')
-    parent_left = fields.Integer('Parent left', index=True)
+    parent_left  = fields.Integer('Parent left', index=True)
     parent_right = fields.Integer('Parent right', index=True)
     complete_name = fields.Char(compute='compute_complete_name')
-    active = fields.Boolean('Active', help="If the active field is set to False, it will allow you to hide the archival category without removing it.")
+    active = fields.Boolean('Active', help="If the active field is set to False, it will allow you to hide the archival category without removing it.",default=True)
 
     _sql_constraints = [
         ('name', 'unique(name)', 'Name for Archival Category has to be unique')
     ]
-    _defaults = {
-        'state': 'open',
-        'active': True
-    }
+	
     _order = 'sequence'
     @api.one
     def archivalcateg_close(self):
@@ -144,24 +138,24 @@ class docregister_archivalcateg(models.Model):
         return self.name
 
 class docregister_doc(models.Model):
-    _inherit = ['mail.thread']
+    _inherit = ['mail.thread','mail.activity.mixin']
     _name = 'docregister.doc'
     _description = "Document"
 
-    register_uid = fields.Many2one('res.users', 'Registered by')
-    register_date = fields.Date('Registration Date')
+    register_uid = fields.Many2one('res.users', 'Registered by', default=lambda self: self.env.uid)
+    register_date = fields.Date('Registration Date',default=datetime.date.today())
     refcode = fields.Char('Reference Code', size=32, track_visibility='onchange',select=True,copy=False)
     direction = fields.Selection([('in', 'Incoming'), ('out', 'Outgoing')],'Direction', required=True,select=True)
     subject = fields.Char('Subject', size=128, required=True, help="Short summary of the subject of the document", track_visibility='onchange',select=True)
     externalref = fields.Char('External Code', size=128, help="Document reference code used by partner", track_visibility='onchange',select=True)
-    partner_id = fields.Many2one('res.partner', string='Primary partner', required=True, track_visibility='onchange',select=True)
+    partner_id = fields.Many2one('res.partner', string='Primary partner', track_visibility='onchange',select=True)
     partner_ids = fields.Many2many('res.partner', string='Other partner(s)', track_visibility='onchange')
     tag_ids = fields.Many2many('docregister.tag', string='Tag(s)', track_visibility='onchange',select=True)
     archivalcateg_id = fields.Many2one('docregister.archivalcateg', 'Archival Category', select=True, domain=[('heading', '=', False)],track_visibility='onchange')
     date_done = fields.Date('Done Date', select=True, help="Date when the document was created and signed", track_visibility='onchange')
     date = fields.Date('Date',  select=True, required=True, help="Date of arrival (for incoming) or date of sending (for outgoing)", track_visibility='onchange')
     type_id = fields.Many2one('docregister.type', 'Type', required=True, select=True, track_visibility='onchange')
-    registered = fields.Selection([('no', 'No'),('registered', 'Registered'),('return', 'Return Receipt')],'Registered Post')
+    registered = fields.Selection([('no', 'No'),('registered', 'Registered'),('return', 'Return Receipt')],'Registered Post', default='no')
     date_delivery = fields.Date('Delivery Date', help="For letter with Return Receipt: date when letter was delivered", track_visibility='onchange')
     attachmentno = fields.Integer('No. of Attachments', help="Number of documents attached to the main document", track_visibility='onchange')
     predoc_id = fields.Many2one('docregister.doc', 'Preceded by', track_visibility='onchange')
@@ -172,17 +166,13 @@ class docregister_doc(models.Model):
     folder_id = fields.Many2one('docregister.folder', 'Folder', select=True, track_visibility='onchange')
     folderplace = fields.Char('Within folder', size=64, help="Placement of document within the folder", track_visibility='onchange')
     note = fields.Text('Note', help='Notes related to the document', track_visibility='onchange')
-    protected= fields.Boolean('Protected data', help='Document contains protected data', track_visibility='onchange')
-    state = fields.Selection([('draft', 'Draft'),('open', 'To be answered'),('cancel', 'Deleted'),('fail', 'Postage failed'),('close', 'Closed')],'State', track_visibility='onchange')
-
+    protected= fields.Boolean('Protected data', help='Document contains protected data', track_visibility='onchange', default=False)
+    state = fields.Selection([('draft', 'Draft'),('open', 'To be answered'),('fail', 'Postage failed'),('close', 'Closed')],'State', default='draft', track_visibility='onchange')
+    active = fields.Boolean('Active', help="If the active field is set to False, it will allow you to hide the document without removing it.",default=True)
+	
+	
     _rec_name = 'refcode'
-    _defaults = {
-        'state': 'draft',
-        'registered': 'no',
-        'register_uid' : lambda self, cr, uid, ctx:uid,
-        'register_date' :  datetime.datetime.now(),
-        'protected' : False
-    }
+
     _sql_constraints = [
         ('refcode', 'unique(refcode)', 'Document Reference Code has to be unique')
     ]
@@ -208,11 +198,7 @@ class docregister_doc(models.Model):
             else:
                 refcode = self.env['ir.sequence'].next_by_code('docregister.doc.out')
         return refcode
-
-    @api.one
-    def doc_cancel(self):
-        self.state = 'cancel'
-        return True
+		
     @api.one
     def doc_fail(self):
         self.state = 'fail'

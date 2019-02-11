@@ -1,6 +1,6 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_docregister_tag_user,docregister.tag.user,model_docregister_tag,base.group_office_user,1,1,1,1
-access_docregister_doc_user,docregister.doc.user,model_docregister_doc,base.group_office_user,1,1,1,1
-access_docregister_folder_user,docregister.folder.user,model_docregister_folder,base.group_office_user,1,1,1,1
-access_docregister_type_user,docregister.type.user,model_docregister_type,base.group_office_user,1,1,1,1
-access_docregister_archivalcateg_user,docregister.archivalcateg.user,model_docregister_archivalcateg,base.group_office_user,1,1,1,1
+access_docregister_tag_user,docregister.tag.user,model_docregister_tag,docregister.group_office_user,1,1,1,1
+access_docregister_doc_user,docregister.doc.user,model_docregister_doc,docregister.group_office_user,1,1,1,1
+access_docregister_folder_user,docregister.folder.user,model_docregister_folder,docregister.group_office_user,1,1,1,1
+access_docregister_type_user,docregister.type.user,model_docregister_type,docregister.group_office_user,1,1,1,1
+access_docregister_archivalcateg_user,docregister.archivalcateg.user,model_docregister_archivalcateg,docregister.group_office_user,1,1,1,1
