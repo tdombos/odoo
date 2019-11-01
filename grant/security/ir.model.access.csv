@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_grant_call_manager,grant.call.manager,model_grant_call,grant.group_grant_manager,1,1,1,1
+access_grant_proposal_manager,grant.proposal.manager,model_grant_proposal,grant.group_grant_manager,1,1,1,1
+access_grant_fund_manager,grant.fund.manager,model_grant_fund,grant.group_grant_manager,1,1,1,1
+access_grant_report_manager,grant.report.manager,model_grant_report,grant.group_grant_manager,1,1,1,1
+access_grant_reportcontent_manager,grant.reportcontent.manager,model_grant_reportcontent,grant.group_grant_manager,1,1,1,1
+access_grant_installment_manager,grant.installment.manager,model_grant_installment,grant.group_grant_manager,1,1,1,1
+access_grant_fundtype_manager,grant.fundtype.manager,model_grant_fundtype,grant.group_grant_manager,1,1,1,1

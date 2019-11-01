@@ -15,7 +15,7 @@
             <field name="name">partner</field>
             <field name="description">Project partner organization for the project</field>
         </record>
-        <function id="parent_fund_default_set" model="ir.values" name="set" eval="('default',False,'parent_id', [('grant.fund', False)], all_fund_account, True, False, False, False, True)"/>
+
         <record id="action_expire_grant_call" model="ir.actions.server">
             <field name="name">Expire call</field>
             <field name="model_id" ref="model_grant_call"/>
@@ -24,8 +24,8 @@
             <field name="state">object_write</field>
             <field name="use_write">current</field>
             <field name="fields_lines">[(0, 0, {'col1': 'state', 'value': 'close'})]</field> 
-
         </record>
+<!-- 		<function id="parent_fund_default_set" model="ir.values" name="set" eval="('default',False,'parent_id', [('grant.fund', False)], all_fund_account, True, False, False, False, True)"/>
         <record id="rule_grant_call_deadline_expired" model="base.action.rule">
             <field name="name">Expire calls with deadlines passed.</field>
             <field name="model_id" ref="model_grant_call"/>
@@ -33,7 +33,7 @@
             <field name="kind">on_time</field>
             <field name="trg_date_id" ref="field_grant_call_date"/>
             <field name="server_action_ids" eval="[(6,0,[ref('action_expire_grant_call')])]"/>
-        </record>
+        </record> -->
 
     </data>
 </openerp>

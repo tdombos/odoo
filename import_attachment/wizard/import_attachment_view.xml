@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="import_attachment_view_form" model="ir.ui.view">
+    <field name="name">import.casedocument.form</field>
+    <field name="model">import.casedocument</field>
+    <field name="arch" type="xml">
+      <form string="Import case documents">
+
+        <group >
+            <field widget="binary" height="64" name="file" filename="file_fname" required="1"/>
+            <field name="file_fname" invisible="1"/>
+        </group>
+
+        <footer>
+          <button name="get_file" type="object" class="oe_highlight" string="Load File" style="width:75px;"/>
+          <button string="Cancel" class="btn-default" special="cancel"/>
+        </footer>
+      </form>
+    </field>
+  </record>
+  <record id="import_attachment_view_form" model="ir.ui.view">
+    <field name="name">import.attachment.form</field>
+    <field name="model">import.attachment</field>
+    <field name="arch" type="xml">
+      <form string="Import Attachments">
+
+        <group >
+            <field widget="binary" height="64" name="file" filename="file_fname" required="1"/>
+            <field name="file_fname" invisible="1"/>
+        </group>
+
+        <footer>
+          <button name="get_file" type="object" class="oe_highlight" string="Load File" style="width:75px;"/>
+          <button string="Cancel" class="btn-default" special="cancel"/>
+        </footer>
+      </form>
+    </field>
+  </record>
+
+  <act_window
+      id="import_attachment_form_attach"
+      name="Import attachments"
+      res_model="import.attachment"
+      src_model="ir.attachment"
+      view_mode="form"
+      multi="True"
+      target="new"
+      key2="client_action_multi"
+  />
+  <act_window
+      id="import_attachment_form_attach2"
+      name="Import case documents"
+      res_model="import.casedocument"
+      src_model="ir.attachment"
+      view_mode="form"
+      multi="True"
+      target="new"
+      key2="client_action_multi"
+  />
+</odoo>

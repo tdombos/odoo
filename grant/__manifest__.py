@@ -21,17 +21,18 @@
 
 
 {
-    'name': 'Case',
+    'name': 'Grants',
     'version': '0.1',
     'category': 'Association',
-    'description': 'Managing service provision cases',
-    'author': 'Dombos Tamás',
+    'description': 'Managing donors, calls, grant proposals, installments and reporting',
+    'author': 'Tamás Dombos',
     'website': '',
-    'depends': ['mail', 'project', 'calendar', 'account', 'project_partner', 'project_phonecalls', 'project_meetings', 'project_department'],
-    'data': ['case_view.xml', 'case_data.xml', ], 
+    'depends': ['mail', 'project', 'project_partner'],
+    'data': ['security/grant_security.xml', 'security/ir.model.access.csv','grant_data.xml','grant_view.xml'], 
     'demo': [],
     'test':[],
     'installable': True,
     'images': [],
+    'application': True
 }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

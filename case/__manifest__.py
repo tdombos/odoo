@@ -21,14 +21,14 @@
 
 
 {
-    'name': 'Document Registry',
-    'version': '0.2',
-    'category': 'Tools',
-    'description': 'Registering incoming and outgoing documents',
+    'name': 'Case',
+    'version': '0.1',
+    'category': 'Association',
+    'description': 'Managing service provision cases',
     'author': 'Dombos Tamás',
     'website': '',
-    'depends': ['mail','contacts','mail_improved_tracking_value'],
-    'data': ['security/docregister_security.xml', 'security/ir.model.access.csv', 'docregister_view.xml', 'docregister_sequence.xml'],
+    'depends': ['mail', 'project', 'project_partner'],
+    'data': ['case_data.xml', 'case_view.xml', 'security/ir.model.access.csv'], 
     'demo': [],
     'test':[],
     'installable': True,

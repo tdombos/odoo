@@ -19,5 +19,5 @@
 #
 ##############################################################################
 
-import project_partner
+from . import project_partner
 

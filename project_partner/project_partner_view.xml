@@ -9,10 +9,19 @@
                 <tree string="Partners" editable="top">
                     <field name="partner_id" />
                     <field name="role_id" />
-                    <field name="state"/>
+                    <field name="active"/>
                 </tree>
             </field>
         </record>
+        <!-- Task Partners Button Action -->
+        <record model="ir.actions.act_window" id="action_project_partner_partnertotask">
+            <field name="name">Partners</field>
+            <field name="res_model">project_partner.partnerline</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree</field>
+            <field name="domain">[('task_id','=',[task_id])]</field>
+        </record>
+        <!-- Project Partners Button Action -->
         <record model="ir.actions.act_window" id="action_project_partner_partnertoproject">
             <field name="name">Partners</field>
             <field name="res_model">project_partner.partnerline</field>
@@ -40,9 +49,8 @@
             <field name="arch" type="xml">
                 <search string="Partner">
                     <field name="role_id" string="Role"/>
+                    <field name="task_id" string="Task"/>
                     <field name="project_id" string="Project"/>
-                    <field name="state" string="State"/>
-                    <filter name="active" string="Active" domain="[('state','=', 'open')]" help="Active partners" />
                 </search>
             </field>
     </record>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<openerp>
+<data>
+    <record model="ir.module.category" id="module_category_grant_management">
+            <field name="name">Grant</field>
+            <field name="description">Helps you manage your grants...</field>
+            <field name="sequence">3</field>
+        </record>
+	<record model="res.groups" id="group_grant_user">
+        <field name="name">Grant user</field>
+        <field name="category_id" ref="grant.module_category_grant_management"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+	<record model="res.groups" id="group_grant_manager">
+        <field name="name">Grant manager</field>
+        <field name="category_id" ref="grant.module_category_grant_management"/>
+        <field name="implied_ids" eval="[(4, ref('grant.group_grant_user'))]"/>
+    </record>
+
+
+</data>
+</openerp>
+

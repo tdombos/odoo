@@ -19,19 +19,5 @@
 #
 ##############################################################################
 
+from . import legalaid
 
-{
-    'name': 'Grants',
-    'version': '0.1',
-    'category': 'Association',
-    'description': 'Managing donors, calls, grant proposals, installments and reporting',
-    'author': 'Dombos Tamás',
-    'website': '',
-    'depends': ['mail', 'project', 'calendar', 'account', 'project_partner'],
-    'data': ['grant_view.xml', 'grant_data.xml'], 
-    'demo': [],
-    'test':[],
-    'installable': True,
-    'images': [],
-}
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data >
+        <record id="case_project_legal" model="project.project">
+            <field name="name">Jogsegély</field>
+        </record>
+        <record id="legalaid.mail_activity_data_letter" model="mail.activity.type">
+            <field name="name">Beadvány</field>
+        </record>             
+<!--         <function id="case_agecateg_default_set" model="ir.values" name="set" eval="('default',False,'agecateg_id', [('case.case', False)], case_agecateg_unknown, True, False, False, False, True)"/> -->
+    </data>
+</openerp>

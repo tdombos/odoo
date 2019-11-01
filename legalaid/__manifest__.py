@@ -21,14 +21,14 @@
 
 
 {
-    'name': 'Project partners',
+    'name': 'Legal Aid cases',
     'version': '0.1',
-    'category': 'Project',
-    'description': 'Attach partners to projects with various roles',
+    'category': 'Association',
+    'description': 'Managing service provision cases',
     'author': 'Dombos Tamás',
     'website': '',
-    'depends': ['project'],
-    'data': ['project_partner_view.xml', ], 
+    'depends': ['case'],
+    'data': ['legalaid_data.xml','legalaid_view.xml'], 
     'demo': [],
     'test':[],
     'installable': True,

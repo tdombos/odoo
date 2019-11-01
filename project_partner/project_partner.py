@@ -19,36 +19,21 @@
 #
 ##############################################################################
 
-
-from openerp import models, fields, api
-from openerp.tools.translate import _
-from openerp.addons.project import project
-
-from openerp import models, fields, api
-from openerp.tools.translate import _
-from openerp.addons.project import project
+from odoo import models, fields, api
+from odoo import exceptions
 
 class project_partner_partnerline(models.Model):
     _name = 'project_partner.partnerline'
     _description = 'Partner'
     
     partner_id = fields.Many2one('res.partner', string='Partner', required=True, ondelete='cascade')
-    project_id = fields.Many2one('project.project', string='Project', required=True, ondelete='cascade')
+    task_id = fields.Many2one('project.task', string='Task', ondelete='cascade')
+    project_id = fields.Many2one('project.project', string='Project', ondelete='cascade')
     role_id = fields.Many2one('project_partner.role', string='Role')
-    state = fields.Selection([('open', 'Current'),('close', 'Archived')], string='State', size=16)
+    active = fields.Boolean('Active', help="If the active field is set to False, it will allow you to hide the partner without removing it.", default=True)
     
-    _defaults = {
-        'state': 'open',
-    }
     _rec_name = 'partner_id'
-    
-    @api.one
-    def do_open(self):
-        self.state = 'open'
-        return True
-    def do_close(self):
-        self.state = 'close'
-        return True
+
         
 class project_partner_role(models.Model):
     _name = 'project_partner.role'
@@ -62,6 +47,17 @@ class project_partner_role(models.Model):
     ]
     _order = 'name asc'
 
+class project_task(models.Model):
+    _inherit = ['project.task']
+    
+    @api.depends('partnerline_ids')
+    def _partner_count(self):
+        for record in self:
+            record.partner_count = len(record.partnerline_ids)
+            
+    partnerline_ids = fields.One2many('project_partner.partnerline', 'task_id', "Partners")
+    partner_count = fields.Integer(compute='_partner_count', string="Partners",)
+
 class project_project(models.Model):
     _inherit = ['project.project']
     
@@ -72,4 +68,3 @@ class project_project(models.Model):
             
     partnerline_ids = fields.One2many('project_partner.partnerline', 'project_id', "Partners")
     partner_count = fields.Integer(compute='_partner_count', string="Partners",)
-

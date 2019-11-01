@@ -19,90 +19,32 @@
 #
 ##############################################################################
 
-from openerp.osv import osv
-from openerp.osv import fields
-from openerp import models, fields, api
-from openerp.tools.translate import _
-from openerp.addons.project import project
+from odoo import models, fields, api
+from odoo import exceptions
 
+def get_company_currency(self):
+    return self.env.ref('base.main_company').currency_id
 
-import logging
-logger = logging.getLogger('iktato')
-hdlr = logging.FileHandler('/var/tmp/iktato.log')
-formatter = logging.Formatter('%(asctime)s %(levelname)s %(message)s')
-hdlr.setFormatter(formatter)
-logger.addHandler(hdlr) 
-logger.setLevel(logging.WARNING)
-
-def get_company_currency(self, cr, uid, context=None):
-        user_obj = self.pool.get('res.users')
-        currency_obj = self.pool.get('res.currency')
-        user = user_obj.browse(cr, uid, uid, context=context)
-        if user.company_id:
-            return user.company_id.currency_id.id
-        else:
-            return currency_obj.search(cr, uid, [('rate', '=', 1.0)])[0]
-            
-class grant_fund(models.Model):
-    _name = 'grant.fund'
-    _inherit = ['mail.thread']
-    _description = 'Fund'
-    _inherits = {
-        'project.project': 'project_id',
-    }
+class grant_call(models.Model):
+    _name = 'grant.call'
+    _inherit = ['mail.thread','mail.activity.mixin']
+    _description = 'Call'
     
-    @api.depends('report_ids')
-    def _report_count(self):
-        for record in self:
-            record.report_count = len(record.report_ids)
-    @api.depends('installment_ids')
-    def _installment_calc(self):
-        for record in self:
-            installments = record.env['grant.installment'].browse(record.installment_ids)
-            record.installment_received = len(installments)
-            
-    project_id = fields.Many2one('project.project', required=True, string='Related Project', ondelete='restrict', help='Project-related data of the fund', auto_join=True)
-    members = fields.Many2many('res.partner', string='Project Members', required=True, track_visibility='onchange')
-    title = fields.Char('Full title', size=255, select=True, track_visibility='onchange')
-    title_orig = fields.Char('Full title (original)', size=255, select=True, track_visibility='onchange')
-    type_ids = fields.Char('Types', size=16, select=True)
-    proposal_id = fields.Many2one('grant.proposal', string='Proposal', track_visibility='onchange')
-    call_id = fields.Many2one('grant.call',string='Call', track_visibility='onchange')
+    name = fields.Char('Title', size=128, required=True, track_visibility='onchange')
+    code = fields.Char('Call no.', size=128, track_visibility='onchange')
     donor_id = fields.Many2one('res.partner', string='Donor', track_visibility='onchange')
-    code_contract = fields.Char('Contract reference', size=64, select=True, track_visibility='onchange')
-    categ_ids = fields.Many2many('project.category', string='Tags', track_visibility='onchange')
-    fundcurrency_id = fields.Many2one('res.currency', string='Currency', required=True, track_visibility='onchange')
-    amount_requested = fields.Float(related='proposal_id.amount_requested', readonly=True, track_visibility='onchange')
-    amount_granted = fields.Float(string='Amount granted', track_visibility='onchange')
-    cofinannce = fields.Float(string='Financial cofinancing', track_visibility='onchange')
-    cofinannce_inkind = fields.Float(string='Inkind cofinancing', track_visibility='onchange')
-    report_ids = fields.One2many('grant.report', 'fund_id', "Reports")
-    installment_ids = fields.One2many('grant.installment', 'fund_id', "Installments")
-    report_count = fields.Integer(compute='_report_count', string="Reports no",)
-    installment_received = fields.Integer(compute='_installment_calc', string="Money received",)
+    date = fields.Datetime(string="Deadline", track_visibility='onchange')
+    tag_ids = fields.Many2many('project.tags', string='Tags', track_visibility='onchange')
+    description = fields.Text('Description', track_visibility='onchange')
+    url = fields.Char('Link', size=255)
+    date_decision = fields.Date('Decision expected', track_visibility='onchange')
     state = fields.Selection(
-                    [('draft', 'Contracting'), ('open', 'Implementation'), ('done', 'Reporting'),('cancel', 'Failed'),('close', 'Closed')],
-                    string='State', size=16, readonly=True, track_visibility='onchange')
-    
-    _defaults = {
-        'state': 'draft',
-        'fundcurrency_id': get_company_currency,
-        'date_start': None,
-        'use_timesheets': 1
-    }
-    @api.onchange('proposal_id') 
-    def change_proposal(self):
-        self.donor_id = self.proposal_id.donor_id
-        self.call_id = self.proposal_id.call_id
-        self.amount_requested = self.proposal_id.amount_requested
-        self.fundcurrency_id = self.proposal_id.currency_id
+       [('draft', 'Planned'), ('open', 'Open'), ('close', 'Expired'),('cancel', 'Cancelled')],
+       string='State', size=16, track_visibility='onchange',default='open')
+
     @api.one
     def do_open(self):
         self.state = 'open'
-        return True
-    @api.one
-    def do_done(self):
-        self.state = 'done'
         return True
     @api.one
     def do_close(self):
@@ -112,10 +54,10 @@ class grant_fund(models.Model):
     def do_cancel(self):
         self.state = 'cancel'
         return True
-        
+
 class grant_proposal(models.Model):
     _name = 'grant.proposal'
-    _inherit = ['mail.thread']
+    _inherit = ['mail.thread','mail.activity.mixin']
     _description = 'Proposal'
     
     name = fields.Char('Title', size=128, required=True, track_visibility='onchange')
@@ -126,9 +68,9 @@ class grant_proposal(models.Model):
     coordinator_id = fields.Many2one('res.partner', string='Coordinator', track_visibility='onchange')
     partner_ids = fields.Many2many('res.partner', string='Partners', track_visibility='onchange')
     code_proposal = fields.Char('Proposal reference', size=64, select=True, track_visibility='onchange')
-    categ_ids = fields.Many2many('project.category', string='Tags', track_visibility='onchange')
+    tag_ids = fields.Many2many('project.tags', string='Tags', track_visibility='onchange')
     description = fields.Text('Description', track_visibility='onchange')
-    currency_id = fields.Many2one('res.currency', string='Currency', required=True, track_visibility='onchange')
+    currency_id = fields.Many2one('res.currency', string='Currency', required=True, track_visibility='onchange',default=get_company_currency)
     amount_requested = fields.Float(string='Amount requested', track_visibility='onchange')
     cofinannce = fields.Float(string='Financial cofinancing', track_visibility='onchange')
     cofinannce_inkind = fields.Float(string='Inkind cofinancing', track_visibility='onchange')
@@ -138,13 +80,7 @@ class grant_proposal(models.Model):
     date = fields.Date('Expected end', track_visibility='onchange')
     state = fields.Selection(
                     [('draft', 'Idea'), ('open', 'Submitted'),('cancel', 'Not submitted'),('done', 'Won'),('close', 'Lost')],
-                    string='State', size=16, readonly=True, track_visibility='onchange')
-    
-    _defaults = {
-        'state': 'draft',
-        'currency_id': get_company_currency,
-        'date_start': None
-    }
+                    string='State', size=16, readonly=True, track_visibility='onchange',default='draft')
     @api.onchange('call_id') 
     def set_calldata(self):
         self.donor_id = self.call_id.donor_id
@@ -188,42 +124,86 @@ class grant_proposal(models.Model):
                 'project_id':new.project_id.id,
                 'role_id':role.id
             })
+        for partner in self.partner_ids:
+            ProjectPartner = self.env['project_partner.partnerline']
+            role = self.env.ref('grant.grant_role_partner')
+            new2 = ProjectPartner.create({
+                'partner_id':partner.id,
+                'project_id':new.project_id.id,
+                'role_id':role.id
+            })
         view_id = self.env.ref('grant.view_grant_fund_form').id
         return {
             'type': 'ir.actions.act_window',
-            'name': _('Funds'),
+            'name': 'Funds',
             'res_model': 'grant.fund',
             'res_id': new.id,
             'view_type': 'form',
             'view_mode': 'form',
             'view_id': view_id,
-            'target': 'current',
+            'target': 'new',
             'nodestroy': True,
         }
-        
-class grant_call(models.Model):
-    _name = 'grant.call'
-    _inherit = ['mail.thread']
-    _description = 'Call'
+
+class grant_fund(models.Model):
+    _name = 'grant.fund'
+    _inherit = ['mail.thread','mail.activity.mixin']
+    _description = 'Fund'
+    _inherits = {
+        'project.project': 'project_id',
+    }
     
-    name = fields.Char('Title', size=128, required=True, track_visibility='onchange')
-    code = fields.Char('Call no.', size=128, track_visibility='onchange')
-    donor_id = fields.Many2one('res.partner', string='Donor', track_visibility='onchange')
-    date = fields.Datetime(string="Deadline", track_visibility='onchange')
-    categ_ids = fields.Many2many('project.category', string='Tags', track_visibility='onchange')
+    @api.depends('report_ids')
+    def _report_count(self):
+        for record in self:
+            record.report_count = len(record.report_ids)
+    @api.depends('installment_ids')
+    def _installment_calc(self):
+        for record in self:
+            installments = record.env['grant.installment'].browse(record.installment_ids)
+            record.installment_received = len(installments)
+            
+    project_id = fields.Many2one('project.project', required=True, string='Related Project', ondelete='restrict', help='Project-related data of the fund', auto_join=True)
+    members = fields.Many2many('res.partner', string='Project Members', required=True, track_visibility='onchange')
+    title = fields.Char('Full title', size=255, select=True, track_visibility='onchange')
+    title_orig = fields.Char('Full title (original)', size=255, select=True, track_visibility='onchange')
     description = fields.Text('Description', track_visibility='onchange')
-    url = fields.Char('Link', size=255)
-    date_decision = fields.Date('Decision expected', track_visibility='onchange')
+    fundtype_id = fields.Many2one('grant.fundtype', required=True, string='Fund Type', ondelete='restrict', help='Type of fund')
+    proposal_id = fields.Many2one('grant.proposal', string='Proposal', track_visibility='onchange')
+    call_id = fields.Many2one('grant.call',string='Call', track_visibility='onchange')
+    donor_id = fields.Many2one('res.partner', string='Donor', track_visibility='onchange')
+    code_contract = fields.Char('Contract reference', size=64, select=True, track_visibility='onchange')
+    tag_ids = fields.Many2many('project.tags', string='Tags', track_visibility='onchange')
+    fundcurrency_id = fields.Many2one('res.currency', string='Currency', required=True, track_visibility='onchange',default=get_company_currency)
+    amount_requested = fields.Float(related='proposal_id.amount_requested', readonly=True, track_visibility='onchange')
+    amount_granted = fields.Float(string='Amount granted', track_visibility='onchange')
+    cofinannce = fields.Float(string='Financial cofinancing', track_visibility='onchange')
+    cofinannce_inkind = fields.Float(string='Inkind cofinancing', track_visibility='onchange')
+    report_ids = fields.One2many('grant.report', 'fund_id', "Reports")
+    installment_ids = fields.One2many('grant.installment', 'fund_id', "Installments")
+    report_count = fields.Integer(compute='_report_count', string="Reports no",)
+    installment_received = fields.Integer(compute='_installment_calc', string="Money received",)
     state = fields.Selection(
-       [('draft', 'Planned'), ('open', 'Open'), ('close', 'Expired'),('cancel', 'Cancelled')],
-       string='State', size=16, track_visibility='onchange')
+                    [('draft', 'Contracting'), ('open', 'Implementation'), ('done', 'Reporting'),('cancel', 'Failed'),('close', 'Closed')],
+                    string='State', size=16, track_visibility='onchange',default='draft')
     
     _defaults = {
-        'state': 'open',
+        'date_start': None,
+        'use_timesheets': 1
     }
+    @api.onchange('proposal_id') 
+    def change_proposal(self):
+        self.donor_id = self.proposal_id.donor_id
+        self.call_id = self.proposal_id.call_id
+        self.amount_requested = self.proposal_id.amount_requested
+        self.fundcurrency_id = self.proposal_id.currency_id
     @api.one
     def do_open(self):
         self.state = 'open'
+        return True
+    @api.one
+    def do_done(self):
+        self.state = 'done'
         return True
     @api.one
     def do_close(self):
@@ -236,7 +216,7 @@ class grant_call(models.Model):
 
 class grant_report(models.Model):
     _name = 'grant.report'
-    _inherit = ['mail.thread']
+    _inherit = ['mail.thread','mail.activity.mixin']
     _description = 'Report'
    
     name = fields.Char('Name', size=128, required=True, track_visibility='onchange')
@@ -249,11 +229,8 @@ class grant_report(models.Model):
     reportcontent_id = fields.Many2many('grant.reportcontent', string='Report content', track_visibility='onchange')
     state = fields.Selection(
        [('draft', 'Scheduled'), ('open', 'Submitted'), ('revise', 'Revision'), ('close', 'Accepted')],
-       string='State', size=16, readonly=True, track_visibility='onchange')
+       string='State', size=16, readonly=True, track_visibility='onchange',default='draft')
     
-    _defaults = {
-        'state': 'draft',
-    }
     @api.one
     def do_open(self):
         self.state = 'open'
@@ -266,6 +243,7 @@ class grant_report(models.Model):
     def do_revise(self):
         self.state = 'revise'
         return True
+
 class grant_reportcontent(models.Model):
     _name = 'grant.reportcontent'
     _description = 'Report content'
@@ -275,10 +253,10 @@ class grant_reportcontent(models.Model):
         ('name', 'unique(name)', 'Name of Decision Type has to be unique')
     ]
     _order = 'name asc'
-    
+
 class grant_installment(models.Model):
     _name = 'grant.installment'
-    _inherit = ['mail.thread']
+    _inherit = ['mail.thread','mail.activity.mixin']
     _description = 'Installment'
 
     name = fields.Char('Name', size=128, required=True)
@@ -288,15 +266,12 @@ class grant_installment(models.Model):
     amount_expected = fields.Float(string='Amount expected', track_visibility='onchange')
     amount_received = fields.Float(string='Amount received', track_visibility='onchange')
     fundcurrency_id = fields.Many2one(related='fund_id.fundcurrency_id', readonly=True, track_visibility='onchange')
-    currency_id = fields.Many2one(related='fund_id.currency_id', readonly=True)
+    currency_id = fields.Many2one(related='fund_id.currency_id')
     amount_received_local = fields.Float(string='Amount received (company currency)', track_visibility='onchange')
     state = fields.Selection(
        [('draft', 'Scheduled'), ('done', 'Received'),('cancel', 'Cancelled'),  ],
-       string='State', size=16, readonly=True, track_visibility='onchange')
-
-    _defaults = {
-        'state': 'draft',
-    }
+       string='State', size=16, track_visibility='onchange',default='draft')
+    
     @api.one
     def do_done(self):
         self.state = 'done'
@@ -305,7 +280,18 @@ class grant_installment(models.Model):
     def do_cancel(self):
         self.state = 'cancel'
         return True
+
+class grant_fundtype(models.Model):
+    _name = "grant.fundtype"
+    _description = "Fund Type"
+
+    name  = fields.Char('Name', size=64, required=True)
+
+    _sql_constraints = [
+        ('name', 'unique(name)', 'Name of Letter Type has to be unique')
+    ]
+    _order = 'name asc'
+    
 class res_partner(models.Model):
     _inherit = ['res.partner']
     donor = fields.Boolean('Donor', help="Check this box if this contact is a donor.")
-    

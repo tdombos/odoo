@@ -1,43 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data >
-        <!-- Resource: project.project -->
-        <record id="project_task_default_stage.project_tt_analysis" model="project.task.type">
-            <field name="sequence">1</field>
-            <field name="name">Analysis</field>
-            <field name="case_default" eval="False"/>
-        </record>
-        <record id="project_task_default_stage.project_tt_specification" model="project.task.type">
-            <field name="sequence">10</field>
-            <field name="name">Specification</field>
-            <field name="case_default" eval="False"/>
-        </record>
-        <record id="project_task_default_stage.project_tt_testing" model="project.task.type">
-            <field name="sequence">13</field>
-            <field name="name">Testing</field>
-            <field name="case_default" eval="False"/>
-        </record>
-        <record id="project_task_default_stage.project_tt_merge" model="project.task.type">
-            <field name="sequence">60</field>
-            <field name="name">Merge</field>
-            <field name="case_default" eval="False"/>
-            <field name="fold" eval="False"/>
-        </record>
-        <record id="project_task_default_stage.project_tt_deployment" model="project.task.type">
-            <field name="sequence">70</field>
-            <field name="name">Done</field>
-            <field name="case_default" eval="True"/>
-            <field name="fold" eval="False"/>
-        </record>
         <record id="case_agecateg_unknown" model="case.agecateg">
             <field name="name">Unknown</field>
         </record>
-        <record id="project_tag_case" model="account.analytic.tag">
-            <field name="name">Case</field>
+        <record id="case_stage_incoming" model="project.task.type">
+            <field name="name">Bejövő</field>
         </record>
-
-        
-        
-        <function id="case_agecateg_default_set" model="ir.values" name="set" eval="('default',False,'agecateg_id', [('case.case', False)], case_agecateg_unknown, True, False, False, False, True)"/>
+        <record id="case_stage_closed" model="project.task.type">
+            <field name="name">Lezárt</field>
+        </record>
+		<record id="case_client" model="project_partner.role">
+            <field name="name">Ügyfél</field>
+        </record>
+		
+<!--         <function id="case_agecateg_default_set" model="ir.values" name="set" eval="('default',False,'agecateg_id', [('case.case', False)], case_agecateg_unknown, True, False, False, False, True)"/> -->
     </data>
 </openerp>
