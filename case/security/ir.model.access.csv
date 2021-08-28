@@ -1,8 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_case_case_user,case.case.user,model_case_case,project.group_project_user,1,1,1,1
-access_case_servicelevel_user,case.servicelevel.user,model_case_servicelevel,project.group_project_user,1,1,1,1
-access_case_tag_user,case.tag.user,model_case_tag,project.group_project_user,1,1,1,1
-access_case_demogrtag_user,case.demogrtag.user,model_case_demogrtag,project.group_project_user,1,1,1,1
-access_case_agecateg_user,case.agecateg.user,model_case_agecateg,project.group_project_user,1,1,1,1
-access_case_document_user,case.document.user,model_case_document,project.group_project_user,1,1,1,1
-access_case_doctype_user,case.doctype.user,model_case_doctype,project.group_project_user,1,1,1,1

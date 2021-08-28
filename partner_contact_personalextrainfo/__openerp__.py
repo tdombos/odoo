@@ -23,8 +23,7 @@
     "category": "Customer Relationship Management",
     "website": "https://odoo-community.org/",
     "depends": [
-        'partner_contact_personal_information_page',
-        'partner_contact_nationality'
+        'partner_contact_personal_information_page'
     ],
     "data": [
         "views/res_partner.xml",

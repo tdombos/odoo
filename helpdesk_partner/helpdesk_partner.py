@@ -19,20 +19,20 @@
 #
 ##############################################################################
 
+from odoo import models, fields, api
+from odoo import exceptions
 
-{
-    'name': 'Case',
-    'version': '0.1',
-    'category': 'Association',
-    'description': 'Managing service provision cases',
-    'author': 'Dombos Tamás',
-    'website': '',
-    'depends': ['mail', 'project', 'project_partner'],
-    'data': ['case_data.xml', 'case_view.xml', 'security/ir.model.access.csv'], 
-    'demo': [],
-    'test':[],
-    'installable': True,
-    'images': [],
-	'application': True,
-}
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
+class project_partner_partnerline(models.Model):
+    _inherit = ['project_partner.partnerline']
+    ticket_id = fields.Many2one('helpdesk.ticket', string='Ticket', ondelete='cascade')
+
+class HelpdeskTicket(models.Model):
+    _inherit = ['helpdesk.ticket']
+    
+    @api.depends('partnerline_ids')
+    def _partner_count(self):
+        for record in self:
+            record.partner_count = len(record.partnerline_ids)
+            
+    partnerline_ids = fields.One2many('project_partner.partnerline', 'ticket_id', "Partners")
+    partner_count = fields.Integer(compute='_partner_count', string="Partners",)

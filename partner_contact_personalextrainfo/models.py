@@ -26,13 +26,16 @@ _logger = logging.getLogger(__name__)
 class Partner(models.Model):
     _inherit = "res.partner"
 
-    # ID Number
-    passportnumber = fields.Char('Passport Number', track_visibility='onchange')
-    idnumber = fields.Char('ID Number', track_visibility='onchange')
-    socsecnumber = fields.Char('Social Security Number', select=True, track_visibility='onchange')
-    personaltaxnumber = fields.Char('Personl Tax Number', size=16, track_visibility='onchange')
-    mothername = fields.Char("Mother's Name", track_visibility='onchange')
-    birthplace = fields.Char('Place of Birth', track_visibility='onchange')
-    fullname = fields.Char('Full Name', track_visibility='onchange')
-    birthname = fields.Char('Birth Name', track_visibility='onchange')
-    
+    country_id = fields.Many2one(
+        'res.country', 'Nationality (Country)', groups="hr.group_hr_user", tracking=True)
+    place_of_birth = fields.Char('Place of Birth', groups="hr.group_hr_user", tracking=True)
+    country_of_birth = fields.Many2one('res.country', string="Country of Birth", groups="hr.group_hr_user", tracking=True)
+    birthday = fields.Date('Date of Birth', groups="hr.group_hr_user", tracking=True)
+    ssnid = fields.Char('SSN No', help='Social Security Number', groups="hr.group_hr_user", tracking=True)
+    identification_id = fields.Char(string='ID Card No',help='Identification Card Number', groups="hr.group_hr_user", tracking=True)
+    passport_id = fields.Char('Passport No', groups="hr.group_hr_user", tracking=True)
+    personaltaxnumber = fields.Char('Personal Tax Number', size=16, tracking=True)
+    mothername = fields.Char("Mother's Name", tracking=True)
+    fullname = fields.Char('Full Name', tracking=True)
+    birthname = fields.Char('Birth Name', tracking=True)
+  

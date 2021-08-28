@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_helpdesk_servicelevel_user,helpdesk.servicelevel.user,model_helpdesk_servicelevel,helpdesk_mgmt.group_helpdesk_user,1,1,1,1
+access_helpdesk_document_user,helpdesk.document.user,model_helpdesk_document,helpdesk_mgmt.group_helpdesk_user,1,1,1,1
+access_helpdesk_doctype_user,helpdesk.doctype.user,model_helpdesk_doctype,helpdesk_mgmt.group_helpdesk_user,1,1,1,1

@@ -19,22 +19,5 @@
 #
 ##############################################################################
 
+from . import partner_noaddress
 
-{
-    'name': 'Document Registry',
-    'version': '0.2',
-    'category': 'Tools',
-    'description': 'Registering incoming and outgoing documents',
-    'author': 'Dombos Tamás',
-    'website': '',
-    'depends': ['mail','contacts',
-        #'mail_improved_tracking_value'
-        ],
-    'data': ['security/docregister_security.xml', 'security/ir.model.access.csv', 'docregister_view.xml', 'docregister_sequence.xml'],
-    'demo': [],
-    'test':[],
-    'installable': True,
-    'images': [],
-    'application': True,
-}
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

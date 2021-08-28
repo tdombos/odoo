@@ -1,0 +1,1472 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* grant
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-01-10 12:06+0000\n"
+"PO-Revision-Date: 2020-01-10 12:06+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: grant
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_fund_form
+msgid ""
+"(Un)archiving a project automatically (un)archives its tasks. Do you want to"
+" proceed?"
+msgstr ""
+
+#. module: grant
+#: model:ir.model.fields,help:grant.field_grant_fund__alias_defaults
+msgid ""
+"A Python dictionary that will be evaluated to provide default values when "
+"creating new records for this alias."
+msgstr ""
+"Egy Python szótár, ami kiértékelésre kerül az alapértelmezett értékek "
+"szolgáltatása érdekében ezen álnév új rekordjainak létrehozásakor."
+
+#. module: grant
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_report_form
+msgid "Accept"
+msgstr "Elfogadva"
+
+#. module: grant
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_fund_form
+msgid "Accept Emails From"
+msgstr "E-mail elfogadása innen"
+
+#. module: grant
+#: model:ir.model.fields.selection,name:grant.selection__grant_report__state__close
+msgid "Accepted"
+msgstr "Elfogadott"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__access_warning
+msgid "Access warning"
+msgstr "Hozzáférési figyelmeztetés"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_call__message_needaction
+#: model:ir.model.fields,field_description:grant.field_grant_fund__message_needaction
+#: model:ir.model.fields,field_description:grant.field_grant_installment__message_needaction
+#: model:ir.model.fields,field_description:grant.field_grant_proposal__message_needaction
+#: model:ir.model.fields,field_description:grant.field_grant_report__message_needaction
+msgid "Action Needed"
+msgstr "Akció szükséges"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__active
+msgid "Active"
+msgstr "Aktív"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_call__activity_ids
+#: model:ir.model.fields,field_description:grant.field_grant_fund__activity_ids
+#: model:ir.model.fields,field_description:grant.field_grant_installment__activity_ids
+#: model:ir.model.fields,field_description:grant.field_grant_proposal__activity_ids
+#: model:ir.model.fields,field_description:grant.field_grant_report__activity_ids
+msgid "Activities"
+msgstr "Tevékenységek"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_call__activity_exception_decoration
+#: model:ir.model.fields,field_description:grant.field_grant_fund__activity_exception_decoration
+#: model:ir.model.fields,field_description:grant.field_grant_installment__activity_exception_decoration
+#: model:ir.model.fields,field_description:grant.field_grant_proposal__activity_exception_decoration
+#: model:ir.model.fields,field_description:grant.field_grant_report__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_call__activity_state
+#: model:ir.model.fields,field_description:grant.field_grant_fund__activity_state
+#: model:ir.model.fields,field_description:grant.field_grant_installment__activity_state
+#: model:ir.model.fields,field_description:grant.field_grant_proposal__activity_state
+#: model:ir.model.fields,field_description:grant.field_grant_report__activity_state
+msgid "Activity State"
+msgstr "Tevékenység állapota"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__alias_id
+msgid "Alias"
+msgstr "Álnév"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__alias_contact
+msgid "Alias Contact Security"
+msgstr "Álnév kapcsolat biztonság"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__alias_name
+msgid "Alias Name"
+msgstr "Álnév elnevezése"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__alias_domain
+msgid "Alias domain"
+msgstr "Álnév tartomány"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__alias_model_id
+msgid "Aliased Model"
+msgstr "Álnevesített modell"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_installment__amount_expected
+msgid "Amount expected"
+msgstr "Várt összeg"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__amount_granted
+msgid "Amount granted"
+msgstr "Megítélt összeg"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_installment__amount_received
+msgid "Amount received"
+msgstr "Beérkezett összeg"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_installment__amount_received_local
+msgid "Amount received (company currency)"
+msgstr "Beérkezett összeg (vállalati deviza)"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__amount_requested
+#: model:ir.model.fields,field_description:grant.field_grant_proposal__amount_requested
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_fund_form
+msgid "Amount requested"
+msgstr "Kért összeg"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__analytic_account_id
+msgid "Analytic Account"
+msgstr "Analitikus számla"
+
+#. module: grant
+#: model:ir.model.fields,help:grant.field_grant_fund__analytic_account_id
+msgid ""
+"Analytic account to which this project is linked for financial management. "
+"Use an analytic account to record cost and revenue on your project."
+msgstr ""
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_call__message_attachment_count
+#: model:ir.model.fields,field_description:grant.field_grant_fund__message_attachment_count
+#: model:ir.model.fields,field_description:grant.field_grant_installment__message_attachment_count
+#: model:ir.model.fields,field_description:grant.field_grant_proposal__message_attachment_count
+#: model:ir.model.fields,field_description:grant.field_grant_report__message_attachment_count
+msgid "Attachment Count"
+msgstr "Mellékletek száma"
+
+#. module: grant
+#: model:ir.model,name:grant.model_grant_call
+#: model:ir.model.fields,field_description:grant.field_grant_fund__call_id
+#: model:ir.model.fields,field_description:grant.field_grant_proposal__call_id
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_call_form
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_call_search
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_fund_search
+msgid "Call"
+msgstr "Pályázati felhívás"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_call__code
+msgid "Call no."
+msgstr "Felhívás azonosítja"
+
+#. module: grant
+#: model:ir.actions.act_window,name:grant.action_grant_installment
+#: model:ir.ui.menu,name:grant.menu_grant_calls
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_call_tree
+msgid "Calls"
+msgstr "Pályázati felhívások"
+
+#. module: grant
+#: model:ir.actions.act_window,name:grant.action_grant_call
+msgid "Calls for proposals"
+msgstr "Pályázati felhívások"
+
+#. module: grant
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_call_form
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_fund_form
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_installment_form
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_proposal_form
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_report_form
+msgid "Cancel"
+msgstr "Mégse"
+
+#. module: grant
+#: model:ir.model.fields.selection,name:grant.selection__grant_call__state__cancel
+#: model:ir.model.fields.selection,name:grant.selection__grant_installment__state__cancel
+msgid "Cancelled"
+msgstr "Visszavonva"
+
+#. module: grant
+#: model:ir.model.fields,help:grant.field_res_partner__donor
+#: model:ir.model.fields,help:grant.field_res_users__donor
+msgid "Check this box if this contact is a donor."
+msgstr ""
+
+#. module: grant
+#: model:ir.model.fields.selection,name:grant.selection__grant_fund__state__close
+msgid "Closed"
+msgstr "Lezárt"
+
+#. module: grant
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_fund_tree
+msgid "Code"
+msgstr "Kód"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__color
+msgid "Color Index"
+msgstr "Színjegyzék"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__company_id
+msgid "Company"
+msgstr "Vállalat"
+
+#. module: grant
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_fund_form
+msgid "Configuration"
+msgstr "Konfiguráció"
+
+#. module: grant
+#: model:ir.model,name:grant.model_res_partner
+msgid "Contact"
+msgstr "Kapcsolat"
+
+#. module: grant
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_fund_form
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_proposal_form
+msgid "Content"
+msgstr "Tartalom"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__code_contract
+msgid "Contract reference"
+msgstr "Szerződés azonosítója"
+
+#. module: grant
+#: model:ir.model.fields.selection,name:grant.selection__grant_fund__state__draft
+msgid "Contracting"
+msgstr "Szerződéskötés alatt"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_proposal__coordinator_id
+msgid "Coordinator"
+msgstr "Koordinátor"
+
+#. module: grant
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_proposal_form
+msgid "Create fund"
+msgstr "Forrás létrehozása"
+
+#. module: grant
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_call_form
+msgid "Create proposal"
+msgstr "Pályázat létrehozása"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_call__create_uid
+#: model:ir.model.fields,field_description:grant.field_grant_fund__create_uid
+#: model:ir.model.fields,field_description:grant.field_grant_fundtype__create_uid
+#: model:ir.model.fields,field_description:grant.field_grant_installment__create_uid
+#: model:ir.model.fields,field_description:grant.field_grant_proposal__create_uid
+#: model:ir.model.fields,field_description:grant.field_grant_report__create_uid
+#: model:ir.model.fields,field_description:grant.field_grant_reportcontent__create_uid
+msgid "Created by"
+msgstr "Létrehozta"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_call__create_date
+#: model:ir.model.fields,field_description:grant.field_grant_fund__create_date
+#: model:ir.model.fields,field_description:grant.field_grant_fundtype__create_date
+#: model:ir.model.fields,field_description:grant.field_grant_installment__create_date
+#: model:ir.model.fields,field_description:grant.field_grant_proposal__create_date
+#: model:ir.model.fields,field_description:grant.field_grant_report__create_date
+#: model:ir.model.fields,field_description:grant.field_grant_reportcontent__create_date
+msgid "Created on"
+msgstr "Létrehozva"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__currency_id
+#: model:ir.model.fields,field_description:grant.field_grant_fund__fundcurrency_id
+#: model:ir.model.fields,field_description:grant.field_grant_installment__currency_id
+#: model:ir.model.fields,field_description:grant.field_grant_installment__fundcurrency_id
+#: model:ir.model.fields,field_description:grant.field_grant_proposal__currency_id
+msgid "Currency"
+msgstr "Pénznem"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__partner_id
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_fund_form
+msgid "Customer"
+msgstr "Ügyfél"
+
+#. module: grant
+#: model:ir.model.fields,help:grant.field_grant_fund__access_url
+msgid "Customer Portal URL"
+msgstr "Ügyfélportál webcíme"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__rating_status
+msgid "Customer(s) Ratings"
+msgstr "Ügyfél általi értékelések"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_installment__date_expected
+msgid "Date expected"
+msgstr "Tervezett beérkezés"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_installment__date_received
+msgid "Date received"
+msgstr "Tényleges beérkezés"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_call__date
+msgid "Deadline"
+msgstr "Határidő"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_call__date_decision
+#: model:ir.model.fields,field_description:grant.field_grant_proposal__date_decision
+msgid "Decision expected"
+msgstr "Döntés várható dátuma"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__alias_defaults
+msgid "Default Values"
+msgstr "Alapértelmezett értékek"
+
+#. module: grant
+#: model:ir.model.fields,help:grant.field_grant_fund__privacy_visibility
+msgid ""
+"Defines the visibility of the tasks of the project:\n"
+"- Invited employees: employees may only see the followed project and tasks.\n"
+"- All employees: employees may see all project and tasks.\n"
+"- Portal users and all employees: employees may see everything.   Portal users may see project and tasks followed by.\n"
+"   them or by someone of their company."
+msgstr ""
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_call__description
+#: model:ir.model.fields,field_description:grant.field_grant_fund__description
+#: model:ir.model.fields,field_description:grant.field_grant_proposal__description
+msgid "Description"
+msgstr "Leírás"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_call__display_name
+#: model:ir.model.fields,field_description:grant.field_grant_fund__display_name
+#: model:ir.model.fields,field_description:grant.field_grant_fundtype__display_name
+#: model:ir.model.fields,field_description:grant.field_grant_installment__display_name
+#: model:ir.model.fields,field_description:grant.field_grant_proposal__display_name
+#: model:ir.model.fields,field_description:grant.field_grant_report__display_name
+#: model:ir.model.fields,field_description:grant.field_grant_reportcontent__display_name
+msgid "Display Name"
+msgstr "Megjelenített név"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_call__donor_id
+#: model:ir.model.fields,field_description:grant.field_grant_fund__donor_id
+#: model:ir.model.fields,field_description:grant.field_grant_proposal__donor_id
+#: model:ir.model.fields,field_description:grant.field_res_partner__donor
+#: model:ir.model.fields,field_description:grant.field_res_users__donor
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_call_search
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_fund_search
+msgid "Donor"
+msgstr ""
+
+#. module: grant
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_donor_partnermod_search
+msgid "Donor Partners"
+msgstr "Donor partnerek"
+
+#. module: grant
+#: model:ir.actions.act_window,name:grant.action_grant_donor
+#: model:ir.ui.menu,name:grant.menu_grant_donor
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_donor_partnermod_search
+msgid "Donors"
+msgstr "Donorok"
+
+#. module: grant
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_report_search
+msgid "Due"
+msgstr "Esedékes"
+
+#. module: grant
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_fund_form
+msgid ""
+"Edit project's stages and set an email template on the stages on which you "
+"want to activate the rating."
+msgstr ""
+"Szerkessze a projekt szakaszait, és állítson be egy e-mail sablont a "
+"szakaszokhoz, amelyekre aktiválni akarja az értékelést."
+
+#. module: grant
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_fund_form
+msgid "Email Alias"
+msgstr "E-mail álnév"
+
+#. module: grant
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_fund_form
+msgid "Emails"
+msgstr "E-mailek"
+
+#. module: grant
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_fund_form
+msgid "End"
+msgstr "Vége"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_proposal__date
+msgid "Expected end"
+msgstr "Tervezett vége"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_proposal__date_start
+msgid "Expected start"
+msgstr "Tervezett kezdete"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__date
+msgid "Expiration Date"
+msgstr "Lejárat dátuma"
+
+#. module: grant
+#: model:ir.model.fields.selection,name:grant.selection__grant_call__state__close
+msgid "Expired"
+msgstr "Lezárult"
+
+#. module: grant
+#: model:ir.model.fields.selection,name:grant.selection__grant_fund__state__cancel
+msgid "Failed"
+msgstr "Meghiúsult"
+
+#. module: grant
+#: model:ir.model.fields.selection,name:grant.selection__grant_report__type__final
+msgid "Final"
+msgstr "Záró"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__cofinannce
+#: model:ir.model.fields,field_description:grant.field_grant_proposal__cofinannce
+msgid "Financial cofinancing"
+msgstr "Pénzbeni önrész"
+
+#. module: grant
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_proposal_form
+msgid "Financial data"
+msgstr "Pénzügyi adatok"
+
+#. module: grant
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_fund_form
+msgid ""
+"Follow this project to automatically track the events associated to tasks "
+"and issues of this project."
+msgstr ""
+"Kövesse ezt a projektet annak érdekében, hogy automatikusan nyomon kövesse "
+"az ezen projekt feladataihoz kapcsolódó eseményeket."
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_call__message_follower_ids
+#: model:ir.model.fields,field_description:grant.field_grant_fund__message_follower_ids
+#: model:ir.model.fields,field_description:grant.field_grant_installment__message_follower_ids
+#: model:ir.model.fields,field_description:grant.field_grant_proposal__message_follower_ids
+#: model:ir.model.fields,field_description:grant.field_grant_report__message_follower_ids
+msgid "Followers"
+msgstr "Követők"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_call__message_channel_ids
+#: model:ir.model.fields,field_description:grant.field_grant_fund__message_channel_ids
+#: model:ir.model.fields,field_description:grant.field_grant_installment__message_channel_ids
+#: model:ir.model.fields,field_description:grant.field_grant_proposal__message_channel_ids
+#: model:ir.model.fields,field_description:grant.field_grant_report__message_channel_ids
+msgid "Followers (Channels)"
+msgstr "Követők (Csatornák)"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_call__message_partner_ids
+#: model:ir.model.fields,field_description:grant.field_grant_fund__message_partner_ids
+#: model:ir.model.fields,field_description:grant.field_grant_installment__message_partner_ids
+#: model:ir.model.fields,field_description:grant.field_grant_proposal__message_partner_ids
+#: model:ir.model.fields,field_description:grant.field_grant_report__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Követők (Partnerek)"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_report__date_open
+msgid "From"
+msgstr "Kezdő dátum"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__title
+#: model:ir.model.fields,field_description:grant.field_grant_proposal__title
+msgid "Full title"
+msgstr "Teljes cím"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__title_orig
+msgid "Full title (original)"
+msgstr "Teljes cím (eredeti nyelv)"
+
+#. module: grant
+#: model:ir.model,name:grant.model_grant_fund
+#: model:ir.model.fields,field_description:grant.field_grant_installment__fund_id
+#: model:ir.model.fields,field_description:grant.field_grant_report__fund_id
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_fund_form
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_report_search
+msgid "Fund"
+msgstr "Forrás"
+
+#. module: grant
+#: model:ir.model,name:grant.model_grant_fundtype
+#: model:ir.model.fields,field_description:grant.field_grant_fund__fundtype_id
+msgid "Fund Type"
+msgstr "Forrástípus"
+
+#. module: grant
+#: model:ir.actions.act_window,name:grant.action_grant_fund
+#: model:ir.ui.menu,name:grant.menu_grant_fund
+#: model:ir.ui.menu,name:grant.menu_grant_fund_fund
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_fund_tree
+msgid "Funds"
+msgstr "Források"
+
+#. module: grant
+#: model:ir.model.fields,help:grant.field_grant_fund__sequence
+msgid "Gives the sequence order when displaying a list of Projects."
+msgstr "Megadja a projektek listázási sorrendjét."
+
+#. module: grant
+#: model:ir.module.category,name:grant.module_category_grant_management
+msgid "Grant"
+msgstr "Pályázat"
+
+#. module: grant
+#: model:res.groups,name:grant.group_grant_manager
+msgid "Grant manager"
+msgstr "Pályázatkezelő"
+
+#. module: grant
+#: model:res.groups,name:grant.group_grant_user
+msgid "Grant user"
+msgstr "Pályázat felhasználó"
+
+#. module: grant
+#: model:ir.ui.menu,name:grant.menu_grant
+msgid "Grants"
+msgstr "Pályázatok"
+
+#. module: grant
+#: model:ir.module.category,description:grant.module_category_grant_management
+msgid "Helps you manage your grants..."
+msgstr "Segít a pályázatok kezelésében..."
+
+#. module: grant
+#: model:ir.model.fields,help:grant.field_grant_fund__rating_status
+msgid ""
+"How to get customer feedback?\n"
+"- Rating when changing stage: an email will be sent when a task is pulled in another stage.\n"
+"- Periodical Rating: email will be sent periodically.\n"
+"\n"
+"Don't forget to set up the mail templates on the stages for which you want to get the customer's feedbacks."
+msgstr ""
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_call__id
+#: model:ir.model.fields,field_description:grant.field_grant_fund__id
+#: model:ir.model.fields,field_description:grant.field_grant_fundtype__id
+#: model:ir.model.fields,field_description:grant.field_grant_installment__id
+#: model:ir.model.fields,field_description:grant.field_grant_proposal__id
+#: model:ir.model.fields,field_description:grant.field_grant_report__id
+#: model:ir.model.fields,field_description:grant.field_grant_reportcontent__id
+msgid "ID"
+msgstr "Azonosító"
+
+#. module: grant
+#: model:ir.model.fields,help:grant.field_grant_fund__alias_parent_thread_id
+msgid ""
+"ID of the parent record holding the alias (example: project holding the task"
+" creation alias)"
+msgstr ""
+"Az álnevet tartalmazó szülő rekord azonosítója (példa: a feladat "
+"létrehozására szolgáló álnevet tartalmazó projekt)"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_call__activity_exception_icon
+#: model:ir.model.fields,field_description:grant.field_grant_fund__activity_exception_icon
+#: model:ir.model.fields,field_description:grant.field_grant_installment__activity_exception_icon
+#: model:ir.model.fields,field_description:grant.field_grant_proposal__activity_exception_icon
+#: model:ir.model.fields,field_description:grant.field_grant_report__activity_exception_icon
+msgid "Icon"
+msgstr "Ikon"
+
+#. module: grant
+#: model:ir.model.fields,help:grant.field_grant_call__activity_exception_icon
+#: model:ir.model.fields,help:grant.field_grant_fund__activity_exception_icon
+#: model:ir.model.fields,help:grant.field_grant_installment__activity_exception_icon
+#: model:ir.model.fields,help:grant.field_grant_proposal__activity_exception_icon
+#: model:ir.model.fields,help:grant.field_grant_report__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: grant
+#: model:ir.model.fields.selection,name:grant.selection__grant_proposal__state__draft
+msgid "Idea"
+msgstr "Ötlet"
+
+#. module: grant
+#: model:ir.model.fields,help:grant.field_grant_call__message_needaction
+#: model:ir.model.fields,help:grant.field_grant_call__message_unread
+#: model:ir.model.fields,help:grant.field_grant_fund__message_needaction
+#: model:ir.model.fields,help:grant.field_grant_fund__message_unread
+#: model:ir.model.fields,help:grant.field_grant_installment__message_needaction
+#: model:ir.model.fields,help:grant.field_grant_installment__message_unread
+#: model:ir.model.fields,help:grant.field_grant_proposal__message_needaction
+#: model:ir.model.fields,help:grant.field_grant_proposal__message_unread
+#: model:ir.model.fields,help:grant.field_grant_report__message_needaction
+#: model:ir.model.fields,help:grant.field_grant_report__message_unread
+msgid "If checked, new messages require your attention."
+msgstr "Ha be van jelölve, akkor az új üzenetek figyelmet igényelnek."
+
+#. module: grant
+#: model:ir.model.fields,help:grant.field_grant_call__message_has_error
+#: model:ir.model.fields,help:grant.field_grant_call__message_has_sms_error
+#: model:ir.model.fields,help:grant.field_grant_fund__message_has_error
+#: model:ir.model.fields,help:grant.field_grant_fund__message_has_sms_error
+#: model:ir.model.fields,help:grant.field_grant_installment__message_has_error
+#: model:ir.model.fields,help:grant.field_grant_installment__message_has_sms_error
+#: model:ir.model.fields,help:grant.field_grant_proposal__message_has_error
+#: model:ir.model.fields,help:grant.field_grant_proposal__message_has_sms_error
+#: model:ir.model.fields,help:grant.field_grant_report__message_has_error
+#: model:ir.model.fields,help:grant.field_grant_report__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+"Ha be van jelölve, akkor néhány üzenetnél kézbesítési hiba lépett fel."
+
+#. module: grant
+#: model:ir.model.fields,help:grant.field_grant_fund__active
+msgid ""
+"If the active field is set to False, it will allow you to hide the project "
+"without removing it."
+msgstr ""
+"Az aktív mező hamis értékre történő beállítása lehetővé teszi a projekt "
+"elrejtését, annak törlése nélkül."
+
+#. module: grant
+#: model:ir.model.fields.selection,name:grant.selection__grant_fund__state__open
+msgid "Implementation"
+msgstr "Megvalósítás alatt"
+
+#. module: grant
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_fund_form
+msgid "Implementation over"
+msgstr "Megvalósítás lezárult"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__cofinannce_inkind
+#: model:ir.model.fields,field_description:grant.field_grant_proposal__cofinannce_inkind
+msgid "Inkind cofinancing"
+msgstr "Természetbeni önrész"
+
+#. module: grant
+#: model:ir.model,name:grant.model_grant_installment
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_installment_form
+msgid "Installment"
+msgstr "Utalás"
+
+#. module: grant
+#: model:ir.actions.act_window,name:grant.action_grant_installmenttogrant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__installment_ids
+#: model:ir.ui.menu,name:grant.menu_grant_installments
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_fund_form
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_installment_tree
+msgid "Installments"
+msgstr "Utalások"
+
+#. module: grant
+#: model:ir.model.fields.selection,name:grant.selection__grant_report__type__interim
+msgid "Interim"
+msgstr "Időközi"
+
+#. module: grant
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_fund_form
+msgid "Internal Code"
+msgstr "Belső kód"
+
+#. module: grant
+#: model:ir.model.fields,help:grant.field_grant_fund__alias_id
+msgid ""
+"Internal email associated with this project. Incoming emails are "
+"automatically synchronized with Tasks (or optionally Issues if the Issue "
+"Tracker module is installed)."
+msgstr ""
+"Ezen projekthez társított belső e-mail. A bejövő e-mailek automatikusan "
+"szinkronizálásra kerülnek a feladatokkal."
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_call__message_is_follower
+#: model:ir.model.fields,field_description:grant.field_grant_fund__message_is_follower
+#: model:ir.model.fields,field_description:grant.field_grant_installment__message_is_follower
+#: model:ir.model.fields,field_description:grant.field_grant_proposal__message_is_follower
+#: model:ir.model.fields,field_description:grant.field_grant_report__message_is_follower
+msgid "Is Follower"
+msgstr "Követő"
+
+#. module: grant
+#: model:ir.model.fields,help:grant.field_grant_fund__label_tasks
+msgid "Label used for the tasks of the project."
+msgstr ""
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_call____last_update
+#: model:ir.model.fields,field_description:grant.field_grant_fund____last_update
+#: model:ir.model.fields,field_description:grant.field_grant_fundtype____last_update
+#: model:ir.model.fields,field_description:grant.field_grant_installment____last_update
+#: model:ir.model.fields,field_description:grant.field_grant_proposal____last_update
+#: model:ir.model.fields,field_description:grant.field_grant_report____last_update
+#: model:ir.model.fields,field_description:grant.field_grant_reportcontent____last_update
+msgid "Last Modified on"
+msgstr "Legutóbb frissítve"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_call__write_uid
+#: model:ir.model.fields,field_description:grant.field_grant_fund__write_uid
+#: model:ir.model.fields,field_description:grant.field_grant_fundtype__write_uid
+#: model:ir.model.fields,field_description:grant.field_grant_installment__write_uid
+#: model:ir.model.fields,field_description:grant.field_grant_proposal__write_uid
+#: model:ir.model.fields,field_description:grant.field_grant_report__write_uid
+#: model:ir.model.fields,field_description:grant.field_grant_reportcontent__write_uid
+msgid "Last Updated by"
+msgstr "Frissítette"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_call__write_date
+#: model:ir.model.fields,field_description:grant.field_grant_fund__write_date
+#: model:ir.model.fields,field_description:grant.field_grant_fundtype__write_date
+#: model:ir.model.fields,field_description:grant.field_grant_installment__write_date
+#: model:ir.model.fields,field_description:grant.field_grant_proposal__write_date
+#: model:ir.model.fields,field_description:grant.field_grant_report__write_date
+#: model:ir.model.fields,field_description:grant.field_grant_reportcontent__write_date
+msgid "Last Updated on"
+msgstr "Frissítve "
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_call__url
+msgid "Link"
+msgstr "Hivatkozás"
+
+#. module: grant
+#: model:ir.model.fields.selection,name:grant.selection__grant_proposal__state__close
+msgid "Lost"
+msgstr "Sikertelen"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_call__message_main_attachment_id
+#: model:ir.model.fields,field_description:grant.field_grant_fund__message_main_attachment_id
+#: model:ir.model.fields,field_description:grant.field_grant_installment__message_main_attachment_id
+#: model:ir.model.fields,field_description:grant.field_grant_proposal__message_main_attachment_id
+#: model:ir.model.fields,field_description:grant.field_grant_report__message_main_attachment_id
+msgid "Main Attachment"
+msgstr "Fő melléklet"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__favorite_user_ids
+msgid "Members"
+msgstr "Tagok"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_call__message_has_error
+#: model:ir.model.fields,field_description:grant.field_grant_fund__message_has_error
+#: model:ir.model.fields,field_description:grant.field_grant_installment__message_has_error
+#: model:ir.model.fields,field_description:grant.field_grant_proposal__message_has_error
+#: model:ir.model.fields,field_description:grant.field_grant_report__message_has_error
+msgid "Message Delivery error"
+msgstr "Üzenetkézbesítési hiba"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_call__message_ids
+#: model:ir.model.fields,field_description:grant.field_grant_fund__message_ids
+#: model:ir.model.fields,field_description:grant.field_grant_installment__message_ids
+#: model:ir.model.fields,field_description:grant.field_grant_proposal__message_ids
+#: model:ir.model.fields,field_description:grant.field_grant_report__message_ids
+msgid "Messages"
+msgstr "Üzenetek"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__installment_received
+msgid "Money received"
+msgstr "Beérkezett összeg"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__name
+#: model:ir.model.fields,field_description:grant.field_grant_fundtype__name
+#: model:ir.model.fields,field_description:grant.field_grant_installment__name
+#: model:ir.model.fields,field_description:grant.field_grant_report__name
+#: model:ir.model.fields,field_description:grant.field_grant_reportcontent__name
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_call_form
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_call_search
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_fund_search
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_installment_form
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_report_form
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_report_search
+msgid "Name"
+msgstr "Név"
+
+#. module: grant
+#: model:ir.model.constraint,message:grant.constraint_grant_reportcontent_name
+msgid "Name of Decision Type has to be unique"
+msgstr "A döntéstípus értéke egyedi kell legyen"
+
+#. module: grant
+#: model:ir.model.constraint,message:grant.constraint_grant_fundtype_name
+msgid "Name of Letter Type has to be unique"
+msgstr "A küldeménytípus értéke egyedi kell legyen"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_call__activity_date_deadline
+#: model:ir.model.fields,field_description:grant.field_grant_fund__activity_date_deadline
+#: model:ir.model.fields,field_description:grant.field_grant_installment__activity_date_deadline
+#: model:ir.model.fields,field_description:grant.field_grant_proposal__activity_date_deadline
+#: model:ir.model.fields,field_description:grant.field_grant_report__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "Következő tevékenység határideje"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_call__activity_summary
+#: model:ir.model.fields,field_description:grant.field_grant_fund__activity_summary
+#: model:ir.model.fields,field_description:grant.field_grant_installment__activity_summary
+#: model:ir.model.fields,field_description:grant.field_grant_proposal__activity_summary
+#: model:ir.model.fields,field_description:grant.field_grant_report__activity_summary
+msgid "Next Activity Summary"
+msgstr "Következő tevékenység összegzés"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_call__activity_type_id
+#: model:ir.model.fields,field_description:grant.field_grant_fund__activity_type_id
+#: model:ir.model.fields,field_description:grant.field_grant_installment__activity_type_id
+#: model:ir.model.fields,field_description:grant.field_grant_proposal__activity_type_id
+#: model:ir.model.fields,field_description:grant.field_grant_report__activity_type_id
+msgid "Next Activity Type"
+msgstr "Következő tevékenység típusa"
+
+#. module: grant
+#: model:ir.model.fields.selection,name:grant.selection__grant_proposal__state__cancel
+msgid "Not submitted"
+msgstr "Elvetett"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_call__message_needaction_counter
+#: model:ir.model.fields,field_description:grant.field_grant_fund__message_needaction_counter
+#: model:ir.model.fields,field_description:grant.field_grant_installment__message_needaction_counter
+#: model:ir.model.fields,field_description:grant.field_grant_proposal__message_needaction_counter
+#: model:ir.model.fields,field_description:grant.field_grant_report__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Akciók száma"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__doc_count
+msgid "Number of documents attached"
+msgstr "Mellékelt dokumentumok száma"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_call__message_has_error_counter
+#: model:ir.model.fields,field_description:grant.field_grant_fund__message_has_error_counter
+#: model:ir.model.fields,field_description:grant.field_grant_installment__message_has_error_counter
+#: model:ir.model.fields,field_description:grant.field_grant_proposal__message_has_error_counter
+#: model:ir.model.fields,field_description:grant.field_grant_report__message_has_error_counter
+msgid "Number of errors"
+msgstr "Hibák száma"
+
+#. module: grant
+#: model:ir.model.fields,help:grant.field_grant_call__message_needaction_counter
+#: model:ir.model.fields,help:grant.field_grant_fund__message_needaction_counter
+#: model:ir.model.fields,help:grant.field_grant_installment__message_needaction_counter
+#: model:ir.model.fields,help:grant.field_grant_proposal__message_needaction_counter
+#: model:ir.model.fields,help:grant.field_grant_report__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr "Üzenetek száma, melyek akciót igényelnek"
+
+#. module: grant
+#: model:ir.model.fields,help:grant.field_grant_call__message_has_error_counter
+#: model:ir.model.fields,help:grant.field_grant_fund__message_has_error_counter
+#: model:ir.model.fields,help:grant.field_grant_installment__message_has_error_counter
+#: model:ir.model.fields,help:grant.field_grant_proposal__message_has_error_counter
+#: model:ir.model.fields,help:grant.field_grant_report__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Kézbesítési hibával rendelkező üzenetek száma"
+
+#. module: grant
+#: model:ir.model.fields,help:grant.field_grant_call__message_unread_counter
+#: model:ir.model.fields,help:grant.field_grant_fund__message_unread_counter
+#: model:ir.model.fields,help:grant.field_grant_installment__message_unread_counter
+#: model:ir.model.fields,help:grant.field_grant_proposal__message_unread_counter
+#: model:ir.model.fields,help:grant.field_grant_report__message_unread_counter
+msgid "Number of unread messages"
+msgstr "Olvasatlan üzenetek száma"
+
+#. module: grant
+#: model:ir.model.fields.selection,name:grant.selection__grant_call__state__open
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_call_form
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_call_search
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_fund_search
+msgid "Open"
+msgstr "Megnyitás"
+
+#. module: grant
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_call_search
+msgid "Open calls"
+msgstr "Nyitott pályázati felhívások"
+
+#. module: grant
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_fund_search
+msgid "Open funds"
+msgstr "Nyitott források"
+
+#. module: grant
+#: model:ir.model.fields,help:grant.field_grant_fund__alias_force_thread_id
+msgid ""
+"Optional ID of a thread (record) to which all incoming messages will be "
+"attached, even if they did not reply to it. If set, this will disable the "
+"creation of new records completely."
+msgstr ""
+"Az üzenetlista (rekord) választható azonosítója, amelyhez minden beérkező "
+"üzenet csatolásra kerül, még akkor is, ha senki sem válaszolt azokra. Ha "
+"beállításra kerül, az új rekordok létrehozása teljesen kikapcsolásra kerül."
+
+#. module: grant
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_report_search
+msgid "Overdue"
+msgstr "Lejárt"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__alias_user_id
+msgid "Owner"
+msgstr "Tulajdonos"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__alias_parent_model_id
+msgid "Parent Model"
+msgstr "Szülő modell"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__alias_parent_thread_id
+msgid "Parent Record Thread ID"
+msgstr "Szülő rekord szál azonosító"
+
+#. module: grant
+#: model:ir.model.fields,help:grant.field_grant_fund__alias_parent_model_id
+msgid ""
+"Parent model holding the alias. The model holding the alias reference is not"
+" necessarily the model given by alias_model_id (example: project "
+"(parent_model) and task (model))"
+msgstr ""
+"Az álnevet tartalmazó szülő modell. Az álnév hivatkozást tartalmazó modell "
+"nem feltétlenül azonos az alias_model_id által megadott modellel (például: "
+"projekt (parent_model) és feladat (model))."
+
+#. module: grant
+#: model:ir.actions.act_window,name:grant.action_grant_partnertofund
+#: model:ir.model.fields,field_description:grant.field_grant_fund__partner_count
+#: model:ir.model.fields,field_description:grant.field_grant_fund__partnerline_ids
+#: model:ir.model.fields,field_description:grant.field_grant_proposal__partner_ids
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_fund_form
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_proposal_form
+msgid "Partners"
+msgstr "Partnerek"
+
+#. module: grant
+#: model:ir.model.fields,help:grant.field_grant_fund__rating_percentage_satisfaction
+msgid "Percentage of happy ratings"
+msgstr "Pozitív értékelések aránya"
+
+#. module: grant
+#: model:ir.model.fields.selection,name:grant.selection__grant_call__state__draft
+msgid "Planned"
+msgstr "Tervezett"
+
+#. module: grant
+#: model:ir.model.fields,help:grant.field_grant_fund__alias_contact
+msgid ""
+"Policy to post a message on the document using the mailgateway.\n"
+"- everyone: everyone can post\n"
+"- partners: only authenticated partners\n"
+"- followers: only followers of the related document or members of following channels\n"
+msgstr ""
+"A dokumentumra küldött üzenetek szabályai a levélátjáró használatával.\n"
+"- mindenki: mindenki tud üzenni\n"
+"- partnerek: csak a hitelesített partnerek\n"
+"- követők: csak a kapcsolódó dokumentum követői vagy a következő csatornák tagjai\n"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__access_url
+msgid "Portal Access URL"
+msgstr "Portálelérés URL"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__user_id
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_fund_form
+msgid "Project Manager"
+msgstr "Projektmenedzser"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__members
+msgid "Project Members"
+msgstr "Projekttagok"
+
+#. module: grant
+#: model:ir.model.fields,help:grant.field_grant_fund__subtask_project_id
+msgid ""
+"Project in which sub-tasks of the current project will be created. It can be"
+" the current project itself."
+msgstr ""
+
+#. module: grant
+#: model:ir.model.fields,help:grant.field_grant_fund__project_id
+msgid "Project-related data of the fund"
+msgstr "A forrás projektadatai"
+
+#. module: grant
+#: model:ir.model,name:grant.model_grant_proposal
+#: model:ir.model.fields,field_description:grant.field_grant_fund__proposal_id
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_proposal_form
+msgid "Proposal"
+msgstr "Pályázat"
+
+#. module: grant
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_fund_form
+msgid "Proposal Data"
+msgstr "Pályázati adatok"
+
+#. module: grant
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_proposal_form
+msgid "Proposal lost"
+msgstr "Pályázat nem nyert"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_proposal__code_proposal
+msgid "Proposal reference"
+msgstr "Pályázati azonosító"
+
+#. module: grant
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_proposal_form
+msgid "Proposal won"
+msgstr "Pályázat nyert"
+
+#. module: grant
+#: model:ir.actions.act_window,name:grant.action_grant_createproposal
+#: model:ir.actions.act_window,name:grant.action_grant_proposal
+#: model:ir.ui.menu,name:grant.menu_grant_proposal
+#: model:ir.ui.menu,name:grant.menu_grant_proposal_proposal
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_proposal_tree
+msgid "Proposals"
+msgstr "Pályázatok"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__rating_status_period
+msgid "Rating Frequency"
+msgstr "Értékelés gyakorisága"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__rating_request_deadline
+msgid "Rating Request Deadline"
+msgstr "Értékelési kérés határideje"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__rating_percentage_satisfaction
+msgid "Rating Satisfaction"
+msgstr ""
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__portal_show_rating
+msgid "Rating visible publicly"
+msgstr "Az értékelés nyilvánosan látható"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__rating_ids
+msgid "Ratings"
+msgstr "Értékelések"
+
+#. module: grant
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_installment_form
+msgid "Receive"
+msgstr "Beérkezett"
+
+#. module: grant
+#: model:ir.model.fields.selection,name:grant.selection__grant_installment__state__done
+msgid "Received"
+msgstr "Fogadott"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__alias_force_thread_id
+msgid "Record Thread ID"
+msgstr "Rekord üzenetlista azonosító"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__project_id
+msgid "Related Project"
+msgstr "Kapcsolódó projekt"
+
+#. module: grant
+#: model:ir.model,name:grant.model_grant_report
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_report_form
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_report_search
+msgid "Report"
+msgstr "Beszámoló"
+
+#. module: grant
+#: model:ir.model,name:grant.model_grant_reportcontent
+#: model:ir.model.fields,field_description:grant.field_grant_report__reportcontent_id
+msgid "Report content"
+msgstr "Beszámoló tartalma"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_report__date_due
+msgid "Report due"
+msgstr "Beszámoló határideje"
+
+#. module: grant
+#: model:ir.model.fields.selection,name:grant.selection__grant_fund__state__done
+msgid "Reporting"
+msgstr "Beszámolás alatt"
+
+#. module: grant
+#: model:ir.actions.act_window,name:grant.action_grant_report
+#: model:ir.actions.act_window,name:grant.action_grant_reporttogrant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__report_ids
+#: model:ir.ui.menu,name:grant.menu_grant_reports
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_fund_form
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_report_tree
+msgid "Reports"
+msgstr "Riportok"
+
+#. module: grant
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_fund_form
+msgid "Reports accepted"
+msgstr "Elfogadott beszámolók"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__report_count
+msgid "Reports no"
+msgstr "Beszámoló azonosítója"
+
+#. module: grant
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_report_search
+msgid "Reports overdue"
+msgstr "Ké"
+
+#. module: grant
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_report_search
+msgid "Reports to submit"
+msgstr "Beadandó beszámolók"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_proposal__user_id
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_fund_form
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_proposal_form
+msgid "Responsible"
+msgstr "Felelős"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_call__activity_user_id
+#: model:ir.model.fields,field_description:grant.field_grant_fund__activity_user_id
+#: model:ir.model.fields,field_description:grant.field_grant_installment__activity_user_id
+#: model:ir.model.fields,field_description:grant.field_grant_proposal__activity_user_id
+#: model:ir.model.fields,field_description:grant.field_grant_report__activity_user_id
+msgid "Responsible User"
+msgstr "Felelős felhasználó"
+
+#. module: grant
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_report_form
+msgid "Revise"
+msgstr "Átdolgozás szükséges"
+
+#. module: grant
+#: model:ir.model.fields.selection,name:grant.selection__grant_report__state__revise
+msgid "Revision"
+msgstr "Átdolgozás alatt"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_call__message_has_sms_error
+#: model:ir.model.fields,field_description:grant.field_grant_fund__message_has_sms_error
+#: model:ir.model.fields,field_description:grant.field_grant_installment__message_has_sms_error
+#: model:ir.model.fields,field_description:grant.field_grant_proposal__message_has_sms_error
+#: model:ir.model.fields,field_description:grant.field_grant_report__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "SMS kézbesítési hiba"
+
+#. module: grant
+#: model:ir.model.fields.selection,name:grant.selection__grant_installment__state__draft
+#: model:ir.model.fields.selection,name:grant.selection__grant_report__state__draft
+msgid "Scheduled"
+msgstr "Tervezett"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__access_token
+msgid "Security Token"
+msgstr "Biztonsági token"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__sequence
+msgid "Sequence"
+msgstr "Sorszám"
+
+#. module: grant
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_fund_form
+msgid "Settings"
+msgstr "Beállítások"
+
+#. module: grant
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_fund_form
+msgid "Share"
+msgstr "Megosztás"
+
+#. module: grant
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_proposal_form
+msgid "Short title"
+msgstr "Rövid cím"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__is_favorite
+msgid "Show Project on dashboard"
+msgstr "Projekt megjelenítése a kezelőpulton"
+
+#. module: grant
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_fund_form
+msgid "Start"
+msgstr "Kezdete"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__date_start
+msgid "Start Date"
+msgstr "Kezdő dátum"
+
+#. module: grant
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_fund_form
+msgid "Start implementation"
+msgstr "Megvalósítás indítása"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_call__state
+#: model:ir.model.fields,field_description:grant.field_grant_fund__state
+#: model:ir.model.fields,field_description:grant.field_grant_installment__state
+#: model:ir.model.fields,field_description:grant.field_grant_proposal__state
+#: model:ir.model.fields,field_description:grant.field_grant_report__state
+msgid "State"
+msgstr "Állapot"
+
+#. module: grant
+#: model:ir.model.fields,help:grant.field_grant_call__activity_state
+#: model:ir.model.fields,help:grant.field_grant_fund__activity_state
+#: model:ir.model.fields,help:grant.field_grant_installment__activity_state
+#: model:ir.model.fields,help:grant.field_grant_proposal__activity_state
+#: model:ir.model.fields,help:grant.field_grant_report__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+"Tevékenységeken alapuló állapot\n"
+"Lejárt: A tevékenység határideje lejárt\n"
+"Ma: A határidő ma van\n"
+"Tervezett: Jövőbeli határidő."
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__subtask_project_id
+msgid "Sub-task Project"
+msgstr "Alfeladat projekt"
+
+#. module: grant
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_proposal_form
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_report_form
+msgid "Submit"
+msgstr "Beadás"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_proposal__date_submitted
+#: model:ir.model.fields.selection,name:grant.selection__grant_proposal__state__open
+#: model:ir.model.fields.selection,name:grant.selection__grant_report__state__open
+msgid "Submitted"
+msgstr "Elbírálás alatt"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_report__date_submit
+msgid "Submitted on"
+msgstr "Beadás dátuma"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_call__tag_ids
+#: model:ir.model.fields,field_description:grant.field_grant_fund__tag_ids
+#: model:ir.model.fields,field_description:grant.field_grant_proposal__tag_ids
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_call_search
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_fund_search
+msgid "Tags"
+msgstr "Címkék"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__tasks
+msgid "Task Activities"
+msgstr "Feladat tevékenységei"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__task_count
+msgid "Task Count"
+msgstr "Feladatok száma"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__task_ids
+msgid "Tasks"
+msgstr "Feladatok"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__type_ids
+msgid "Tasks Stages"
+msgstr "Feladatok szakaszai"
+
+#. module: grant
+#: model:ir.model.fields,help:grant.field_grant_fund__alias_model_id
+msgid ""
+"The model (Odoo Document Kind) to which this alias corresponds. Any incoming"
+" email that does not reply to an existing record will cause the creation of "
+"a new record of this model (e.g. a Project Task)"
+msgstr ""
+"A modell (Odoo dokumentum típus), amelyre ez az álnév vonatkozik. Bármely "
+"bejövő e-mail, amely nem válaszol egy meglévő rekordra, ezen modell egy új "
+"rekordjának létrehozását fogja előidézni (pl. egy projekt feladatot)"
+
+#. module: grant
+#: model:ir.model.fields,help:grant.field_grant_fund__alias_name
+msgid ""
+"The name of the email alias, e.g. 'jobs' if you want to catch emails for "
+"<jobs@example.odoo.com>"
+msgstr ""
+"Az e-mail álnév neve, pl. 'állások', ha erre az e-mailcímre szeretne "
+"leveleket kapni: <allasok@pelda.odoo.com>"
+
+#. module: grant
+#: model:ir.model.fields,help:grant.field_grant_fund__alias_user_id
+msgid ""
+"The owner of records created upon receiving emails on this alias. If this "
+"field is not set the system will attempt to find the right owner based on "
+"the sender (From) address, or will use the Administrator account if no "
+"system user is found for that address."
+msgstr ""
+"Az e-mailek ezen álnévre történő beérkezésekor létrehozásra kerülő rekordok "
+"tulajdonosa. Ha ez a mező nem kerül beállításra, akkor a rendszer "
+"megpróbálja megtalálni a megfelelő tulajdonost a küldő (Feladó) címe "
+"alapján, vagy az adminisztrátor fiókot használja, ha nem található "
+"rendszerfelhasználó ahhoz a címhez."
+
+#. module: grant
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_fund_form
+msgid "Time Scheduling"
+msgstr "Idő ütemezés"
+
+#. module: grant
+#: model:ir.model.fields,help:grant.field_grant_fund__resource_calendar_id
+msgid "Timetable working hours to adjust the gantt diagram report"
+msgstr "Munkaórák időbeosztása a gantt diagram kimutatás beállításához"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_call__name
+#: model:ir.model.fields,field_description:grant.field_grant_proposal__name
+#: model_terms:ir.ui.view,arch_db:grant.view_grant_proposal_tree
+msgid "Title"
+msgstr "Név"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_report__date_close
+msgid "To"
+msgstr "Záró dátum"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_report__type
+msgid "Type"
+msgstr "Típus"
+
+#. module: grant
+#: model:ir.model.fields,help:grant.field_grant_fund__fundtype_id
+msgid "Type of fund"
+msgstr "Forrástípus"
+
+#. module: grant
+#: model:ir.model.fields,help:grant.field_grant_call__activity_exception_decoration
+#: model:ir.model.fields,help:grant.field_grant_fund__activity_exception_decoration
+#: model:ir.model.fields,help:grant.field_grant_installment__activity_exception_decoration
+#: model:ir.model.fields,help:grant.field_grant_proposal__activity_exception_decoration
+#: model:ir.model.fields,help:grant.field_grant_report__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_call__message_unread
+#: model:ir.model.fields,field_description:grant.field_grant_fund__message_unread
+#: model:ir.model.fields,field_description:grant.field_grant_installment__message_unread
+#: model:ir.model.fields,field_description:grant.field_grant_proposal__message_unread
+#: model:ir.model.fields,field_description:grant.field_grant_report__message_unread
+msgid "Unread Messages"
+msgstr "Olvasatlan üzenetek"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_call__message_unread_counter
+#: model:ir.model.fields,field_description:grant.field_grant_fund__message_unread_counter
+#: model:ir.model.fields,field_description:grant.field_grant_installment__message_unread_counter
+#: model:ir.model.fields,field_description:grant.field_grant_proposal__message_unread_counter
+#: model:ir.model.fields,field_description:grant.field_grant_report__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr "Olvasatlan üzenetek száma"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__label_tasks
+msgid "Use Tasks as"
+msgstr "Feladatok használata mint"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__privacy_visibility
+msgid "Visibility"
+msgstr "Láthatóság"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_call__website_message_ids
+#: model:ir.model.fields,field_description:grant.field_grant_fund__website_message_ids
+#: model:ir.model.fields,field_description:grant.field_grant_installment__website_message_ids
+#: model:ir.model.fields,field_description:grant.field_grant_proposal__website_message_ids
+#: model:ir.model.fields,field_description:grant.field_grant_report__website_message_ids
+msgid "Website Messages"
+msgstr "Weboldali üzenetek"
+
+#. module: grant
+#: model:ir.model.fields,help:grant.field_grant_call__website_message_ids
+#: model:ir.model.fields,help:grant.field_grant_fund__website_message_ids
+#: model:ir.model.fields,help:grant.field_grant_installment__website_message_ids
+#: model:ir.model.fields,help:grant.field_grant_proposal__website_message_ids
+#: model:ir.model.fields,help:grant.field_grant_report__website_message_ids
+msgid "Website communication history"
+msgstr "Weboldali kommunikációs előzmények"
+
+#. module: grant
+#: model:ir.model.fields,help:grant.field_grant_fund__is_favorite
+msgid "Whether this project should be displayed on your dashboard."
+msgstr ""
+
+#. module: grant
+#: model:ir.model.fields.selection,name:grant.selection__grant_proposal__state__done
+msgid "Won"
+msgstr "Elnyert"
+
+#. module: grant
+#: model:ir.model.fields,field_description:grant.field_grant_fund__resource_calendar_id
+msgid "Working Time"
+msgstr "Munkaidő"

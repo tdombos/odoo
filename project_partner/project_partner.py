@@ -39,7 +39,7 @@ class project_partner_role(models.Model):
     _name = 'project_partner.role'
     _description = 'Roles'
     
-    name = fields.Char('Name', size=64, required=True)
+    name = fields.Char('Name', size=64, required=True,translate=True)
     description = fields.Text('Description', help='Detailed description for the role')
 
     _sql_constraints = [

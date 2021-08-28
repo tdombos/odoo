@@ -11,16 +11,16 @@
             <xpath expr="//group[@name='personal_information_group']" position="replace">
                 <group name="personal_information_group" >
                     <group>
-                        <field name="birthplace"/>
-                        <field name="birthdate_date"/>
-                        <field name="nationality_id"/>
+                        <field name="country_id"/>
+						<field name="place_of_birth"/>
+                        <field name="birthday"/>
                         <field name="birthname"/>
                         <field name="mothername"/>
                     </group>
                     <group>
-                        <field name="passportnumber"/>
-                        <field name="idnumber"/>
-                        <field name="socsecnumber"/>
+                        <field name="passport_id"/>
+                        <field name="identification_id"/>
+                        <field name="ssnid"/>
                         <field name="personaltaxnumber"/>
                     </group>
                 </group>

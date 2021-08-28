@@ -67,12 +67,14 @@ class docregister_folder(models.Model):
         ('name', 'unique(name)', 'Foler name has to be unique')
     ]
     _order = 'name asc'
-    @api.one
+
     def folder_close(self):
+        self.ensure_one()
         self.state = 'close'
         return True
-    @api.one
+
     def folder_open(self):
+        self.ensure_one()
         self.state = 'open'
         return True
 
@@ -97,14 +99,16 @@ class docregister_archivalcateg(models.Model):
     _sql_constraints = [
         ('name', 'unique(name)', 'Name for Archival Category has to be unique')
     ]
-	
+
     _order = 'sequence'
-    @api.one
+    _rec_name = 'complete_name'
     def archivalcateg_close(self):
+        self.ensure_one()
         self.state = 'close'
         return True
-    @api.one
+
     def archivalcateg_open(self):
+        self.ensure_one()
         self.state = 'open'
         return True
 
@@ -122,20 +126,13 @@ class docregister_archivalcateg(models.Model):
             recs = self.search(args, limit=limit)
         return recs.name_get()
 
-    @api.one
-    def name_get(self):
-        return (self.id, self._get_full_name()[0])
-
-    @api.one
     @api.depends('name', 'code')
     def compute_complete_name(self):
-        self.complete_name = self._get_full_name()[0]
-
-    @api.one
-    def _get_full_name(self):
-        if self.code:
-            return self.code + ' - ' + self.name
-        return self.name
+        for categ in self:
+            if categ.code:
+                categ.complete_name = categ.code + ' - ' + categ.name
+            else:
+                categ.complete_name = categ.name
 
 class docregister_doc(models.Model):
     _inherit = ['mail.thread','mail.activity.mixin']
@@ -145,7 +142,7 @@ class docregister_doc(models.Model):
     register_uid = fields.Many2one('res.users', 'Registered by', default=lambda self: self.env.uid)
     register_date = fields.Date('Registration Date',default=datetime.date.today())
     refcode = fields.Char('Reference Code', size=32, track_visibility='onchange',select=True,copy=False)
-    direction = fields.Selection([('in', 'Incoming'), ('out', 'Outgoing')],'Direction', required=True,select=True)
+    direction = fields.Selection([('in', 'Incoming'), ('out', 'Outgoing')],'Direction', select=True)
     subject = fields.Char('Subject', size=128, required=True, help="Short summary of the subject of the document", track_visibility='onchange',select=True)
     externalref = fields.Char('External Code', size=128, help="Document reference code used by partner", track_visibility='onchange',select=True)
     partner_id = fields.Many2one('res.partner', string='Primary partner', track_visibility='onchange',select=True)
@@ -154,7 +151,7 @@ class docregister_doc(models.Model):
     archivalcateg_id = fields.Many2one('docregister.archivalcateg', 'Archival Category', select=True, domain=[('heading', '=', False)],track_visibility='onchange')
     date_done = fields.Date('Done Date', select=True, help="Date when the document was created and signed", track_visibility='onchange')
     date = fields.Date('Date',  select=True, required=True, help="Date of arrival (for incoming) or date of sending (for outgoing)", track_visibility='onchange')
-    type_id = fields.Many2one('docregister.type', 'Type', required=True, select=True, track_visibility='onchange')
+    type_id = fields.Many2one('docregister.type', 'Type', select=True, track_visibility='onchange')
     registered = fields.Selection([('no', 'No'),('registered', 'Registered'),('return', 'Return Receipt')],'Registered Post', default='no')
     date_delivery = fields.Date('Delivery Date', help="For letter with Return Receipt: date when letter was delivered", track_visibility='onchange')
     attachmentno = fields.Integer('No. of Attachments', help="Number of documents attached to the main document", track_visibility='onchange')
@@ -169,8 +166,7 @@ class docregister_doc(models.Model):
     protected= fields.Boolean('Protected data', help='Document contains protected data', track_visibility='onchange', default=False)
     state = fields.Selection([('draft', 'Draft'),('open', 'To be answered'),('fail', 'Postage failed'),('close', 'Closed')],'State', default='draft', track_visibility='onchange')
     active = fields.Boolean('Active', help="If the active field is set to False, it will allow you to hide the document without removing it.",default=True)
-	
-	
+
     _rec_name = 'refcode'
 
     _sql_constraints = [
@@ -178,7 +174,6 @@ class docregister_doc(models.Model):
     ]
     _order = 'date desc'
 
-    @api.multi
     def name_get(self):
         res = []
         for doc in self:
@@ -191,27 +186,29 @@ class docregister_doc(models.Model):
     def _get_refcode (self):
         reftype = False
         if not reftype:
-            refcode = self.env['ir.sequence'].next_by_code('docregister.doc.mix')
+            refcode = self.env['ir.sequence'].with_context(ir_sequence_date=self.date).next_by_code('docregister.doc.mix')
         else:
             if self.direction == 'in':
                 refcode = self.env['ir.sequence'].next_by_code('docregister.doc.in')
             else:
                 refcode = self.env['ir.sequence'].next_by_code('docregister.doc.out')
         return refcode
-		
-    @api.one
+
     def doc_fail(self):
+        self.ensure_one()
         self.state = 'fail'
         return True
-    @api.one
+
     def doc_open(self):
+        self.ensure_one()
         vals={'state': 'open'}
         if not self.refcode:
             vals['refcode'] = self._get_refcode()
         self.write(vals)
         return True
-    @api.one
+
     def doc_close(self):
+        self.ensure_one()
         vals={'state': 'close'} 
         if not self.refcode: 
             vals['refcode'] = self._get_refcode()
@@ -243,10 +240,9 @@ class res_partner(models.Model):
 
     _inherit = "res.partner"
 
-    @api.depends('doc_ids')
     def _docregister_doc_count(self):
         for record in self:
-            record.doc_count = len(record.doc_ids)
+            record.doc_count = self.env['docregister.doc'].search_count(['|',('partner_id', 'in', self.ids),('partner_ids', 'in', self.ids)])
 
-    doc_ids = fields.Many2many('docregister.doc', 'docregister_doc_res_partner_rel', 'docregister_doc_id', 'res_partner_id', string='Registered Documents')
-    doc_count = fields.Integer(compute="_docregister_doc_count", string="Registered Documents Counts")
+#   doc_ids = fields.Many2many('docregister.doc', 'docregister_doc_res_partner_rel', 'docregister_doc_id', 'res_partner_id', string='Registered Documents')
+    doc_count = fields.Integer(compute="_docregister_doc_count", string="Registered Documents Counts", compute_sudo=True)

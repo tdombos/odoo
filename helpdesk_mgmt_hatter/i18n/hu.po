@@ -1,0 +1,616 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* helpdesk_mgmt_hatter
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-04-16 13:38+0000\n"
+"PO-Revision-Date: 2021-04-16 16:02+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: hu\n"
+"X-Generator: Poedit 2.4.2\n"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields.selection,name:helpdesk_mgmt_hatter.selection__helpdesk_ticket__settlement__abroad
+msgid "Abroad"
+msgstr "Külföld"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_document__access_token
+msgid "Access Token"
+msgstr "Hozzáférési token"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_doctype__active
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_servicelevel__active
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_ticket_tag__active
+msgid "Active"
+msgstr "Aktív"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.actions.act_window,name:helpdesk_mgmt_hatter.action_helpdesk_activitytoticket
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_ticket__activity_count
+#: model_terms:ir.ui.view,arch_db:helpdesk_mgmt_hatter.ticket_view_form
+#: model_terms:ir.ui.view,arch_db:helpdesk_mgmt_hatter.view_ticket_activity_tree
+msgid "Activities"
+msgstr "Tevékenységek"
+
+#. module: helpdesk_mgmt_hatter
+#: model_terms:ir.ui.view,arch_db:helpdesk_mgmt_hatter.view_ticket_document_form
+msgid "Add extra information..."
+msgstr "További információk hozzáadása..."
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_ticket__age
+msgid "Age"
+msgstr "Életkor"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.actions.act_window,name:helpdesk_mgmt_hatter.action_helpdesk_agecateg
+#: model:ir.ui.menu,name:helpdesk_mgmt_hatter.menu_helpdesk_configuration_agecategs
+msgid "Age Categories"
+msgstr "Életkor kategóriák"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_ticket__agecateg_id
+msgid "Age Category"
+msgstr "Életkor kategória"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,help:helpdesk_mgmt_hatter.field_helpdesk_ticket__age
+msgid "Age in years"
+msgstr "Életkor években"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_ticket__description_anon
+msgid "Anonymized Summary"
+msgstr "Anonim összefoglaló"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_document__local_url
+msgid "Attachment URL"
+msgstr "Melléklet webcíme"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields.selection,name:helpdesk_mgmt_hatter.selection__helpdesk_ticket__sexorient__bi
+msgid "Bisexual"
+msgstr "Biszexuális"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields.selection,name:helpdesk_mgmt_hatter.selection__helpdesk_ticket__settlement__budapest
+msgid "Budapest"
+msgstr "Budapest"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_document__channel_id
+msgid "Channel"
+msgstr "Csatorna"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,help:helpdesk_mgmt_hatter.field_res_partner__serviceuser
+#: model:ir.model.fields,help:helpdesk_mgmt_hatter.field_res_users__serviceuser
+msgid "Check this box if this contact is client of a helpdesk."
+msgstr ""
+"Jelölje meg ezt a négyzetet, ha ez a partner egy ügyfélszolgálat ügyfele."
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_document__checksum
+msgid "Checksum/SHA1"
+msgstr "Checksum/SHA1"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_ticket_tag__child_ids
+msgid "Child Tags"
+msgstr "Alcímkék"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_ticket_team__code
+msgid "Code"
+msgstr "Kód"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_document__company_id
+msgid "Company"
+msgstr "Vállalat"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model,name:helpdesk_mgmt_hatter.model_res_partner
+msgid "Contact"
+msgstr "Partner"
+
+#. module: helpdesk_mgmt_hatter
+#: model_terms:ir.ui.view,arch_db:helpdesk_mgmt_hatter.ticket_view_form
+msgid "Content"
+msgstr "Tartalom"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_doctype__create_uid
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_document__create_uid
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_servicelevel__create_uid
+msgid "Created by"
+msgstr "Létrehozta"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_doctype__create_date
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_document__create_date
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_servicelevel__create_date
+msgid "Created on"
+msgstr "Létrehozva"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_document__db_datas
+msgid "Database Data"
+msgstr "Adatbázis adat"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_document__date
+msgid "Date"
+msgstr "Dátum"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,help:helpdesk_mgmt_hatter.field_helpdesk_document__date
+msgid "Date of arrival (for incoming) or date of sending (for outgoing)"
+msgstr "Érkezés dátuma bejövő, küldés dátuma kimenő iratoknál"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,help:helpdesk_mgmt_hatter.field_helpdesk_document__date_done
+msgid "Date when the document was created and signed"
+msgstr "Az irat létrehozásának és aláírásának dátuma"
+
+#. module: helpdesk_mgmt_hatter
+#: model_terms:ir.ui.view,arch_db:helpdesk_mgmt_hatter.ticket_view_form
+msgid "Demography"
+msgstr "Demográfia"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.actions.act_window,name:helpdesk_mgmt_hatter.action_helpdesk_demogrtag
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_ticket__demogrtag_ids
+#: model:ir.ui.menu,name:helpdesk_mgmt_hatter.menu_helpdesk_configuration_demogrtags
+msgid "Demography Tags"
+msgstr "Demográfia címkék"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_document__description
+msgid "Description"
+msgstr "Leírás"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_document__direction
+msgid "Direction"
+msgstr "Irány"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_doctype__display_name
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_document__display_name
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_servicelevel__display_name
+msgid "Display Name"
+msgstr "Megjelenített név"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_document__doc_id
+#: model_terms:ir.ui.view,arch_db:helpdesk_mgmt_hatter.view_ticket_document_form
+msgid "Document"
+msgstr "Irat"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.actions.act_window,name:helpdesk_mgmt_hatter.action_helpdesk_doctype
+#: model:ir.ui.menu,name:helpdesk_mgmt_hatter.menu_helpdesk_configuration_doctypes
+msgid "Document Types"
+msgstr "Irattípusok"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,help:helpdesk_mgmt_hatter.field_helpdesk_document__document_id
+msgid "Document-related data of the ticket document"
+msgstr "Az irat dokumentumhoz kapcsolódó adatai"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.actions.act_window,name:helpdesk_mgmt_hatter.action_helpdesk_document_tree
+#: model:ir.actions.act_window,name:helpdesk_mgmt_hatter.action_helpdesk_documenttoticket
+#: model_terms:ir.ui.view,arch_db:helpdesk_mgmt_hatter.ticket_view_form
+#: model_terms:ir.ui.view,arch_db:helpdesk_mgmt_hatter.view_ticket_document_tree
+msgid "Documents"
+msgstr "Iratok"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_document__date_done
+msgid "Done Date"
+msgstr "Kelt"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_ticket__externalref
+msgid "External References"
+msgstr "Külső hivatkozási számok"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields.selection,name:helpdesk_mgmt_hatter.selection__helpdesk_ticket__gender__female
+msgid "Female"
+msgstr "Nő"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_document__datas
+msgid "File Content"
+msgstr "Fájltartalom"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_document__file_size
+msgid "File Size"
+msgstr "A fájl mérete"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_ticket__gender
+msgid "Gender"
+msgstr "Neme"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,help:helpdesk_mgmt_hatter.field_helpdesk_servicelevel__sequence
+msgid "Gives the sequence order when displaying service levels."
+msgstr "Megadja a szolgáltatási szintek listázásának sorrendjét"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model,name:helpdesk_mgmt_hatter.model_helpdesk_doctype
+msgid "Helpdesk Document Type"
+msgstr "Irattípus"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model,name:helpdesk_mgmt_hatter.model_helpdesk_ticket
+msgid "Helpdesk Ticket"
+msgstr "Eset"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model,name:helpdesk_mgmt_hatter.model_helpdesk_ticket_tag
+msgid "Helpdesk Ticket Tag"
+msgstr "Eset címke"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model,name:helpdesk_mgmt_hatter.model_helpdesk_ticket_team
+msgid "Helpdesk Ticket Team"
+msgstr "Eset csapat"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_res_partner__serviceuser
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_res_users__serviceuser
+msgid "Helpdesk client"
+msgstr "Ügyfél"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields.selection,name:helpdesk_mgmt_hatter.selection__helpdesk_document__direction__local
+msgid "Helyi"
+msgstr "Helyi"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields.selection,name:helpdesk_mgmt_hatter.selection__helpdesk_ticket__sexorient__hetero
+msgid "Heterosexual"
+msgstr "Heteroszexuális"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields.selection,name:helpdesk_mgmt_hatter.selection__helpdesk_ticket__sexorient__homo
+msgid "Homosexual"
+msgstr "Homoszexuális"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_doctype__id
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_document__id
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_servicelevel__id
+msgid "ID"
+msgstr "Azonosító"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,help:helpdesk_mgmt_hatter.field_helpdesk_servicelevel__active
+msgid ""
+"If the active field is set to False, it will allow you to hide the service "
+"level without removing it."
+msgstr ""
+"Ha az aktív mező értéke Hamis, elrejti ezt a szolgáltatási szintet, "
+"anélkül, hogy törölve lenne. "
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,help:helpdesk_mgmt_hatter.field_helpdesk_doctype__active
+#: model:ir.model.fields,help:helpdesk_mgmt_hatter.field_helpdesk_ticket_tag__active
+msgid ""
+"If the active field is set to False, it will allow you to hide the tag "
+"without removing it."
+msgstr ""
+"Ha az aktív mező értéke Hamis, elrejti ezt a címkét, anélkül, hogy törölve "
+"lenne. "
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_document__image_height
+msgid "Image Height"
+msgstr "Kép magassága"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_document__image_src
+msgid "Image Src"
+msgstr "Kép forrása"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_document__image_width
+msgid "Image Width"
+msgstr "Kép szélessége"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields.selection,name:helpdesk_mgmt_hatter.selection__helpdesk_document__direction__in
+msgid "Incoming"
+msgstr "Bejövő"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_document__index_content
+msgid "Indexed Content"
+msgstr "Indexált tartalom"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_document__public
+msgid "Is public document"
+msgstr "Nyilvános irat"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields.selection,name:helpdesk_mgmt_hatter.selection__helpdesk_ticket__settlement__city
+msgid "Large City"
+msgstr "Nagyváros"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_doctype____last_update
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_document____last_update
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_servicelevel____last_update
+msgid "Last Modified on"
+msgstr "Legutóbb frissítve"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_doctype__write_uid
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_document__write_uid
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_servicelevel__write_uid
+msgid "Last Updated by"
+msgstr "Legutóbb frissítette"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_doctype__write_date
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_document__write_date
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_servicelevel__write_date
+msgid "Last Updated on"
+msgstr "Legutóbb frissítve"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields.selection,name:helpdesk_mgmt_hatter.selection__helpdesk_ticket__gender__male
+msgid "Male"
+msgstr "Férfi"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_document__mimetype
+msgid "Mime Type"
+msgstr "MIME típus"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_doctype__name
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_document__name
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_servicelevel__name
+msgid "Name"
+msgstr "Név"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.constraint,message:helpdesk_mgmt_hatter.constraint_helpdesk_doctype_name
+msgid "Name for Helpdesk Document Type has to be unique"
+msgstr "Az esetdokumentum nevének egyedinek kell lennie"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.constraint,message:helpdesk_mgmt_hatter.constraint_helpdesk_servicelevel_name
+msgid "Name for Service Level has to be unique"
+msgstr "A szolgáltatási szint nevének egyedinek kell lennie"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.constraint,message:helpdesk_mgmt_hatter.constraint_helpdesk_ticket_tag_name
+msgid "Name for Tag has to be unique"
+msgstr "A címke nevének egyedinek kell lennie"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields.selection,name:helpdesk_mgmt_hatter.selection__helpdesk_ticket__trans__nottrans
+msgid "No"
+msgstr "Nem"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_ticket__doc_count
+msgid "Number of documents attached"
+msgstr "Mellékelt iratok száma"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields.selection,name:helpdesk_mgmt_hatter.selection__helpdesk_ticket__gender__other
+msgid "Other"
+msgstr "Egyéb"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_document__partner_ids
+msgid "Other partner(s)"
+msgstr "További partner(ek)"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields.selection,name:helpdesk_mgmt_hatter.selection__helpdesk_document__direction__out
+msgid "Outgoing"
+msgstr "Kimenő"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_ticket_tag__parent_path
+msgid "Parent Path"
+msgstr "Szülő útvonal"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_ticket_tag__parent_id
+msgid "Parent Tag"
+msgstr "Szülő címke"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model,name:helpdesk_mgmt_hatter.model_project_partner_partnerline
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_document__partner_id
+msgid "Partner"
+msgstr "Partner"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.actions.act_window,name:helpdesk_mgmt_hatter.action_helpdesk_role
+#: model:ir.ui.menu,name:helpdesk_mgmt_hatter.menu_helpdesk_configuration_roles
+msgid "Partner Roles"
+msgstr "Partner szerepek"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.actions.act_window,name:helpdesk_mgmt_hatter.action_helpdesk_partnertoticket
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_ticket__partner_count
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_ticket__partnerline_ids
+#: model_terms:ir.ui.view,arch_db:helpdesk_mgmt_hatter.ticket_view_form
+msgid "Partners"
+msgstr "Partnerek"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields.selection,name:helpdesk_mgmt_hatter.selection__helpdesk_ticket__sexorient__quest
+msgid "Questioning"
+msgstr "Bizonytalan"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_document__document_id
+msgid "Related Document"
+msgstr "Kapcsolódó irat"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_document__res_field
+msgid "Resource Field"
+msgstr "Erőforrásmező"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_document__res_id
+msgid "Resource ID"
+msgstr "Erőforrás azonosítója"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_document__res_model
+msgid "Resource Model"
+msgstr "Erőforrás modell"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_document__res_name
+msgid "Resource Name"
+msgstr "Erőforrás neve"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_servicelevel__sequence
+msgid "Sequence"
+msgstr "Sorszám"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.ui.menu,name:helpdesk_mgmt_hatter.menu_helpdesk_configuration_servicelevels
+msgid "Service Levels"
+msgstr "Szolgáltatási szintek"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model,name:helpdesk_mgmt_hatter.model_helpdesk_servicelevel
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_ticket__servicelevel_ids
+msgid "Service level"
+msgstr "Szolgáltatási szint"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.actions.act_window,name:helpdesk_mgmt_hatter.action_helpdesk_servicelevel
+msgid "Service levels"
+msgstr "Szolgáltatási szintek"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_ticket__settlement
+msgid "Settlement"
+msgstr "Lakóhely"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_ticket__sexorient
+msgid "Sexual Orientation"
+msgstr "Szexuális irányultság"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields.selection,name:helpdesk_mgmt_hatter.selection__helpdesk_ticket__settlement__town
+msgid "Smaller settlement"
+msgstr "Kistelepülés"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_document__store_fname
+msgid "Stored Filename"
+msgstr "Tárolt fájlnév"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_doctype__team_id
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_servicelevel__team_id
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_ticket_tag__team_id
+msgid "Team"
+msgstr "Csapat"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,help:helpdesk_mgmt_hatter.field_helpdesk_document__res_model
+msgid "The database object this attachment will be attached to."
+msgstr "Az adatbázis objektum, amelyhez ez a melléklet kapcsolódik."
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,help:helpdesk_mgmt_hatter.field_helpdesk_document__res_id
+msgid "The record id this is attached to."
+msgstr "Az a rekord azonosító, amelyhez ez a melléklet kapcsolódik."
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_document__ticket_id
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_project_partner_partnerline__ticket_id
+msgid "Ticket"
+msgstr "Eset"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model,name:helpdesk_mgmt_hatter.model_helpdesk_document
+msgid "Ticket Document"
+msgstr "Irat"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_ticket__start_date
+msgid "Ticket arrived"
+msgstr "Érkezett"
+
+#. module: helpdesk_mgmt_hatter
+#: model_terms:ir.ui.view,arch_db:helpdesk_mgmt_hatter.ticket_view_form
+msgid "Ticket arrived on"
+msgstr "Érkezett"
+
+#. module: helpdesk_mgmt_hatter
+#: model_terms:ir.ui.view,arch_db:helpdesk_mgmt_hatter.ticket_view_form
+msgid "Ticket closed on"
+msgstr "Lezárva"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_ticket__trans
+msgid "Transgender"
+msgstr "Transznemű"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_document__doctype_id
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_document__type
+msgid "Type"
+msgstr "Típus"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields.selection,name:helpdesk_mgmt_hatter.selection__helpdesk_ticket__gender__unknown
+#: model:ir.model.fields.selection,name:helpdesk_mgmt_hatter.selection__helpdesk_ticket__settlement__unknown
+#: model:ir.model.fields.selection,name:helpdesk_mgmt_hatter.selection__helpdesk_ticket__sexorient__unknown
+#: model:ir.model.fields.selection,name:helpdesk_mgmt_hatter.selection__helpdesk_ticket__trans__unknown
+msgid "Unknown"
+msgstr "Ismeretlen"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_document__url
+msgid "Url"
+msgstr "URL"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields.selection,name:helpdesk_mgmt_hatter.selection__helpdesk_ticket__trans__trans
+msgid "Yes"
+msgstr "Igen"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,help:helpdesk_mgmt_hatter.field_helpdesk_document__type
+msgid ""
+"You can either upload a file from your computer or copy/paste an internet "
+"link to your file."
+msgstr ""
+"Fel lehet tölteni egy fájlt vagy bemásolni egy a fájlra mutató internetes "
+"linket."

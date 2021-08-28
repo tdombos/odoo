@@ -21,16 +21,14 @@
 
 
 {
-    'name': 'Document Registry',
-    'version': '0.2',
-    'category': 'Tools',
-    'description': 'Registering incoming and outgoing documents',
+    'name': 'Háttér Helpdesk',
+    'version': '0.1',
+    'category': 'Helpdesk',
+    'description': 'Customizations of Helpdesk for Háttér',
     'author': 'Dombos Tamás',
     'website': '',
-    'depends': ['mail','contacts',
-        #'mail_improved_tracking_value'
-        ],
-    'data': ['security/docregister_security.xml', 'security/ir.model.access.csv', 'docregister_view.xml', 'docregister_sequence.xml'],
+    'depends': ['helpdesk_mgmt', 'helpdesk_mgmt_hatter_demogr', 'helpdesk_partner', 'mail_activity_board', 'mail_activity_done'],
+    'data': ['helpdesk_mgmt_hatter_data.xml', 'helpdesk_mgmt_hatter_view.xml', 'security/ir.model.access.csv'], 
     'demo': [],
     'test':[],
     'installable': True,

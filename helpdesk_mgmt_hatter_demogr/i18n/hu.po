@@ -1,0 +1,1454 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* case
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-01-30 15:52+0000\n"
+"PO-Revision-Date: 2021-01-30 17:08+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: hu\n"
+"X-Generator: Poedit 2.4.2\n"
+
+#. module: case
+#: model_terms:ir.ui.view,arch_db:case.view_task_kanban
+msgid "<i class=\"fa fa-comments\" role=\"img\" aria-label=\"Unread Messages\"/>"
+msgstr ""
+"<i class=\"fa fa-comments\" role=\"img\" aria-label=\"Olvasatlan üzenetek\"/>"
+
+#. module: case
+#: model:ir.model.fields.selection,name:case.selection__case_case__settlement__abroad
+msgid "Abroad"
+msgstr "Külföld"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_document__access_token
+msgid "Access Token"
+msgstr "Hozzáférési token"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__access_warning
+msgid "Access warning"
+msgstr "Hozzáférési figyelmeztetés"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__message_needaction
+msgid "Action Needed"
+msgstr "Akció szükséges"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_agecateg__active
+#: model:ir.model.fields,field_description:case.field_case_case__active
+#: model:ir.model.fields,field_description:case.field_case_demogrtag__active
+#: model:ir.model.fields,field_description:case.field_case_doctype__active
+#: model:ir.model.fields,field_description:case.field_case_servicelevel__active
+#: model:ir.model.fields,field_description:case.field_case_tag__active
+msgid "Active"
+msgstr "Aktív"
+
+#. module: case
+#: model:ir.actions.act_window,name:case.action_case_activitytocase
+#: model:ir.model.fields,field_description:case.field_case_case__activity_count
+#: model:ir.model.fields,field_description:case.field_case_case__activity_ids
+#: model_terms:ir.ui.view,arch_db:case.view_case_activity_tree
+#: model_terms:ir.ui.view,arch_db:case.view_case_case_form
+msgid "Activities"
+msgstr "Tevékenységek"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "Tevékenység kivétel formázása"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__activity_state
+msgid "Activity State"
+msgstr "Tevékenység állapota"
+
+#. module: case
+#: model_terms:ir.ui.view,arch_db:case.view_case_document_form
+msgid "Add extra information..."
+msgstr "További információk hozzáadása..."
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__age
+msgid "Age"
+msgstr "Életkor"
+
+#. module: case
+#: model:ir.actions.act_window,name:case.action_case_agecateg
+#: model:ir.ui.menu,name:case.menu_service_configuration_agecategs
+msgid "Age Categories"
+msgstr "Életkor kategóriák"
+
+#. module: case
+#: model:ir.model,name:case.model_case_agecateg
+#: model:ir.model.fields,field_description:case.field_case_case__agecateg_id
+msgid "Age Category"
+msgstr "Életkor kategória"
+
+#. module: case
+#: model:ir.model.fields,help:case.field_case_case__age
+msgid "Age in years"
+msgstr "Életkor években"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__allow_timesheets
+msgid "Allow timesheets"
+msgstr "Időkimutatás engedélyezése"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__analytic_account_active
+msgid "Analytic Account"
+msgstr "Analitikus számla"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__description_anon
+msgid "Anonymized Summary"
+msgstr "Anonim összefoglaló"
+
+#. module: case
+#: model_terms:ir.ui.view,arch_db:case.view_case_case_form
+msgid "Assign to Me"
+msgstr "Hozzám rendelés"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__user_id
+msgid "Assigned to"
+msgstr "Hozzárendelve"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__date_assign
+msgid "Assigning Date"
+msgstr "Hozzárendelés dátuma"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__message_attachment_count
+msgid "Attachment Count"
+msgstr "Mellékletek száma"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_document__local_url
+msgid "Attachment URL"
+msgstr "Melléklet webcíme"
+
+#. module: case
+#: model:ir.model.fields,help:case.field_case_case__attachment_ids
+msgid "Attachment that don't come from message."
+msgstr "Melléklet, ami nem üzenetből jön."
+
+#. module: case
+#: model:ir.model.fields.selection,name:case.selection__case_case__sexorient__bi
+msgid "Bisexual"
+msgstr "Biszexuális"
+
+#. module: case
+#: model:project.task.type,legend_blocked:case.case_stage_closed
+#: model:project.task.type,legend_blocked:case.case_stage_incoming
+#: model:project.task.type,legend_blocked:case.case_stage_open
+msgid "Blokkolva"
+msgstr ""
+
+#. module: case
+#: model:ir.model.fields.selection,name:case.selection__case_case__settlement__budapest
+msgid "Budapest"
+msgstr "Budapest"
+
+#. module: case
+#: model:ir.model,name:case.model_case_case
+#: model:ir.model.fields,field_description:case.field_case_document__case_id
+#: model:ir.model.fields,field_description:case.field_project_partner_partnerline__case_id
+msgid "Case"
+msgstr "Eset"
+
+#. module: case
+#: model:ir.model,name:case.model_case_demogrtag
+msgid "Case Demography Tags"
+msgstr "Eset demográfia cimkék"
+
+#. module: case
+#: model:ir.model,name:case.model_case_document
+msgid "Case Document"
+msgstr "Esetirat"
+
+#. module: case
+#: model:ir.model,name:case.model_case_doctype
+msgid "Case Document Type"
+msgstr "Eset irattípus"
+
+#. module: case
+#: model:ir.model,name:case.model_case_tag
+msgid "Case Tags"
+msgstr "Eset cimkék"
+
+#. module: case
+#: model_terms:ir.ui.view,arch_db:case.view_case_case_tree
+msgid "Case Title"
+msgstr "Eset címe"
+
+#. module: case
+#: model_terms:ir.ui.view,arch_db:case.view_case_case_form
+msgid "Case Title..."
+msgstr "Eset címe..."
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__date_start
+msgid "Case arrived"
+msgstr "Érkezett"
+
+#. module: case
+#: model_terms:ir.ui.view,arch_db:case.view_case_case_form
+msgid "Case arrived on"
+msgstr "Érkezett"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__date_end
+msgid "Case closed"
+msgstr "Lezárva"
+
+#. module: case
+#: model_terms:ir.ui.view,arch_db:case.view_case_case_form
+msgid "Case closed on"
+msgstr "Lezárva"
+
+#. module: case
+#: model:ir.actions.act_window,name:case.action_case_case
+#: model:ir.model.fields,field_description:case.field_case_case__case_ids
+#: model:ir.model.fields,field_description:case.field_project_task__case_ids
+#: model:ir.ui.menu,name:case.menu_service_case
+#: model_terms:ir.ui.view,arch_db:case.view_case_case_search
+#: model_terms:ir.ui.view,arch_db:case.view_case_case_tree
+msgid "Cases"
+msgstr "Esetek"
+
+#. module: case
+#: model_terms:ir.ui.view,arch_db:case.view_case_case_search
+msgid "Cases assigned to me"
+msgstr "Saját eseteim"
+
+#. module: case
+#: model_terms:ir.ui.view,arch_db:case.view_case_case_search
+msgid "Cases not assigned to any user"
+msgstr "Esetek felelős nélkül"
+
+#. module: case
+#: model_terms:ir.ui.view,arch_db:case.view_case_case_search
+msgid "Cases waiting to be dealt with"
+msgstr "Elintézésre várók esetk"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_document__channel_id
+msgid "Channel"
+msgstr "Csatorna"
+
+#. module: case
+#: model:ir.model.fields,help:case.field_res_partner__serviceuser
+#: model:ir.model.fields,help:case.field_res_users__serviceuser
+msgid "Check this box if this contact is user of a service."
+msgstr "Jelölje meg ezt a négyzetet, ha ez a partner egy szolgáltatás ügyfele."
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_document__checksum
+msgid "Checksum/SHA1"
+msgstr "Checksum/SHA1"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__partner_city
+msgid "City"
+msgstr "Város"
+
+#. module: case
+#: model_terms:ir.ui.view,arch_db:case.view_case_case_form
+#: model_terms:ir.ui.view,arch_db:case.view_case_case_search
+#: model:project_partner.role,name:case.case_client
+msgid "Client"
+msgstr "Ügyfél"
+
+#. module: case
+#: model:project.task.type,name:case.case_stage_closed
+msgid "Closed"
+msgstr "Lezárt"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_project_project__code
+msgid "Code"
+msgstr "Kód"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__color
+msgid "Color Index"
+msgstr "Színjegyzék"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__company_id
+#: model:ir.model.fields,field_description:case.field_case_document__company_id
+msgid "Company"
+msgstr "Vállalat"
+
+#. module: case
+#: model:ir.model.fields,help:case.field_case_case__total_hours_spent
+msgid "Computed as: Time Spent + Sub-tasks Hours."
+msgstr "Kiszámítás: eltöltött idő + alfeladatok órái."
+
+#. module: case
+#: model:ir.model.fields,help:case.field_case_case__subtask_planned_hours
+msgid ""
+"Computed using sum of hours planned of all subtasks created from main task. "
+"Usually these hours are less or equal to the Planned Hours (of main task)."
+msgstr ""
+"A fő feladatból létrehozott alfeladatok tervezett órái összegének "
+"felhasználásával kerül kiszámításra. Ezek az órák rendszerint kevesebbek vagy "
+"egyenlőek a fő feladat tervezett óráival."
+
+#. module: case
+#: model:ir.model.fields,help:case.field_case_case__effective_hours
+msgid "Computed using the sum of the task work done."
+msgstr "A feladaton eltöltött idő összegeként számolva."
+
+#. module: case
+#: model:ir.ui.menu,name:case.menu_service_configuration
+msgid "Configuration"
+msgstr "Konfiguráció"
+
+#. module: case
+#: model:ir.model,name:case.model_res_partner
+msgid "Contact"
+msgstr "Kapcsolat"
+
+#. module: case
+#: model_terms:ir.ui.view,arch_db:case.view_case_case_form
+msgid "Content"
+msgstr "Tartalom"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__displayed_image_id
+msgid "Cover Image"
+msgstr "Borítókép"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_agecateg__create_uid
+#: model:ir.model.fields,field_description:case.field_case_case__create_uid
+#: model:ir.model.fields,field_description:case.field_case_demogrtag__create_uid
+#: model:ir.model.fields,field_description:case.field_case_doctype__create_uid
+#: model:ir.model.fields,field_description:case.field_case_document__create_uid
+#: model:ir.model.fields,field_description:case.field_case_servicelevel__create_uid
+#: model:ir.model.fields,field_description:case.field_case_tag__create_uid
+msgid "Created by"
+msgstr "Létrehozta"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_agecateg__create_date
+#: model:ir.model.fields,field_description:case.field_case_case__create_date
+#: model:ir.model.fields,field_description:case.field_case_demogrtag__create_date
+#: model:ir.model.fields,field_description:case.field_case_doctype__create_date
+#: model:ir.model.fields,field_description:case.field_case_document__create_date
+#: model:ir.model.fields,field_description:case.field_case_servicelevel__create_date
+#: model:ir.model.fields,field_description:case.field_case_tag__create_date
+msgid "Created on"
+msgstr "Létrehozva"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__partner_id
+msgid "Customer"
+msgstr "Ügyfél"
+
+#. module: case
+#: model:ir.model.fields,help:case.field_case_case__access_url
+msgid "Customer Portal URL"
+msgstr "Ügyfélportál webcíme"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_document__db_datas
+msgid "Database Data"
+msgstr "Adatbázis adat"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_document__date
+msgid "Date"
+msgstr "Dátum"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__date_deadline_formatted
+msgid "Date Deadline Formatted"
+msgstr "Határitő dátuma formázva"
+
+#. module: case
+#: model:ir.model.fields,help:case.field_case_document__date
+msgid "Date of arrival (for incoming) or date of sending (for outgoing)"
+msgstr "Érkezés dátuma bejövő"
+
+#. module: case
+#: model:ir.model.fields,help:case.field_case_document__date_done
+msgid "Date when the document was created and signed"
+msgstr "Az irat létrehozásának és aláírásának dátuma"
+
+#. module: case
+#: model_terms:ir.ui.view,arch_db:case.view_case_case_form
+msgid "Days"
+msgstr "Nap"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__date_deadline
+msgid "Deadline"
+msgstr "Határidő"
+
+#. module: case
+#: model_terms:ir.ui.view,arch_db:case.view_task_kanban
+msgid "Delete"
+msgstr "Törlés"
+
+#. module: case
+#: model_terms:ir.ui.view,arch_db:case.view_case_case_form
+msgid "Demography"
+msgstr "Demográfia"
+
+#. module: case
+#: model:ir.actions.act_window,name:case.action_case_demogrtag
+#: model:ir.model.fields,field_description:case.field_case_case__demogrtag_ids
+#: model:ir.ui.menu,name:case.menu_service_configuration_demogrtags
+msgid "Demography Tags"
+msgstr "Demográfia cimkék"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__description
+#: model:ir.model.fields,field_description:case.field_case_document__description
+msgid "Description"
+msgstr "Leírás"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_document__direction
+msgid "Direction"
+msgstr "Irány"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_agecateg__display_name
+#: model:ir.model.fields,field_description:case.field_case_case__display_name
+#: model:ir.model.fields,field_description:case.field_case_demogrtag__display_name
+#: model:ir.model.fields,field_description:case.field_case_doctype__display_name
+#: model:ir.model.fields,field_description:case.field_case_document__display_name
+#: model:ir.model.fields,field_description:case.field_case_servicelevel__display_name
+#: model:ir.model.fields,field_description:case.field_case_tag__display_name
+msgid "Display Name"
+msgstr "Megjelenített név"
+
+#. module: case
+#: model:ir.model.fields,help:case.field_case_case__progress
+msgid "Display progress of current task."
+msgstr "Jelenlegi feladat előrehaladásának mutatása."
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_document__doc_id
+#: model_terms:ir.ui.view,arch_db:case.view_case_document_form
+msgid "Document"
+msgstr "Dokumentum"
+
+#. module: case
+#: model:ir.actions.act_window,name:case.action_case_doctype
+#: model:ir.ui.menu,name:case.menu_service_configuration_doctypes
+msgid "Document Types"
+msgstr "Dokumentumtípusok"
+
+#. module: case
+#: model:ir.model.fields,help:case.field_case_document__document_id
+msgid "Document-related data of the case document"
+msgstr "Az irat dokumentumhoz kapcsolódó adatai"
+
+#. module: case
+#: model:ir.actions.act_window,name:case.action_case_document_tree
+#: model:ir.actions.act_window,name:case.action_case_documenttocase
+#: model_terms:ir.ui.view,arch_db:case.view_case_case_form
+#: model_terms:ir.ui.view,arch_db:case.view_case_document_tree
+msgid "Documents"
+msgstr "Iratok"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_document__date_done
+msgid "Done Date"
+msgstr "Kelt"
+
+#. module: case
+#: model_terms:ir.ui.view,arch_db:case.view_task_kanban
+msgid "Dropdown menu"
+msgstr "Lenyíló lista"
+
+#. module: case
+#: model_terms:ir.ui.view,arch_db:case.view_task_kanban
+msgid "Edit Task"
+msgstr "Feladat szerkesztése"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__email_from
+msgid "Email"
+msgstr "E-mail"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__email_cc
+msgid "Email cc"
+msgstr "E-mail CC"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__externalref
+msgid "External References"
+msgstr "Külső hivatkozási számok"
+
+#. module: case
+#: model_terms:ir.ui.view,arch_db:case.view_case_case_form
+msgid "Extra Info"
+msgstr "Extra információ"
+
+#. module: case
+#: model:ir.model.fields.selection,name:case.selection__case_case__gender__female
+msgid "Female"
+msgstr "Nő"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_document__datas
+msgid "File Content"
+msgstr "Fájltartalom"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_document__file_size
+msgid "File Size"
+msgstr "A fájl mérete"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__message_follower_ids
+msgid "Followers"
+msgstr "Követők"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__message_channel_ids
+msgid "Followers (Channels)"
+msgstr "Követők (Csatornák)"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Követők (Partnerek)"
+
+#. module: case
+#: model:project.task.type,legend_normal:case.case_stage_closed
+#: model:project.task.type,legend_normal:case.case_stage_incoming
+#: model:project.task.type,legend_normal:case.case_stage_open
+msgid "Folyamatban"
+msgstr ""
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__gender
+msgid "Gender"
+msgstr "Neme"
+
+#. module: case
+#: model:ir.model.fields,help:case.field_case_case__sequence
+msgid "Gives the sequence order when displaying a list of tasks."
+msgstr "Megadja a feladatok listázási sorrendjét."
+
+#. module: case
+#: model:ir.model.fields,help:case.field_case_servicelevel__sequence
+msgid "Gives the sequence order when displaying service levels."
+msgstr "Megadja a szolgáltatási szintek listázási sorrendjét."
+
+#. module: case
+#: model_terms:ir.ui.view,arch_db:case.view_task_kanban
+msgid "Happy face"
+msgstr "Boldog arc"
+
+#. module: case
+#: model:ir.model.fields.selection,name:case.selection__case_document__direction__local
+msgid "Helyi"
+msgstr ""
+
+#. module: case
+#: model:ir.model.fields.selection,name:case.selection__case_case__sexorient__hetero
+msgid "Heterosexual"
+msgstr "Heteroszexuális"
+
+#. module: case
+#: model:ir.model.fields.selection,name:case.selection__case_case__sexorient__homo
+msgid "Homosexual"
+msgstr "Homoszexuális"
+
+#. module: case
+#: model_terms:ir.ui.view,arch_db:case.view_case_case_form
+msgid "Hours"
+msgstr "Órák"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__effective_hours
+msgid "Hours Spent"
+msgstr "Eltöltött órák"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_agecateg__id
+#: model:ir.model.fields,field_description:case.field_case_case__id
+#: model:ir.model.fields,field_description:case.field_case_demogrtag__id
+#: model:ir.model.fields,field_description:case.field_case_doctype__id
+#: model:ir.model.fields,field_description:case.field_case_document__id
+#: model:ir.model.fields,field_description:case.field_case_servicelevel__id
+#: model:ir.model.fields,field_description:case.field_case_tag__id
+msgid "ID"
+msgstr "Azonosító"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__activity_exception_icon
+msgid "Icon"
+msgstr "Ikon"
+
+#. module: case
+#: model:ir.model.fields,help:case.field_case_case__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "Tevékenység kivételt jelölő ikon."
+
+#. module: case
+#: model:ir.model.fields,help:case.field_case_case__message_needaction
+#: model:ir.model.fields,help:case.field_case_case__message_unread
+msgid "If checked, new messages require your attention."
+msgstr "Ha be van jelölve, akkor az új üzenetek figyelmet igényelnek."
+
+#. module: case
+#: model:ir.model.fields,help:case.field_case_case__message_has_error
+#: model:ir.model.fields,help:case.field_case_case__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "Ha be van jelölve, akkor néhány üzenetnél kézbesítési hiba lépett fel."
+
+#. module: case
+#: model:ir.model.fields,help:case.field_case_case__analytic_account_active
+msgid ""
+"If the active field is set to False, it will allow you to hide the account "
+"without removing it."
+msgstr ""
+"Ha az aktív mező hamisra van állítva, azzal elrejtheti a számlát, anélkül, "
+"hogy törölné azt."
+
+#. module: case
+#: model:ir.model.fields,help:case.field_case_agecateg__active
+#: model:ir.model.fields,help:case.field_case_demogrtag__active
+msgid ""
+"If the active field is set to False, it will allow you to hide the demography "
+"tag without removing it."
+msgstr ""
+"Ha az aktív mező hamisra van állítva, azzal elrejtheti a demográfia címkét, "
+"anélkül, hogy törölné azt."
+
+#. module: case
+#: model:ir.model.fields,help:case.field_case_servicelevel__active
+msgid ""
+"If the active field is set to False, it will allow you to hide the service "
+"level without removing it."
+msgstr ""
+"Ha az aktív mező hamisra van állítva, azzal elrejtheti a szolgáltatási "
+"szintet, anélkül, hogy törölné azt."
+
+#. module: case
+#: model:ir.model.fields,help:case.field_case_doctype__active
+#: model:ir.model.fields,help:case.field_case_tag__active
+msgid ""
+"If the active field is set to False, it will allow you to hide the tag without "
+"removing it."
+msgstr ""
+"Ha az aktív mező hamisra van állítva, azzal elrejtheti a címkét, anélkül, hogy "
+"törölné azt."
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_document__image_height
+msgid "Image Height"
+msgstr "Kép magassága"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_document__image_src
+msgid "Image Src"
+msgstr "Kép forrása"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_document__image_width
+msgid "Image Width"
+msgstr "Kép szélessége"
+
+#. module: case
+#: model:ir.model.fields.selection,name:case.selection__case_document__direction__in
+#: model:project.task.type,name:case.case_stage_incoming
+msgid "Incoming"
+msgstr "Bejövő"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_document__index_content
+msgid "Indexed Content"
+msgstr "Indexált tartalom"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__message_is_follower
+msgid "Is Follower"
+msgstr "Követő"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_document__public
+msgid "Is public document"
+msgstr "Nyilvános dokumentum"
+
+#. module: case
+#: model:ir.model.fields,help:case.field_case_case__planned_hours
+msgid ""
+"It is the time planned to achieve the task. If this document has sub-tasks, it "
+"means the time needed to achieve this tasks and its childs."
+msgstr ""
+"Ez a feladat elvégzésének tervezett idejét jelzi. Ha ez a dokumentum "
+"alfeladatokkal rendelkezik, akkor ez a feladat és az alfeladatai elvégzéséhez "
+"szükséges időt jelenti."
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__legend_blocked
+msgid "Kanban Blocked Explanation"
+msgstr "Kanban szakasz blokkolásának magyarázata"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__legend_normal
+msgid "Kanban Ongoing Explanation"
+msgstr "Kanban szakaszból való továbbhaladás magyarázata"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__kanban_state
+msgid "Kanban State"
+msgstr "Kanban állapot"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__kanban_state_label
+msgid "Kanban State Label"
+msgstr "Kanba nállapot címkéje"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__legend_done
+msgid "Kanban Valid Explanation"
+msgstr "Kanban érvényes magyarázat"
+
+#. module: case
+#: model:project.task.type,legend_done:case.case_stage_closed
+#: model:project.task.type,legend_done:case.case_stage_incoming
+#: model:project.task.type,legend_done:case.case_stage_open
+msgid "Készen áll a következő szakaszra"
+msgstr ""
+
+#. module: case
+#: model:ir.model.fields.selection,name:case.selection__case_case__settlement__city
+msgid "Large City"
+msgstr "Nagyváros"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_agecateg____last_update
+#: model:ir.model.fields,field_description:case.field_case_case____last_update
+#: model:ir.model.fields,field_description:case.field_case_demogrtag____last_update
+#: model:ir.model.fields,field_description:case.field_case_doctype____last_update
+#: model:ir.model.fields,field_description:case.field_case_document____last_update
+#: model:ir.model.fields,field_description:case.field_case_servicelevel____last_update
+#: model:ir.model.fields,field_description:case.field_case_tag____last_update
+msgid "Last Modified on"
+msgstr "Legutóbb frissítve"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__date_last_stage_update
+msgid "Last Stage Update"
+msgstr "Szakasz legutóbb frissítve"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_agecateg__write_uid
+#: model:ir.model.fields,field_description:case.field_case_case__write_uid
+#: model:ir.model.fields,field_description:case.field_case_demogrtag__write_uid
+#: model:ir.model.fields,field_description:case.field_case_doctype__write_uid
+#: model:ir.model.fields,field_description:case.field_case_document__write_uid
+#: model:ir.model.fields,field_description:case.field_case_servicelevel__write_uid
+#: model:ir.model.fields,field_description:case.field_case_tag__write_uid
+msgid "Last Updated by"
+msgstr "Frissítette"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_agecateg__write_date
+#: model:ir.model.fields,field_description:case.field_case_case__write_date
+#: model:ir.model.fields,field_description:case.field_case_demogrtag__write_date
+#: model:ir.model.fields,field_description:case.field_case_doctype__write_date
+#: model:ir.model.fields,field_description:case.field_case_document__write_date
+#: model:ir.model.fields,field_description:case.field_case_servicelevel__write_date
+#: model:ir.model.fields,field_description:case.field_case_tag__write_date
+msgid "Last Updated on"
+msgstr "Frissítve"
+
+#. module: case
+#: model_terms:ir.ui.view,arch_db:case.view_task_kanban
+msgid "Latest Rating: Higly Dissatisfied"
+msgstr "Legutóbbi értékelés: Nagyon elégedetlen"
+
+#. module: case
+#: model_terms:ir.ui.view,arch_db:case.view_task_kanban
+msgid "Latest Rating: Not Satisfied"
+msgstr "Legutóbbi értékelés: Nem elégedett"
+
+#. module: case
+#: model_terms:ir.ui.view,arch_db:case.view_task_kanban
+msgid "Latest Rating: Satisfied"
+msgstr "Legutóbbi értékelés: Elégedett"
+
+#. module: case
+#: model:ir.model.fields,help:case.field_case_case__email_cc
+msgid "List of cc from incoming emails."
+msgstr "CC címzettek a bejövő emailből."
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__message_main_attachment_id
+msgid "Main Attachment"
+msgstr "Fő melléklet"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__attachment_ids
+msgid "Main Attachments"
+msgstr "Fő mellékletek"
+
+#. module: case
+#: model:ir.model.fields.selection,name:case.selection__case_case__gender__male
+msgid "Male"
+msgstr "Férfi"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__message_has_error
+msgid "Message Delivery error"
+msgstr "Üzenetkézbesítési hiba"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__message_ids
+msgid "Messages"
+msgstr "Üzenetek"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_document__mimetype
+msgid "Mime Type"
+msgstr "MIME típus"
+
+#. module: case
+#: model_terms:ir.ui.view,arch_db:case.view_case_case_search
+msgid "My cases"
+msgstr "Saját"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_agecateg__name
+#: model:ir.model.fields,field_description:case.field_case_demogrtag__name
+#: model:ir.model.fields,field_description:case.field_case_doctype__name
+#: model:ir.model.fields,field_description:case.field_case_document__name
+#: model:ir.model.fields,field_description:case.field_case_servicelevel__name
+#: model:ir.model.fields,field_description:case.field_case_tag__name
+#: model_terms:ir.ui.view,arch_db:case.view_case_case_search
+msgid "Name"
+msgstr "Név"
+
+#. module: case
+#: model:ir.model.constraint,message:case.constraint_case_doctype_name
+msgid "Name for Case Document Type has to be unique"
+msgstr "Az esetdokumentum nevének egyedinek kell lennie"
+
+#. module: case
+#: model:ir.model.constraint,message:case.constraint_case_servicelevel_name
+msgid "Name for Service Level has to be unique"
+msgstr "A szolgáltatási szint nevének egyedinek kell lennie"
+
+#. module: case
+#: model:ir.model.constraint,message:case.constraint_case_tag_name
+msgid "Name for Tag has to be unique"
+msgstr "A címke nevének egyedinek kell lennie"
+
+#. module: case
+#: model:ir.model.constraint,message:case.constraint_case_agecateg_name
+msgid "Name for age category has to be unique"
+msgstr "Az életkor kategória nevének egyedinek kell lennie"
+
+#. module: case
+#: model:ir.model.constraint,message:case.constraint_case_demogrtag_name
+msgid "Name for demography tag has to be unique"
+msgstr "A demográfia címke nevének egyedinek kell lennie"
+
+#. module: case
+#: model_terms:ir.ui.view,arch_db:case.view_task_kanban
+msgid "Neutral face"
+msgstr "Semleges arc"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "Következő tevékenység határideje"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__activity_summary
+msgid "Next Activity Summary"
+msgstr "Következő tevékenység összegzés"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__activity_type_id
+msgid "Next Activity Type"
+msgstr "Következő tevékenység típusa"
+
+#. module: case
+#: model:ir.model.fields.selection,name:case.selection__case_case__trans__nottrans
+msgid "No"
+msgstr "Nem"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Akciók száma"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__doc_count
+msgid "Number of documents attached"
+msgstr "Mellékelt dokumentumok száma"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__message_has_error_counter
+msgid "Number of errors"
+msgstr "Hibák száma"
+
+#. module: case
+#: model:ir.model.fields,help:case.field_case_case__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr "Üzenetek száma, melyek akciót igényelnek"
+
+#. module: case
+#: model:ir.model.fields,help:case.field_case_case__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Kézbesítési hibával rendelkező üzenetek száma"
+
+#. module: case
+#: model:ir.model.fields,help:case.field_case_case__message_unread_counter
+msgid "Number of unread messages"
+msgstr "Olvasatlan üzenetek száma"
+
+#. module: case
+#: model_terms:ir.ui.view,arch_db:case.view_case_case_search
+#: model:project.task.type,name:case.case_stage_open
+msgid "Open"
+msgstr "Nyitva"
+
+#. module: case
+#: model:ir.model.fields.selection,name:case.selection__case_case__gender__other
+msgid "Other"
+msgstr "Egyéb"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_document__partner_ids
+msgid "Other partner(s)"
+msgstr "További partner(ek)"
+
+#. module: case
+#: model:ir.model.fields.selection,name:case.selection__case_document__direction__out
+msgid "Outgoing"
+msgstr "Kimenő"
+
+#. module: case
+#: model:ir.model.fields,help:case.field_case_case__legend_blocked
+msgid ""
+"Override the default value displayed for the blocked state for kanban "
+"selection, when the task or issue is in that stage."
+msgstr ""
+"A kanban kiválasztás blokkolt állapota számára kijelzett alapértelmezett érték "
+"felülírása, amikor a feladat ebben a szakaszban van."
+
+#. module: case
+#: model:ir.model.fields,help:case.field_case_case__legend_done
+msgid ""
+"Override the default value displayed for the done state for kanban selection, "
+"when the task or issue is in that stage."
+msgstr ""
+"A kanban kiválasztás kész állapota számára kijelzett alapértelmezett érték "
+"felülírása, amikor a feladat ebben a szakaszban van."
+
+#. module: case
+#: model:ir.model.fields,help:case.field_case_case__legend_normal
+msgid ""
+"Override the default value displayed for the normal state for kanban "
+"selection, when the task or issue is in that stage."
+msgstr ""
+"A kanban kiválasztás normál állapota számára kijelzett alapértelmezett érték "
+"felülírása, amikor a feladat ebben a szakaszban van."
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_tag__parent_id
+msgid "Parent"
+msgstr "Szülő"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__parent_id
+msgid "Parent Task"
+msgstr "Szülő feladat"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_tag__parent_left
+msgid "Parent left"
+msgstr "Szülő bal"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_tag__parent_right
+msgid "Parent right"
+msgstr "Szülő jobb"
+
+#. module: case
+#: model:ir.model,name:case.model_project_partner_partnerline
+#: model:ir.model.fields,field_description:case.field_case_document__partner_id
+msgid "Partner"
+msgstr "Partner"
+
+#. module: case
+#: model:ir.actions.act_window,name:case.action_case_role
+#: model:ir.ui.menu,name:case.menu_service_configuration_roles
+msgid "Partner Roles"
+msgstr "Partner szerepek"
+
+#. module: case
+#: model:ir.actions.act_window,name:case.action_case_partnertocase
+#: model:ir.model.fields,field_description:case.field_case_case__partner_count
+#: model:ir.model.fields,field_description:case.field_case_case__partnerline_ids
+#: model_terms:ir.ui.view,arch_db:case.view_case_case_form
+msgid "Partners"
+msgstr "Partnerek"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__planned_hours
+msgid "Planned Hours"
+msgstr "Tervezett órák"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__access_url
+msgid "Portal Access URL"
+msgstr "Portálelérés URL"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__priority
+msgid "Priority"
+msgstr "Prioritás"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__progress
+msgid "Progress"
+msgstr "Előrehaladás"
+
+#. module: case
+#: model:ir.model,name:case.model_project_project
+#: model:ir.model.fields,field_description:case.field_case_case__project_id
+msgid "Project"
+msgstr "Projekt"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__manager_id
+msgid "Project Manager"
+msgstr "Projektmenedzser"
+
+#. module: case
+#: model:ir.model.fields,help:case.field_project_project__service
+msgid "Project containing service provision and case management."
+msgstr "Szolgáltatásnyújtást és esetkezelést tartalmazó projekt."
+
+#. module: case
+#: model:ir.model.fields,help:case.field_case_case__subtask_project_id
+msgid ""
+"Project in which sub-tasks of the current project will be created. It can be "
+"the current project itself."
+msgstr ""
+"A projekt, amelyhez a jelen projekt feladatainak alfeladatai tartozni fognak. "
+"Lehet a jelen projekt is."
+
+#. module: case
+#: model:ir.model.fields.selection,name:case.selection__case_case__sexorient__quest
+msgid "Questioning"
+msgstr "Bizonytalan"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__rating_ids
+#: model_terms:ir.ui.view,arch_db:case.view_case_case_form
+msgid "Rating"
+msgstr "Értékelés"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__rating_avg
+msgid "Rating Average"
+msgstr "Értékelés átlaga"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__rating_last_feedback
+msgid "Rating Last Feedback"
+msgstr "Legutóbbi értékelés visszajelzés"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__rating_last_image
+msgid "Rating Last Image"
+msgstr "Legutóbbi értékelés kép"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__rating_last_value
+msgid "Rating Last Value"
+msgstr "Legutóbbi értékelés érték"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__rating_count
+msgid "Rating count"
+msgstr "Értékelések száma"
+
+#. module: case
+#: model:ir.model.fields,help:case.field_case_case__rating_last_feedback
+msgid "Reason of the rating"
+msgstr "Az értékelés oka"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_document__document_id
+msgid "Related Document"
+msgstr "Kapcsolódó dokumentum"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__task_id
+msgid "Related Task"
+msgstr "Kapcsolódó feladat"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__remaining_hours
+msgid "Remaining Hours"
+msgstr "Fennmaradó órák"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_document__res_field
+msgid "Resource Field"
+msgstr "Erőforrásmező"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_document__res_id
+msgid "Resource ID"
+msgstr "Erőforrás azonosítója"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_document__res_model
+msgid "Resource Model"
+msgstr "Erőforrás modell"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_document__res_name
+msgid "Resource Name"
+msgstr "Erőforrás neve"
+
+#. module: case
+#: model_terms:ir.ui.view,arch_db:case.view_case_case_form
+msgid "Responsible"
+msgstr "Felelős"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__activity_user_id
+msgid "Responsible User"
+msgstr "Felelős felhasználó"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "SMS kézbesítési hiba"
+
+#. module: case
+#: model_terms:ir.ui.view,arch_db:case.view_task_kanban
+msgid "Sad face"
+msgstr "Szomorú arc"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__access_token
+msgid "Security Token"
+msgstr "Biztonsági token"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__sequence
+#: model:ir.model.fields,field_description:case.field_case_servicelevel__sequence
+msgid "Sequence"
+msgstr "Sorszám"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_doctype__project_id
+#: model:ir.model.fields,field_description:case.field_case_servicelevel__project_id
+#: model:ir.model.fields,field_description:case.field_case_tag__project_id
+#: model:ir.model.fields,field_description:case.field_project_project__service
+#: model_terms:ir.ui.view,arch_db:case.view_case_case_form
+#: model_terms:ir.ui.view,arch_db:case.view_case_case_tree
+msgid "Service"
+msgstr "Szolgáltatás"
+
+#. module: case
+#: model:ir.ui.menu,name:case.menu_service_configuration_servicelevels
+msgid "Service Levels"
+msgstr "Szolgáltatási szintek"
+
+#. module: case
+#: model:ir.model,name:case.model_case_servicelevel
+#: model:ir.model.fields,field_description:case.field_case_case__servicelevel_ids
+msgid "Service level"
+msgstr "Szolgáltatási szint"
+
+#. module: case
+#: model:ir.actions.act_window,name:case.action_case_servicelevel
+msgid "Service levels"
+msgstr "Szolgáltatási szintek"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_res_partner__serviceuser
+#: model:ir.model.fields,field_description:case.field_res_users__serviceuser
+msgid "Service user"
+msgstr "Szolgáltatás ügyfél"
+
+#. module: case
+#: model:ir.ui.menu,name:case.menu_service
+msgid "Services"
+msgstr "Szolgáltatások"
+
+#. module: case
+#: model_terms:ir.ui.view,arch_db:case.view_task_kanban
+msgid "Set Cover Image"
+msgstr "Borítókép beállítása"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__settlement
+msgid "Settlement"
+msgstr "Lakóhely"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__sexorient
+msgid "Sexual Orientation"
+msgstr "Szexuális irányultság"
+
+#. module: case
+#: model_terms:ir.ui.view,arch_db:case.view_case_case_form
+#: model_terms:ir.ui.view,arch_db:case.view_task_kanban
+msgid "Share"
+msgstr "Megosztás"
+
+#. module: case
+#: model:ir.model.fields.selection,name:case.selection__case_case__settlement__town
+msgid "Smaller settlement"
+msgstr "Kistelepülés"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__stage_id
+msgid "Stage"
+msgstr "Szakasz"
+
+#. module: case
+#: model_terms:ir.ui.view,arch_db:case.view_case_case_tree
+msgid "State"
+msgstr "Állapot"
+
+#. module: case
+#: model:ir.model.fields,help:case.field_case_case__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+"Tevékenységeken alapuló állapot\n"
+"Lejárt: A tevékenység határideje lejárt\n"
+"Ma: A határidő ma van\n"
+"Tervezett: Jövőbeli határidő."
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_document__store_fname
+msgid "Stored Filename"
+msgstr "Tárolt fájlnév"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__subtask_project_id
+msgid "Sub-task Project"
+msgstr "Alfeladat projekt"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__subtask_count
+msgid "Sub-task count"
+msgstr "Alfeladatok száma"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__child_ids
+msgid "Sub-tasks"
+msgstr "Alfeladatok"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__subtask_effective_hours
+msgid "Sub-tasks Hours Spent"
+msgstr "Alfeladatokon eltöltött órák"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__subtask_planned_hours
+msgid "Subtasks"
+msgstr "Alfeladatok"
+
+#. module: case
+#: model:ir.model.fields,help:case.field_case_case__subtask_effective_hours
+msgid "Sum of actually spent hours on the subtask(s)"
+msgstr "Az alfeladat(ok)on ténylegesen eltöltött órák összege"
+
+#. module: case
+#: model:ir.actions.act_window,name:case.action_case_tag
+#: model:ir.model.fields,field_description:case.field_case_case__casetag_ids
+#: model:ir.model.fields,field_description:case.field_case_case__tag_ids
+#: model:ir.ui.menu,name:case.menu_service_configuration_tags
+#: model_terms:ir.ui.view,arch_db:case.view_case_case_search
+msgid "Tags"
+msgstr "Címkék"
+
+#. module: case
+#: model:ir.model,name:case.model_project_task
+#: model_terms:ir.ui.view,arch_db:case.view_case_case_form
+msgid "Task"
+msgstr "Feladat"
+
+#. module: case
+#: model:ir.model.fields,help:case.field_case_case__task_id
+msgid "Task-related data of the case"
+msgstr "Az eset feladathoz kötődő adatai"
+
+#. module: case
+#: model:ir.model.fields,help:case.field_case_document__res_model
+msgid "The database object this attachment will be attached to."
+msgstr ""
+"Az adatbázis-objektum, amelyhez ez a csatolmány hozzáfűzésre fog kerülni."
+
+#. module: case
+#: model:ir.model.fields,help:case.field_case_document__res_id
+msgid "The record id this is attached to."
+msgstr "A rekord azonosító, amelyhez kapcsolódik."
+
+#. module: case
+#: model:ir.model.fields,help:case.field_case_case__email_from
+msgid "These people will receive email."
+msgstr "Ezek az emberek fognak e-mailt kapni."
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__timesheet_ids
+msgid "Timesheets"
+msgstr "Időkimutatások"
+
+#. module: case
+#: model:ir.model.fields,help:case.field_case_case__allow_timesheets
+msgid "Timesheets can be logged on this task."
+msgstr "Lehet időkimutatásokat rögzítene ehhez a feladathoz."
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__name
+#: model:ir.model.fields,field_description:case.field_case_case__title
+msgid "Title"
+msgstr "Név"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__total_hours_spent
+msgid "Total Hours"
+msgstr "Összes óra"
+
+#. module: case
+#: model:ir.model.fields,help:case.field_case_case__remaining_hours
+msgid ""
+"Total remaining time, can be re-estimated periodically by the assignee of the "
+"task."
+msgstr "Összes fennmaradó óra, a feladat felelőse időközönként újrabecsülheti."
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__trans
+msgid "Transgender"
+msgstr "Transznemű"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_document__doctype_id
+#: model:ir.model.fields,field_description:case.field_case_document__type
+msgid "Type"
+msgstr "Típus"
+
+#. module: case
+#: model:ir.model.fields,help:case.field_case_case__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "A rekordon szereplő tevékenység kivétel típusa."
+
+#. module: case
+#: model_terms:ir.ui.view,arch_db:case.view_case_case_search
+msgid "Unassigned"
+msgstr "Nem hozzárendelt"
+
+#. module: case
+#: model:case.agecateg,name:case.case_agecateg_unknown
+#: model:ir.model.fields.selection,name:case.selection__case_case__gender__unknown
+#: model:ir.model.fields.selection,name:case.selection__case_case__settlement__unknown
+#: model:ir.model.fields.selection,name:case.selection__case_case__sexorient__unknown
+#: model:ir.model.fields.selection,name:case.selection__case_case__trans__unknown
+msgid "Unknown"
+msgstr "Ismeretlen"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__message_unread
+#: model_terms:ir.ui.view,arch_db:case.view_task_kanban
+msgid "Unread Messages"
+msgstr "Olvasatlan üzenetek"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr "Olvasatlan üzenetek száma"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_document__url
+msgid "Url"
+msgstr "URL"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__user_email
+msgid "User Email"
+msgstr "Felhasználó e-mail"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__website_message_ids
+msgid "Website Messages"
+msgstr "Weboldali üzenetek"
+
+#. module: case
+#: model:ir.model.fields,help:case.field_case_case__website_message_ids
+msgid "Website communication history"
+msgstr "Weboldali kommunikációs előzmények"
+
+#. module: case
+#: model_terms:ir.ui.view,arch_db:case.view_case_case_form
+msgid "Working Time to Assign"
+msgstr "Munkaidő a hozzárendelésig"
+
+#. module: case
+#: model_terms:ir.ui.view,arch_db:case.view_case_case_form
+msgid "Working Time to Close"
+msgstr "Munkaidő a lezárásig"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__working_days_open
+msgid "Working days to assign"
+msgstr "Munkanapok a hozzárendelésig"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__working_days_close
+msgid "Working days to close"
+msgstr "Munkanapok a lezárásig"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__working_hours_open
+msgid "Working hours to assign"
+msgstr "Munkaórák a hozzárendelésig"
+
+#. module: case
+#: model:ir.model.fields,field_description:case.field_case_case__working_hours_close
+msgid "Working hours to close"
+msgstr "Munkaórák a lezárásig"
+
+#. module: case
+#: model:ir.model.fields.selection,name:case.selection__case_case__trans__trans
+msgid "Yes"
+msgstr "Igen"
+
+#. module: case
+#: model:ir.model.fields,help:case.field_case_document__type
+msgid ""
+"You can either upload a file from your computer or copy/paste an internet link "
+"to your file."
+msgstr ""
+"Feltölthet egy fájlt a számítógépéről, vagy másolhat/beilleszthet egy, a "
+"fájlra mutató internetes hivatkozást."

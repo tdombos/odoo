@@ -1,0 +1,291 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+<!--         <record id="action_case_view_task" model="ir.actions.act_window">
+            <field name="name">Tasks</field>
+            <field name="res_model">project.task</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="search_view_id" ref="project.view_task_search_form"/>
+            <field name="domain">[('project_id','=',[project_id])]</field>
+            <field name="help" type="html">
+                <p>
+                    Odoo's project management allows you to manage the pipeline
+                    of tasks in order to get things done efficiently. You can
+                    track progress, discuss on tasks, attach documents, etc.
+                </p>
+            </field>
+        </record>-->
+        <record model="ir.actions.act_window" id="action_helpdesk_documenttoticket">
+            <field name="name">Documents</field>
+            <field name="res_model">helpdesk.document</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('ticket_id','in',[active_id])]</field>
+        </record> 
+		
+		<record model="ir.actions.act_window" id="action_helpdesk_activitytoticket">
+            <field name="name">Activities</field>
+            <field name="res_model">mail.activity</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('res_id','=',[active_id])]</field>
+			<field name="context">{'active_test': False}</field>
+        </record>
+		<!-- Ticket Partners Button Action -->
+        <record model="ir.actions.act_window" id="action_helpdesk_partnertoticket">
+            <field name="name">Partners</field>
+            <field name="res_model">project_partner.partnerline</field>
+            <field name="view_mode">tree</field>
+            <field name="domain">[('ticket_id','in',[active_id])]</field>
+        </record>
+		
+<!-- 		<record id="quick_create_case_form" model="ir.ui.view">
+            <field name="name">case.case.form.quick_create</field>
+            <field name="model">case.case</field>
+            <field name="priority">1000</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="name" string = "Case Title"/>
+						<field name="date_start" string="Case arrived on" required="1" />
+                        <field name="user_id" options="{'no_open': True,'no_create': True}"/>
+                        <field name="parent_id" invisible="1"/>
+                    </group>
+                </form>
+            </field>
+        </record> -->
+        <!-- Ticket Form View -->
+        <record id="ticket_view_form" model="ir.ui.view">
+            <field name="name">helpdesk.ticket.view.form</field>
+            <field name="model">helpdesk.ticket</field>
+            <field name="inherit_id" ref="helpdesk_mgmt.ticket_view_form"/>
+            <field name="arch" type="xml">
+                <div name="button_box" position="inside">
+                    <button  class="oe_inline oe_stat_button" name="%(helpdesk_partner.action_helpdesk_partner_partnertoticket)d"  type="action" icon="fa-users" context="{'default_ticket_id': id,'ticket_id': id,'search_default_active':1}">
+                        <field string="Partners" name="partner_count" widget="statinfo"/> 
+                    </button>
+                    <button  class="oe_inline oe_stat_button" name="%(action_helpdesk_activitytoticket)d"  type="action" icon="fa-list-ul">
+                        <field string="Activities" name="activity_count" widget="statinfo"/>
+                    </button>
+                    <button  class="oe_inline oe_stat_button" name="%(action_helpdesk_documenttoticket)d"  type="action" icon="fa-file-text-o" context="{'default_ticket_id': id,'default_res_id': id,'default_res_model': 'helpdesk.ticket','search_default_active':1}">
+                        <field string="Documents" name="doc_count" widget="statinfo"/>
+                    </button>
+                </div>
+                <field name="priority" position="after">
+                    <field name="start_date" string="Ticket arrived on" widget="date" required="1" />
+                    <field name="closed_date" string="Ticket closed on" widget="date" />
+                </field>
+                <group name="main" position="after">
+                    <field name="description" widget="html" position="move"/>
+                </group>
+                <page name="description" position="before">
+                    <page string="Content">
+                        <group >
+                            <field name="tag_ids" widget="many2many_tags" domain="[('team_id', '=', team_id)]" context="{'default_team_id': team_id}" position="move"/>
+                            <field name="externalref" />
+                            <field name="description_anon" />
+                            <field name="servicelevel_ids" widget="many2many_checkboxes" domain="[('team_id', '=', team_id)]"/>
+                        </group>
+                    </page>
+                    <page string="Demography">
+                        <group >
+                            <group>
+                                <field name="gender" />
+                                <field name="trans" />
+                                <field name="sexorient" />
+                                <field name="settlement" />
+                            </group>
+                            <group>
+                                <field name="age" />
+                                <field name="agecateg_id" options="{'no_open': True}"/>
+                                <field name="demogrtag_ids" widget="many2many_tags"/>
+                            </group>
+                        </group>
+                    </page>
+                </page>
+                <field
+                            name="tag_ids"
+                            widget="many2many_tags"
+                            options="{'no_create_edit': True}"
+                            position="replace"
+                        />
+                <page name="description" position="replace">
+                </page>
+                <xpath expr="//page[@name='other_info']/group/field[@name='closed_date']" position="replace">
+                    
+                </xpath>
+                <xpath expr="//page[@name='other_info']/group" >
+                    
+                        <field name="partner_name" position="move"/>
+                        <field name="partner_email" position="move"/>
+                        <field name="category_id" position="move"/>
+                        <field name="create_date" readonly="1" position="move"/>
+                        <field name="channel_id" position="move"/>
+                    
+                </xpath>
+            </field>
+        </record>
+        <record id="view_helpdesk_team_form" model="ir.ui.view">
+			<field name="name">view.helpdesk_team.form</field>
+			<field name="model">helpdesk.ticket.team</field>
+			<field name="inherit_id" ref="helpdesk_mgmt.view_helpdesk_team_form"/>
+			<field name="arch" type="xml">
+				<field name="active" invisible="1" position="after">
+					<field name="code"  />
+				</field>
+
+			</field>
+		</record>
+        <!-- Case Tree  -->
+<!--         <record model="ir.ui.view" id="view_case_case_tree">
+            <field name="name">case.case.tree</field>
+            <field name="model">case.case</field>
+            <field name="field_parent"></field>
+            <field name="arch" type="xml">
+                <tree string="Cases">
+                    <field name="team_id" string="Service"/>
+                    <field name="name" string="Case Title"/>
+					<field name="partner_id"/>
+					<field name="user_id" />
+                    <field name="stage_id" string="State"/>
+                </tree>
+            </field>
+        </record> -->
+		
+		<!-- Activity Tree  -->
+        <record model="ir.ui.view" id="view_ticket_activity_tree">
+            <field name="name">ticket.activity.tree</field>
+            <field name="model">mail.activity</field>
+            <field name="field_parent"></field>
+            <field name="arch" type="xml">
+                <tree string="Activities">
+					<field name="summary" />
+					<field name="user_id" />
+					<!--<field name="partner_id" /> -->
+					<field name="activity_type_id" />
+					<field name="date_deadline" />
+					<field name="state" />
+                    <field name="done" />
+                </tree>
+            </field>
+        </record>
+        
+        <!-- Document Tree  -->
+        <record model="ir.ui.view" id="view_ticket_document_tree">
+            <field name="name">ticket.document.tree</field>
+            <field name="model">helpdesk.document</field>
+            <field name="priority" eval="1"/>
+            <field name="arch" type="xml">
+                <tree string="Documents" >
+					<field name="ticket_id"/>
+					<field name="partner_id"/>
+					<field name="name"/>
+					<field name="date" />
+					<field name="date_done"/>
+                    <field name="doctype_id"/>
+
+                </tree>
+            </field>
+        </record>
+        
+        <!-- Document Form  -->
+        <record model="ir.ui.view" id="view_ticket_document_form">
+            <field name="name">ticket.document.form</field>
+            <field name="model">helpdesk.document</field>
+            <field name="priority" eval="1"/>
+            <field name="arch" type="xml">
+                <form string="Document">
+                   <sheet>
+                    <label for="name" class="oe_edit_only"/>
+                    <h1>
+                        <field name="name"/>
+                    </h1>
+                    <group>
+                        <group >
+                            <field name="direction" />
+                            <field name="doctype_id" />
+                            <field name="partner_id" />
+							<field name="ticket_id" />
+                            
+                        </group>
+                        <group >
+                            <field name="date"/>
+                            <field name="date_done"/>
+                            <field name="channel_id" />
+							<field name="doc_id" />
+                        </group>
+                    </group>
+                    <group >
+                            <field name="type" invisible="1" />
+                            <field name="filename" invisible="0" />
+                            <field name="res_model" invisible="0" />
+                            <field name="res_id" invisible="0" />
+							<field name="datas" filename="filename" attrs="{'invisible':[('type','=','url')]}"/>
+                            <field name="store_fname" invisible="1" attrs="{'invisible':[('type','=','url')]}" class="oe_inline oe_right"/>
+                            <field name="url" widget="url" attrs="{'invisible':[('type','=','binary')]}"/>
+                    </group>
+                    <field name="description" placeholder="Add extra information..."/>
+                  </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <!-- Code to Project Form-->
+        
+<!--         <record id="view_helpdesk_projectmod_form" model="ir.ui.view">
+            <field name="name">Code to project form</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.edit_project"/>
+            <field name="arch" type="xml">
+                <field name="partner_id" position="after" >
+                    <field name="code" />
+					<field name="service" />
+                </field>
+            </field>
+        </record> -->
+             
+        <!-- Actions-->
+        <record model="ir.actions.act_window" id="action_helpdesk_servicelevel">
+            <field name="name">Service levels</field>
+            <field name="res_model">helpdesk.servicelevel</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record model="ir.actions.act_window" id="action_helpdesk_demogrtag">
+            <field name="name">Demography Tags</field>
+            <field name="res_model">helpdesk.demogrtag</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record model="ir.actions.act_window" id="action_helpdesk_agecateg">
+            <field name="name">Age Categories</field>
+            <field name="res_model">helpdesk.agecateg</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record model="ir.actions.act_window" id="action_helpdesk_doctype">
+            <field name="name">Document Types</field>
+            <field name="res_model">helpdesk.doctype</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <record model="ir.actions.act_window" id="action_helpdesk_partnertoticket">
+            <field name="name">Partners</field>
+            <field name="res_model">project_partner.partnerline</field>
+            <field name="view_mode">tree</field>
+           <!--   <field name="domain">[('task_id','=',[task_id])]</field>--> 
+        </record>
+        <record model="ir.actions.act_window" id="action_helpdesk_document_tree">
+            <field name="name">Documents</field>
+            <field name="res_model">helpdesk.document</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+		<record model="ir.actions.act_window" id="action_helpdesk_role">
+            <field name="name">Partner Roles</field>
+            <field name="res_model">project_partner.role</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+        <!-- Menus-->  
+        <menuitem name="Service Levels" parent="helpdesk_mgmt.helpdesk_ticket_config_main_menu" id="menu_helpdesk_configuration_servicelevels" sequence="2" action="action_helpdesk_servicelevel"/>
+        <menuitem name="Demography Tags" parent="helpdesk_mgmt.helpdesk_ticket_config_main_menu" id="menu_helpdesk_configuration_demogrtags" sequence="3" action="action_helpdesk_demogrtag"/>
+        <menuitem name="Age Categories" parent="helpdesk_mgmt.helpdesk_ticket_config_main_menu" id="menu_helpdesk_configuration_agecategs" sequence="3" action="action_helpdesk_agecateg"/>
+        <menuitem name="Document Types" parent="helpdesk_mgmt.helpdesk_ticket_config_main_menu" id="menu_helpdesk_configuration_doctypes" sequence="3" action="action_helpdesk_doctype"/>
+		<menuitem name="Partner Roles" parent="helpdesk_mgmt.helpdesk_ticket_config_main_menu" id="menu_helpdesk_configuration_roles" sequence="3" action="action_helpdesk_role"/>
+   </data>
+</openerp>

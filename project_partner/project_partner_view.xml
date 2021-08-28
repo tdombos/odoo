@@ -17,7 +17,6 @@
         <record model="ir.actions.act_window" id="action_project_partner_partnertotask">
             <field name="name">Partners</field>
             <field name="res_model">project_partner.partnerline</field>
-            <field name="view_type">form</field>
             <field name="view_mode">tree</field>
             <field name="domain">[('task_id','=',[task_id])]</field>
         </record>
@@ -25,7 +24,6 @@
         <record model="ir.actions.act_window" id="action_project_partner_partnertoproject">
             <field name="name">Partners</field>
             <field name="res_model">project_partner.partnerline</field>
-            <field name="view_type">form</field>
             <field name="view_mode">tree</field>
             <field name="domain">[('project_id','=',[project_id])]</field>
         </record>

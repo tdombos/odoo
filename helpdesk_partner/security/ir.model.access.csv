@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_project_partner_partnerline,project_partner.partnerline,model_project_partner_partnerline,project.group_project_user,1,1,1,1
+access_project_partner_role,project_partner.role,model_project_partner_role,project.group_project_user,1,1,1,1

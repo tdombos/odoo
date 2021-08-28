@@ -19,5 +19,20 @@
 #
 ##############################################################################
 
-from . import case
 
+{
+    'name': 'Háttér Helpdesk Demography',
+    'version': '0.1',
+    'category': 'Helpdesk',
+    'description': 'Demography Customizations of Helpdesk for Háttér',
+    'author': 'Dombos Tamás',
+    'website': '',
+    'depends': [],
+    'data': ['helpdesk_mgmt_hatter_demogr_data.xml', 'security/ir.model.access.csv'], 
+    'demo': [],
+    'test':[],
+    'installable': True,
+    'images': [],
+    'application': True,
+}
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

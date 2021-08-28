@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data >
+        <record id="helpdesk_agecateg_unknown" model="helpdesk.agecateg">
+            <field name="name">Unknown</field>
+        </record>
+    </data>  
+</odoo>

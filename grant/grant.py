@@ -42,18 +42,23 @@ class grant_call(models.Model):
        [('draft', 'Planned'), ('open', 'Open'), ('close', 'Expired'),('cancel', 'Cancelled')],
        string='State', size=16, track_visibility='onchange',default='open')
 
-    @api.one
     def do_open(self):
+        self.ensure_one()
         self.state = 'open'
         return True
-    @api.one
     def do_close(self):
+        self.ensure_one()
         self.state = 'close'
         return True
-    @api.one
     def do_cancel(self):
+        self.ensure_one()
         self.state = 'cancel'
         return True
+    def _expire_grant(self):
+        for rec in self.search([('state', '=', 'open')]):
+            if rec.date and rec.date < fields.Datetime.now():
+                rec.state ='close'
+
 
 class grant_proposal(models.Model):
     _name = 'grant.proposal'
@@ -85,23 +90,22 @@ class grant_proposal(models.Model):
     def set_calldata(self):
         self.donor_id = self.call_id.donor_id
         self.date_decision = self.call_id.date_decision
-    @api.one
     def do_open(self):
+        self.ensure_one()
         self.state = 'open'
         return True
-    @api.one
     def do_done(self):
+        self.ensure_one()
         self.state = 'done'
         return True
-    @api.one
     def do_close(self):
+        self.ensure_one()
         self.state = 'close'
         return True
-    @api.one
     def do_cancel(self):
+        self.ensure_one()
         self.state = 'cancel'
         return True
-    @api.multi
     def createfund(self):
         self.ensure_one() 
         Fund = self.env['grant.fund']
@@ -170,7 +174,7 @@ class grant_fund(models.Model):
     description = fields.Text('Description', track_visibility='onchange')
     fundtype_id = fields.Many2one('grant.fundtype', required=True, string='Fund Type', ondelete='restrict', help='Type of fund')
     proposal_id = fields.Many2one('grant.proposal', string='Proposal', track_visibility='onchange')
-    call_id = fields.Many2one('grant.call',string='Call', track_visibility='onchange')
+    call_id = fields.Many2one('grant.call',string='Call', related='proposal_id.call_id', readonly=True, track_visibility='onchange')
     donor_id = fields.Many2one('res.partner', string='Donor', track_visibility='onchange')
     code_contract = fields.Char('Contract reference', size=64, select=True, track_visibility='onchange')
     tag_ids = fields.Many2many('project.tags', string='Tags', track_visibility='onchange')
@@ -194,23 +198,22 @@ class grant_fund(models.Model):
     @api.onchange('proposal_id') 
     def change_proposal(self):
         self.donor_id = self.proposal_id.donor_id
-        self.call_id = self.proposal_id.call_id
         self.amount_requested = self.proposal_id.amount_requested
         self.fundcurrency_id = self.proposal_id.currency_id
-    @api.one
     def do_open(self):
+        self.ensure_one()
         self.state = 'open'
         return True
-    @api.one
     def do_done(self):
+        self.ensure_one()
         self.state = 'done'
         return True
-    @api.one
     def do_close(self):
+        self.ensure_one()
         self.state = 'close'
         return True
-    @api.one
     def do_cancel(self):
+        self.ensure_one()
         self.state = 'cancel'
         return True
 
@@ -231,16 +234,16 @@ class grant_report(models.Model):
        [('draft', 'Scheduled'), ('open', 'Submitted'), ('revise', 'Revision'), ('close', 'Accepted')],
        string='State', size=16, readonly=True, track_visibility='onchange',default='draft')
     
-    @api.one
     def do_open(self):
+        self.ensure_one()
         self.state = 'open'
         return True
-    @api.one
     def do_close(self):
+        self.ensure_one()
         self.state = 'close'
         return True
-    @api.one
     def do_revise(self):
+        self.ensure_one()
         self.state = 'revise'
         return True
 
@@ -261,23 +264,27 @@ class grant_installment(models.Model):
 
     name = fields.Char('Name', size=128, required=True)
     fund_id = fields.Many2one('grant.fund', string='Fund', required=True,)
+    move_id = fields.Many2one('account.move', string='Journal entry', required=True,)
     date_expected = fields.Date('Date expected', track_visibility='onchange')
+    # replace with related field from payment transaction
     date_received = fields.Date('Date received', track_visibility='onchange')
     amount_expected = fields.Float(string='Amount expected', track_visibility='onchange')
+    # replace with related field from payment transaction
     amount_received = fields.Float(string='Amount received', track_visibility='onchange')
     fundcurrency_id = fields.Many2one(related='fund_id.fundcurrency_id', readonly=True, track_visibility='onchange')
     currency_id = fields.Many2one(related='fund_id.currency_id')
+    # replace with related field from payment transaction
     amount_received_local = fields.Float(string='Amount received (company currency)', track_visibility='onchange')
     state = fields.Selection(
        [('draft', 'Scheduled'), ('done', 'Received'),('cancel', 'Cancelled'),  ],
        string='State', size=16, track_visibility='onchange',default='draft')
-    
-    @api.one
+
     def do_done(self):
+        self.ensure_one()
         self.state = 'done'
         return True
-    @api.one
     def do_cancel(self):
+        self.ensure_one()
         self.state = 'cancel'
         return True
 
