@@ -1,0 +1,161 @@
+<odoo>
+  <data>
+    <record id="hr_contract_view_form_parent" model="ir.ui.view">
+            <field name="name">Parent contract and contract type to contract form</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+            <field name="arch" type="xml">
+                <field name="department_id" position="after">
+                    <field name="project_id"/>
+                    <field name="parent_id"/>
+                    <field name="type_id"/>
+                </field>
+                <field name="structure_type_id" position="replace">
+                </field>
+            </field>
+    </record>
+    <record id="hr_contract_view_tree_parent" model="ir.ui.view">
+            <field name="name">Parent contract and contract type to contract tree view</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="hr_contract.hr_contract_view_tree"/>
+            <field name="arch" type="xml">
+                <field name="employee_id" position="after">
+                    <field name="type_id"/>
+                </field>
+            </field>
+    </record>
+	<record id="hr_contract_view_search_extend" model="ir.ui.view">
+            <field name="name">Extensions to Contract search view</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="hr_contract.hr_contract_view_search"/>
+            <field name="arch" type="xml">
+                <field name="employee_id" position="after">
+                    <field name="parent_id"/>
+                    <field name="type_id"/>
+                </field>
+                <filter name="employee" position="after">
+                    <filter string="Main contract" name="parent" domain="[]" context="{'group_by': 'parent_id'}"/>
+                    <filter string="Contract type" name="type" domain="[]" context="{'group_by': 'type_id'}"/>
+                </filter> 
+            </field>
+    </record>
+    <record id="hr_hr_contract_view_kanban_extend" model="ir.ui.view">
+            <field name="name">Extensions to Contract kanban</field>
+            <field name="model">hr.contract</field>
+            <field name="inherit_id" ref="hr_contract.hr_contract_view_kanban"/>
+            <field name="arch" type="xml">
+                <field name="job_id" position="after">
+                    <field name="type_id" />
+                </field>
+                <field name="name" position="before">
+                    <div><field name="employee_id" /></div>
+                </field>
+            </field>
+    </record>
+  <!--    CONTRACT TYPE     -->
+    <record id="hr_contract_type_view_form" model="ir.ui.view">
+            <field name="name">hr.contract.type.form</field>
+            <field name="model">hr.contract.type</field>
+            <field name="arch" type="xml">
+                <form string="Contract Type">
+                    <group col="4">
+                        <field colspan="4" name="name"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="hr_contract_type_view_tree" model="ir.ui.view">
+            <field name="name">hr.contract.type.tree</field>
+            <field name="model">hr.contract.type</field>
+            <field name="arch" type="xml">
+                <tree string="Contract Type">
+                    <field name="sequence" widget="handle"/>
+                    <field colspan="4" name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="hr_contract_type_view_search" model="ir.ui.view">
+            <field name="name">hr.contract.type.search</field>
+            <field name="model">hr.contract.type</field>
+            <field name="arch" type="xml">
+                <search string="Search Contract Type">
+                    <field name="name" string="Contract Type"/>
+                    <field name="sequence" string="Sequence"/>
+               </search>
+            </field>
+        </record>
+
+        <record id="action_hr_contract_type" model="ir.actions.act_window">
+            <field name="name">Contract Types</field>
+            <field name="res_model">hr.contract.type</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="hr_contract_type_view_search"/>
+        </record>
+
+        <menuitem
+            id="hr_menu_contract_type"
+            action="action_hr_contract_type"
+            parent="hr.menu_human_resources_configuration"
+            sequence="3"
+            groups="base.group_no_one"/>
+
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="hr_contract_hatter.list">
+      <field name="name">hr_contract_hatter list</field>
+      <field name="model">hr_contract_hatter.hr_contract_hatter</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="hr_contract_hatter.action_window">
+      <field name="name">hr_contract_hatter window</field>
+      <field name="res_model">hr_contract_hatter.hr_contract_hatter</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="hr_contract_hatter.action_server">
+      <field name="name">hr_contract_hatter server</field>
+      <field name="model_id" ref="model_hr_contract_hatter_hr_contract_hatter"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="hr_contract_hatter" id="hr_contract_hatter.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="hr_contract_hatter.menu_1" parent="hr_contract_hatter.menu_root"/>
+    <menuitem name="Menu 2" id="hr_contract_hatter.menu_2" parent="hr_contract_hatter.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="hr_contract_hatter.menu_1_list" parent="hr_contract_hatter.menu_1"
+              action="hr_contract_hatter.action_window"/>
+    <menuitem name="Server to list" id="hr_contract_hatter" parent="hr_contract_hatter.menu_2"
+              action="hr_contract_hatter.action_server"/>
+-->
+  </data>
+</odoo>

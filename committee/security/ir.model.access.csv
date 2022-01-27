@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_committee_committee_user,committee.committee.user,model_committee_committee,docregister.group_office_user,1,1,1,1
+access_committee_decision_user,committee.decision.user,model_committee_decision,docregister.group_office_user,1,1,1,1
+access_committee_decisiontype_user,committee.decisiontype.user,model_committee_decisiontype,docregister.group_office_user,1,1,1,1

@@ -57,7 +57,197 @@
             <field name="name">grant.fund.form</field>
             <field name="model">grant.fund</field>
             <field name="arch" type="xml">
-                <form string="Fund">
+                <form string="Fund" delete="0">
+                    <header>
+                        <button name="do_open" string="Start implementation" type="object" states="draft" groups="base.group_user" class="oe_highlight"/>
+						<!-- <button name="do_cancel" string="Cancel" type="object" states="open" groups="base.group_user"/> --> 
+						<button name="do_done" string="Implementation over" type="object" states="open" groups="base.group_user" class="oe_highlight"/>
+						<button name="do_close" string="Reports accepted" type="object" states="done" groups="base.group_user" class="oe_highlight"/>
+						<button name="%(portal.portal_share_action)d" string="Share" type="action" class="oe_highlight oe_read_only"/>
+						<field name="state" widget="statusbar" statusbar_visible="open,done,close" statusbar_colors='{"pending":"blue"}' readonly="1"/>
+                    </header>
+                <sheet string="Fund">
+                    <div class="oe_button_box" name="button_box" groups="base.group_user">
+                        <button class="oe_inline oe_stat_button" name="%(action_grant_partnertofund)d" type="action" icon="fa-users" context="{'default_project_id': project_id,'project_id': project_id,'search_default_active':1}" >
+                            <field string="Partners" name="partner_count" widget="statinfo"/>
+                        </button>
+                        <button class="oe_inline oe_stat_button" name="%(action_grant_installmenttogrant)d" type="action" icon="fa-dollar" context="{'default_fund_id': active_id}" >
+                            <field string="Installments" name="installment_received" widget="statinfo"/>
+                        </button>
+                        <button class="oe_inline oe_stat_button" name="%(action_grant_reporttogrant)d" type="action" icon="fa-file-text-o" context="{'default_fund_id': active_id}" >
+                            <field string="Reports" name="report_count" widget="statinfo"/>
+                        </button>
+						<!-- <button  class="oe_stat_button" name="attachment_tree_view" type="object" icon="fa-file-text-o">
+                            <field string="Documents" name="doc_count" widget="statinfo"/>
+                        </button> -->
+                        <button class="oe_stat_button" type="action"
+                            name="%(project.act_project_project_2_project_task_all)d" icon="fa-tasks">
+                            <field string="Tasks In Progress" name="task_count" widget="statinfo" options="{'label_field': 'label_tasks'}"/>
+                        </button>
+                        <!-- <button name="action_view_all_rating" type="object" attrs="{'invisible': ['|', ('rating_active', '=', False), ('rating_percentage_satisfaction', '=', -1)]}" class="oe_stat_button oe_percent oe_read_only" icon="fa-smile-o" groups="project.group_project_rating">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_value">
+                                    <field name="rating_percentage_satisfaction" nolabel="1"/>
+                                    %
+                                </span>
+                                <span class="o_stat_text">
+                                    Customer Satisfaction
+                                </span>
+                            </div>
+                        </button>        -->                     
+                    </div>
+                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active', '=', True)]}"/>
+					<field name="project_id" invisible="1" required="0" />
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Internal Code"/>
+                        </h1>
+                        <div name="options_active">
+                            <div>
+                                <label for="label_tasks" class="oe_inline" string="Name of the tasks:"/>
+                                <field name="label_tasks" class="oe_inline oe_input_align"/>
+                            </div>
+                        </div>
+                    </div>
+					<group>
+                        <group>
+                            <field name="active" invisible="1"/>
+							<field name="donor_id" context="{'default_customer': 0, 'search_default_donor': 1, 'default_donor': 1}" domain="[('donor', '=', True)]"/>
+                            <field name="fundtype_id" options="{'no_open': True}"/>
+							<field name="analytic_account_id" domain="['|', ('company_id', '=', company_id), ('company_id', '=', False)]" context="{'default_partner_id': partner_id}" groups="analytic.group_analytic_accounting" required="1"/>
+                            <field name="code_contract" />
+                            <field name="user_id" string="Responsible"
+                                    attrs="{'readonly':[('state','in',['close', 'cancelled'])]}"
+                                    context="{'default_groups_ref': ['base.group_user', 'base.group_partner_manager', 'project.group_project_manager']}"/>
+                        </group>
+                        <group>    
+                            <field name="date_start" string="Start"/>
+                            <field name="date" string="End"/>
+                            <field name="amount_granted" widget="monetary" options="{'currency_field': 'fundcurrency_id'}"/>
+                            <label for="fundcurrency_id" class="oe_edit_only"/> <div><field name="fundcurrency_id" class="oe_edit_only"/></div>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Content">
+                            <group >
+                                <field name="title" />
+                                <field name="title_orig" />
+                                <field name="description" />
+                                <field name="tag_ids" widget="many2many_tags"/>
+                            </group>
+                        </page>
+                        <page string="Proposal Data">
+                            <group >
+                                <field name="proposal_id" />
+                                <field name="call_id" />
+                                <field name="amount_requested" widget="monetary" options="{'currency_field': 'fundcurrency_id'}" string="Amount requested"/>
+
+                            </group>
+                        </page>
+                        <page name="settings" string="Settings">
+                            <group>
+                                <group>
+                                    <field name="active" invisible="1"/>
+                                    <field name="user_id" string="Project Manager" widget="many2one_avatar_user" attrs="{'readonly':[('active','=',False)]}" domain="[('share', '=', False)]"/>
+                                    <field name="partner_id" string="Customer" widget="res_partner_many2one"/>
+                                    <field name="partner_phone" widget="phone"
+                                           attrs="{'invisible': [('partner_id', '=', False)]}"/>
+                                    <field name="partner_email" widget="email"
+                                           attrs="{'invisible': [('partner_id', '=', False)]}"/>
+                                    <div name="alias_def" colspan="2" attrs="{'invisible': [('alias_domain', '=', False)]}">
+                                        <!-- Always display the whole alias in edit mode. It depends in read only -->
+                                        <label for="alias_enabled" class="font-weight-bold" string="Create tasks by sending an email"/>
+                                        <field name="alias_enabled" invisible="1"/>
+                                        <span>
+                                            <span class="font-weight-bold oe_read_only" attrs="{'invisible':  [('alias_name', '=', False)]}">to </span>
+                                            <span class="font-weight-bold oe_edit_only">to </span>
+                                            <field name="alias_name" class="oe_inline"/>
+                                            <span class="oe_read_only" attrs="{'invisible':  [('alias_name', '=', False)]}">@</span>
+                                            <span class="oe_edit_only">@</span>
+                                            <field name="alias_domain"
+                                                   attrs="{'invisible':  [('alias_name', '=', False)]}"
+                                                   class="oe_inline oe_read_only"
+                                                   readonly="1"/>
+                                            <field name="alias_domain"
+                                                   class="oe_inline oe_edit_only"
+                                                   readonly="1"/>
+                                        </span>
+                                    </div>
+                                    <!-- the alias contact must appear when the user start typing and it must disappear
+                                        when the string is deleted. -->
+                                    <field name="alias_contact" class="oe_inline oe_edit_only" string="Accept Emails From"
+                                           attrs="{'invisible': ['|', ('alias_name', '=', ''), ('alias_name', '=', False)]}"/>
+                                </group>
+                                <group>
+                                    <field name="privacy_visibility" widget="radio"/>
+                                    <field name="allowed_internal_user_ids" widget="many2many_tags" attrs="{'invisible': [('privacy_visibility', '!=', 'followers')]}"/>
+                                    <field name="allowed_portal_user_ids" widget="many2many_tags" options="{'no_create': True}" attrs="{'invisible': [('privacy_visibility', '!=', 'portal')]}"/>
+
+                                    <field name="company_id" groups="base.group_multi_company"/>
+                                </group>
+                                <group name="extra_settings">
+                                </group>
+                            </group>
+                            <div class="row mt16 o_settings_container">
+                                <div id="rating_settings" class="col-lg-6 o_setting_box" groups="project.group_project_rating">
+                                    <div class="o_setting_left_pane">
+                                        <field name="rating_active"/>
+                                    </div>
+                                    <div class="o_setting_right_pane">
+                                        <label for="rating_active" />
+                                        <div class="text-muted">
+                                            Get customer feedback
+                                        </div>
+                                        <div class="mt16" attrs="{'invisible':[('rating_active','==',False)]}">
+                                            <field name="rating_status" widget="radio" />
+                                            <div  attrs="{'required': [('rating_status','=','periodic')], 'invisible': [('rating_status','!=','periodic')]}">
+                                                <label for="rating_status_period"/>
+                                                <field name="rating_status_period"/>
+                                            </div>
+                                            <div class="content-group">
+                                                    <div class="mt8">
+                                                        <button name="%(project.open_task_type_form_domain)d" context="{'project_id':id}" icon="fa-arrow-right" type="action" string="Set a Rating Email Template on Stages" class="btn-link"/>
+                                                    </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 o_setting_box"  id="subtask_settings" groups="project.group_subtask_project">
+                                    <div class="o_setting_left_pane">
+                                        <field name="allow_subtasks" />
+                                    </div>
+                                    <div class="o_setting_right_pane">
+                                        <label for="allow_subtasks" />
+                                        <div class="text-muted">
+                                            Split your tasks to organize your work into sub-milestones
+                                        </div>
+                                        <div class="mt8" attrs="{'invisible': [('allow_subtasks', '=', False)]}">
+                                            <label for="subtask_project_id" />
+                                            <field name="subtask_project_id" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 o_setting_box"  id="recurring_tasks_setting" groups="project.group_project_recurring_tasks">
+                                    <div class="o_setting_left_pane">
+                                        <field name="allow_recurring_tasks" />
+                                    </div>
+                                    <div class="o_setting_right_pane">
+                                        <label for="allow_recurring_tasks" />
+                                        <div class="text-muted">
+                                            Auto-generate tasks for regular activities
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </page>
+                    </notebook>
+
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" options="{'post_refresh':True}" help="Follow this project to automatically track the events associated to tasks and issues of this project." groups="base.group_user"/>
+                    </div>
+                </sheet>
+                </form>
+<!-- 				<form string="Fund">
                     <header>
                     <button name="do_open" string="Start implementation" type="object" states="draft" groups="base.group_user" class="oe_highlight"/>
                     <button name="do_cancel" string="Cancel" type="object" states="open" groups="base.group_user"/>
@@ -167,7 +357,7 @@
                     <field name="message_ids" widget="mail_thread"/>
                 </div>
                 </form>
-            </field>
+ -->            </field>
         </record>
 	<!-- Proposal Search View-->
     <record model="ir.ui.view" id="view_grant_proposal_search">
@@ -419,7 +609,7 @@
                     <button name="do_open" string="Submit" type="object" states="draft" groups="base.group_user" class="oe_highlight"/>
                     <button name="do_close" string="Accept" type="object" states="open,revise" groups="base.group_user" class="oe_highlight"/>
                     <button name="do_revise" string="Revise" type="object" states="revise" groups="base.group_user" />
-                    <button name="do_cancel" string="Cancel" type="object" states="draft" groups="base.group_user"/>
+                    <!-- <button name="do_cancel" string="Cancel" type="object" states="draft" groups="base.group_user"/> -->
                     <field name="state" widget="statusbar" statusbar_visible="draft,open,close" statusbar_colors='{"pending":"blue"}' readonly="1"/>
                 </header>
                 <sheet string="Report">

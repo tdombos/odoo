@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
   <record id="import_attachment_view_form" model="ir.ui.view">
-    <field name="name">import.casedocument.form</field>
-    <field name="model">import.casedocument</field>
+    <field name="name">import.ticketdocument.form</field>
+    <field name="model">import.ticketdocument</field>
     <field name="arch" type="xml">
-      <form string="Import case documents">
+      <form string="Import ticket documents">
 
         <group >
             <field widget="binary" height="64" name="file" filename="file_fname" required="1"/>
@@ -37,24 +37,17 @@
     </field>
   </record>
 
-  <act_window
-      id="import_attachment_form_attach"
-      name="Import attachments"
-      res_model="import.attachment"
-      src_model="ir.attachment"
-      view_mode="form"
-      multi="True"
-      target="new"
-      key2="client_action_multi"
-  />
-  <act_window
-      id="import_attachment_form_attach2"
-      name="Import case documents"
-      res_model="import.casedocument"
-      src_model="ir.attachment"
-      view_mode="form"
-      multi="True"
-      target="new"
-      key2="client_action_multi"
-  />
+   <record model="ir.actions.act_window" id="import_attachment_form_attach">
+        <field name="name">Import attachments</field>
+        <field name="res_model">import.attachment</field>
+        <field name="view_mode">form</field>
+		<field name="binding_model_id">ir.attachment</field>
+    </record>
+	<record model="ir.actions.act_window" id="import_attachment_form_attach2">
+        <field name="name">Import ticket documents</field>
+        <field name="res_model">import.ticketdocument</field>
+        <field name="view_mode">form</field>
+		<field name="binding_model_id">ir.attachment</field>
+    </record>
+
 </odoo>

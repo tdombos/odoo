@@ -23,7 +23,6 @@ class importwizard(models.TransientModel):
     file = fields.Binary('File')
     file_fname = fields.Char(string='File name')
 
-    @api.multi
     def file_type(self):
         if self.file:
             filename,filetype = os.path.splitext(self.file_fname)
@@ -44,12 +43,10 @@ class importwizard(models.TransientModel):
                     }
         return values
 
-    @api.multi
     def is_absolute(self,url):
         return bool(urlparse.urlparse(url).netloc)
 
 
-    @api.multi
     def write_file(self,data):
         print('data',data)
         for row in data:
@@ -72,7 +69,6 @@ class importwizard(models.TransientModel):
             else:
                 raise UserError(_("Error!!!\nInvalid file path for '%s'")%(row.get('id')))
 
-    @api.multi
     def get_file(self):
         if self.file:
             filetype = self.file_type()
@@ -89,7 +85,6 @@ class importwizard(models.TransientModel):
         else:
             raise UserError(_('Choose a file first!!!'))
 
-    @api.multi
     def get_xlData(self,data):
         book = xlrd.open_workbook(file_contents=data)
         sheet = book.sheet_by_index(0)
@@ -105,21 +100,20 @@ class importwizard(models.TransientModel):
                 data.append(elm)
         return data
 
-    @api.multi
     def get_csvData(self,data):
         csv_data = str(data,'utf-8')
         encoding = 'utf-8'
         csv_iteratorDict = csv.DictReader(StringIO(csv_data))
 
         return csv_iteratorDict
+
 class importwizard2(models.TransientModel):
-    _name = 'import.casedocument'
-    _description = 'import.casedocument.wizard'
+    _name = 'import.ticketdocument'
+    _description = 'import.ticketdocument.wizard'
 
     file = fields.Binary('File')
     file_fname = fields.Char(string='File name')
 
-    @api.multi
     def file_type(self):
         if self.file:
             filename,filetype = os.path.splitext(self.file_fname)
@@ -140,12 +134,10 @@ class importwizard2(models.TransientModel):
                     }
         return values
 
-    @api.multi
     def is_absolute(self,url):
         return bool(urlparse.urlparse(url).netloc)
 
 
-    @api.multi
     def write_file(self,data):
         print('data',data)
         for row in data:
@@ -168,7 +160,6 @@ class importwizard2(models.TransientModel):
             else:
                 raise UserError(_("Error!!!\nInvalid file path for '%s'")%(row.get('id')))
 
-    @api.multi
     def get_file(self):
         if self.file:
             filetype = self.file_type()
@@ -185,7 +176,6 @@ class importwizard2(models.TransientModel):
         else:
             raise UserError(_('Choose a file first!!!'))
 
-    @api.multi
     def get_xlData(self,data):
         book = xlrd.open_workbook(file_contents=data)
         sheet = book.sheet_by_index(0)
@@ -201,7 +191,6 @@ class importwizard2(models.TransientModel):
                 data.append(elm)
         return data
 
-    @api.multi
     def get_csvData(self,data):
         csv_data = str(data,'utf-8')
         encoding = 'utf-8'

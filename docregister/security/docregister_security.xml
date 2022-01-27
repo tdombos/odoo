@@ -4,7 +4,12 @@
     <record model="res.groups" id="group_office_user">
         <field name="name">Office user</field>
         <field name="category_id" ref="base.module_category_office_management"/>
-        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user')),(4, ref('prt_phone_numbers.prt_phone_supervisor')),(4, ref('base.group_partner_manager')),(4, ref('base.group_private_addresses'))]"/>
+    </record>
+	<record model="res.groups" id="group_office_manager">
+        <field name="name">Office manager</field>
+        <field name="category_id" ref="base.module_category_office_management"/>
+        <field name="implied_ids" eval="[(4, ref('docregister.group_office_user'))]"/>
     </record>
 
 </data>

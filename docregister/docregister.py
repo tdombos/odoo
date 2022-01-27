@@ -21,6 +21,8 @@
 
 from odoo import models, fields, api
 from odoo import exceptions
+from odoo.exceptions import ValidationError
+from odoo import _
 
 import datetime
 
@@ -94,6 +96,8 @@ class docregister_archivalcateg(models.Model):
     parent_left  = fields.Integer('Parent left', index=True)
     parent_right = fields.Integer('Parent right', index=True)
     complete_name = fields.Char(compute='compute_complete_name')
+    retentiontime = fields.Integer('Retention time (years)')
+    nondesposable = heading = fields.Boolean('Non-disposable')
     active = fields.Boolean('Active', help="If the active field is set to False, it will allow you to hide the archival category without removing it.",default=True)
 
     _sql_constraints = [
@@ -157,7 +161,7 @@ class docregister_doc(models.Model):
     attachmentno = fields.Integer('No. of Attachments', help="Number of documents attached to the main document", track_visibility='onchange')
     predoc_id = fields.Many2one('docregister.doc', 'Preceded by', track_visibility='onchange')
     postdoc_ids = fields.One2many('docregister.doc',  'predoc_id', 'Followed by',readonly=True, track_visibility='onchange')
-    basedoc_id = fields.Reference([('committee.meeting','Meeting')],'Base Document')
+    basedoc_id = fields.Reference([('calendar.event','Meeting')],'Base Document')
     user_id = fields.Many2one('res.users', string='Assigned to', select=True, track_visibility='onchange')
     deadline = fields.Date('Deadline', select=True, help="Deadline for dealing with document", track_visibility='onchange')
     folder_id = fields.Many2one('docregister.folder', 'Folder', select=True, track_visibility='onchange')
@@ -168,6 +172,12 @@ class docregister_doc(models.Model):
     active = fields.Boolean('Active', help="If the active field is set to False, it will allow you to hide the document without removing it.",default=True)
 
     _rec_name = 'refcode'
+
+    @api.constrains('date_done')
+    def _check_date_done(self):
+        for record in self:
+            if record.date_done > fields.Date.today():
+                raise ValidationError(_("The done date cannot be set in the future"))
 
     _sql_constraints = [
         ('refcode', 'unique(refcode)', 'Document Reference Code has to be unique')

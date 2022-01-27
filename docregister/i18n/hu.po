@@ -4,18 +4,16 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 13.0\n"
+"Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-30 13:38+0000\n"
-"PO-Revision-Date: 2021-01-30 17:09+0100\n"
+"POT-Creation-Date: 2021-10-14 14:50+0000\n"
+"PO-Revision-Date: 2021-10-14 14:50+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
+"Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
-"Language: hu\n"
-"X-Generator: Poedit 2.4.2\n"
 
 #. module: docregister
 #: model:ir.model.fields,field_description:docregister.field_docregister_doc__message_needaction
@@ -26,14 +24,8 @@ msgstr "Művelet szükséges"
 #: model:ir.model.fields,field_description:docregister.field_docregister_archivalcateg__active
 #: model:ir.model.fields,field_description:docregister.field_docregister_doc__active
 #: model:ir.model.fields,field_description:docregister.field_docregister_folder__active
-#: model_terms:ir.ui.view,arch_db:docregister.view_docregister_doc_search
 msgid "Active"
 msgstr "Aktív"
-
-#. module: docregister
-#: model_terms:ir.ui.view,arch_db:docregister.view_docregister_doc_search
-msgid "Active documents"
-msgstr "Aktív iratok"
 
 #. module: docregister
 #: model:ir.model.fields,field_description:docregister.field_docregister_doc__activity_ids
@@ -49,6 +41,11 @@ msgstr "Tevékenység kivétel formázása"
 #: model:ir.model.fields,field_description:docregister.field_docregister_doc__activity_state
 msgid "Activity State"
 msgstr "Tevékenység állapota"
+
+#. module: docregister
+#: model:ir.model.fields,field_description:docregister.field_docregister_doc__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "Tevékenységtípus ikon"
 
 #. module: docregister
 #: model_terms:ir.ui.view,arch_db:docregister.view_docregister_archivalcateg_tree
@@ -88,6 +85,16 @@ msgstr "Mellékletek száma"
 #: model:ir.model.fields,field_description:docregister.field_docregister_doc__basedoc_id
 msgid "Base Document"
 msgstr "Alapdokumentum"
+
+#. module: docregister
+#: model_terms:ir.ui.view,arch_db:docregister.view_docregister_doc_search
+msgid "By Archival category"
+msgstr "Irattári tétel szerint"
+
+#. module: docregister
+#: model_terms:ir.ui.view,arch_db:docregister.view_docregister_doc_search
+msgid "By Partner"
+msgstr "Partner szerint"
 
 #. module: docregister
 #: model_terms:ir.ui.view,arch_db:docregister.view_docregister_doc_search
@@ -156,7 +163,7 @@ msgstr "Dátum"
 #. module: docregister
 #: model:ir.model.fields,help:docregister.field_docregister_doc__date
 msgid "Date of arrival (for incoming) or date of sending (for outgoing)"
-msgstr "Érkezés dátuma bejövő"
+msgstr "Érkezés dátuma (bejövőnél) vagy küldés dátuma (kimenőnél)"
 
 #. module: docregister
 #: model:ir.model.fields,help:docregister.field_docregister_doc__date_done
@@ -222,6 +229,7 @@ msgstr "Irány"
 #: model:ir.model.fields,field_description:docregister.field_docregister_folder__display_name
 #: model:ir.model.fields,field_description:docregister.field_docregister_tag__display_name
 #: model:ir.model.fields,field_description:docregister.field_docregister_type__display_name
+#: model:ir.model.fields,field_description:docregister.field_res_partner__display_name
 msgid "Display Name"
 msgstr "Megjelenített név"
 
@@ -274,6 +282,7 @@ msgstr "Iktatásra váró iratok"
 #: model:ir.ui.menu,name:docregister.menu_docregister_doc
 #: model_terms:ir.ui.view,arch_db:docregister.view_docregister_doc_search
 #: model_terms:ir.ui.view,arch_db:docregister.view_docregister_doc_tree
+#: model_terms:ir.ui.view,arch_db:docregister.view_docregister_folder_form
 #: model_terms:ir.ui.view,arch_db:docregister.view_docregister_partner_form
 msgid "Documents"
 msgstr "Iratok"
@@ -342,6 +351,11 @@ msgid "Followers (Partners)"
 msgstr "Követők (Partnerek)"
 
 #. module: docregister
+#: model:ir.model.fields,help:docregister.field_docregister_doc__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr "Font awesome ikon, pl. fa-tasks"
+
+#. module: docregister
 #: model:ir.model.fields,help:docregister.field_docregister_doc__date_delivery
 msgid "For letter with Return Receipt: date when letter was delivered"
 msgstr "Tértivevényes küldemények esetén: a kézbesítés dátuma"
@@ -357,16 +371,12 @@ msgid "Group by..."
 msgstr "Csoportosítás..."
 
 #. module: docregister
-#: model:ir.model.fields,field_description:docregister.field_docregister_archivalcateg__heading
-msgid "Heading"
-msgstr "Kategória"
-
-#. module: docregister
 #: model:ir.model.fields,field_description:docregister.field_docregister_archivalcateg__id
 #: model:ir.model.fields,field_description:docregister.field_docregister_doc__id
 #: model:ir.model.fields,field_description:docregister.field_docregister_folder__id
 #: model:ir.model.fields,field_description:docregister.field_docregister_tag__id
 #: model:ir.model.fields,field_description:docregister.field_docregister_type__id
+#: model:ir.model.fields,field_description:docregister.field_res_partner__id
 msgid "ID"
 msgstr "Azonosító"
 
@@ -434,6 +444,7 @@ msgstr "követő"
 #: model:ir.model.fields,field_description:docregister.field_docregister_folder____last_update
 #: model:ir.model.fields,field_description:docregister.field_docregister_tag____last_update
 #: model:ir.model.fields,field_description:docregister.field_docregister_type____last_update
+#: model:ir.model.fields,field_description:docregister.field_res_partner____last_update
 msgid "Last Modified on"
 msgstr "Legutóbb frissítve"
 
@@ -475,9 +486,9 @@ msgid "Main Attachment"
 msgstr "Elsődleges csatolmány"
 
 #. module: docregister
-#: model:ir.model.fields.selection,name:docregister.selection__docregister_doc__basedoc_id__committee_meeting
+#: model:ir.model.fields.selection,name:docregister.selection__docregister_doc__basedoc_id__calendar_event
 msgid "Meeting"
-msgstr "Találkozó"
+msgstr "Ülés"
 
 #. module: docregister
 #: model:ir.model.fields,field_description:docregister.field_docregister_doc__message_has_error
@@ -488,6 +499,11 @@ msgstr "Kézbesítési hibaüzenet"
 #: model:ir.model.fields,field_description:docregister.field_docregister_doc__message_ids
 msgid "Messages"
 msgstr "Üzenetek"
+
+#. module: docregister
+#: model:ir.model.fields,field_description:docregister.field_docregister_doc__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr "Tevékenység határideje"
 
 #. module: docregister
 #: model:ir.actions.act_window,name:docregister.action_docregister_mydoc
@@ -543,6 +559,12 @@ msgid "No. of Attachments"
 msgstr "Mellékletek száma"
 
 #. module: docregister
+#: model:ir.model.fields,field_description:docregister.field_docregister_archivalcateg__heading
+#: model:ir.model.fields,field_description:docregister.field_docregister_archivalcateg__nondesposable
+msgid "Non-disposable"
+msgstr "Nem selejtezhető"
+
+#. module: docregister
 #: model:ir.model.fields,field_description:docregister.field_docregister_doc__note
 msgid "Note"
 msgstr "Megjegyzés"
@@ -583,6 +605,11 @@ msgid "Number of unread messages"
 msgstr "Olvasatlan üzenetek száma"
 
 #. module: docregister
+#: model:res.groups,name:docregister.group_office_manager
+msgid "Office manager"
+msgstr "Irodai menedzser"
+
+#. module: docregister
 #: model:res.groups,name:docregister.group_office_user
 msgid "Office user"
 msgstr "Irodai munkatárs"
@@ -615,7 +642,7 @@ msgstr "Szülő jobb"
 #. module: docregister
 #: model_terms:ir.ui.view,arch_db:docregister.view_docregister_doc_search
 msgid "Partner"
-msgstr "Partner"
+msgstr ""
 
 #. module: docregister
 #: model:ir.actions.act_window,name:docregister.action_docregister_partner
@@ -701,6 +728,11 @@ msgid "Responsible User"
 msgstr "Felelős felhasználó"
 
 #. module: docregister
+#: model:ir.model.fields,field_description:docregister.field_docregister_archivalcateg__retentiontime
+msgid "Retention time (years)"
+msgstr "Megőrzési idő"
+
+#. module: docregister
 #: model:ir.model.fields.selection,name:docregister.selection__docregister_doc__registered__return
 msgid "Return Receipt"
 msgstr "Tértivevény"
@@ -766,6 +798,12 @@ msgstr "Címkék"
 #: model_terms:ir.ui.view,arch_db:docregister.view_docregister_tag_tree
 msgid "Tags"
 msgstr "Címkék"
+
+#. module: docregister
+#: code:addons/docregister/docregister.py:0
+#, python-format
+msgid "The done date cannot be set in the future"
+msgstr "A kelt nem lehet jövőbeni dátum"
 
 #. module: docregister
 #: model:ir.model.fields,field_description:docregister.field_docregister_folder__name

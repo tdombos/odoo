@@ -22,13 +22,16 @@
 
 {
     'name': 'Committee',
-    'version': '0.1',
+    'version': '14.0.0.1',
     'category': 'Office management',
     'description': 'Managing committees, meetings, agendas and decisions',
     'author': 'Dombos Tamás',
     'website': '',
-    'depends': ['mail', 'project', 'calendar', 'docregister'],
-    'data': ['committee_view.xml', 'committee_data.xml'], 
+    'depends': ['project', 'calendar', 'docregister'],
+    'data': ['security/ir.model.access.csv',
+     'committee_view.xml'
+     #, 'committee_data.xml'
+    ], 
     'demo': [],
     'test':[],
     'installable': True,
