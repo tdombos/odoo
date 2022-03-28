@@ -1,11 +1,11 @@
 @font-face {
   font-family: Quicksand;
-  src: url('/web/image/quicksand') format('truetype');
+  src: url('/theme_cobalt/static/src/font/Quicksand.ttf') format('truetype');
 }
 
 @font-face {
   font-family: SourceSansPro;
-  src: url('/web/image/SourceSansPro') format('truetype');
+  src: url('SourceSansPro-Regular.ttf') format('truetype');
 }
 
 
@@ -99,6 +99,8 @@ header {
       height: initial !important;
     }
 	
+	
+	
   button.navbar-toggler {
     border-radius: 40px;
     background: #ffffff;
@@ -108,6 +110,7 @@ header {
 	span{
 		width:40px;
 		height:40px;
+		background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(104, 61, 152,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")!important;
 	}
   }
 
@@ -171,6 +174,7 @@ header {
           position: absolute;
           top: -5px;
 		  font-size:80px;
+		  color:#683D98;
         }
       }
     }
@@ -371,7 +375,9 @@ header {
     border-radius: 10px;
     text-decoration: none;
     height: 100%;
-
+	img{
+	border-radius: 10px 10px 0 0;
+	}
     .title {
       font-family: Quicksand;
       font-size: 30px;

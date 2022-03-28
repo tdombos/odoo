@@ -119,4 +119,16 @@
        t-thumbnail="/website/static/src/img/snippets_thumbs/s_three_columns.svg"/>
   </xpath>
 </template>
+
+
+
+
+
+
+<template id="template_header_hamburger_full" inherit_id="website.template_header_hamburger_full">
+	<xpath expr="//span[@class='navbar-toggler-icon']" position="replace">
+		<i class="fa fa-bars"></i>
+	</xpath>
+</template>
+
 </odoo>
