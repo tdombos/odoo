@@ -9,10 +9,28 @@
 }
 
 
+
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   font-family: Quicksand !important;
 }
 
+
+
+.one_two_col {
+	img{
+		border-radius:10px;
+		max-width:100%;
+		margin:1rem 0;
+	}
+	
+	h1, h2, h3, h4, h5, h6{
+	margin-top:1rem;
+	}
+	h1:first-child, h2:first-child, h3:first-child, h4:first-child, h5:first-child, h6:first-child{
+	margin-top:0;
+	}
+
+}
 
 .s_title .circle h1 {
   font-size: 72px;

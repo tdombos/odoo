@@ -23,16 +23,10 @@
 </record>
 
 
-<record id="quicksand" model="theme.ir.attachment">
-    <field name="key">website.quicksand</field>
-    <field name="name">website.quicksand</field>
-    <field name="url">/theme_bringin/static/src/font/Quicksand.ttf</field>
-</record>
-
-<record id="SourceSansPro" model="theme.ir.attachment">
-    <field name="key">website.SourceSansPro</field>
-    <field name="name">website.SourceSansPro</field>
-    <field name="url">/theme_bringin/static/src/font/SourceSansPro-Regular.ttf</field>
+<record id="image_01" model="theme.ir.attachment">
+    <field name="key">website.image_01</field>
+    <field name="name">website.image_01</field>
+    <field name="url">/theme_bringin/static/src/img/pictures/image_1.png</field>
 </record>
 
 </odoo>

@@ -19,6 +19,33 @@
 </template>
 
 
+<template id="one_two_col" name="Bring-in subpage layout">
+	
+	<section class="one_two_col">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4">
+				<h1>Aloldal címe</h1>
+			</div>
+			<div class="col-lg-8">
+				<p>The BRING-In partnership represents a dynamic mix of well-respected and high qualified academic institutions, civil society organisations, human rights and LGBTI/ gender equality advocates and ICT experts and capacity providers (i.e. professional associations) that altogether will BRING-In all necessary knowledge, experience and resources to achieve the project objectives and expected results and by that way positively influence national and EU policy development in the field of intersex people’s human rights.</p>
+				<p>Our consortium was set-up based on the principle of complementarily that we consider an essential prerequisite for a meaningful exchange of knowledge, experiences and practices in an area for which very little is known until now not only at national, but a lso at EU level.</p>
+				<img src="/web/image/website.image_01" />
+				<h2>Lorem Ipsum</h2>
+				<p>The BRING-In partnership represents a dynamic mix of well-respected and high qualified academic institutions, civil society organisations, human rights and LGBTI/ gender equality advocates and ICT experts and capacity providers (i.e. professional associations) that altogether will BRING-In all necessary knowledge, experience and resources to achieve the project objectives and expected results and by that way positively influence national and EU policy development in the field of intersex people’s human rights.</p>
+				<p>Our consortium was set-up based on the principle of complementarily that we consider an essential prerequisite for a meaningful exchange of knowledge, experiences and practices in an area for which very little is known until now not only at national, but a lso at EU level.</p>
+			</div>
+		</div>
+		</div>
+	</section>
+</template>
+
+<template id="one_two_col_bar" inherit_id="website.snippets" name="one_two_col_bar">
+  <xpath expr="//div[@id='snippet_structure']/div[@class='o_panel_body']" position="inside">
+    <t t-snippet="theme_bringin.one_two_col"
+       t-thumbnail="/website/static/src/img/snippets_thumbs/s_table_of_content.svg"/>
+  </xpath>
+</template>
 
 <template id="s_big_menu" name="Bring-in big menu">
 <section class="big-menu-wide">
