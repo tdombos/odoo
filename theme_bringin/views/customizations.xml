@@ -21,7 +21,7 @@
 
 <template id="one_two_col" name="Bring-in subpage layout">
 	
-	<section class="one_two_col">
+	<section class="one_two_col pt104 pb104">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-4">
