@@ -14,8 +14,6 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   font-family: Quicksand !important;
 }
 
-
-
 .one_two_col {
 	img{
 		border-radius:10px;
@@ -113,7 +111,13 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 }
 
 header {
-  .navbar-brand.logo img {
+	.navbar-brand.logo{
+	margin-right:auto!important;
+	}
+	.navbar-brand.logo img {
+      height: initial !important;
+    }
+	.main-logo img {
       height: initial !important;
     }
 	
@@ -163,6 +167,7 @@ header {
         font-family: Quicksand;
         font-weight: bold;
         font-size: 24px;
+		line-height:29px;
       }
 
       .nav-link:hover {
@@ -216,6 +221,9 @@ header {
 
 @media (max-width: 991.98px) {
 	header .navbar-brand.logo img {
+		max-height: 5rem!important;
+	}
+	header .main-logo img {
 		max-height: 5rem!important;
 	}
 
@@ -274,10 +282,16 @@ header {
 	header .navbar-brand.logo img {
 		max-height: 3rem!important;
 	}
+	header .main-logo img {
+		max-height: 3rem!important;
+	}
 }
 
 @media (max-width: 400px) {
 	header .navbar-brand.logo img {
+		max-height: 3rem!important;
+	}
+	header .main-logo img {
 		max-height: 3rem!important;
 	}
 }
@@ -312,9 +326,8 @@ header {
       right: 0;
       left: 0;
       color: #ffffff;
-
       ul {
-        margin: 171px auto 190px;
+        margin: 171px auto 205px;
 
         li.o_offcanvas_menu_toggler {
           top: -160px;
@@ -324,7 +337,7 @@ header {
 
         li.nav-item {
           padding: 10px;
-          width: 30%;
+          width: 29%;
         }
       }
 
@@ -393,15 +406,18 @@ header {
     border-radius: 10px;
     text-decoration: none;
     height: 100%;
+	position: relative;
+	top:0;
+	transition:top 0.2s;
 	img{
-	border-radius: 10px 10px 0 0;
+		border-radius: 10px 10px 0 0;
 	}
     .title {
       font-family: Quicksand;
       font-size: 30px;
       font-style: normal;
       font-weight: 700;
-      line-height: 30px;
+      line-height: 40px;
       letter-spacing: 0em;
       text-align: left;
       color: #ffffff;
@@ -409,13 +425,17 @@ header {
     }
 
     button {
+	  font-family: Quicksand;
       border: 2px solid #FFD725;
       box-sizing: border-box;
       border-radius: 50px;
       background: transparent;
       color: white;
       margin: auto 29px 22px;
-      padding: 2px 10px;
+      padding: 2px 30px;
+	  text-transform: uppercase;
+	  font-size:14px;
+	  font-weight: bold;
     }
 
     img {
@@ -424,9 +444,9 @@ header {
   }
 
   .item:hover {
-    position: relative;
     top: -10px;
     text-decoration: none;
+	transition:top 0.2s;
 
     button {
       background: #FFD725;
@@ -454,7 +474,8 @@ header {
     margin-bottom: 33px;
     padding: 0 20px;
     color: #ffffff;
-
+	position: relative;
+	top:0;
     .img {
       width: 75px;
       min-width: 75px;
@@ -473,7 +494,7 @@ header {
       font-size: 30px;
       font-style: normal;
       font-weight: 700;
-      line-height: 30px;
+      line-height: 35px;
       letter-spacing: 0em;
       text-align: left;
     }
@@ -485,9 +506,8 @@ header {
     text-decoration: none;
     background: #FFD725;
     color: #683D98;
-
     box-shadow: 0px 10px 10px 0px #683D9833;
-
+	transition:top 0.2s;
     svg {
       height: 75px;
 
@@ -506,13 +526,15 @@ header {
   }
 }
 
-
+header .nav-link{
+	white-space:initial!important;
+}
 
 @media (min-width: 992px) {
 #top_menu .nav-item:nth-child(1) { order: 0; }
-#top_menu .nav-item:nth-child(2) { order: 1; }
-#top_menu .nav-item:nth-child(3) { order: 4; }
-#top_menu .nav-item:nth-child(4) { order: 7; }
+#top_menu .nav-item:nth-child(2) { order: 1; width:42%}
+#top_menu .nav-item:nth-child(3) { order: 4; width:42%}
+#top_menu .nav-item:nth-child(4) { order: 7; width:42%}
 #top_menu .nav-item:nth-child(5) { order: 2; }
 #top_menu .nav-item:nth-child(6) { order: 5; }
 #top_menu .nav-item:nth-child(7) { order: 8; }

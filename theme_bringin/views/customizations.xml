@@ -152,10 +152,20 @@
 
 
 
-<template id="template_header_hamburger_full" inherit_id="website.template_header_hamburger_full">
+<!--template id="template_header_hamburger" inherit_id="website.template_header_hamburger">
 	<xpath expr="//span[@class='navbar-toggler-icon']" position="replace">
 		<i class="fa fa-bars"></i>
 	</xpath>
+</template-->
+
+
+<template id="multi_logo" inherit_id="website.option_header_brand_logo" name="Header Brand Logo" active="True">
+    <xpath expr="//a" position="before">
+        <a href="https://hatter.hu" class="main-logo logo">
+            <img src="https://hatter.hu/sites/all/themes/hatter/logo.png"/>
+        </a>
+    </xpath>
 </template>
+
 
 </odoo>
