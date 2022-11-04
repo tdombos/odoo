@@ -149,7 +149,7 @@
 
 
 
-	<template id="template_header_hamburger_4" inherit_id="website.navbar_nav">
+	<template id="template_header_hamburger_5" inherit_id="website.navbar_nav">
 		<xpath expr="//ul[@id='top_menu']/t" position="before">
 			<li class="o_offcanvas_menu_toggler order-first navbar-toggler text-right border-0 o_not_editable d-block d-show">
 				<a href="#top_menu_collapse" class="nav-link px-3" data-toggle="collapse">

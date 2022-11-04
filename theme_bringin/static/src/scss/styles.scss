@@ -219,24 +219,24 @@ header#top {
   #wrapwrap:before {
     top: -100px;
   }
-  header {
+  header#top {
     min-height: 265px;
   }
 
 }
 
 @media (max-width: 991.98px) {
-	header .navbar-brand.logo img {
+	header#top .navbar-brand.logo img {
 		max-height: 5rem!important;
 	}
-	header .main-logo img {
+	header#top .main-logo img {
 		max-height: 5rem!important;
 	}
 
   #wrapwrap:before {
     top: -165px;
   }
-  header {
+  header#top {
     min-height: 200px;
 	#top_menu_collapse{
 		li.nav-item {
@@ -285,19 +285,19 @@ header#top {
 
 
 @media (max-width: 460px) {
-	header .navbar-brand.logo img {
+	header#top .navbar-brand.logo img {
 		max-height: 3rem!important;
 	}
-	header .main-logo img {
+	header#top .main-logo img {
 		max-height: 3rem!important;
 	}
 }
 
 @media (max-width: 400px) {
-	header .navbar-brand.logo img {
+	header#top .navbar-brand.logo img {
 		max-height: 3rem!important;
 	}
-	header .main-logo img {
+	header#top .main-logo img {
 		max-height: 3rem!important;
 	}
 }
@@ -308,7 +308,7 @@ header#top {
   #wrapwrap:before {
     top: -200px;
   }
-  header {
+  header#top {
     min-height: 165px;
   }
 }
@@ -316,7 +316,7 @@ header#top {
 
 @media (min-width: 992px) {
 
-  header {
+  header#top {
     
 
     .navbar #top_menu {
@@ -370,7 +370,7 @@ header#top {
   #top_menu {
     max-width: 960px;
   }
-    header{
+    header#top{
     min-height: 365px;
   }
 
@@ -532,7 +532,7 @@ header#top {
   }
 }
 
-header .nav-link{
+header#top .nav-link{
 	white-space:initial!important;
 }
 
