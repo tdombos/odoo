@@ -110,7 +110,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   background: url("/web/image/website.background") no-repeat top center
 }
 
-header {
+header#top {
 	.navbar-brand.logo{
 	margin-right:auto!important;
       min-width:50px;
@@ -184,6 +184,7 @@ header {
       top: -10px;
       right: 15px;
       position: absolute;
+      display: none;
 
       a {
         background: white;
@@ -200,6 +201,10 @@ header {
 		  font-size:80px;
 		  color:#683D98;
         }
+      }
+      &.d-block,
+      &.d-show{
+        display: block;!important;
       }
     }
   }
