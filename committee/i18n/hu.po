@@ -1,0 +1,1099 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* committee
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-02-05 00:35+0000\n"
+"PO-Revision-Date: 2022-02-05 02:01+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 3.0.1\n"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__collaborator_count
+msgid "# Collaborators"
+msgstr "# Közreműködők"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__rating_count
+msgid "# Ratings"
+msgstr "# Értékelések"
+
+#. module: committee
+#: model:ir.model.fields,help:committee.field_committee_committee__alias_defaults
+msgid ""
+"A Python dictionary that will be evaluated to provide default values when creating new records for this "
+"alias."
+msgstr ""
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__access_warning
+msgid "Access warning"
+msgstr "Hozzáférés figyelmeztetés"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__message_needaction
+#: model:ir.model.fields,field_description:committee.field_committee_decision__message_needaction
+msgid "Action Needed"
+msgstr "Művelet szükséges"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__active
+msgid "Active"
+msgstr "Aktív"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__activity_ids
+#: model:ir.model.fields,field_description:committee.field_committee_decision__activity_ids
+msgid "Activities"
+msgstr "Tevékenységek"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__activity_exception_decoration
+#: model:ir.model.fields,field_description:committee.field_committee_decision__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__activity_state
+#: model:ir.model.fields,field_description:committee.field_committee_decision__activity_state
+msgid "Activity State"
+msgstr "Tevékenység állapota"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__activity_type_icon
+#: model:ir.model.fields,field_description:committee.field_committee_decision__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "Tevékenységtípus ikonja"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__alias_id
+msgid "Alias"
+msgstr "Álnév"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__alias_contact
+msgid "Alias Contact Security"
+msgstr "Álnév kapcsolat biztonság"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__alias_name
+msgid "Alias Name"
+msgstr "Álnév elnevezése"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__alias_domain
+msgid "Alias domain"
+msgstr "Álnév tartomány"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__alias_value
+msgid "Alias email"
+msgstr "Álnév email"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__alias_model_id
+msgid "Aliased Model"
+msgstr "Álnevesített modell"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__analytic_account_id
+msgid "Analytic Account"
+msgstr "Analitikus számla"
+
+#. module: committee
+#: model:ir.model.fields,help:committee.field_committee_committee__analytic_account_id
+msgid ""
+"Analytic account to which this project is linked for financial management. Use an analytic account to "
+"record cost and revenue on your project."
+msgstr ""
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__timesheet_ids
+msgid "Associated Timesheets"
+msgstr "Kapcsolódó időkimutatások"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__message_attachment_count
+#: model:ir.model.fields,field_description:committee.field_committee_decision__message_attachment_count
+msgid "Attachment Count"
+msgstr "Mellékletek száma"
+
+#. module: committee
+#: model:ir.model.fields.selection,name:committee.selection__calendar_attendee__state__attended
+msgid "Attended"
+msgstr "Jelen"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__analytic_account_balance
+msgid "Balance"
+msgstr "Egyenleg"
+
+#. module: committee
+#: model:ir.model,name:committee.model_calendar_attendee
+msgid "Calendar Attendee Information"
+msgstr "Naptár résztvevő információ"
+
+#. module: committee
+#: model:ir.model,name:committee.model_calendar_event
+msgid "Calendar Event"
+msgstr "Naptári esemény"
+
+#. module: committee
+#: model:ir.model.fields.selection,name:committee.selection__calendar_event__state__cancel
+msgid "Cancelled"
+msgstr "Törölve"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__collaborator_ids
+msgid "Collaborators"
+msgstr "Közreműködők"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__color
+msgid "Color Index"
+msgstr "Színindex"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__commercial_partner_id
+msgid "Commercial Entity"
+msgstr "Vállalat"
+
+#. module: committee
+#: model:ir.model,name:committee.model_committee_committee
+#: model:ir.model.fields,field_description:committee.field_calendar_event__committee_id
+#: model:ir.model.fields,field_description:committee.field_committee_decision__committee_id
+#: model_terms:ir.ui.view,arch_db:committee.view_committee_committee_search
+#: model_terms:ir.ui.view,arch_db:committee.view_committee_decision_search
+msgid "Committee"
+msgstr "Bizottság"
+
+#. module: committee
+#: model_terms:ir.ui.view,arch_db:committee.view_committee_form
+msgid "Committee Name"
+msgstr "Bizottság neve"
+
+#. module: committee
+#: model:ir.actions.act_window,name:committee.action_committee_committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__committee_ids
+#: model:ir.model.fields,field_description:committee.field_grant_fund__committee_ids
+#: model:ir.model.fields,field_description:committee.field_project_project__committee_ids
+#: model:ir.ui.menu,name:committee.menu_committee model:ir.ui.menu,name:committee.menu_committees
+#: model_terms:ir.ui.view,arch_db:committee.view_committee_committee_search
+#: model_terms:ir.ui.view,arch_db:committee.view_committee_committee_tree
+msgid "Committees"
+msgstr "Bizottságok"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__company_id
+msgid "Company"
+msgstr "Vállalat"
+
+#. module: committee
+#: model:ir.ui.menu,name:committee.menu_committee_configuration
+msgid "Configuration"
+msgstr "Beállítások"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__create_uid
+#: model:ir.model.fields,field_description:committee.field_committee_decision__create_uid
+#: model:ir.model.fields,field_description:committee.field_committee_decisiontype__create_uid
+msgid "Created by"
+msgstr "Létrehozta"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__create_date
+#: model:ir.model.fields,field_description:committee.field_committee_decision__create_date
+#: model:ir.model.fields,field_description:committee.field_committee_decisiontype__create_date
+msgid "Created on"
+msgstr "Létrehozva"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__currency_id
+msgid "Currency"
+msgstr "Pénznem"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__alias_bounced_content
+msgid "Custom Bounced Message"
+msgstr ""
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__partner_id
+msgid "Customer"
+msgstr "Ügyfél"
+
+#. module: committee
+#: model:ir.model.fields,help:committee.field_committee_committee__access_url
+msgid "Customer Portal URL"
+msgstr "Ügyfélportál webcíme"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__rating_active
+msgid "Customer Ratings"
+msgstr "Ügyfél értékelések"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__rating_status
+msgid "Customer Ratings Status"
+msgstr "Ügyfél értékelések státusza"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_decision__date
+msgid "Date"
+msgstr "Dátum"
+
+#. module: committee
+#: model:ir.model,name:committee.model_committee_decision
+#: model_terms:ir.ui.view,arch_db:committee.view_committee_decision_form
+msgid "Decision"
+msgstr "Döntés"
+
+#. module: committee
+#: model:ir.model,name:committee.model_committee_decisiontype
+#: model_terms:ir.ui.view,arch_db:committee.view_committee_decisiontype_search
+msgid "Decision Type"
+msgstr "Döntéstípus"
+
+#. module: committee
+#: model:ir.actions.act_window,name:committee.action_committee_decisiontype
+#: model:ir.ui.menu,name:committee.menu_tags
+#: model_terms:ir.ui.view,arch_db:committee.view_committee_decisiontype_form
+#: model_terms:ir.ui.view,arch_db:committee.view_committee_decisiontype_search
+#: model_terms:ir.ui.view,arch_db:committee.view_committee_decisiontype_tree
+msgid "Decision Types"
+msgstr "Döntéstípusok"
+
+#. module: committee
+#: model_terms:ir.ui.view,arch_db:committee.view_committee_decision_form
+msgid "Decision number"
+msgstr "Döntés száma"
+
+#. module: committee
+#: model:ir.actions.act_window,name:committee.action_committee_committee_decisions
+#: model:ir.actions.act_window,name:committee.action_committee_decision
+#: model:ir.actions.act_window,name:committee.action_committee_meeting_decisions
+#: model:ir.model.fields,field_description:committee.field_calendar_event__decision_count
+#: model:ir.model.fields,field_description:committee.field_calendar_event__decision_ids
+#: model:ir.model.fields,field_description:committee.field_committee_committee__decision_count
+#: model:ir.model.fields,field_description:committee.field_committee_committee__decision_ids
+#: model:ir.ui.menu,name:committee.menu_decision
+#: model_terms:ir.ui.view,arch_db:committee.view_committee_decision_form
+#: model_terms:ir.ui.view,arch_db:committee.view_committee_decision_search
+#: model_terms:ir.ui.view,arch_db:committee.view_committee_decision_tree
+#: model_terms:ir.ui.view,arch_db:committee.view_committee_form
+#: model_terms:ir.ui.view,arch_db:committee.view_committee_kanban
+#: model_terms:ir.ui.view,arch_db:committee.view_meeting_kanban
+msgid "Decisions"
+msgstr "Döntések"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__alias_defaults
+msgid "Default Values"
+msgstr "Alapértelmezett értékek"
+
+#. module: committee
+#: model:ir.model.fields,help:committee.field_committee_committee__privacy_visibility
+msgid ""
+"Defines the visibility of the tasks of the project:\n"
+"- Invited employees: employees may only see the followed project and tasks.\n"
+"- All employees: employees may see all project and tasks.\n"
+"- Invited portal users and all employees: employees may see everything.   Invited portal users may see "
+"project and tasks followed by.\n"
+"   them or by someone of their company."
+msgstr ""
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__description
+msgid "Description"
+msgstr "Leírás"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__display_name
+#: model:ir.model.fields,field_description:committee.field_committee_decision__display_name
+#: model:ir.model.fields,field_description:committee.field_committee_decisiontype__display_name
+msgid "Display Name"
+msgstr "Megjelenített név"
+
+#. module: committee
+#: model:ir.model.fields.selection,name:committee.selection__committee_decision__state__draft
+msgid "Draft"
+msgstr "Tervezet"
+
+#. module: committee
+#: model_terms:ir.ui.view,arch_db:committee.view_committee_kanban
+#: model_terms:ir.ui.view,arch_db:committee.view_decision_kanban
+#: model_terms:ir.ui.view,arch_db:committee.view_meeting_kanban
+msgid "Dropdown menu"
+msgstr "Lenyíló menü"
+
+#. module: committee
+#: model_terms:ir.ui.view,arch_db:committee.view_committee_kanban
+msgid "Edit Committee"
+msgstr "Bizottság szerkesztése"
+
+#. module: committee
+#: model_terms:ir.ui.view,arch_db:committee.view_decision_kanban
+msgid "Edit Decision"
+msgstr "Döntés szerkesztése"
+
+#. module: committee
+#: model_terms:ir.ui.view,arch_db:committee.view_meeting_kanban
+msgid "Edit Meeting"
+msgstr "Ülés szerkesztése"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__partner_email
+msgid "Email"
+msgstr "Email"
+
+#. module: committee
+#: model:ir.model.fields,help:committee.field_committee_committee__allow_timesheets
+msgid "Enable timesheeting on the project."
+msgstr "Időkimutatások bekapcsolása a projekten."
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__encode_uom_in_days
+msgid "Encode Uom In Days"
+msgstr ""
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__date
+msgid "Expiration Date"
+msgstr "Lejárat dátuma"
+
+#. module: committee
+#: model:ir.model.fields.selection,name:committee.selection__committee_decision__state__done
+msgid "Final"
+msgstr "Végleges"
+
+#. module: committee
+#: model_terms:ir.ui.view,arch_db:committee.view_committee_decision_form
+msgid "Finalize decision"
+msgstr "Véglegesít"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__message_follower_ids
+#: model:ir.model.fields,field_description:committee.field_committee_decision__message_follower_ids
+msgid "Followers"
+msgstr "Követők"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__message_partner_ids
+#: model:ir.model.fields,field_description:committee.field_committee_decision__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "Követők (partnerek)"
+
+#. module: committee
+#: model:ir.model.fields,help:committee.field_committee_committee__activity_type_icon
+#: model:ir.model.fields,help:committee.field_committee_decision__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr "Font awesome ikon, pl. fa-tasks"
+
+#. module: committee
+#: model_terms:ir.ui.view,arch_db:committee.view_committee_committee_tree
+msgid "Full name"
+msgstr "Teljes név"
+
+#. module: committee
+#: model:ir.model.fields,help:committee.field_committee_committee__sequence
+msgid "Gives the sequence order when displaying a list of Projects."
+msgstr "Megadja a projektek listázási sorrendjét."
+
+#. module: committee
+#: code:addons/committee/committee.py:0
+#, python-format
+msgid "Gross Margin"
+msgstr ""
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__has_message
+#: model:ir.model.fields,field_description:committee.field_committee_decision__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__has_planned_hours_tasks
+msgid "Has Planned Hours Tasks"
+msgstr ""
+
+#. module: committee
+#: model:ir.model.fields.selection,name:committee.selection__calendar_event__state__done
+msgid "Held"
+msgstr "Megtartva"
+
+#. module: committee
+#: model:ir.model.fields,help:committee.field_committee_committee__rating_status
+msgid ""
+"How to get customer feedback?\n"
+"- Rating when changing stage: an email will be sent when a task is pulled to another stage.\n"
+"- Periodic rating: an email will be sent periodically.\n"
+"\n"
+"Don't forget to set up the email templates on the stages for which you want to get customer feedback."
+msgstr ""
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__id
+#: model:ir.model.fields,field_description:committee.field_committee_decision__id
+#: model:ir.model.fields,field_description:committee.field_committee_decisiontype__id
+msgid "ID"
+msgstr "Azonosító"
+
+#. module: committee
+#: model:ir.model.fields,help:committee.field_committee_committee__alias_parent_thread_id
+msgid "ID of the parent record holding the alias (example: project holding the task creation alias)"
+msgstr ""
+"Az álnevet tartalmazó szülő rekord azonosítója (példa: a feladat létrehozására szolgáló álnevet "
+"tartalmazó projekt)"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__activity_exception_icon
+#: model:ir.model.fields,field_description:committee.field_committee_decision__activity_exception_icon
+msgid "Icon"
+msgstr "Ikon"
+
+#. module: committee
+#: model:ir.model.fields,help:committee.field_committee_committee__activity_exception_icon
+#: model:ir.model.fields,help:committee.field_committee_decision__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: committee
+#: model:ir.model.fields,help:committee.field_committee_committee__message_needaction
+#: model:ir.model.fields,help:committee.field_committee_committee__message_unread
+#: model:ir.model.fields,help:committee.field_committee_decision__message_needaction
+#: model:ir.model.fields,help:committee.field_committee_decision__message_unread
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: committee
+#: model:ir.model.fields,help:committee.field_committee_committee__message_has_error
+#: model:ir.model.fields,help:committee.field_committee_committee__message_has_sms_error
+#: model:ir.model.fields,help:committee.field_committee_decision__message_has_error
+#: model:ir.model.fields,help:committee.field_committee_decision__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: committee
+#: model:ir.model.fields,help:committee.field_committee_committee__alias_bounced_content
+msgid ""
+"If set, this content will automatically be sent out to unauthorized users instead of the default message."
+msgstr ""
+
+#. module: committee
+#: model:ir.model.fields,help:committee.field_committee_committee__active
+msgid "If the active field is set to False, it will allow you to hide the project without removing it."
+msgstr ""
+
+#. module: committee
+#: model:ir.model.fields,help:committee.field_committee_committee__alias_id
+msgid ""
+"Internal email associated with this project. Incoming emails are automatically synchronized with Tasks "
+"(or optionally Issues if the Issue Tracker module is installed)."
+msgstr ""
+
+#. module: committee
+#: model:ir.model.fields.selection,name:committee.selection__calendar_event__state__open
+msgid "Invitation sent"
+msgstr "Meghívó kiküldve"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__message_is_follower
+#: model:ir.model.fields,field_description:committee.field_committee_decision__message_is_follower
+msgid "Is Follower"
+msgstr "Követő"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__is_internal_project
+msgid "Is Internal Project"
+msgstr "Belső projekt"
+
+#. module: committee
+#: model:ir.model.fields,help:committee.field_committee_committee__label_tasks
+msgid "Label used for the tasks of the project."
+msgstr ""
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee____last_update
+#: model:ir.model.fields,field_description:committee.field_committee_decision____last_update
+#: model:ir.model.fields,field_description:committee.field_committee_decisiontype____last_update
+msgid "Last Modified on"
+msgstr "Legutóbb frissítve"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__last_update_id
+msgid "Last Update"
+msgstr "Utolsó frissítés"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__last_update_color
+msgid "Last Update Color"
+msgstr ""
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__last_update_status
+msgid "Last Update Status"
+msgstr ""
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__write_uid
+#: model:ir.model.fields,field_description:committee.field_committee_decision__write_uid
+#: model:ir.model.fields,field_description:committee.field_committee_decisiontype__write_uid
+msgid "Last Updated by"
+msgstr "Frissítette"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__write_date
+#: model:ir.model.fields,field_description:committee.field_committee_decision__write_date
+#: model:ir.model.fields,field_description:committee.field_committee_decisiontype__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__message_main_attachment_id
+#: model:ir.model.fields,field_description:committee.field_committee_decision__message_main_attachment_id
+msgid "Main Attachment"
+msgstr "Fő melléklet"
+
+#. module: committee
+#: model_terms:ir.ui.view,arch_db:committee.view_committee_committee_search
+msgid "Manager"
+msgstr "Felelős"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_decision__meeting_id
+msgid "Meeting"
+msgstr "Ülés"
+
+#. module: committee
+#: model:ir.actions.act_window,name:committee.action_committee_committee_meetings
+#: model:ir.actions.act_window,name:committee.action_committee_meeting
+#: model:ir.model.fields,field_description:committee.field_committee_committee__meeting_count
+#: model:ir.model.fields,field_description:committee.field_committee_committee__meeting_ids
+#: model:ir.ui.menu,name:committee.menu_meeting
+#: model_terms:ir.ui.view,arch_db:committee.view_committee_form
+#: model_terms:ir.ui.view,arch_db:committee.view_committee_kanban
+#: model_terms:ir.ui.view,arch_db:committee.view_committee_meeting_search
+msgid "Meetings"
+msgstr "Ülések"
+
+#. module: committee
+#: model_terms:ir.ui.view,arch_db:committee.view_committee_kanban
+msgid "Meetings To Do"
+msgstr "Jövőbeni ülések"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__favorite_user_ids
+msgid "Members"
+msgstr "Tagok"
+
+#. module: committee
+#: model:ir.model.fields.selection,name:committee.selection__calendar_event__state__close
+msgid "Memo Done"
+msgstr "Jegyzőkönyv kész"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__message_has_error
+#: model:ir.model.fields,field_description:committee.field_committee_decision__message_has_error
+msgid "Message Delivery error"
+msgstr "Üzenetkézbesítési hiba"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__message_ids
+#: model:ir.model.fields,field_description:committee.field_committee_decision__message_ids
+msgid "Messages"
+msgstr "Üzenetek"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__milestone_ids
+msgid "Milestone"
+msgstr "Mérföldkő"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__milestone_count
+msgid "Milestone Count"
+msgstr "Mérföldkövek száma"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__my_activity_date_deadline
+#: model:ir.model.fields,field_description:committee.field_committee_decision__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr "Tevékenységem határideje"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__name
+#: model:ir.model.fields,field_description:committee.field_committee_decisiontype__name
+msgid "Name"
+msgstr "Név"
+
+#. module: committee
+#: model:ir.model.constraint,message:committee.constraint_committee_decision_name
+#: model:ir.model.constraint,message:committee.constraint_committee_decisiontype_name
+msgid "Name of Decision Type has to be unique"
+msgstr "A döntéstípus értéke egyedi kell legyen"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__activity_calendar_event_id
+#: model:ir.model.fields,field_description:committee.field_committee_decision__activity_calendar_event_id
+msgid "Next Activity Calendar Event"
+msgstr "Következő tevékenység naptári eseménye"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__activity_date_deadline
+#: model:ir.model.fields,field_description:committee.field_committee_decision__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "Következő tevékenység határideje"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__activity_summary
+#: model:ir.model.fields,field_description:committee.field_committee_decision__activity_summary
+msgid "Next Activity Summary"
+msgstr "Következő tevékenység összegzés"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__activity_type_id
+#: model:ir.model.fields,field_description:committee.field_committee_decision__activity_type_id
+msgid "Next Activity Type"
+msgstr "Következő tevékenység típusa"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_decision__name
+msgid "Number"
+msgstr "Száma"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__message_needaction_counter
+#: model:ir.model.fields,field_description:committee.field_committee_decision__message_needaction_counter
+msgid "Number of Actions"
+msgstr "Akciók száma"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__doc_count
+msgid "Number of documents attached"
+msgstr "Mellékelt dokumentumok száma"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__message_has_error_counter
+#: model:ir.model.fields,field_description:committee.field_committee_decision__message_has_error_counter
+msgid "Number of errors"
+msgstr "Hibák száma"
+
+#. module: committee
+#: model:ir.model.fields,help:committee.field_committee_committee__message_needaction_counter
+#: model:ir.model.fields,help:committee.field_committee_decision__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr "Üzenetek száma, melyek akciót igényelnek"
+
+#. module: committee
+#: model:ir.model.fields,help:committee.field_committee_committee__message_has_error_counter
+#: model:ir.model.fields,help:committee.field_committee_decision__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "Kézbesítési hibával rendelkező üzenetek száma"
+
+#. module: committee
+#: model:ir.model.fields,help:committee.field_committee_committee__message_unread_counter
+#: model:ir.model.fields,help:committee.field_committee_decision__message_unread_counter
+msgid "Number of unread messages"
+msgstr "Olvasatlan üzenetek száma"
+
+#. module: committee
+#: model:ir.model.fields,help:committee.field_committee_committee__alias_force_thread_id
+msgid ""
+"Optional ID of a thread (record) to which all incoming messages will be attached, even if they did not "
+"reply to it. If set, this will disable the creation of new records completely."
+msgstr ""
+"Az üzenetlista (rekord) választható azonosítója, amelyhez minden beérkező üzenet csatolásra kerül, még "
+"akkor is, ha senki sem válaszolt azokra. Ha beállításra kerül, az új rekordok létrehozása teljesen "
+"kikapcsolásra kerül."
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__alias_user_id
+msgid "Owner"
+msgstr "Tulajdonos"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__alias_parent_model_id
+msgid "Parent Model"
+msgstr "Szülő modell"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__alias_parent_thread_id
+msgid "Parent Record Thread ID"
+msgstr "Szülő rekord szál azonosító"
+
+#. module: committee
+#: model:ir.model.fields,help:committee.field_committee_committee__alias_parent_model_id
+msgid ""
+"Parent model holding the alias. The model holding the alias reference is not necessarily the model given "
+"by alias_model_id (example: project (parent_model) and task (model))"
+msgstr ""
+"Az álnevet tartalmazó szülő modell. Az álnév hivatkozást tartalmazó modell nem feltétlenül azonos az "
+"alias_model_id által megadott modellel (például: projekt (parent_model) és feladat (model))."
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__partner_count
+#: model:ir.model.fields,field_description:committee.field_committee_committee__partnerline_ids
+msgid "Partners"
+msgstr "Partnerek"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_decision__partner_ids
+msgid "People Concerned"
+msgstr "Érintettek"
+
+#. module: committee
+#: model:ir.model.fields,help:committee.field_committee_committee__rating_percentage_satisfaction
+msgid "Percentage of happy ratings"
+msgstr "Pozitív értékelések aránya"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__partner_phone
+msgid "Phone"
+msgstr "Telefonszám"
+
+#. module: committee
+#: model:ir.model.fields.selection,name:committee.selection__calendar_event__state__draft
+msgid "Planned"
+msgstr "Tervezett"
+
+#. module: committee
+#: model:ir.model.fields,help:committee.field_committee_committee__alias_contact
+msgid ""
+"Policy to post a message on the document using the mailgateway.\n"
+"- everyone: everyone can post\n"
+"- partners: only authenticated partners\n"
+"- followers: only followers of the related document or members of following channels\n"
+msgstr ""
+"A dokumentumra küldött üzenetek szabályai a levélátjáró használatával.\n"
+"- mindenki: mindenki tud üzenni\n"
+"- partnerek: csak a hitelesített partnerek\n"
+"- követők: csak a kapcsolódó dokumentum követői vagy a következő csatornák tagjai\n"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__access_url
+msgid "Portal Access URL"
+msgstr "Portálelérés URL"
+
+#. module: committee
+#: model:ir.model,name:committee.model_project_project
+msgid "Project"
+msgstr "Projekt"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__user_id
+msgid "Project Manager"
+msgstr "Felelős"
+
+#. module: committee
+#: model:ir.model.fields,help:committee.field_committee_committee__project_id
+msgid "Project-related data of the committee"
+msgstr "A bizottság projektadatai"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__rating_status_period
+msgid "Rating Frequency"
+msgstr "Értékelés gyakorisága"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__rating_request_deadline
+msgid "Rating Request Deadline"
+msgstr "Értékelési kérés határideje"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__rating_percentage_satisfaction
+msgid "Rating Satisfaction"
+msgstr "Értékelés"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__rating_ids
+msgid "Ratings"
+msgstr "Értékelések"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__alias_force_thread_id
+msgid "Record Thread ID"
+msgstr "Rekord üzenetlista azonosító"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__allow_recurring_tasks
+msgid "Recurring Tasks"
+msgstr ""
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__project_id
+msgid "Related Project"
+msgstr ""
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__remaining_hours
+msgid "Remaining Invoiced Time"
+msgstr "Ismétlődő feladatok"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__activity_user_id
+#: model:ir.model.fields,field_description:committee.field_committee_decision__activity_user_id
+msgid "Responsible User"
+msgstr "Felelős"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__message_has_sms_error
+#: model:ir.model.fields,field_description:committee.field_committee_decision__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "SMS kézbesítési hiba"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__access_token
+msgid "Security Token"
+msgstr "Biztonsági token"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__sequence
+msgid "Sequence"
+msgstr "Sorszám"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__shortname
+#: model_terms:ir.ui.view,arch_db:committee.view_committee_committee_tree
+msgid "Short name"
+msgstr "Rövid név"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__is_favorite
+msgid "Show Project on Dashboard"
+msgstr "Projekt mutatása a kezelőpulton"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__stage_id
+msgid "Stage"
+msgstr "Szakasz"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__date_start
+msgid "Start Date"
+msgstr "Kezdő dátum"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_calendar_event__state
+#: model:ir.model.fields,field_description:committee.field_committee_decision__state
+#: model_terms:ir.ui.view,arch_db:committee.view_committee_decision_search
+#: model_terms:ir.ui.view,arch_db:committee.view_committee_meeting_search
+msgid "State"
+msgstr "Állapot"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_calendar_attendee__state
+msgid "Status"
+msgstr "Állapot"
+
+#. module: committee
+#: model:ir.model.fields,help:committee.field_committee_committee__activity_state
+#: model:ir.model.fields,help:committee.field_committee_decision__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+"Tevékenységeken alapuló állapot\n"
+"Lejárt: A tevékenység határideje lejárt\n"
+"Ma: A határidő ma van\n"
+"Tervezett: Jövőbeli határidő."
+
+#. module: committee
+#: model:ir.model.fields,help:committee.field_calendar_attendee__state
+msgid "Status of the attendee's participation"
+msgstr "A látogatók részvételi helyzete"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__allow_subtasks
+msgid "Sub-tasks"
+msgstr "Al-feladatok"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__tag_ids
+msgid "Tags"
+msgstr "Címkék"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__tasks
+msgid "Task Activities"
+msgstr "Feladat tevékenységei"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__task_count
+msgid "Task Count"
+msgstr "Feladatok száma"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__task_count_with_subtasks
+msgid "Task Count With Subtasks"
+msgstr "Feladatok száma alfeladatokkal"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__allow_task_dependencies
+msgid "Task Dependencies"
+msgstr "Feladat-függőségek"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__task_ids
+msgid "Tasks"
+msgstr "Feladatok"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__type_ids
+msgid "Tasks Stages"
+msgstr "Feladatok szakaszai"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_decision__text
+msgid "Text"
+msgstr "Szöveg"
+
+#. module: committee
+#: model:ir.model.fields,help:committee.field_committee_committee__alias_model_id
+msgid ""
+"The model (Odoo Document Kind) to which this alias corresponds. Any incoming email that does not reply "
+"to an existing record will cause the creation of a new record of this model (e.g. a Project Task)"
+msgstr ""
+"A modell (Odoo dokumentum típus), amelyre ez az álnév vonatkozik. Bármely bejövő e-mail, amely nem "
+"válaszol egy meglévő rekordra, ezen modell egy új rekordjának létrehozását fogja előidézni (pl. egy "
+"projekt feladatot)"
+
+#. module: committee
+#: model:ir.model.fields,help:committee.field_committee_committee__alias_name
+msgid "The name of the email alias, e.g. 'jobs' if you want to catch emails for <jobs@example.odoo.com>"
+msgstr ""
+"Az e-mail álnév neve, pl. 'állások', ha erre az e-mailcímre szeretne leveleket kapni: <allasok@pelda."
+"odoo.com>"
+
+#. module: committee
+#: model:ir.model.fields,help:committee.field_committee_committee__alias_user_id
+msgid ""
+"The owner of records created upon receiving emails on this alias. If this field is not set the system "
+"will attempt to find the right owner based on the sender (From) address, or will use the Administrator "
+"account if no system user is found for that address."
+msgstr ""
+"Az e-mailek ezen álnévre történő beérkezésekor létrehozásra kerülő rekordok tulajdonosa. Ha ez a mező "
+"nem kerül beállításra, akkor a rendszer megpróbálja megtalálni a megfelelő tulajdonost a küldő (Feladó) "
+"címe alapján, vagy az adminisztrátor fiókot használja, ha nem található rendszerfelhasználó ahhoz a "
+"címhez."
+
+#. module: committee
+#: model:ir.model.fields,help:committee.field_committee_committee__timesheet_encode_uom_id
+msgid ""
+"This will set the unit of measure used to encode timesheet. This will simply provide tools\n"
+"        and widgets to help the encoding. All reporting will still be expressed in hours (default value)."
+msgstr ""
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__timesheet_count
+msgid "Timesheet Count"
+msgstr ""
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__timesheet_encode_uom_id
+msgid "Timesheet Encoding Unit"
+msgstr ""
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__allow_timesheets
+msgid "Timesheets"
+msgstr "Időkimutatások"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__total_timesheet_time
+msgid "Total Timesheet Time"
+msgstr "Teljes feltüntetett idő"
+
+#. module: committee
+#: model:ir.model.fields,help:committee.field_committee_committee__total_timesheet_time
+msgid "Total number of time (in the proper UoM) recorded in the project, rounded to the unit."
+msgstr ""
+
+#. module: committee
+#: model:ir.model.fields,help:committee.field_committee_committee__has_planned_hours_tasks
+msgid "True if any of the project's task has a set planned hours"
+msgstr "Igaz, ha legalább egy projekthez tartozó feladathoz munkaidőbecslés tartozik"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_decision__type_id
+msgid "Type"
+msgstr "Típus"
+
+#. module: committee
+#: model:ir.model.fields,help:committee.field_committee_committee__activity_exception_decoration
+#: model:ir.model.fields,help:committee.field_committee_decision__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__message_unread
+#: model:ir.model.fields,field_description:committee.field_committee_decision__message_unread
+msgid "Unread Messages"
+msgstr "Olvasatlan üzenetek"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__message_unread_counter
+#: model:ir.model.fields,field_description:committee.field_committee_decision__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr "Olvasatlan üzenet számláló"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__update_ids
+msgid "Update"
+msgstr "Frissítés"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__alias_enabled
+msgid "Use Email Alias"
+msgstr "Email álnév használata"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__label_tasks
+msgid "Use Tasks as"
+msgstr "Olvasatlan üzenetek"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__privacy_visibility
+msgid "Visibility"
+msgstr "Láthatóság"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_decision__vote
+msgid "Voting Summary"
+msgstr "Szavazás összefoglalása"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__website_message_ids
+#: model:ir.model.fields,field_description:committee.field_committee_decision__website_message_ids
+msgid "Website Messages"
+msgstr "Weboldali üzenetek"
+
+#. module: committee
+#: model:ir.model.fields,help:committee.field_committee_committee__website_message_ids
+#: model:ir.model.fields,help:committee.field_committee_decision__website_message_ids
+msgid "Website communication history"
+msgstr "Weboldali kommunikációs előzmények"
+
+#. module: committee
+#: model:ir.model.fields,help:committee.field_committee_committee__is_favorite
+msgid "Whether this project should be displayed on your dashboard."
+msgstr "Hogy ezt a projektet meg kell-e jeleníteni a kezelőpulton"
+
+#. module: committee
+#: model:ir.model.fields,field_description:committee.field_committee_committee__resource_calendar_id
+msgid "Working Time"
+msgstr "Munkaidő"
+
+#. module: committee
+#: model_terms:ir.ui.view,arch_db:committee.view_committee_decision_search
+msgid "decision"
+msgstr "döntás"

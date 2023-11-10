@@ -16,3 +16,6 @@ class HrEmployeeBase(models.Model):
     identification_id = fields.Char(related='address_home_id.identification_id')
     passport_id = fields.Char(related='address_home_id.passport_id')
     country_id = fields.Many2one(related='address_home_id.nationality_id')
+class Department(models.Model):
+    _inherit = ['hr.department']
+    member_ids = fields.Many2many('hr.employee', 'hr_department_hr_employee_rel', 'hr_department_id', 'hr_employee_id', string='Members', readonly=True)

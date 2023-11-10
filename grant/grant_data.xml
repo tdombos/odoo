@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data >
-        <!-- Resource: project.project -->
-        <record id="grant_role_coordinator" model="project_partner.role">
-            <field name="name">coordinator</field>
-            <field name="description">Coordinating organization for the project</field>
+        <record id="grant_role_applicant" model="project_partner.role">
+            <field name="name">applicant</field>
+            <field name="description">Main applicant coordinating the project</field>
         </record>
         <record id="grant_role_partner" model="project_partner.role">
             <field name="name">partner</field>
@@ -16,22 +15,6 @@
         <record id="fund_type_grant" model="grant.fundtype">
             <field name="name">Grant</field>
         </record>
-<!--        <record id="action_expire_grant_call" model="ir.actions.server">
-            <field name="name">Expire call</field>
-            <field name="model_id" ref="model_grant_call"/>
-            <field name="type">ir.actions.server</field>
-            <field name="state">object_write</field>
-            <field name="fields_lines">[(0, 0, {'col1': 'state', 'value': 'close'})]</field> 
-        </record>
- 		<function id="parent_fund_default_set" model="ir.values" name="set" eval="('default',False,'parent_id', [('grant.fund', False)], all_fund_account, True, False, False, False, True)"/>
-        <record id="rule_grant_call_deadline_expired" model="base.action.rule">
-            <field name="name">Expire calls with deadlines passed.</field>
-            <field name="model_id" ref="model_grant_call"/>
-            <field name="sequence">1</field>
-            <field name="kind">on_time</field>
-            <field name="trg_date_id" ref="field_grant_call_date"/>
-            <field name="server_action_ids" eval="[(6,0,[ref('action_expire_grant_call')])]"/>
-        </record> -->
 		<record id="ir_cron_scheduler_expire_grant_call" model="ir.cron">
 			<field name="name">Expire grant call</field>
 			<field name="user_id" ref="base.user_root"/>
@@ -43,6 +26,24 @@
 			<field name="state">code</field>
 			<field name="code">model._expire_grant()</field>
 		</record>
-
+        <record id="product_grant" model="product.product">
+            <field name="name">Grant</field>
+            <field name="list_price">0.0</field>
+            <field name="standard_price">0.0</field>
+            <field name="type">service</field>
+			<field name="taxes_id" eval="[(5)]"/>
+        </record>
+		<record id="grant_account_journal_in" model="account.journal">
+            <field name="name">Grants received</field>
+            <field name="type">sale</field>
+			<field name="code">BETAM</field>
+            <!-- avoid being selected as default journal -->
+        </record>
+		<record id="grant_account_journal_out" model="account.journal">
+            <field name="name">Grants paid</field>
+            <field name="type">purchase</field>
+			<field name="code">KITAM</field>
+            <!-- avoid being selected as default journal -->
+        </record>
     </data>
 </openerp>

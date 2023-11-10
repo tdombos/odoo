@@ -24,6 +24,7 @@
     'category': 'Association',
     'description': """Connect invoices to grants.""",
     'author': 'Dombos Tamás',
+    'license': 'LGPL-3',
     'license': 'AGPL-3',
     'depends': ['analytic','account'],
     'data' : [

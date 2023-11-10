@@ -1,0 +1,26 @@
+<odoo>
+  <data noupdate="0">
+    <record id="proposal_portal_rule" model="ir.rule">
+      <field name="name">Grant Proposal Portal Access</field>
+      <field name="model_id" ref="grant.model_grant_proposal"/>
+        <field name="domain_force">[('message_partner_ids','in',[user.partner_id.id])]</field>
+      <field name="groups" eval="[(4, ref('base.group_user')),(4,ref('base.group_portal'))]"/>
+    </record>
+    <record id="proposal_portal_rule" model="ir.rule">
+      <field name="name">Grant Fund Portal Access</field>
+      <field name="model_id" ref="grant.model_grant_proposal"/>
+        <field name="domain_force">[('message_partner_ids','in',[user.partner_id.id])]</field>
+      <field name="groups" eval="[(4, ref('base.group_user')),(4,ref('base.group_portal'))]"/>
+    </record>
+	<record id="grant_call_public" model="ir.rule">
+        <field name="name">Grant Calls: Public</field>
+        <field name="model_id" ref="grant.model_grant_call"/>
+        <field name="domain_force">[('website_published', '=', True)]</field>
+        <field name="groups" eval="[(4, ref('base.group_public'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+  </data>
+</odoo>

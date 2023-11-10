@@ -26,6 +26,7 @@
     'category': 'Project',
     'description': 'Attach partners to projects and tasks wiith various roles',
     'author': 'Dombos Tamás',
+    'license': 'LGPL-3',
     'website': '',
     'depends': ['project'],
     'data': ['project_partner_view.xml','security/ir.model.access.csv' ], 

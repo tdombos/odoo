@@ -1,0 +1,121 @@
+<odoo>
+
+<template id="grant_calls" name="Calls">
+    <t t-call="website.layout">
+        <div id="wrap" class="o_website_grant_calls_list bg-100">
+            <div class="oe_structure">
+                <section class="pt48 pb32 bg-200">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12 text-center">
+                                <h2 class="h1 text-secondary">Our Open Calls</h2>
+                                <h3 class="text-muted">Let us help you!</h3>
+                                <p>
+                                    Apply to our calls for proposals to get funding for your activism.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="container oe_website_calls">
+                <div class="row pt48 pb48">
+                    <div class="d-none" id="calls_grid_left">
+
+                    </div>
+                    <div class="col-lg" id="calls_grid">
+                        <div t-if="not calls">
+                            <div class="text-center text-muted">
+                                <h3 class="css_editable_hidden"><a t-attf-href="/contactus">Contact us</a> for future calls.</h3>
+                                <h4 groups="grant.group_grant_manager">
+                                    Create new calls from the <strong><i>+New</i></strong> top-right button.
+                                </h4>
+                            </div>
+                        </div>
+                        <a t-foreach="calls" t-as="call" t-attf-href="/calls/detail/#{ slug(call) }" t-attf-class="text-decoration-none#{' mt-3' if call_index else ''}">
+                            <div class="card card-default mb32">
+                                <div class="card-body" t-att-data-publish="call.website_published and 'on' or 'off'">
+                                    <span t-if="not call.website_published" class="badge badge-danger mb8 p-2">unpublished</span>
+                                    <h3 class="text-secondary mt0 mb4">
+                                        <span t-field="call.name"/>
+                                    </h3>
+                                    <div>
+                                            <i class="fa fa-fw fa-clock-o" title="Deadline" role="img" aria-label="Deadline"/><span t-field="call.date" t-options='{"widget": "date"}'/>
+                                        </div>
+									<div t-if="editable"
+                                       t-field="call.description"
+                                       class="mt16 mb0 css_non_editable_mode_hidden"/>
+                                    <div t-esc="call.description or ''"
+                                        class="mt16 mb0 css_editable_mode_hidden o_website_grant_call_description"
+                                    />
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+</template>
+
+<template id="detail" name="Call Detail" track="1">
+    <t t-call="website.layout">
+        <t t-set="additional_title">Call detail</t>
+        <div id="wrap" class="js_grant">
+            <!-- Breadcrumb -->
+            <section class="bg-200">
+                <div class="container">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb pl-0">
+                            <li class="breadcrumb-item"><a href="/calls" class="text-secondary font-weight-bold">Calls</a></li>
+                            <li class="breadcrumb-item active" aria-current="page"><span t-field="call.name"/> <span t-if="call.code">(<span t-field="call.code" />)</span></li>
+                        </ol>
+                    </nav>
+                </div>
+            </section>
+            <!-- Job name -->
+            <section class="pb32">
+                <div class="container">
+                    <div class="mt32">
+                        <div class="float-right">
+                            <a role="button" t-attf-href="/calls/apply/#{call.id}" class="btn btn-primary btn-lg float-right">Apply Now!</a>
+                        </div>
+                        <h1> <span t-field="call.name"/><span t-if="call.code"> (<span t-field="call.code" />)</span></h1>
+						<h5 class="font-weight-light" > <span class="fa fa-clock-o"/> <span t-field="call.date" t-options='{"widget": "date"}'/> </h5>
+                    </div>
+					<div class="row" t-if="call.description">
+						<div class="mb-3 col-12">
+							<strong>Summary:</strong>
+							<span t-field="call.description" />
+						</div>
+					</div>
+					<div class="row" t-if="call.max_amount">
+						<div class="mb-3 col-12">
+							<strong>Amount to receive:</strong>
+							<span t-field="call.min_amount" t-options='{"widget": "monetary", "display_currency": call.currency_id}'/> - <span t-field="call.max_amount" t-options='{"widget": "monetary", "display_currency": call.currency_id}'/>
+						</div>
+					</div>
+					<div class="row" t-if="call.date">
+						<div class="mb-3 col-12">
+							<strong>Deadline:</strong>
+							<span t-field="call.date" t-options='{"widget": "datetime"}'/>
+						</div>
+					</div>
+                </div>
+            </section>
+
+            <div t-field="call.website_description"/>
+
+            <div class="oe_structure">
+                <section class="o_call_bottom_bar mt32 mb32">
+                    <div class="text-center">
+                        <a role="button" t-attf-href="/calls/apply/#{call.id}" class="btn btn-primary btn-lg">Apply Now!</a>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </t>
+</template>
+
+</odoo>

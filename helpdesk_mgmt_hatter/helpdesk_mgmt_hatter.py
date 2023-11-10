@@ -44,9 +44,9 @@ class HelpdeskTicket(models.Model):
     start_date= fields.Datetime(string='Ticket arrived',
         default='',
         index=True, copy=False)
-    externalref = fields.Text('External References', track_visibility='onchange')
+    externalref = fields.Text('External References', tracking=True)
     description_anon = fields.Html('Anonymized Summary')
-    servicelevel_ids = fields.Many2many('helpdesk.servicelevel', string='Service level', track_visibility='onchange')
+    servicelevel_ids = fields.Many2many('helpdesk.servicelevel', string='Service level', tracking=True)
     gender = fields.Selection([('male', 'Male'), ('female', 'Female'), ('other', 'Other'), ('unknown', 'Unknown'),],'Gender', default='unknown', required=True)
     sexorient  = fields.Selection([('homo', 'Homosexual'), ('bi', 'Bisexual'), ('hetero', 'Heterosexual'), ('quest', 'Questioning'), ('unknown', 'Unknown'),],'Sexual Orientation', default='unknown', required=True)
     trans  = fields.Selection([('trans', 'Yes'), ('nottrans', 'No'),('unknown', 'Unknown'),],'Transgender', default='unknown',required=True)
@@ -65,8 +65,9 @@ class HelpdeskTicket(models.Model):
         for vals in vals_list:
             if vals.get("number", "/") == "/":
                 team = self.env['helpdesk.ticket.team'].browse(vals.get("team_id"))
-                seq_name = 'helpdesk.ticket.' + team.code.lower()
-                vals["number"] = self.env["ir.sequence"].next_by_code(seq_name)
+                if team: 
+                    seq_name = 'helpdesk.ticket.' + team.code.lower()
+                    vals["number"] = self.env["ir.sequence"].next_by_code(seq_name)
         return super().create(vals_list)
     _rec_name = 'complete_name'
     @api.model
@@ -149,15 +150,15 @@ class HelpdeskTicketDocument(models.Model):
         'ir.attachment': 'document_id',
     }
     document_id = fields.Many2one('ir.attachment', required=True, string='Related Document', ondelete='restrict', help='Document-related data of the ticket document', auto_join=True)
-    date_done = fields.Date('Done Date', index=True, help="Date when the document was created and signed", track_visibility='onchange')
-    date = fields.Date('Date', index=True, help="Date of arrival (for incoming) or date of sending (for outgoing)", track_visibility='onchange')
-    doctype_id = fields.Many2one('helpdesk.doctype', 'Type', index=True, track_visibility='onchange')
-    direction = fields.Selection([('in', 'Incoming'), ('out', 'Outgoing'),('local', 'Helyi') ],'Direction', index=True, track_visibility='onchange')
-    channel_id = fields.Many2one('docregister.type', 'Channel', index=True, track_visibility='onchange')
-    partner_id = fields.Many2one('res.partner', string='Partner', track_visibility='onchange',index=True)
-    partner_ids = fields.Many2many('res.partner', string='Other partner(s)', track_visibility='onchange',index=True)
-    doc_id = fields.Many2one('docregister.doc', string='Document', track_visibility='onchange',index=True)
-    ticket_id = fields.Many2one('helpdesk.ticket', string='Ticket', track_visibility='onchange',index=True)
+    date_done = fields.Date('Done Date', index=True, help="Date when the document was created and signed")
+    date = fields.Date('Date', index=True, help="Date of arrival (for incoming) or date of sending (for outgoing)")
+    doctype_id = fields.Many2one('helpdesk.doctype', 'Type', index=True)
+    direction = fields.Selection([('in', 'Incoming'), ('out', 'Outgoing'),('local', 'Helyi') ],'Direction', index=True)
+    channel_id = fields.Many2one('docregister.type', 'Channel', index=True)
+    partner_id = fields.Many2one('res.partner', string='Partner', index=True)
+    partner_ids = fields.Many2many('res.partner', string='Other partner(s)', index=True)
+    doc_id = fields.Many2one('docregister.doc', string='Document', index=True)
+    ticket_id = fields.Many2one('helpdesk.ticket', string='Ticket',index=True)
     filename = fields.Char(compute='compute_filename')
     
     api.depends('name', 'date_done')

@@ -39,7 +39,7 @@ class Committee(models.Model):
     def _decision_count(self):
         for record in self:
             record.decision_count = len(record.decision_ids)
-    shortname = fields.Char('Short name', size=64, select=True)
+    shortname = fields.Char('Short name', size=64)
     project_id = fields.Many2one('project.project', required=True, string='Related Project', ondelete='restrict', help='Project-related data of the committee', auto_join=True)
     meeting_ids = fields.One2many('calendar.event', 'committee_id', 'Meetings')
     decision_ids = fields.One2many('committee.decision', 'committee_id', 'Decisions')
@@ -63,7 +63,7 @@ class Meeting(models.Model):
         ('done', 'Held'),
         ('close', 'Memo Done'),
         ('cancel', 'Cancelled')],
-        string='State', group_expand='_expand_states', default='draft', size=16, track_visibility='onchange')
+        string='State', group_expand='_expand_states', default='draft', tracking=True)
 
     _order = 'start desc'
     @api.model
@@ -87,7 +87,7 @@ class CommitteeDecision(models.Model):
     _inherit = ['mail.thread','mail.activity.mixin']
     _description = 'Decision'
 
-    name = fields.Char('Number', size=128, required=True, select=True)
+    name = fields.Char('Number', size=128, required=True)
     committee_id = fields.Many2one('committee.committee', 'Committee', required=True)
     meeting_id = fields.Many2one('calendar.event', 'Meeting')
     date = fields.Date('Date', required=True)
@@ -98,7 +98,7 @@ class CommitteeDecision(models.Model):
     state = fields.Selection([
         ('draft', 'Draft'),
         ('done', 'Final')],
-        string='State', default='draft', group_expand='_expand_states', size=16, track_visibility='onchange')
+        string='State', default='draft', group_expand='_expand_states', tracking=True)
 
     _sql_constraints = [
         ('name', 'unique(name)', 'Name of Decision Type has to be unique')

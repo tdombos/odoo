@@ -320,10 +320,10 @@ header#top {
     
 
     .navbar #top_menu {
-      flex-direction: row;
-      flex-wrap: wrap !important;
+	display: block;
+	column-count: 3;
     }
-
+    
 
     #top_menu_collapse {
       top: 0;
@@ -333,17 +333,17 @@ header#top {
       left: 0;
       color: #ffffff;
       ul {
-        margin: 171px auto 205px;
+        margin: 150px auto 150px;
 
         li.o_offcanvas_menu_toggler {
-          top: -160px;
+          top: -140px;
           right: 15px;
           position: absolute;
         }
 
         li.nav-item {
           padding: 10px;
-          width: 29%;
+         /* width: 29%;*/
         }
       }
 
@@ -536,7 +536,7 @@ header#top .nav-link{
 	white-space:initial!important;
 }
 
-@media (min-width: 992px) {
+/*@media (min-width: 992px) {
 #top_menu .nav-item:nth-child(1) { order: 0; }
 #top_menu .nav-item:nth-child(2) { order: 1; width:42%}
 #top_menu .nav-item:nth-child(3) { order: 4; width:42%}
@@ -548,4 +548,18 @@ header#top .nav-link{
 #top_menu .nav-item:nth-child(9) { order: 6; }
 #top_menu .nav-item:nth-child(10) { order: 9; }
 
+}*/
+
+#footer {
+    background: url(/web/image/2566-d54856e3/ruler_szivarvany.svg) no-repeat top center;
+    background-size: 100%;
+    font-family: Quicksand;
+    line-height: 2;
+}
+footer p {
+    margin-bottom: 0px !important;
+}
+footer.o_footer a:not(.btn):hover {
+    color: #108185;
+    text-decoration: none;
 }

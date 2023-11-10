@@ -15,14 +15,7 @@ class Contract(models.Model):
     _inherit = ['hr.contract']
 
     parent_id = fields.Many2one('hr.contract', 'Main contract')
-    state = fields.Selection([
-        ('draft', 'New'),
-        ('sign', 'Signing'),
-        ('open', 'Running'),
-        ('close', 'Expired'),
-        ('cancel', 'Cancelled')
-    ], string='Status', group_expand='_expand_states', copy=False,
-       tracking=True, help='Status of the contract', default='draft')
+    state = fields.Selection(selection_add=[('sign', 'Signing')])
     type_id = fields.Many2one('hr.contract.type', string="Contract type", required=True, help="Type of the contract")
     project_id = fields.Many2one('project.project', string='Project', help="Project the contract is related to")
 

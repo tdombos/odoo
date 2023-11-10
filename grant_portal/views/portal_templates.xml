@@ -1,0 +1,814 @@
+<odoo>
+
+    <template id="portal_my_home" inherit_id="portal.portal_my_home"
+        priority="100" name="Grant Proposals" customize_show="True">
+        <xpath expr="//div[hasclass('o_portal_docs')]" position="inside">
+            <t t-call="portal.portal_docs_entry">
+                <t t-set="title">Grant Proposals</t>
+                <t t-set="url" t-value="'/my/proposals'"/>
+                <t t-set="placeholder_count" t-value="'grant_proposals_count'"/>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="my_grant_proposals" name="My Grant Proposals">
+      <t t-call="portal.portal_layout">
+        <t t-if="proposals" t-call="portal.portal_table">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Call</th>
+              <th>State</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr t-foreach="proposals" t-as="doc">
+              <td>
+                <a t-attf-href="/my/proposals/{{slug(doc)}}">
+                  <span t-field="doc.name"/>
+                </a>
+              </td>
+              <td>
+                <span t-field="doc.call_id.name"/>
+              </td>
+              <td>
+                <span t-field="doc.state" class="badge badge-pill badge-info"/>
+              </td>
+            </tr>
+          </tbody>
+        </t>
+        <t t-else="">
+            <div class="alert alert-warning" role="alert">
+              You don't have any grant proposals.
+            </div>
+        </t>
+      </t>
+    </template>
+    <template id="my_grant_funds" name="My Grant Funds">
+      <t t-call="portal.portal_layout">
+        <t t-if="funds" t-call="portal.portal_table">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>State</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr t-foreach="funds" t-as="doc">
+              <td>
+                <a t-attf-href="/my/funds/{{slug(doc)}}">
+                  <span t-field="doc.name"/>
+                </a>
+              </td>
+              <td>
+                <span t-field="doc.state" class="badge badge-pill badge-info"/>
+              </td>
+            </tr>
+          </tbody>
+        </t>
+        <t t-else="">
+            <div class="alert alert-warning" role="alert">
+              You don't have any grant funds.
+            </div>
+        </t>
+      </t>
+    </template>
+    
+<template id="proposal" name="Grant Proposal Portal Template" inherit_id="portal.portal_sidebar" primary="True">
+      <xpath expr="//div[hasclass('o_portal_sidebar')]" position="inside">
+<!--           <t t-set="o_portal_fullwidth_alert" groups="grant.group_grant_user">
+              <t t-call="portal.portal_back_in_edit_mode">
+                  <t t-set="backend_url" t-value="'/web#model=%s&amp;id=%s&amp;action=%s&amp;view_type=form' % (grant._name, proposal.id, proposal.env.ref('purchase.purchase_rfq').id)"/>
+              </t>
+          </t> -->
+
+          <div class="row mt16 o_portal_proposal_sidebar">
+              <!-- Sidebar -->
+              <t t-call="portal.portal_record_sidebar">
+                  <t t-set="classes" t-value="'col-lg-auto d-print-none'"/>
+
+                  <t t-set="title">
+                      <h2 class="mb-0"><b t-field="doc.code_proposal" data-id="code_proposal"/> </h2>
+                  </t>
+                  <t t-set="entries">
+                      <ul class="list-group list-group-flush flex-wrap flex-row flex-lg-column">
+                          <li class="list-group-item flex-grow-1">
+<!--                               <div class="o_download_pdf btn-toolbar flex-sm-nowrap">
+                                  <div class="btn-group flex-grow-1 mr-1 mb-1">
+                                      <a class="btn btn-secondary btn-block o_download_btn" t-att-href="doc.get_portal_url(report_type='pdf', download=True)" title="Download"><i class="fa fa-download"/> Download</a>
+                                  </div>
+                                  <div class="btn-group flex-grow-1 mb-1">
+                                      <a class="btn btn-secondary btn-block o_print_btn o_portal_proposal_print" t-att-href="doc.get_portal_url(report_type='pdf')" id="print_invoice_report" title="Print" target="_blank"><i class="fa fa-print"/> Print</a>
+                                  </div>
+                              </div> -->
+                          </li>
+
+                          <li class="navspy list-group-item pl-0 flex-grow-1" t-ignore="true" role="complementary">
+                              <ul class="nav flex-column bs-sidenav"></ul>
+                          </li>
+
+                          <li t-if="doc.user_id" class="list-group-item flex-grow-1">
+                              <div class="small mb-1"><strong class="text-muted">Grant officer</strong></div>
+                              <div class="row flex-nowrap">
+                                  <div class="col flex-grow-0 pr-2">
+                                      <img class="rounded-circle mr4 float-left o_portal_contact_img" t-att-src="image_data_uri(doc.user_id.avatar_1024)" alt="Contact"/>
+                                  </div>
+                                  <div class="col pl-0" style="min-width: 150px">
+                                      <span t-field="doc.user_id" t-options='{"widget": "contact", "fields": ["name", "phone"], "no_marker": True}'/>
+                                      <a href="#discussion" class="small"><i class="fa fa-comment"></i> Send message</a>
+                                  </div>
+                              </div>
+                          </li>
+                      </ul>
+                  </t>
+              </t>
+
+              <!-- Page content -->
+              <div id="proposal_content" class="col-12 col-lg justify-content-end">
+
+                  <!-- status messages -->
+                  <div t-if="doc.state == 'cancel'" class="alert alert-danger alert-dismissable d-print-none" role="alert">
+                      <button type="button" class="close" data-dismiss="alert" aria-label="close">&amp;times;</button>
+                      <strong>This proposal has been canceled.</strong>
+                  </div>
+
+                  <!-- main content -->
+                  <div t-attf-class="card #{'pb-5' if report_type == 'html' else ''}" id="portal_proposal_content">
+                      <div t-call="grant_portal.grant_proposal_portal_content"/>
+                  </div>
+
+                  <!-- chatter -->
+                  <div id="proposal_communication" class="mt-4">
+                      <h2>History</h2>
+                      <t t-call="portal.message_thread">
+                          <t t-set="object" t-value="doc"/>
+                      </t>
+                  </div>
+              </div><!-- // #quote_content -->
+          </div>
+      </xpath>
+  </template>
+
+  <template id="fund" name="Grant Fund Portal Template" inherit_id="portal.portal_sidebar" primary="True">
+      <xpath expr="//div[hasclass('o_portal_sidebar')]" position="inside">
+<!--           <t t-set="o_portal_fullwidth_alert" groups="grant.group_grant_user">
+              <t t-call="portal.portal_back_in_edit_mode">
+                  <t t-set="backend_url" t-value="'/web#model=%s&amp;id=%s&amp;action=%s&amp;view_type=form' % (grant._name, proposal.id, proposal.env.ref('purchase.purchase_rfq').id)"/>
+              </t>
+          </t> -->
+
+          <div class="row mt16 o_portal_proposal_sidebar">
+              <!-- Sidebar -->
+              <t t-call="portal.portal_record_sidebar">
+                  <t t-set="classes" t-value="'col-lg-auto d-print-none'"/>
+
+                  <t t-set="title">
+                      <h2 class="mb-0"><b t-field="doc.name" data-id="name"/> </h2>
+                  </t>
+                  <t t-set="entries">
+                      <ul class="list-group list-group-flush flex-wrap flex-row flex-lg-column">
+                          <li class="list-group-item flex-grow-1">
+<!--                               <div class="o_download_pdf btn-toolbar flex-sm-nowrap">
+                                  <div class="btn-group flex-grow-1 mr-1 mb-1">
+                                      <a class="btn btn-secondary btn-block o_download_btn" t-att-href="doc.get_portal_url(report_type='pdf', download=True)" title="Download"><i class="fa fa-download"/> Download</a>
+                                  </div>
+                                  <div class="btn-group flex-grow-1 mb-1">
+                                      <a class="btn btn-secondary btn-block o_print_btn o_portal_proposal_print" t-att-href="doc.get_portal_url(report_type='pdf')" id="print_invoice_report" title="Print" target="_blank"><i class="fa fa-print"/> Print</a>
+                                  </div>
+                              </div> -->
+                          </li>
+
+                          <li class="navspy list-group-item pl-0 flex-grow-1" t-ignore="true" role="complementary">
+                              <ul class="nav flex-column bs-sidenav"></ul>
+                          </li>
+
+                          <li t-if="doc.user_id" class="list-group-item flex-grow-1">
+                              <div class="small mb-1"><strong class="text-muted">Grant officer</strong></div>
+                              <div class="row flex-nowrap">
+                                  <div class="col flex-grow-0 pr-2">
+                                      <img class="rounded-circle mr4 float-left o_portal_contact_img" t-att-src="image_data_uri(doc.user_id.avatar_1024)" alt="Contact"/>
+                                  </div>
+                                  <div class="col pl-0" style="min-width: 150px">
+                                      <span t-field="doc.user_id" t-options='{"widget": "contact", "fields": ["name", "phone"], "no_marker": True}'/>
+                                      <a href="#discussion" class="small"><i class="fa fa-comment"></i> Send message</a>
+                                  </div>
+                              </div>
+                          </li>
+                      </ul>
+                  </t>
+              </t>
+
+              <!-- Page content -->
+              <div id="fund_content" class="col-12 col-lg justify-content-end">
+
+                  <!-- status messages -->
+                  <div t-if="doc.state == 'cancel'" class="alert alert-danger alert-dismissable d-print-none" role="alert">
+                      <button type="button" class="close" data-dismiss="alert" aria-label="close">&amp;times;</button>
+                      <strong>This fund has been canceled.</strong>
+                  </div>
+
+                  <!-- main content -->
+                  <div t-attf-class="card #{'pb-5' if report_type == 'html' else ''}" id="portal_fund_content">
+                      <div t-call="grant_portal.grant_fund_portal_content"/>
+                  </div>
+
+                  <!-- chatter -->
+                  <div id="proposal_communication" class="mt-4">
+                      <h2>History</h2>
+                      <t t-call="portal.message_thread">
+                          <t t-set="object" t-value="doc"/>
+                      </t>
+                  </div>
+              </div><!-- // #quote_content -->
+          </div>
+      </xpath>
+  </template>
+  
+    <template id="portal_layout" name="Portal breadcrumb: proposals" inherit_id="portal.portal_breadcrumbs" >
+      <xpath expr="//ol[hasclass('o_portal_submenu')]" position="inside">
+        <li t-if="page_name == 'grant-proposals' or doc" class="col-lg-2" t-attf-class="breadcrumb-item #{'active ' if not doc else ''}">
+          <a t-if="doc" t-attf-href="/my/proposals?{{ keep_query() }}">Proposals</a>
+            <t t-else="">Proposals</t>
+        </li>
+        <li t-if="doc" class="breadcrumb-item active text-truncate col-8 col-lg-10">
+          <t t-esc="doc.name"/>
+        </li>
+      </xpath>
+    </template>
+    
+    <template id="apply">
+        <t t-call="website.layout">
+            <t t-set="additional_title">Apply for Call</t>
+
+            <div id="wrap"  class="container">
+                <h1 class="text-center mt-2">
+                    Grant Application Form
+                </h1>
+                <h2 t-if="call" class="text-center text-muted">
+                    <span t-field="call.name"/>
+                    <span t-if="call.code">(<span t-field="call.code" />)</span>
+                </h2>
+                <div id="proposal_section">
+                    <section id="forms" class="s_website_form" data-vcss="001" data-snippet="s_website_form">
+                        <div class="container">
+                        <form
+                            action="/submitted/proposal"
+                            method="POST"
+                            class="form-horizontal mt32"
+                            enctype="multipart/form-data"
+                        >
+                            <input
+                                type="hidden"
+                                name="csrf_token"
+                                t-att-value="request.csrf_token()"
+                            />
+                            
+                            <input 
+                                type="hidden"
+                                name="call_id" 
+                                t-att-value="call.id" />
+                            <div class="form-group">
+                                <label
+                                    class="col-md-3 col-sm-4 control-label"
+                                    for="company"
+                                >Company</label>
+                                <div class="col-md-7 col-sm-8">
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        name="company"
+                                        required="True"
+                                        data-fill-with="commercial_company_name"
+                                    />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label
+                                    class="col-md-3 col-sm-4 control-label"
+                                    for="company"
+                                >Organization Email</label>
+                                <div class="col-md-7 col-sm-8">
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        name="company_email"
+                                        required="True"
+                                    />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label
+                                    class="col-md-3 col-sm-4 control-label"
+                                    for="company"
+                                >Contact name</label>
+                                <div class="col-md-7 col-sm-8">
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        name="partner_name"
+                                        required="True"
+                                        data-fill-with="name"
+                                    />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label
+                                    class="col-md-3 col-sm-4 control-label"
+                                    for="company"
+                                >Contact email</label>
+                                <div class="col-md-7 col-sm-8">
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        name="partner_email"
+                                        required="True"
+                                        data-fill-with="email"
+                                    />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label
+                                    class="col-md-3 col-sm-4 control-label"
+                                    for="company"
+                                >Contact phone</label>
+                                <div class="col-md-7 col-sm-8">
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        name="partner_phone"
+                                        required="True"
+                                        data-fill-with="phone"
+                                    />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label
+                                    class="col-md-3 col-sm-4 control-label"
+                                    for="company"
+                                >Project title</label>
+                                <div class="col-md-7 col-sm-8">
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        name="title"
+                                        required="True"
+                                    />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label
+                                    class="col-md-3 col-sm-4 control-label"
+                                    for="company"
+                                >Project summary</label>
+                                <div class="col-md-7 col-sm-8">
+                                    <textarea 
+                                        class="form-control"
+                                        name="description"
+                                        required="True"
+                                    />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label
+                                    class="col-md-3 col-sm-4 control-label"
+                                    for="company"
+                                >Amount requested</label>
+                                <div class="col-md-7 col-sm-8">
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        name="amount_requested"
+                                        required="True"
+                                    />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label
+                                    class="col-md-3 col-sm-4 control-label"
+                                    for="company"
+                                >Proposal</label>
+                                <div class="col-md-7 col-sm-8">
+                                    <input
+                                        type="file"
+                                        class="form-control"
+                                        name="proposal"
+                                        required="True"
+                                    />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                            <label
+                                class="col-md-3 col-sm-4 control-label"
+                                for="company"
+                            >Budget</label>
+                            <div class="col-md-7 col-sm-8">
+                                <input
+                                    type="file"
+                                    class="form-control"
+                                    name="budget"
+                                    required="True"
+                                />
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="col-md-offset-3 col-sm-offset-4 col-sm-8 col-md-7">
+                                <button class="btn btn-primary btn-lg">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                   <!--      
+                        
+                        
+                            <form id="grant_proposal_form" action="/submitted/proposal" method="post" enctype="multipart/form-data" >
+                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+                                <div class="s_website_form_rows row s_col_no_bgcolor">
+                                    <div class="form-group col-12 s_website_form_field" data-type="char" data-name="Field">
+                                        <div class="row s_col_no_resize s_col_no_bgcolor">
+                                            <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="proposal1">
+                                                <span class="s_website_form_label_content">Organization</span>
+                                                <span class="s_website_form_mark"> *</span>
+                                            </label>
+                                            <div class="col-sm">
+                                                <input id="proposal1" type="text" class="form-control s_website_form_input" name="company" required="" data-fill-with="commercial_company_name"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-12 s_website_form_field s_website_form_required" data-type="email" data-name="Field">
+                                        <div class="row s_col_no_resize s_col_no_bgcolor">
+                                            <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="proposal2">
+                                                <span class="s_website_form_label_content">Organization Email</span>
+                                                <span class="s_website_form_mark"> *</span>
+                                            </label>
+                                            <div class="col-sm">
+                                                <input id="proposal2" type="email" class="form-control s_website_form_input" name="company_email" required=""/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-12 s_website_form_field s_website_form_required s_website_form_model_required" data-type="char" data-name="Field">
+                                        <div class="row s_col_no_resize s_col_no_bgcolor">
+                                            <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="proposal3">
+                                                <span class="s_website_form_label_content">Contact Name</span>
+                                                <span class="s_website_form_mark"> *</span>
+                                            </label>
+                                            <div class="col-sm">
+                                                <input id="proposal3" type="text" class="form-control s_website_form_input" name="partner_name" required="" data-fill-with="name"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-12 s_website_form_field s_website_form_required" data-type="email" data-name="Field">
+                                        <div class="row s_col_no_resize s_col_no_bgcolor">
+                                            <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="proposal4">
+                                                <span class="s_website_form_label_content">Contact Email</span>
+                                                <span class="s_website_form_mark"> *</span>
+                                            </label>
+                                            <div class="col-sm">
+                                                <input id="proposal4" type="email" class="form-control s_website_form_input" name="partner_email" required="" data-fill-with="email"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-12 s_website_form_field s_website_form_required" data-type="char" data-name="Field">
+                                        <div class="row s_col_no_resize s_col_no_bgcolor">
+                                            <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="proposal5">
+                                                <span class="s_website_form_label_content">Contact Phone</span>
+                                                <span class="s_website_form_mark"> *</span>
+                                            </label>
+                                            <div class="col-sm">
+                                                <input id="proposal5" type="tel" class="form-control s_website_form_input" name="partner_phone" required="" data-fill-with="phone"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-12 s_website_form_field s_website_form_required" data-type="char" data-name="Field">
+                                        <div class="row s_col_no_resize s_col_no_bgcolor">
+                                            <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="proposal6">
+                                                <span class="s_website_form_label_content">Project title</span>
+                                                <span class="s_website_form_mark"> *</span>
+                                            </label>
+                                            <div class="col-sm">
+                                                <input id="proposal6" type="text" class="form-control s_website_form_input" name="title" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-12 s_website_form_field s_website_form_required" data-type="text" data-name="Field">
+                                        <div class="row s_col_no_resize s_col_no_bgcolor">
+                                            <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="proposal7">
+                                                <span class="s_website_form_label_content">Project summary</span>
+                                                <span class="s_website_form_mark"> *</span>
+                                            </label>
+                                            <div class="col-sm">
+                                                <textarea id="proposal7" class="form-control s_website_form_input" name="description"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-12 s_website_form_field s_website_form_required" data-type="char" data-name="Field">
+                                        <div class="row s_col_no_resize s_col_no_bgcolor">
+                                            <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="proposal8">
+                                                <span class="s_website_form_label_content">Amount requested</span>
+                                                <span class="s_website_form_mark"> *</span>
+                                            </label>
+                                            <div class="col-sm">
+                                                <input id="proposal8" type="text" class="form-control s_website_form_input" name="amount_requested" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-12 s_website_form_field s_website_form_required" data-type="binary" data-name="Field">
+                                        <div class="row s_col_no_resize s_col_no_bgcolor">
+                                            <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="proposal9">
+                                                <span class="s_website_form_label_content">Proposal</span>
+                                                <span class="s_website_form_mark"> *</span>
+                                            </label>
+                                            <div class="col-sm">
+                                                <input id="proposal9" type="file" class="form-control s_website_form_input" name="proposal"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-12 s_website_form_field s_website_form_required" data-type="binary" data-name="Field">
+                                        <div class="row s_col_no_resize s_col_no_bgcolor">
+                                            <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="proposal10">
+                                                <span class="s_website_form_label_content">Budget</span>
+                                                <span class="s_website_form_mark"> *</span>
+                                            </label>
+                                            <div class="col-sm">
+                                                <input id="proposal10" type="file" class="form-control s_website_form_input" name="budget"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-12 s_website_form_field s_website_form_dnone">
+                                        <div class="row s_col_no_resize s_col_no_bgcolor">
+                                            <label class="col-form-label col-sm-auto s_website_form_label" style="width: 200px" for="proposal11">
+                                                <span class="s_website_form_label_content">Call</span>
+                                            </label>
+                                            <div class="col-sm">
+                                                <input id="proposal11" type="hidden" class="form-control s_website_form_input" name="call_id"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-12 s_website_form_submit" data-name="Submit Button">
+                                        <div style="width: 200px;" class="s_website_form_label"/>
+                                        <a href="#" role="button" class="btn btn-primary btn-lg s_website_form_send">Submit</a>
+                                        <span id="s_website_form_result"></span>
+                                    </div>
+                                </div>
+                            </form> -->
+                        </div>
+                    </section>
+                </div>
+                <div class="oe_structure mt-2"/>
+            </div>
+        </t>
+    </template>
+
+    <!--
+    Grant Portal content : intro, informations, remarks, descriptions ....
+    This template should contains all the printable element of the Proposal. This is the
+    template rendered in PDF with the report engine.
+    -->
+    <template id="grant_proposal_portal_content" name="Grant Proposal Portal Content">
+        <!-- Intro -->
+        <div id="introduction" t-attf-class="pb-2 pt-3 card-header bg-white">
+          <h2 class="my-0">
+                <t t-esc="doc.title"/>
+            </h2>
+        </div>
+
+        <div t-attf-class="card-body">
+
+            <div id="informations">
+                <div class="row" >
+                    <div class="mb-3 col-6">
+                        <strong>State:</strong>
+                      <span t-field="doc.state" class="badge badge-pill badge-info" />
+                    </div>
+                </div>                
+                <div class="row" t-if="doc.call_id">
+                    <div class="mb-3 col-6">
+                        <strong>Call:</strong>
+                      <span t-field="doc.call_id" />
+                    </div>
+                </div>
+                <div class="row" t-if="doc.call_id">
+                    <div class="mb-3 col-6">
+                        <strong>Decision expected:</strong>
+                      <span t-field="doc.date_decision" />
+                    </div>
+                </div>
+                <div class="row" t-if="doc.applicant_id">
+                    <div class="mb-3 col-6">
+                        <strong>Applicant:</strong>
+                        <address t-field="doc.applicant_id" t-options='{"widget": "contact", "fields": ["name", "email"], "no_marker": True}'/>
+                    </div>
+                </div>
+                <div class="row" t-if="doc.applicant_contact_id">
+                    <div class="mb-3 col-6">
+                        <strong>Applicant contact:</strong>
+                        <address t-field="doc.applicant_contact_id" t-options='{"widget": "contact", "fields": ["name", "email"], "no_marker": True}'/>
+                    </div>
+                </div>
+                <div class="row" t-if="doc.partner_ids">
+                    <div class="mb-3 col-6">
+                        <strong>Partners:</strong>
+                        <address t-field="doc.partner_ids" t-options='{"widget": "contact", "fields": ["name","email"], "no_marker": True}'/>
+                    </div>
+                </div> 
+
+                <div class="row" t-if="doc.date_submitted">
+                    <div class="mb-3 col-6">
+                        <strong>Date submitted:</strong>
+                      <span t-field="doc.date_submitted" t-options='{"widget": "date"}'/>
+                    </div>
+                </div>
+                <div class="row" t-if="doc.amount_requested">
+                    <div class="mb-3 col-6">
+                        <strong>Amount requested:</strong>
+                      <span t-field="doc.amount_requested" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/>
+                    </div>
+                </div>
+                <div class="row" t-if="doc.description">
+                    <div class="mb-3 col-6">
+                        <strong>Summary:</strong>
+                      <span t-field="doc.description" />
+                    </div>
+                </div>
+            </div>
+<!-- 
+                <div class="row">
+                    <div class="col-lg-6">
+                        <strong t-if="sale_order.partner_shipping_id == sale_order.partner_invoice_id" class="d-block mb-1">Invoicing and Shipping Address:</strong>
+                        <strong t-if="sale_order.partner_shipping_id != sale_order.partner_invoice_id" class="d-block mb-1">Invoicing Address:</strong>
+                        <address t-field="sale_order.partner_invoice_id" t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}'/>
+                    </div>
+                     <t t-if="sale_order.partner_shipping_id != sale_order.partner_invoice_id">
+                        <div id="shipping_address" class="col-lg-6">
+                            <strong class="d-block mb-1">Shipping Address:</strong>
+                            <address t-field="sale_order.partner_shipping_id" t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}'/>
+                        </div>
+                    </t>
+                </div>
+
+                <t t-set="invoices" t-value="[i for i in sale_order.invoice_ids if i.state not in ['draft', 'cancel']]"/>
+                <div t-if="invoices" class="row">
+                    <div class="col">
+                        <strong class="d-block mb-1">Invoices</strong>
+                        <ul class="list-group mb-4">
+                            <t t-foreach="invoices" t-as="i">
+                                <t t-set="report_url" t-value="i.get_portal_url(report_type='pdf', download=True)"/>
+                                <div class="d-flex flex-wrap align-items-center justify-content-between">
+                                    <div>
+                                        <a t-att-href="report_url">
+                                            <span t-esc="i.name"/>
+                                        </a>
+                                        <div class="small d-lg-inline-block">Date: <span class="text-muted" t-field="i.invoice_date"/></div>
+                                    </div>
+                                    <span t-if="i.payment_state in ('paid', 'in_payment')" class="small badge badge-success orders_label_text_align"><i class="fa fa-fw fa-check"/> <b>Paid</b></span>
+                                    <span t-else="" class="small badge badge-info orders_label_text_align"><i class="fa fa-fw fa-clock-o"/> <b>Waiting Payment</b></span>
+                                </div>
+                            </t>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <section t-if="sale_order.signature" id="signature" name="Signature">
+                <div class="row mt-4" name="signature">
+                    <div t-attf-class="#{'col-3' if report_type != 'html' else 'col-sm-7 col-md-4'} ml-auto text-center">
+                        <h5>Signature</h5>
+                        <img t-att-src="image_data_uri(sale_order.signature)" style="max-height: 6rem; max-width: 100%;"/>
+                        <p t-field="sale_order.signed_by"/>
+                    </div>
+                </div>
+            </section>
+
+            <section id="terms" class="mt-5" t-if="not is_html_empty(sale_order.note)">
+                <h3 class="">Terms &amp; Conditions</h3>
+                <hr class="mt-0 mb-1"/>
+                <t t-if="sale_order.terms_type == 'html'">
+                    <t t-set="tc_url" t-value="'%s/terms' % (sale_order.get_base_url())"/>
+                    <em>Terms &amp; Conditions: <a href="/terms"><t t-esc="tc_url"/></a></em>
+                </t>
+                <t t-else="">
+                    <em t-field="sale_order.note"/>
+                </t>
+            </section>
+
+            <section class="mt-5" t-if="sale_order.payment_term_id">
+                <h3 class="">Payment terms</h3>
+                <hr class="mt-0 mb-1"/>
+                <span t-field="sale_order.payment_term_id"/>
+            </section>-->
+        </div> 
+    </template>
+        <!--
+    Grant Portal content : intro, informations, remarks, descriptions ....
+    This template should contains all the printable element of the Proposal. This is the
+    template rendered in PDF with the report engine.
+    -->
+    <template id="grant_fund_portal_content" name="Grant Fund Portal Content">
+        <!-- Intro -->
+        <div id="introduction" t-attf-class="pb-2 pt-3 card-header bg-white">
+          <h2 class="my-0">
+                <t t-esc="doc.title"/>
+            </h2>
+        </div>
+
+        <div t-attf-class="card-body">
+
+            <div id="informations">
+                <div class="row" >
+                    <div class="mb-3 col-6">
+                        <strong>State:</strong>
+                      <span t-field="doc.state" class="badge badge-pill badge-info" />
+                    </div>
+                </div>
+                <div class="row" t-if="doc.commercial_partner_id">
+                    <div class="mb-3 col-6">
+                        <strong>Grantee:</strong>
+                        <address t-field="doc.commercial_partner_id" t-options='{"widget": "contact", "fields": ["name", "email"], "no_marker": True}'/>
+                    </div>
+                </div>
+                <div class="row" t-if="doc.partner_id">
+                    <div class="mb-3 col-6">
+                        <strong>Grantee contact:</strong>
+                        <address t-field="doc.partner_id" t-options='{"widget": "contact", "fields": ["name", "email"], "no_marker": True}'/>
+                    </div>
+                </div>
+                <div class="row" t-if="doc.date_start">
+                    <div class="mb-3 col-6">
+                        <strong>Start Date:</strong>
+                      <span t-field="doc.date_start" t-options='{"widget": "date"}'/>
+                    </div>
+                </div>
+                <div class="row" t-if="doc.date">
+                    <div class="mb-3 col-6">
+                        <strong>End Date:</strong>
+                      <span t-field="doc.date" t-options='{"widget": "date"}'/>
+                    </div>
+                </div>
+                <div class="row" t-if="doc.amount_requested">
+                    <div class="mb-3 col-6">
+                        <strong>Amount granted:</strong>
+                      <span t-field="doc.amount_granted" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/>
+                    </div>
+                </div>
+                <div class="row" t-if="doc.amount_requested">
+                    <div class="mb-3 col-6">
+                        <strong>Financial cofinancing:</strong>
+                      <span t-field="doc.cofinannce" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/>
+                    </div>
+                </div>
+                <div class="row" t-if="doc.amount_requested">
+                    <div class="mb-3 col-6">
+                        <strong>Inkind cofinancing:</strong>
+                      <span t-field="doc.cofinannce_inkind" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/>
+                    </div>
+                </div>
+                <div class="row" t-if="doc.description">
+                    <div class="mb-3 col-6">
+                        <strong>Summary:</strong>
+                      <span t-field="doc.description" />
+                    </div>
+                </div>
+            </div>
+            <t t-set="requirements" t-value="[r for r in doc.requirement_ids if r.state not in ['cancel']]"/>
+            <div t-if="requirements" class="row">
+                <div class="col">
+                    <strong class="d-block mb-1">Requirements</strong>
+                    <ul class="list-group mb-4">
+                        <t t-foreach="requirements" t-as="r">
+                            <div class="d-flex flex-wrap align-items-center justify-content-between">
+                                <div>
+                                        <span t-esc="r.name"/>
+                                    <div class="small d-lg-inline-block">Due: <span class="text-muted" t-field="r.date_due"/></div>
+                                </div>
+                                <span t-if="r.state in ('draft')" class="small badge badge-secondary orders_label_text_align"><i class="fa fa-fw fa-clock-o"/> <b>Scheduled</b></span>
+                                <span t-if="r.state in ('open', 'revise')" class="small badge badge-success orders_label_text_align"><i class="fa fa-fw fa-clock-o"/> <b>To be submitted</b></span>
+                                <span t-if="r.state in ('done')" class="small badge badge-warning orders_label_text_align"><i class="fa fa-fw fa-check"/> <b>Submitted</b></span>
+                                <span t-if="r.state in ('close')" class="small badge badge-success orders_label_text_align"><i class="fa fa-fw fa-check"/> <b>Accepted</b></span>
+                            </div>
+                        </t>
+                    </ul>
+                </div>
+            </div>
+            <t t-set="installments" t-value="[i for i in doc.installment_ids if i.state not in ['cancel']]"/>
+            <div t-if="installments" class="row">
+                <div class="col">
+                    <strong class="d-block mb-1">Installments</strong>
+                    <ul class="list-group mb-4">
+                        <t t-foreach="installments" t-as="i">
+                            <div class="d-flex flex-wrap align-items-center justify-content-between">
+                                <div>
+                                        <span t-esc="i.name"/>
+                                    <div class="small d-lg-inline-block">Due: <span class="text-muted" t-field="i.date_expected"/></div>
+                                </div>
+                                <span t-if="i.state in ('draft')" class="small badge badge-secondary orders_label_text_align"><i class="fa fa-fw fa-clock-o"/> <b>Scheduled</b></span>
+                                <span t-if="i.state in ('open', 'revise')" class="small badge badge-success orders_label_text_align"><i class="fa fa-fw fa-clock-o"/> <b>To be submitted</b></span>
+                                <span t-if="i.state in ('done')" class="small badge badge-warning orders_label_text_align"><i class="fa fa-fw fa-check"/> <b>Submitted</b></span>
+                                <span t-if="i.state in ('close')" class="small badge badge-success orders_label_text_align"><i class="fa fa-fw fa-check"/> <b>Accepted</b></span>
+                            </div>
+                        </t>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </template>
+    
+</odoo>

@@ -26,6 +26,7 @@
     'category': 'Helpdesk',
     'description': 'Demography Customizations of Helpdesk for Háttér',
     'author': 'Dombos Tamás',
+    'license': 'LGPL-3',
     'website': '',
     'depends': [],
     'data': ['helpdesk_mgmt_hatter_demogr_data.xml', 'security/ir.model.access.csv'], 

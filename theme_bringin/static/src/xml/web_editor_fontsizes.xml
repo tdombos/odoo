@@ -1,0 +1,7 @@
+<templates>
+	<t t-extend="web_editor.toolbar">
+		<xpath t-jquery="div#font-size>ul>li:has(>a[data-arg1=14px])" t-operation="after">
+            <li><a class="dropdown-item" href="#" data-call="setFontSize" data-arg1="16px">16</a></li>
+        </xpath>
+	</t>
+</templates>

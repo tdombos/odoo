@@ -1,0 +1,155 @@
+<odoo>
+    <template id="portal_my_home_menu_expense_format" name="Portal layout : HR Expense Button size" inherit_id="dev_hr_expense_portal.portal_my_home_menu_expense" priority="20">
+        <xpath expr="//ol[hasclass('o_portal_submenu')]//a[hasclass('btn-primary')]" position="replace">
+			<a  t-if="page_name == 'expense_tree' or expense_tree" role="button" class="btn btn-sm btn-primary float-right" data-toggle="modal" style="margin-left:200px;" data-target="#modeledit" href="#">Create Expense Request</a>
+        </xpath>
+    </template>
+    <template id="portal_my_expense_simplify" name="My Expense Simplified" inherit_id="dev_hr_expense_portal.portal_my_expense" priority="20">
+		<xpath expr="//t[@t-as='group_exp']" position="replace">
+			<t t-foreach="grouped_expense" t-as="group_exp">
+                    <thead >
+                        <tr t-attf-class="{{'thead-light' if not groupby == 'none' else ''}}" >
+                            <th t-if="groupby == 'none'">Name</th>
+                            <th t-else="">
+                                <t t-if="groupby == 'product_id'">
+                                    <em class="font-weight-normal text-muted">Product:</em>
+                                    <span t-field="group_exp[0].sudo().product_id"/>
+                                </t>
+								<t t-if="groupby == 'account_id'">
+                                    <em class="font-weight-normal text-muted">Account:</em>
+                                    <span t-field="group_exp[0].sudo().account_id"/>
+                                </t>
+                            </th>
+							<th class="text-left">Product</th>
+							<th class="text-left">Expense Date</th>
+                            <th class="text-left">Total</th>
+							<th class="text-left">Amount Due</th>
+                            <th class="text-left">Project</th>
+							<th class="text-left">Stage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+				        <t t-foreach="group_exp" t-as="l">
+				            <tr>
+				                <td><a t-att-href="l.get_portal_url()"><t t-esc="l.name"/></a></td>
+				                <td class="text-left"><span t-field="l.product_id.name" /></td>
+								<td class="text-left"><span t-field="l.date"/></td>
+				                <td class="text-left"><span t-field="l.total_amount"/></td>
+								<td class="text-left"><span t-field="l.amount_residual"/></td>
+				                <td class="text-left"><span t-field="l.analytic_account_id"/></td>
+								<td class="text-left">
+									<span class="badge badge-pill badge-info" title="Current stage of the Expense" t-esc="l.state" />								
+								</td>
+			            	</tr>
+				        </t>
+                   </tbody>
+            </t>   
+		</xpath>
+		<xpath expr="//main[hasclass('modal-body')]" position="replace">
+			<main class="modal-body">
+				<input type="hidden" name="quantity" required="1" value="1" /> 
+				<div class="form-group field-login">
+					<label for="name">Description</label>
+					<input type="Char" class="form-control form-control-sm" name="name" required="1"  /> 
+				</div>
+				<div class="form-group field-login">
+					<fieldset id="paidby">
+						<legend>Paid by</legend>
+						<div><label for="type">Emplpyee (reimburse)</label>
+						<input type="radio" class="btn-chk" name="payment_mode" id="own_account" required="1" value="own_account" />
+						</div><div>
+						<label for="type">Company (pro futuro)</label>						
+						<input type="radio" class="btn-chk" name="payment_mode" id="company_account" required="1" value="company_account"/>
+						</div>
+					</fieldset>
+				</div>
+				<div class="form-group field-login">
+					<label for="product_id">Product</label>
+					<select class="custom-select" name="product_id" id="product_id" required="True" >
+						<t t-foreach="product_ids or []" t-as="product">
+							<option t-att-value="product.id"><t t-esc="product.name"/></option>
+						</t>
+					 </select>
+				</div>
+				<div class="form-group field-login">
+					<label for="total_amount">Total amount</label>
+					<input type="Integer" class="form-control form-control-sm" name="total_amount" required="1"  /> 
+				</div>
+				<div class="form-group field-login">
+					<label for="description">Bill Reference</label>
+					<input type="Integer" class="form-control form-control-sm" name="bill_reference" /> 
+				</div>
+				<div class="form-group field-login">
+					<label for="partner">Partner</label>
+					<input type="Char" class="form-control form-control-sm" name="partner" /> 
+				</div>
+				<div class="form-group field-login">
+					<label for="partner">Partner tax number</label>
+					<input type="Char" class="form-control form-control-sm" name="partner_tax" placeholder="VAT number for company, tax-number for private person..."/> 
+				</div>	
+				<div class="form-group field-login">
+					<label for="partner">Partner email</label>
+					<input type="Char" class="form-control form-control-sm" name="partner_email" /> 
+				</div>				
+				<div class="form-group field-login">
+					<label for="employee_id">Project</label>
+					<select class="custom-select" name="product_id" id="product_id" required="True" >
+						<t t-foreach="product_ids or []" t-as="product">
+							<option t-att-value="product.id"><t t-esc="product.name"/></option>
+						</t>
+					 </select>
+				</div>
+				<div class="form-group field-login">
+					<label for="date">Upload Document</label>
+					<input type="file" class="form-control" name="expense_file" required="True" multiple="true" data-show-upload="true"  /> 
+				</div>
+            </main>
+		</xpath>
+    </template>
+    <template id="expense_portal_content_extend" name="Expense Form Extended" inherit_id="dev_hr_expense_portal.expense_portal_content" priority="20">
+        <xpath expr="//div[hasclass('row')]" position="replace">
+			<div class="row">
+                    <div class="col-lg-6">
+                        <table width="100%">
+                            <tr>
+                                <td width="35%" style="padding:3px"><b>Product</b></td>
+                                <td width="5%" style="padding:3px">:</td>
+                                <td width="50%" style="padding:3px"><span t-field="hr_expense.product_id"/></td>
+                            </tr>
+							<tr>
+                                <td width="35%" style="padding:3px"><b>Total</b></td>
+                                <td width="5%" style="padding:3px">:</td>
+                                <td width="50%" style="padding:3px"><span t-field="hr_expense.total_amount"/></td>
+                            </tr>
+							<tr>
+                                <td width="35%" style="padding:3px"><b>Amount Due</b></td>
+                                <td width="5%" style="padding:3px">:</td>
+                                <td width="50%" style="padding:3px"><span t-field="hr_expense.amount_residual"/></td>
+                            </tr>
+                            
+                        </table>
+                    </div>
+                    <div class="col-lg-6">
+                        <table width="100%">
+							<tr>
+                                <td width="35%" style="padding:3px"><b>Bill Reference</b></td>
+                                <td width="5%" style="padding:3px">:</td>
+                                <td width="50%" style="padding:3px"><span t-field="hr_expense.reference"/></td>
+                            </tr>
+							<tr>
+                                <td width="35%" style="padding:3px"><b>Expense Date</b></td>
+                                <td width="5%" style="padding:3px">:</td>
+                                <td width="50%" style="padding:3px"><span t-field="hr_expense.date"/></td>
+                            </tr>
+							<tr>
+								<td width="35%" style="padding:3px"><b>Analytic Account</b></td>
+								<td width="5%" style="padding:3px">:</td>
+								<td width="50%" style="padding:3px"><span t-field="hr_expense.analytic_account_id"/></td>
+                            </tr>							                       
+                        </table>
+                    </div>
+                </div>
+        </xpath>
+    </template>
+
+</odoo>

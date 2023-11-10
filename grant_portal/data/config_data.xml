@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="grant.model_grant_proposal" model="ir.model">
+            <field name="website_form_key">grant_proposal_form</field>
+            <field name="website_form_default_field_id" ref="grant.field_grant_proposal__comment" />
+            <field name="website_form_access">True</field>
+            <field name="website_form_label">Apply for a Call</field>
+        </record>
+		<function model="ir.model.fields" name="formbuilder_whitelist">
+            <value>grant.proposal</value>
+            <value eval="[
+                'name',
+				'description',
+				'title',
+				'state', 
+				'amount_requested', 
+				'call_id'
+            ]"/>
+        </function>
+        <!-- Sequence -->
+        <record id="proposal_sequence" model="ir.sequence">
+            <field name="name">Grant Proposal Sequence</field>
+            <field name="code">grant.proposal.sequence</field>
+            <field name="prefix">PR</field>
+            <field name="padding">4</field>
+            <field name="company_id" />
+        </record>
+    </data>
+</odoo>

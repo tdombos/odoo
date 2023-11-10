@@ -10,6 +10,7 @@
     """,
 
     'author': "Tamás Dombos",
+    'license': 'LGPL-3',
     'website': "https://hatter.hu",
 
     # Categories can be used to filter modules in modules listing

@@ -26,6 +26,7 @@
     'category': 'Helpdesk',
     'description': 'Customizations of Helpdesk for Háttér',
     'author': 'Dombos Tamás',
+    'license': 'LGPL-3',
     'website': '',
     'depends': ['helpdesk_mgmt', 'helpdesk_mgmt_hatter_demogr', 'helpdesk_partner', 'mail_activity_board', 'mail_activity_done'],
     'data': ['helpdesk_mgmt_hatter_data.xml', 'helpdesk_mgmt_hatter_view.xml', 'security/ir.model.access.csv'], 

@@ -26,6 +26,7 @@
     'category': 'Tools',
     'description': 'Registering incoming and outgoing documents',
     'author': 'Dombos Tamás',
+    'license': 'LGPL-3',
     'website': '',
     'depends': ['mail','contacts',
         #'mail_improved_tracking_value'

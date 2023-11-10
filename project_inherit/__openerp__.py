@@ -26,6 +26,7 @@
     'category': 'Project',
     'description': 'Filter our inherited projects',
     'author': 'Dombos Tamás',
+    'license': 'LGPL-3',
     'website': '',
     'depends': ['project'],
     'data': ['project_view.xml', ], 

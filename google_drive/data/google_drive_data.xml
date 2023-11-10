@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<odoo>
+    <data noupdate="1">
+
+         <record id="config_google_drive_client_id" model="ir.config_parameter">
+            <field name="key">google_drive_client_id</field>
+            <field name="value">11996727702-v3lgt8o4eh7p6nqqn93epeg27riu18ff.apps.googleusercontent.com</field>
+        </record>
+
+        <record id="config_google_drive_client_secret" model="ir.config_parameter">
+            <field name="key">google_drive_client_secret</field>
+            <field name="value">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</field>
+        </record>
+
+    </data>
+</odoo>

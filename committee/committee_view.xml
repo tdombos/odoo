@@ -67,7 +67,7 @@
             <field name="inherit_id" ref="project.edit_project" />
             <field name="mode">primary</field>
             <field name="arch" type="xml">
-                <button name="attachment_tree_view" position="replace" >
+                <button name="%(project.project_collaborator_action)d" position="replace" >
                     <button class="oe_stat_button" type="action"
                         name="%(action_committee_committee_meetings)d" icon="fa-calendar" context="{'default_committee_id': active_id}">
                         <field string="Meetings" name="meeting_count" widget="statinfo"/>
@@ -78,7 +78,9 @@
                     </button>
                 </button>
                 <button name="action_view_all_rating" position="replace" />
-                <div name="options_active" position="replace" />
+                <button name="%(project.project_update_all_action)d" position="replace" />
+                <button name="action_view_analytic_account_entries" position="replace" />
+                <xpath expr="//button[@class='oe_stat_button o_project_not_clickable']" position="replace" />
                 <field name="name" position="replace">
                     <field name="name" placeholder="Committee Name"/>
                 </field>
@@ -87,11 +89,10 @@
                         <field name="shortname" />
                     </group>
                 </notebook>
-                
                 <xpath expr="//div[@class='oe_chatter']" position="replace" />
-                <sheet >
+                    <sheet >
                     
-                </sheet >
+                    </sheet >
                 <sheet position="after">
                     <div class="oe_chatter">
                         <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
@@ -460,7 +461,7 @@
         <field name="search_view_id" ref="view_committee_decision_search"/>
     </record>
 
-    <menuitem name="Committees" id="menu_committees" web_icon="committee,static/description/icon.png" sequence="1"/>
+    <menuitem name="Committees" id="menu_committees" groups="docregister.group_office_user" web_icon="committee,static/description/icon.png" sequence="1"/>
     <menuitem name="Configuration" parent="menu_committees" id="menu_committee_configuration" sequence="10"/>
     <menuitem name="Decision Types" parent="menu_committee_configuration" id="menu_tags" action="action_committee_decisiontype"/>
     <menuitem name="Committees" parent="menu_committees" id="menu_committee" action="action_committee_committee" sequence="1"/>

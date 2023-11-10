@@ -1,0 +1,74 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="hr_partner_security.list">
+      <field name="name">hr_partner_security list</field>
+      <field name="model">hr_partner_security.hr_partner_security</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="hr_partner_security.action_window">
+      <field name="name">hr_partner_security window</field>
+      <field name="res_model">hr_partner_security.hr_partner_security</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="hr_partner_security.action_server">
+      <field name="name">hr_partner_security server</field>
+      <field name="model_id" ref="model_hr_partner_security_hr_partner_security"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="hr_partner_security" id="hr_partner_security.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="hr_partner_security.menu_1" parent="hr_partner_security.menu_root"/>
+    <menuitem name="Menu 2" id="hr_partner_security.menu_2" parent="hr_partner_security.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="hr_partner_security.menu_1_list" parent="hr_partner_security.menu_1"
+              action="hr_partner_security.action_window"/>
+    <menuitem name="Server to list" id="hr_partner_security" parent="hr_partner_security.menu_2"
+              action="hr_partner_security.action_server"/>
+--><record id="view_hr_security_partnermod_form" model="ir.ui.view">
+            <field name="name">Employee on partner</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <field name="website" position="after" >
+                    <field name="employee" />
+                </field>
+            </field>
+    </record>
+    <menuitem name="Website"
+            id="website.menu_website_configuration"
+            sequence="95"
+            groups="website.group_website_publisher"
+            web_icon="website,static/description/icon.png"/>
+  </data>
+</odoo>

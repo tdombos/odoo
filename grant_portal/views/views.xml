@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="grant_call_website_inherit" model="ir.ui.view">
+        <field name="name">grant.call.form.inherit</field>
+        <field name="model">grant.call</field>
+        <field name="inherit_id" ref="grant.view_grant_call_form"/>
+        <field name="arch" type="xml">
+            <field name="date_decision" position="after">
+                <field name="website_id" options="{'no_create': True}" groups="website.group_multi_website"/>
+            </field>
+            <div name="button_box" position="inside">
+                <field name="website_url" invisible="1"/>
+                <field name="is_published" widget="website_redirect_button"/>
+            </div>
+        </field>
+    </record>
+</odoo>

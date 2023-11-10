@@ -26,6 +26,7 @@
     'category': 'Helpdesk',
     'description': 'Attach partners to ticktets wiith various roles',
     'author': 'Dombos Tamás',
+    'license': 'LGPL-3',
     'website': '',
     'depends': ['project_partner'],
     'data': ['helpdesk_partner_view.xml'], 

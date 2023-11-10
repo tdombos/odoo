@@ -1,0 +1,45 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* partner_residing_address
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-09-27 23:56+0000\n"
+"PO-Revision-Date: 2022-09-28 01:56+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 3.1.1\n"
+
+#. module: partner_residing_address
+#: model:ir.model.fields,field_description:partner_residing_address.field_res_partner__type
+#: model:ir.model.fields,field_description:partner_residing_address.field_res_users__type
+msgid "Address Type"
+msgstr "Cím típusa"
+
+#. module: partner_residing_address
+#: model:ir.model,name:partner_residing_address.model_res_partner
+msgid "Contact"
+msgstr "Kapcsolat"
+
+#. module: partner_residing_address
+#: model:ir.model.fields,help:partner_residing_address.field_res_partner__type
+#: model:ir.model.fields,help:partner_residing_address.field_res_users__type
+msgid ""
+"Invoice & Delivery addresses are used in sales orders. Private addresses "
+"are only visible by authorized users."
+msgstr ""
+"A számlázási és szállítási címek az értékesítési rendeléseknél lesznek "
+"használva. Az otthoni címeket csak az engedéllyel rendelkező felhasználók "
+"láthatják."
+
+#. module: partner_residing_address
+#: model:ir.model.fields.selection,name:partner_residing_address.selection__res_partner__type__residing
+msgid "Residing address"
+msgstr "Tartózkodási hely"

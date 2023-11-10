@@ -26,6 +26,7 @@
     'category': 'Office management',
     'description': 'Managing committees, meetings, agendas and decisions',
     'author': 'Dombos Tamás',
+    'license': 'LGPL-3',
     'website': '',
     'depends': ['project', 'calendar', 'docregister'],
     'data': ['security/ir.model.access.csv',

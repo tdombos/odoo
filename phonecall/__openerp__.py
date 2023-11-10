@@ -24,6 +24,7 @@
     'name': 'Phonecalls',
     'version': '8.0.1.0.0',
     'author': 'Dombos Tamas',
+    'license': 'LGPL-3',
     'category': 'Office',
     'description': """
 Phone Calls

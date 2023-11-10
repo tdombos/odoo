@@ -20,6 +20,7 @@
     "name": "Extra Personal Info",
     "version": "8.0.1.0.0",
     "author": "Dombos Tamás",
+    'license': 'LGPL-3',
     "category": "Customer Relationship Management",
     "website": "https://odoo-community.org/",
     "depends": [

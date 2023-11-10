@@ -24,5 +24,8 @@
         'website.assets_editor': [
             'theme_bringin/static/src/js/tour.js',
         ],
+        'website.assets_wysiwyg': [
+            'theme_bringin/static/src/xml/web_editor_fontsizes.xml'
+    ],
     }
 }

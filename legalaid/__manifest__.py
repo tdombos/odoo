@@ -26,6 +26,7 @@
     'category': 'Association',
     'description': 'Managing service provision cases',
     'author': 'Dombos Tamás',
+    'license': 'LGPL-3',
     'website': '',
     'depends': ['case'],
     'data': ['legalaid_data.xml','legalaid_view.xml'], 

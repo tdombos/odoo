@@ -24,7 +24,7 @@
                 
             </field>
     </record>
-    <record id="hr_view_employee_filter_multi" model="ir.ui.view">
+     <record id="hr_view_employee_filter_multi" model="ir.ui.view">
             <field name="name">Multi jobs and depts to employee search</field>
             <field name="model">hr.employee</field>
             <field name="inherit_id" ref="hr.view_employee_filter"/>
@@ -39,7 +39,19 @@
                 <filter name="group_department" position="replace"/>
                 <filter name="group_job" position="replace"/>
             </field>
-    </record>
+    </record> 
+    <record id="hr_public_view_employee_filter_multi" model="ir.ui.view">
+            <field name="name">Multi jobs and depts to employee public search</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.hr_employee_public_view_search"/>
+            <field name="arch" type="xml">
+				<xpath expr="//searchpanel/field[@name='department_id']" position="replace">
+					<field name="department_ids" select="multi" icon="fa-users" enable_counters="1" />
+                    <field name="category_ids" select="multi" icon="fa-tag" enable_counters="1" />
+				</xpath>
+                <filter name="group_department" position="replace"/>
+            </field>
+    </record> 
     <!-- explicit list view definition -->
 <!--
     <record model="ir.ui.view" id="hr_hatter.list">

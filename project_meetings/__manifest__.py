@@ -24,6 +24,7 @@
     'name': 'Project Meetings',
     'version': '8.0.1.0.0',
     'author': 'Paramjit Singh A. Sahota',
+    'license': 'LGPL-3',
     'category': 'Project',
     'depends': ['calendar', 'project'],
     'description': """

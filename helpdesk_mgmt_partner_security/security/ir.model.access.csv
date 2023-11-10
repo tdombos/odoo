@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_helpdesk_mgmt_partner_security_helpdesk_mgmt_partner_security,helpdesk_mgmt_partner_security.helpdesk_mgmt_partner_security,model_helpdesk_mgmt_partner_security_helpdesk_mgmt_partner_security,base.group_user,1,1,1,1

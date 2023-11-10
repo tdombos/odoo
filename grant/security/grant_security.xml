@@ -6,17 +6,28 @@
             <field name="description">Helps you manage your grants...</field>
             <field name="sequence">3</field>
         </record>
-	<record model="res.groups" id="group_grant_user">
+    <record model="res.groups" id="group_grant_user">
         <field name="name">Grant user</field>
         <field name="category_id" ref="grant.module_category_grant_management"/>
-        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user')),(4, ref('analytic.group_analytic_accounting')), (4, ref('project.group_project_manager'))]"/>
     </record>
-	<record model="res.groups" id="group_grant_manager">
+    <record model="res.groups" id="group_grant_manager">
         <field name="name">Grant manager</field>
         <field name="category_id" ref="grant.module_category_grant_management"/>
         <field name="implied_ids" eval="[(4, ref('grant.group_grant_user'))]"/>
     </record>
-
+    <record id="proposal_user_rule" model="ir.rule">
+      <field name="name">Grant Proposal User Access</field>
+      <field name="model_id" ref="grant.model_grant_proposal"/>
+        <field name="domain_force">[(1,'=',1)]</field>
+      <field name="groups" eval="[(4, ref('grant.group_grant_user'))]"/>
+    </record>
+    <record id="fund_user_rule" model="ir.rule">
+      <field name="name">Grant Fund User Access</field>
+      <field name="model_id" ref="grant.model_grant_fund"/>
+      <field name="domain_force">[(1,'=',1)]</field>
+      <field name="groups" eval="[(4, ref('grant.group_grant_user'))]"/>
+    </record>
 
 </data>
 </openerp>
