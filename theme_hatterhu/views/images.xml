@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<record id="background" model="theme.ir.attachment">
+    <field name="key">website.background</field>
+    <field name="name">website.background</field>
+    <field name="url">/theme_hatterhu/static/src/img/pictures/ellipse.png</field>
+</record>
+
+<record id="menu_01" model="theme.ir.attachment">
+    <field name="key">website.big_menu_01</field>
+    <field name="name">website.big_menu_01</field>
+    <field name="url">/theme_hatterhu/static/src/img/pictures/menu_1.png</field>
+</record>
+<record id="menu_02" model="theme.ir.attachment">
+    <field name="key">website.big_menu_02</field>
+    <field name="name">website.big_menu_02</field>
+    <field name="url">/theme_hatterhu/static/src/img/pictures/menu_2.png</field>
+</record>
+<record id="menu_03" model="theme.ir.attachment">
+    <field name="key">website.big_menu_03</field>
+    <field name="name">website.big_menu_03</field>
+    <field name="url">/theme_hatterhu/static/src/img/pictures/menu_3.png</field>
+</record>
+
+
+<record id="image_01" model="theme.ir.attachment">
+    <field name="key">website.image_01</field>
+    <field name="name">website.image_01</field>
+    <field name="url">/theme_hatterhu/static/src/img/pictures/image_1.png</field>
+</record>
+
+</odoo>
