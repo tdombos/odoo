@@ -28,7 +28,7 @@
     'author': 'Tamás Dombos',
     'license': 'LGPL-3',
     'website': '',
-    'depends': ['mail', 'project', 'project_partner'],
+    'depends': ['mail', 'project', 'project_partner', 'account'],
     'data': ['security/grant_security.xml', 'security/ir.model.access.csv','grant_data.xml','grant_view.xml'], 
     'demo': [],
     'test':[],

@@ -15,9 +15,9 @@
     "views/views.xml",
     "data/config_data.xml",
   ],
-  # "assets": {
-    # "web.assets_backend": {
-      # "library_portal/static/src/css/library.css",
-    # }
-  #},
+  'assets': {
+    'web.assets_frontend': [
+        'grant_portal/static/src/js/grant_portal_sidebar.js',
+    ]
+    }
 }

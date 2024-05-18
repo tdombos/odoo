@@ -3,7 +3,7 @@
     'name': "Partner Residing Address",
 
     'summary': """
-        Add new address type 'Residing Address' to partner""",
+        Add new address types 'Residing Address' and 'Postal Address' to partner""",
 
     'description': """
         Long description of module's purpose

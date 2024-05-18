@@ -1,0 +1,21 @@
+<odoo>
+  <data>
+    <record id="hr_expense_actions_all" model="ir.actions.act_window">
+        <field name="name">All Expenses</field>
+        <field name="res_model">hr.expense</field>
+        <field name="view_mode">tree,kanban,form,graph,pivot,activity</field>
+        <field name="search_view_id" ref="hr_expense.hr_expense_view_search"/>
+    </record>
+    <record id="hr_expense_view_form_addcard" model="ir.ui.view">
+            <field name="name">hr.expense.view.form</field>
+            <field name="model">hr.expense</field>
+            <field name="inherit_id" ref="hr_expense.hr_expense_view_form"/>
+            <field name="arch" type="xml">
+                <div id="payment_mode" position="after">
+                    <field name="payment_online" />
+                </div>
+            </field>
+    </record>
+    <menuitem id="menu_hr_expense_expenses" name="Expenses" sequence="1" parent="hr_expense.menu_hr_expense_root" action="hr_expense_actions_all" groups="hr_expense.group_hr_expense_user"/>
+  </data>
+</odoo>

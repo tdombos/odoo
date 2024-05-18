@@ -4,12 +4,13 @@
   "author": "Tamás Dombos",
   "license": "AGPL-3",
   "depends": [
-    "dev_hr_expense_portal"
+    "dev_hr_expense_portal", "hr_expense_hatter"
   ],
   "data": [
     "views/main_templates.xml",
     "views/portal_templates.xml",
     "views/views.xml",
     "data/config_data.xml",
+    "security/ir.model.access.csv",
   ],
 }

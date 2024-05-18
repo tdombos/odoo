@@ -6,19 +6,21 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-27 12:41+0000\n"
-"PO-Revision-Date: 2023-10-27 15:07+0200\n"
+"POT-Creation-Date: 2023-11-21 00:38+0000\n"
+"PO-Revision-Date: 2023-11-21 01:50+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: \n"
-"X-Generator: Poedit 3.0.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.1\n"
 
 #. module: grant_portal
+#: model_terms:ir.ui.view,arch_db:grant_portal.fund
 #: model_terms:ir.ui.view,arch_db:grant_portal.proposal
+#: model_terms:ir.ui.view,arch_db:grant_portal.requirement
 msgid "&amp;times;"
 msgstr "&amp;alkalommal;"
 
@@ -26,6 +28,16 @@ msgstr "&amp;alkalommal;"
 #: model_terms:ir.ui.view,arch_db:grant_portal.proposal
 msgid "<i class=\"fa fa-comment\"/> Send message"
 msgstr "<i class=\"fa fa-comment\"/> Üzenet küldése"
+
+#. module: grant_portal
+#: model_terms:ir.ui.view,arch_db:grant_portal.grant_fund_portal_content
+msgid "<i class=\"fa fa-fw fa-check\"/> <b>Accepted</b>"
+msgstr "<i class=\"fa fa-fw fa-check\"/> <b>Elfogadva</b>"
+
+#. module: grant_portal
+#: model_terms:ir.ui.view,arch_db:grant_portal.grant_fund_portal_content
+msgid "<i class=\"fa fa-fw fa-check\"/> <b>Submitted</b>"
+msgstr "<i class=\"fa fa-fw fa-check\"/> <b>Beadva</b>"
 
 #. module: grant_portal
 #: model_terms:ir.ui.view,arch_db:grant_portal.grant_calls
@@ -37,110 +49,39 @@ msgstr ""
 "label=\"Határidő\"/>"
 
 #. module: grant_portal
-#: model_terms:ir.ui.view,arch_db:grant_portal.apply
-msgid ""
-"<span class=\"s_website_form_label_content\">Amount requested</span>\n"
-"\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"s_website_form_mark\"> *</span>"
-msgstr ""
-"<span class=\"s_website_form_label_content\">Kért összeg</span>\n"
-"\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"s_website_form_mark\"> *</span>"
+#: model_terms:ir.ui.view,arch_db:grant_portal.grant_fund_portal_content
+msgid "<i class=\"fa fa-fw fa-clock-o\"/> <b>Payment due</b>"
+msgstr "<i class=\"fa fa-fw fa-clock-o\"/> <b>Utalás alatt</b>"
 
 #. module: grant_portal
-#: model_terms:ir.ui.view,arch_db:grant_portal.apply
-msgid ""
-"<span class=\"s_website_form_label_content\">Budget</span>\n"
-"\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"s_website_form_mark\"> *</span>"
-msgstr ""
-"<span class=\"s_website_form_label_content\">Költségvetés</span>\n"
-"\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"s_website_form_mark\"> *</span>"
+#: model_terms:ir.ui.view,arch_db:grant_portal.grant_fund_portal_content
+msgid "<i class=\"fa fa-fw fa-clock-o\"/> <b>Scheduled</b>"
+msgstr "<i class=\"fa fa-fw fa-clock-o\"/> <b>Tervezett</b>"
 
 #. module: grant_portal
-#: model_terms:ir.ui.view,arch_db:grant_portal.apply
-msgid "<span class=\"s_website_form_label_content\">Call</span>"
-msgstr ""
-"<span class=\"s_website_form_label_content\">Pályázati felhívás</span>"
+#: model_terms:ir.ui.view,arch_db:grant_portal.grant_fund_portal_content
+msgid "<i class=\"fa fa-fw fa-clock-o\"/> <b>To be submitted</b>"
+msgstr "<i class=\"fa fa-fw fa-clock-o\"/> <b>Beadandó</b>"
 
 #. module: grant_portal
-#: model_terms:ir.ui.view,arch_db:grant_portal.apply
-msgid ""
-"<span class=\"s_website_form_label_content\">Contact Email</span>\n"
-"\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"s_website_form_mark\"> *</span>"
-msgstr ""
-"<span class=\"s_website_form_label_content\">Kapcsolattartó email címe</"
-"span>\n"
-"\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"s_website_form_mark\"> *</span>"
+#: model_terms:ir.ui.view,arch_db:grant_portal.grant_fund_portal_content
+msgid "<strong class=\"d-block mb-1\">Installments</strong>"
+msgstr "<strong class=\"d-block mb-1\">Utalások</strong>"
 
 #. module: grant_portal
-#: model_terms:ir.ui.view,arch_db:grant_portal.apply
-msgid ""
-"<span class=\"s_website_form_label_content\">Contact Name</span>\n"
-"\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"s_website_form_mark\"> *</span>"
-msgstr ""
-"<span class=\"s_website_form_label_content\">Kapcsolattartó neve</"
-"span>\n"
-"\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"s_website_form_mark\"> *</span>"
-
-#. module: grant_portal
-#: model_terms:ir.ui.view,arch_db:grant_portal.apply
-msgid ""
-"<span class=\"s_website_form_label_content\">Contact Phone</span>\n"
-"\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"s_website_form_mark\"> *</span>"
-msgstr ""
-"<span class=\"s_website_form_label_content\">Kapcsolattartó "
-"telefonszáma</span>\n"
-"\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"s_website_form_mark\"> *</span>"
-
-#. module: grant_portal
-#: model_terms:ir.ui.view,arch_db:grant_portal.apply
-msgid ""
-"<span class=\"s_website_form_label_content\">Organization Email</span>\n"
-"\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"s_website_form_mark\"> *</span>"
-msgstr ""
-"<span class=\"s_website_form_label_content\">Szervezeti email cím</"
-"span>\n"
-"\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"s_website_form_mark\"> *</span>"
-
-#. module: grant_portal
-#: model_terms:ir.ui.view,arch_db:grant_portal.apply
-msgid ""
-"<span class=\"s_website_form_label_content\">Organization</span>\n"
-"\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"s_website_form_mark\"> *</span>"
-msgstr ""
-"<span class=\"s_website_form_label_content\">Szervezet</span>\n"
-"\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"s_website_form_mark\"> *</span>"
-
-#. module: grant_portal
-#: model_terms:ir.ui.view,arch_db:grant_portal.apply
-msgid ""
-"<span class=\"s_website_form_label_content\">Project summary</span>\n"
-"\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"s_website_form_mark\"> *</span>"
-msgstr ""
-"<span class=\"s_website_form_label_content\">Projekt összefoglalója</"
-"span>\n"
-"\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"s_website_form_mark\"> *</span>"
-
-#. module: grant_portal
-#: model_terms:ir.ui.view,arch_db:grant_portal.apply
-msgid ""
-"<span class=\"s_website_form_label_content\">Project title</span>\n"
-"\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"s_website_form_mark\"> *</span>"
-msgstr ""
-"<span class=\"s_website_form_label_content\">Projekt címe</span>\n"
-"\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"s_website_form_mark\"> *</span>"
-
-#. module: grant_portal
-#: model_terms:ir.ui.view,arch_db:grant_portal.apply
-msgid ""
-"<span class=\"s_website_form_label_content\">Proposal</span>\n"
-"\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"s_website_form_mark\"> *</span>"
-msgstr ""
-"<span class=\"s_website_form_label_content\">Pályázat szövege</span>\n"
-"\t\t\t\t\t\t\t\t\t\t\t\t<span class=\"s_website_form_mark\"> *</span>"
+#: model_terms:ir.ui.view,arch_db:grant_portal.grant_fund_portal_content
+msgid "<strong class=\"d-block mb-1\">Requirements</strong>"
+msgstr "<strong class=\"d-block mb-1\">Követelmények</strong>"
 
 #. module: grant_portal
 #: model_terms:ir.ui.view,arch_db:grant_portal.proposal
 msgid "<strong class=\"text-muted\">Grant officer</strong>"
 msgstr "<strong class=\"text-muted\">Pályázati kapcsolattartó</strong>"
+
+#. module: grant_portal
+#: model_terms:ir.ui.view,arch_db:grant_portal.grant_fund_portal_content
+msgid "<strong>Amount granted:</strong>"
+msgstr "<strong>Megítélt összeg:</strong>"
 
 #. module: grant_portal
 #: model_terms:ir.ui.view,arch_db:grant_portal.grant_proposal_portal_content
@@ -179,8 +120,39 @@ msgstr "<strong>Határidő:</strong>"
 
 #. module: grant_portal
 #: model_terms:ir.ui.view,arch_db:grant_portal.grant_proposal_portal_content
-msgid "<strong>Description:</strong>"
-msgstr "<strong>Leírás:</strong>"
+msgid "<strong>Decision expected:</strong>"
+msgstr "<strong>Döntés várható:</strong>"
+
+#. module: grant_portal
+#: model_terms:ir.ui.view,arch_db:grant_portal.grant_requirement_portal_content
+msgid "<strong>Due:</strong>"
+msgstr "<strong>Határidő:</strong>"
+
+#. module: grant_portal
+#: model_terms:ir.ui.view,arch_db:grant_portal.grant_fund_portal_content
+#: model_terms:ir.ui.view,arch_db:grant_portal.grant_requirement_portal_content
+msgid "<strong>End Date:</strong>"
+msgstr "<strong>Beszámolási időszak vége:</strong>"
+
+#. module: grant_portal
+#: model_terms:ir.ui.view,arch_db:grant_portal.grant_fund_portal_content
+msgid "<strong>Financial cofinancing:</strong>"
+msgstr "<strong>Pénzbeni önrész:</strong>"
+
+#. module: grant_portal
+#: model_terms:ir.ui.view,arch_db:grant_portal.grant_fund_portal_content
+msgid "<strong>Grantee contact:</strong>"
+msgstr "<strong>Kapcsolattartó:</strong>"
+
+#. module: grant_portal
+#: model_terms:ir.ui.view,arch_db:grant_portal.grant_fund_portal_content
+msgid "<strong>Grantee:</strong>"
+msgstr "<strong>(Fő)pályázó:</strong>"
+
+#. module: grant_portal
+#: model_terms:ir.ui.view,arch_db:grant_portal.grant_fund_portal_content
+msgid "<strong>Inkind cofinancing:</strong>"
+msgstr "<strong>Természetbeni önrész:</strong>"
 
 #. module: grant_portal
 #: model_terms:ir.ui.view,arch_db:grant_portal.grant_proposal_portal_content
@@ -188,19 +160,55 @@ msgid "<strong>Partners:</strong>"
 msgstr "<strong>Partnerek:</strong>"
 
 #. module: grant_portal
+#: model_terms:ir.ui.view,arch_db:grant_portal.grant_fund_portal_content
+msgid "<strong>Proposal:</strong>"
+msgstr "<strong>Pályázat:</strong>"
+
+#. module: grant_portal
+#: model_terms:ir.ui.view,arch_db:grant_portal.grant_fund_portal_content
+#: model_terms:ir.ui.view,arch_db:grant_portal.grant_requirement_portal_content
+msgid "<strong>Start Date:</strong>"
+msgstr "<strong>Beszámolási időszak kezdete:</strong>"
+
+#. module: grant_portal
+#: model_terms:ir.ui.view,arch_db:grant_portal.grant_fund_portal_content
 #: model_terms:ir.ui.view,arch_db:grant_portal.grant_proposal_portal_content
+#: model_terms:ir.ui.view,arch_db:grant_portal.grant_requirement_portal_content
 msgid "<strong>State:</strong>"
 msgstr "<strong>Állapot:</strong>"
 
 #. module: grant_portal
+#: model_terms:ir.ui.view,arch_db:grant_portal.grant_requirement_portal_content
+msgid "<strong>Submitted:</strong>"
+msgstr "<strong>Beadva:</strong>"
+
+#. module: grant_portal
 #: model_terms:ir.ui.view,arch_db:grant_portal.detail
+#: model_terms:ir.ui.view,arch_db:grant_portal.grant_fund_portal_content
+#: model_terms:ir.ui.view,arch_db:grant_portal.grant_proposal_portal_content
 msgid "<strong>Summary:</strong>"
 msgstr "<strong>Összefoglaló:</strong>"
+
+#. module: grant_portal
+#: model_terms:ir.ui.view,arch_db:grant_portal.fund
+#: model_terms:ir.ui.view,arch_db:grant_portal.requirement
+msgid "<strong>This fund has been canceled.</strong>"
+msgstr "<strong>Ezt a projektet visszavonták.</strong>"
 
 #. module: grant_portal
 #: model_terms:ir.ui.view,arch_db:grant_portal.proposal
 msgid "<strong>This proposal has been canceled.</strong>"
 msgstr "<strong>A pályázatot visszavonták.</strong>"
+
+#. module: grant_portal
+#: model_terms:ir.ui.view,arch_db:grant_portal.grant_requirement_portal_content
+msgid "<strong>Type:</strong>"
+msgstr "<strong>Típus:</strong>"
+
+#. module: grant_portal
+#: model_terms:ir.ui.view,arch_db:grant_portal.apply
+msgid "Amount requested"
+msgstr "Kért összeg"
 
 #. module: grant_portal
 #: model_terms:ir.ui.view,arch_db:grant_portal.detail
@@ -217,7 +225,12 @@ msgstr "Pályázat beadása"
 msgid "Apply to our calls for proposals to get funding for your activism."
 msgstr ""
 "Pályázz egyesületünkhöz szervezeted, csoportod tevékenységeinek "
-"támogatására.fff"
+"támogatására."
+
+#. module: grant_portal
+#: model_terms:ir.ui.view,arch_db:grant_portal.apply
+msgid "Budget"
+msgstr "Költségvetés"
 
 #. module: grant_portal
 #: model:ir.model,name:grant_portal.model_grant_call
@@ -238,12 +251,32 @@ msgstr "Pályázati felhívások"
 #. module: grant_portal
 #: model:ir.model.fields,field_description:grant_portal.field_grant_call__can_publish
 msgid "Can Publish"
-msgstr ""
+msgstr "Közzétehet"
+
+#. module: grant_portal
+#: model_terms:ir.ui.view,arch_db:grant_portal.apply
+msgid "Company"
+msgstr "Szervezet"
 
 #. module: grant_portal
 #: model_terms:ir.ui.view,arch_db:grant_portal.proposal
 msgid "Contact"
 msgstr "Kapcsolat"
+
+#. module: grant_portal
+#: model_terms:ir.ui.view,arch_db:grant_portal.apply
+msgid "Contact email"
+msgstr "Kapcsolattartó email címe"
+
+#. module: grant_portal
+#: model_terms:ir.ui.view,arch_db:grant_portal.apply
+msgid "Contact name"
+msgstr "Kapcsolattartó neve"
+
+#. module: grant_portal
+#: model_terms:ir.ui.view,arch_db:grant_portal.apply
+msgid "Contact phone"
+msgstr "Kapcsolattartó telefonszáma"
 
 #. module: grant_portal
 #: model_terms:ir.ui.view,arch_db:grant_portal.grant_calls
@@ -259,9 +292,24 @@ msgstr ""
 "<strong><i>+Új</i></strong> gombra kattints."
 
 #. module: grant_portal
+#: model_terms:ir.ui.view,arch_db:grant_portal.grant_fund_portal_content
+msgid "Due:"
+msgstr "Határidő:"
+
+#. module: grant_portal
+#: model_terms:ir.ui.view,arch_db:grant_portal.proposal_portal_layout
+msgid "Funds"
+msgstr "Támogatott projektek"
+
+#. module: grant_portal
 #: model_terms:ir.ui.view,arch_db:grant_portal.apply
 msgid "Grant Application Form"
 msgstr "Pályázati űrlap"
+
+#. module: grant_portal
+#: model_terms:ir.ui.view,arch_db:grant_portal.portal_my_home
+msgid "Grant Funds"
+msgstr "Támogatott projektek"
 
 #. module: grant_portal
 #: model_terms:ir.ui.view,arch_db:grant_portal.portal_my_home
@@ -269,7 +317,9 @@ msgid "Grant Proposals"
 msgstr "Pályázatok"
 
 #. module: grant_portal
+#: model_terms:ir.ui.view,arch_db:grant_portal.fund
 #: model_terms:ir.ui.view,arch_db:grant_portal.proposal
+#: model_terms:ir.ui.view,arch_db:grant_portal.requirement
 msgid "History"
 msgstr "Előzmények"
 
@@ -284,19 +334,39 @@ msgid "Let us help you!"
 msgstr "Hadd segítsünk!"
 
 #. module: grant_portal
+#: model_terms:ir.ui.view,arch_db:grant_portal.apply
+msgid "Organization Email"
+msgstr "Szervezeti email"
+
+#. module: grant_portal
 #: model_terms:ir.ui.view,arch_db:grant_portal.grant_calls
 msgid "Our Open Calls"
 msgstr "Nyitott pályázati felhívásaink"
 
 #. module: grant_portal
-#: model_terms:ir.ui.view,arch_db:grant_portal.portal_layout
+#: model_terms:ir.ui.view,arch_db:grant_portal.apply
+msgid "Project summary"
+msgstr "Összefoglaló"
+
+#. module: grant_portal
+#: model_terms:ir.ui.view,arch_db:grant_portal.apply
+msgid "Project title"
+msgstr "Projekt címe"
+
+#. module: grant_portal
+#: model_terms:ir.ui.view,arch_db:grant_portal.apply
+msgid "Proposal"
+msgstr "Pályázat"
+
+#. module: grant_portal
+#: model_terms:ir.ui.view,arch_db:grant_portal.proposal_portal_layout
 msgid "Proposals"
 msgstr "Pályázatok"
 
 #. module: grant_portal
 #: model:ir.model.fields,help:grant_portal.field_grant_call__website_id
 msgid "Restrict publishing to this website."
-msgstr ""
+msgstr "A honlapon való közzététel korlátozása."
 
 #. module: grant_portal
 #: model:ir.model.fields,field_description:grant_portal.field_grant_call__is_seo_optimized
@@ -316,25 +386,27 @@ msgstr ""
 "honlapján."
 
 #. module: grant_portal
+#: model_terms:ir.ui.view,arch_db:grant_portal.my_grant_funds
 #: model_terms:ir.ui.view,arch_db:grant_portal.my_grant_proposals
 msgid "State"
-msgstr "Állapod"
+msgstr "Állapot"
 
 #. module: grant_portal
 #: model_terms:ir.ui.view,arch_db:grant_portal.apply
+#: model_terms:ir.ui.view,arch_db:grant_portal.requirement
 msgid "Submit"
 msgstr "Benyújtás"
 
 #. module: grant_portal
 #: model:ir.model.fields,help:grant_portal.field_grant_call__website_url
 msgid "The full URL to access the document through the website."
-msgstr ""
-"A teljes URL, amelyen keresztül a dokumentum elérhető a weboldalon."
+msgstr "A teljes URL, amelyen keresztül a dokumentum elérhető a weboldalon."
 
 #. module: grant_portal
+#: model_terms:ir.ui.view,arch_db:grant_portal.my_grant_funds
 #: model_terms:ir.ui.view,arch_db:grant_portal.my_grant_proposals
 msgid "Title"
-msgstr "Cím"
+msgstr "Projekt címe"
 
 #. module: grant_portal
 #: model:ir.model.fields,field_description:grant_portal.field_grant_call__website_published
@@ -377,9 +449,16 @@ msgid "Website opengraph image"
 msgstr "Weboldal opengraph képe"
 
 #. module: grant_portal
+#: model_terms:ir.ui.view,arch_db:grant_portal.my_grant_funds
+msgid "You don't have any grant funds."
+msgstr "Nincs egyetlen támogatott projektje sem."
+
+#. module: grant_portal
 #: model_terms:ir.ui.view,arch_db:grant_portal.my_grant_proposals
 msgid "You don't have any grant proposals."
-msgstr "Nincs egyetlen pályázatod sem."
+msgstr ""
+"Nincs egyetlen pályázata sem, az elnyert pályázatok a <i>Támogatott "
+"projektek</i> alatt találhatóak."
 
 #. module: grant_portal
 #: model_terms:ir.ui.view,arch_db:grant_portal.detail
@@ -387,14 +466,16 @@ msgid "breadcrumb"
 msgstr ""
 
 #. module: grant_portal
+#: model_terms:ir.ui.view,arch_db:grant_portal.fund
 #: model_terms:ir.ui.view,arch_db:grant_portal.proposal
+#: model_terms:ir.ui.view,arch_db:grant_portal.requirement
 msgid "close"
 msgstr "bezárás"
 
 #. module: grant_portal
 #: model_terms:ir.ui.view,arch_db:grant_portal.grant_calls
 msgid "for future calls."
-msgstr ""
+msgstr "jövőbeli felhívásokhoz."
 
 #. module: grant_portal
 #: model_terms:ir.ui.view,arch_db:grant_portal.grant_calls

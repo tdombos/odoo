@@ -15,13 +15,17 @@
                                     <em class="font-weight-normal text-muted">Product:</em>
                                     <span t-field="group_exp[0].sudo().product_id"/>
                                 </t>
-								<t t-if="groupby == 'account_id'">
+<!-- 								<t t-if="groupby == 'account_id'">
                                     <em class="font-weight-normal text-muted">Account:</em>
                                     <span t-field="group_exp[0].sudo().account_id"/>
+                                </t> -->
+                                <t t-if="groupby == 'analytic_account_id'">
+                                    <em class="font-weight-normal text-muted">Analytic account:</em>
+                                    <span t-field="group_exp[0].sudo().analytic_account_id"/>
                                 </t>
                             </th>
-							<th class="text-left">Product</th>
 							<th class="text-left">Expense Date</th>
+                            <th class="text-left">Partner</th>
                             <th class="text-left">Total</th>
 							<th class="text-left">Amount Due</th>
                             <th class="text-left">Project</th>
@@ -32,13 +36,14 @@
 				        <t t-foreach="group_exp" t-as="l">
 				            <tr>
 				                <td><a t-att-href="l.get_portal_url()"><t t-esc="l.name"/></a></td>
-				                <td class="text-left"><span t-field="l.product_id.name" /></td>
 								<td class="text-left"><span t-field="l.date"/></td>
+				                <td class="text-left"><span t-field="l.partner_name"/></td>
 				                <td class="text-left"><span t-field="l.total_amount"/></td>
 								<td class="text-left"><span t-field="l.amount_residual"/></td>
 				                <td class="text-left"><span t-field="l.analytic_account_id"/></td>
 								<td class="text-left">
-									<span class="badge badge-pill badge-info" title="Current stage of the Expense" t-esc="l.state" />								
+									<span t-if="l.state == 'draft'" class="badge badge-pill badge-info" title="Current stage of the Expense" >Draft</span>
+                                    <span t-else="" class="badge badge-pill badge-info" title="Current stage of the Expense" t-field="l.state" />
 								</td>
 			            	</tr>
 				        </t>
@@ -48,22 +53,12 @@
 		<xpath expr="//main[hasclass('modal-body')]" position="replace">
 			<main class="modal-body">
 				<input type="hidden" name="quantity" required="1" value="1" /> 
+                <input type="hidden" name="unit_amount" required="1" value="0" /> 
 				<div class="form-group field-login">
-					<label for="name">Description</label>
+					<label for="name">Short description</label>
 					<input type="Char" class="form-control form-control-sm" name="name" required="1"  /> 
 				</div>
-				<div class="form-group field-login">
-					<fieldset id="paidby">
-						<legend>Paid by</legend>
-						<div><label for="type">Emplpyee (reimburse)</label>
-						<input type="radio" class="btn-chk" name="payment_mode" id="own_account" required="1" value="own_account" />
-						</div><div>
-						<label for="type">Company (pro futuro)</label>						
-						<input type="radio" class="btn-chk" name="payment_mode" id="company_account" required="1" value="company_account"/>
-						</div>
-					</fieldset>
-				</div>
-				<div class="form-group field-login">
+                <div class="form-group field-login">
 					<label for="product_id">Product</label>
 					<select class="custom-select" name="product_id" id="product_id" required="True" >
 						<t t-foreach="product_ids or []" t-as="product">
@@ -72,36 +67,57 @@
 					 </select>
 				</div>
 				<div class="form-group field-login">
-					<label for="total_amount">Total amount</label>
-					<input type="Integer" class="form-control form-control-sm" name="total_amount" required="1"  /> 
+					<fieldset id="paidby">
+						<legend>Paid by</legend>
+						<div>
+                            <label for="type">Employee (reimburse)</label>
+                            <input type="radio" class="btn-chk" name="payment_mode" id="own_account" required="1" value="own_account" />
+						</div>
+                        <div>
+                            <label for="type">Company (pro futuro)</label>						
+                            <input type="radio" class="btn-chk" name="payment_mode" id="company_account" required="1" value="company_account"/>
+						</div>
+					</fieldset>
 				</div>
 				<div class="form-group field-login">
-					<label for="description">Bill Reference</label>
-					<input type="Integer" class="form-control form-control-sm" name="bill_reference" /> 
+					<label for="payment_online">Online payment by company card?</label>
+					<input type="checkbox" class="form-control form-control-sm" name="payment_online" />
 				</div>
 				<div class="form-group field-login">
-					<label for="partner">Partner</label>
-					<input type="Char" class="form-control form-control-sm" name="partner" /> 
+					<label for="amount">Amount</label>
+					<input type="number" class="form-control form-control-sm" name="amount" required="1"  /> 
 				</div>
 				<div class="form-group field-login">
-					<label for="partner">Partner tax number</label>
+					<label for="bill_reference">Bill Reference</label>
+					<input type="Char" class="form-control form-control-sm" name="bill_reference" /> 
+				</div>
+				<div class="form-group field-login">
+					<label for="partner_name">Partner</label>
+					<input type="Char" class="form-control form-control-sm" name="partner_name" /> 
+				</div>
+				<div class="form-group field-login">
+					<label for="partner_tax">Partner tax number</label>
 					<input type="Char" class="form-control form-control-sm" name="partner_tax" placeholder="VAT number for company, tax-number for private person..."/> 
 				</div>	
 				<div class="form-group field-login">
-					<label for="partner">Partner email</label>
+					<label for="partner_email">Partner email</label>
 					<input type="Char" class="form-control form-control-sm" name="partner_email" /> 
 				</div>				
 				<div class="form-group field-login">
-					<label for="employee_id">Project</label>
-					<select class="custom-select" name="product_id" id="product_id" required="True" >
-						<t t-foreach="product_ids or []" t-as="product">
-							<option t-att-value="product.id"><t t-esc="product.name"/></option>
+					<label for="analytic_account_id">Project</label>
+					<select class="custom-select" name="analytic_account_id" id="analytic_account_id" required="True" >
+						<t t-foreach="analytic_account_ids or []" t-as="analytic_account">
+							<option t-att-value="analytic_account.id"><t t-esc="analytic_account.name"/></option>
 						</t>
 					 </select>
 				</div>
+                <div class="form-group field-login">
+					<label for="description">Description</label>
+					<textarea class="form-control form-control-sm" name="description" style="min-height: 120px" placeholder="Please describe in detail what goods or services you paid for or want to order..."/>
+				</div>
 				<div class="form-group field-login">
 					<label for="date">Upload Document</label>
-					<input type="file" class="form-control" name="expense_file" required="True" multiple="true" data-show-upload="true"  /> 
+					<input type="file" class="form-control" name="expense_file" multiple="true" data-show-upload="true"  /> 
 				</div>
             </main>
 		</xpath>
@@ -121,34 +137,84 @@
                                 <td width="5%" style="padding:3px">:</td>
                                 <td width="50%" style="padding:3px"><span t-field="hr_expense.total_amount"/></td>
                             </tr>
-							<tr>
-                                <td width="35%" style="padding:3px"><b>Amount Due</b></td>
+                            <tr>
+                                <td width="35%" style="padding:3px"><b>Partner name</b></td>
                                 <td width="5%" style="padding:3px">:</td>
-                                <td width="50%" style="padding:3px"><span t-field="hr_expense.amount_residual"/></td>
+                                <td width="50%" style="padding:3px"><span t-field="hr_expense.partner_name"/></td>
+                            </tr>
+                            <tr>
+                                <td width="35%" style="padding:3px"><b>Email</b></td>
+                                <td width="5%" style="padding:3px">:</td>
+                                <td width="50%" style="padding:3px"><span t-field="hr_expense.partner_email"/></td>
+                            </tr>
+                            <tr>
+                                <td width="35%" style="padding:3px"><b>Tax number</b></td>
+                                <td width="5%" style="padding:3px">:</td>
+                                <td width="50%" style="padding:3px"><span t-field="hr_expense.partner_tax"/></td>
                             </tr>
                             
                         </table>
                     </div>
                     <div class="col-lg-6">
                         <table width="100%">
-							<tr>
+                            <tr>
                                 <td width="35%" style="padding:3px"><b>Bill Reference</b></td>
                                 <td width="5%" style="padding:3px">:</td>
                                 <td width="50%" style="padding:3px"><span t-field="hr_expense.reference"/></td>
                             </tr>
-							<tr>
+                            <tr>
+                                <td width="35%" style="padding:3px"><b>Amount Due</b></td>
+                                <td width="5%" style="padding:3px">:</td>
+                                <td width="50%" style="padding:3px"><span t-field="hr_expense.amount_residual"/></td>
+                            </tr>
+                            <tr>
+                                <td width="35%" style="padding:3px"><b>Payment mode</b></td>
+                                <td width="5%" style="padding:3px">:</td>
+                                <td width="50%" style="padding:3px"><span t-field="hr_expense.payment_mode"/></td>
+                            </tr>
+                            <tr>
                                 <td width="35%" style="padding:3px"><b>Expense Date</b></td>
                                 <td width="5%" style="padding:3px">:</td>
                                 <td width="50%" style="padding:3px"><span t-field="hr_expense.date"/></td>
                             </tr>
-							<tr>
-								<td width="35%" style="padding:3px"><b>Analytic Account</b></td>
-								<td width="5%" style="padding:3px">:</td>
-								<td width="50%" style="padding:3px"><span t-field="hr_expense.analytic_account_id"/></td>
-                            </tr>							                       
+                            <tr>
+                                <td width="35%" style="padding:3px"><b>Analytic Account</b></td>
+                                <td width="5%" style="padding:3px">:</td>
+                                <td width="50%" style="padding:3px"><span t-field="hr_expense.analytic_account_id"/></td>
+                            </tr>
                         </table>
                     </div>
-                </div>
+                    <div t-if="hr_expense.attachment_ids" class="col-lg-12" >
+                        <strong class="d-block mb-2">Attachments</strong>
+                        <div class="row">
+                            <div
+                                t-attf-class="col col-12 col-lg-12 o_project_portal_attachments"
+                            >
+                                
+                                <ul class="list-group">
+                                    <a
+                                        class="list-group-item list-group-item-action d-flex align-items-center oe_attachments py-1 px-2"
+                                        t-foreach='hr_expense.attachment_ids'
+                                        t-as='attachment'
+                                        t-attf-href="/web/content/#{attachment.id}?download=true&amp;access_token=#{attachment.generate_access_token()[0]}"
+                                        target="_blank"
+                                        data-no-post-process=""
+                                    >
+                                        <div
+                                            class='oe_attachment_embedded o_image o_image_small mr-2 mr-lg-3'
+                                            t-att-title="attachment.name"
+                                            t-att-data-mimetype="attachment.mimetype"
+                                            t-attf-data-src="/web/image/#{attachment.id}/50x40?access_token=#{attachment.generate_access_token()[0]}"
+                                        />
+                                        <div
+                                            class='oe_attachment_name text-truncate'
+                                        ><t t-esc='attachment.name' /></div>
+                                    </a>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+            </div>
         </xpath>
     </template>
 

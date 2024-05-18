@@ -25,10 +25,10 @@
                     </group>
                 </group>
             </group>
-            <field name="type" position="before">
+            <field name="vat" position="before">
                 <field name="fullname"/>
             </field>
-            <field name="type" position="before">
+            <field name="vat" position="before">
                 <field name="ref" position="move"/>
             </field>
             

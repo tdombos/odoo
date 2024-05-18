@@ -1,6 +1,8 @@
 from odoo.http import route, request
 from odoo.addons.portal.controllers import portal
 from odoo.tools import plaintext2html
+from odoo.exceptions import AccessError, MissingError
+from datetime import date
 import odoo.http as http
 import base64
 import logging
@@ -12,21 +14,19 @@ class CustomerPortal(portal.CustomerPortal):
     def _prepare_home_portal_values(self, counters):
         values = super()._prepare_home_portal_values(counters)
         if "grant_proposals_count" in counters:
-            count = request.env["grant.proposal"].search_count([])
+            domain = []
+            count = request.env["grant.proposal"].search_count(domain)
             values["grant_proposals_count"] = count
-        return values
         if "grant_funds_count" in counters:
-            count = request.env["grant.fund"].search_count([])
+            domain = []
+            count = request.env["grant.fund"].search_count(domain)
             values["grant_funds_count"] = count
         return values
-    @route(
-        ["/my/proposals", "/my/proposals/page/<int:page>"],
-        auth="user",
-        website=True,
-    )
+
+    @route(["/my/proposals", "/my/proposals/page/<int:page>"], auth="user", website=True)
     def my_proposals(self, page=1, **kw):
         Proposal = request.env["grant.proposal"]
-        domain = []
+        domain = [["direction","=","in"]]
         # Prepare pager data
         proposal_count = Proposal.search_count(domain)
         pager_data = portal.pager(
@@ -52,13 +52,13 @@ class CustomerPortal(portal.CustomerPortal):
         return request.render("grant_portal.my_grant_proposals", values)
 
     @route(
-        ["/my/funds", "/my/proposals/page/<int:page>"],
+        ["/my/funds", "/my/funds/page/<int:page>"],
         auth="user",
         website=True,
     )
     def my_funds(self, page=1, **kw):
         Fund = request.env["grant.fund"]
-        domain = []
+        domain = [["direction","=","in"]]
         # Prepare pager data
         fund_count = Fund.search_count(domain)
         pager_data = portal.pager(
@@ -76,21 +76,45 @@ class CustomerPortal(portal.CustomerPortal):
         values.update(
             {
                 "funds": funds,
-                "page_name": "grant-proposals",
-                "default_url": "/my/proposals",
+                "page_name": "grant-funds",
+                "default_url": "/my/funds",
                 "pager": pager_data,
             }
         )
         return request.render("grant_portal.my_grant_funds", values)
 
-    @route(["/my/proposals/<model('grant.proposal'):doc>"], auth="user", website=True)
-    def portal_my_project(self, doc=None, **kw):
-        return request.render("grant_portal.proposal", {"doc": doc})
+    @route(["/my/proposals/<int:proposal_id>"], auth="user", website=True)
+    def portal_my_proposal(self, proposal_id=None, access_token=None, **kw):
+        try:
+            proposal_sudo = self._document_check_access(
+                "grant.proposal", proposal_id, access_token=access_token
+            )
+        except (AccessError, MissingError):
+            return request.redirect("/my")
+        for attachment in proposal_sudo.attachment_ids:
+            attachment.generate_access_token()
+        return request.render("grant_portal.proposal", {"doc": proposal_sudo, "page_name": "proposal"})
 
-    @route(["/my/funds/<model('grant.fund'):doc>"], auth="user", website=True)
-    def portal_my_project(self, doc=None, **kw):
-        return request.render("grant_portal.fund", {"doc": doc})
-    
+    @route(["/my/funds/<int:fund_id>"], auth="user", website=True)
+    def portal_my_fund(self, fund_id=None, access_token=None, **kw):
+        try:
+            fund_sudo = self._document_check_access(
+                "grant.fund", fund_id, access_token=access_token
+            )
+        except (AccessError, MissingError):
+            return request.redirect("/my")
+        return request.render("grant_portal.fund", {"doc": fund_sudo, "page_name": "fund"})
+    @route(["/my/requirements/<int:requirement_id>"], auth="user", website=True)
+    def portal_my_requirement(self, requirement_id=None, access_token=None, **kw):
+        try:
+            requirement_sudo = self._document_check_access(
+                "grant.requirement", requirement_id, access_token=access_token
+            )
+        except (AccessError, MissingError):
+            return request.redirect("/my")
+        for attachment in requirement_sudo.attachment_ids:
+            attachment.generate_access_token()
+        return request.render("grant_portal.requirement", {"doc": requirement_sudo, "page_name": "requirement"})    
     @route(["/calls/apply/<model('grant.call'):call>"], auth="user", website=True)
     def calls_apply(self, call, **kwargs):
         error = {}
@@ -121,7 +145,7 @@ class CustomerPortal(portal.CustomerPortal):
                 http.request.env["res.partner"]
                 .sudo()
                 .search(
-                    [("email", "=", kw.get("company_email"))]
+                    [("email", "=", kw.get("company_email"))], order="create_date desc", limit=1
                 )
             )
             if not applicant: 
@@ -153,7 +177,7 @@ class CustomerPortal(portal.CustomerPortal):
                 http.request.env["res.partner"]
                 .sudo()
                 .search(
-                    [("email", "=", kw.get("partner_email"))]
+                    [("email", "=", kw.get("partner_email"))], order="create_date desc", limit=1
                 )
             )
             if not applicant_contact: 
@@ -197,3 +221,21 @@ class CustomerPortal(portal.CustomerPortal):
                         }
                     )
         return werkzeug.utils.redirect("/my/proposals/%s" % new_proposal.id)
+    @http.route("/requirement/submit", type="http", auth="user")
+    def requirement_submit(self, **kw):
+        """Submit requirement"""
+        values = {}
+        for field_name, field_value in kw.items():
+            if field_name.endswith("_id"):
+                values[field_name] = int(field_value)
+            else:
+                values[field_name] = field_value
+        requirement = (
+            http.request.env["grant.requirement"]
+            .sudo()
+            .search([("id", "=", values["requirement_id"])])
+        )
+        requirement.ensure_one() 
+        requirement.state = 'done'
+        requirement.date_submit = date.today()
+        return werkzeug.utils.redirect("/my/requirements/" + str(requirement.id))

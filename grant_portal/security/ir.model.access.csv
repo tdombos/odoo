@@ -1,7 +1,10 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_grant_call_public,Grant Call Public Access,grant.model_grant_call,base.group_public,1,0,0,0
 access_grant_call_portal,Grant Call Portal Access,grant.model_grant_call,base.group_portal,1,0,0,0
-access_grant_call_user,Grant Call User Access,grant.model_grant_call,base.group_user,1,0,0,0
-access_grant_proposal_portal,Grant Proposal Portal Access,grant.model_grant_proposal,base.group_portal,1,0,0,0
-access_grant_proposal_user,Grant Proposal User Portal Access,grant.model_grant_proposal,base.group_user,1,0,0,0
-access_grant_fund_portal,Grant Fund Portal Access,grant.model_grant_fund,base.group_portal,1,0,0,0
+access_grant_call_internal,Grant Call Internal Access,grant.model_grant_call,base.group_user,1,0,0,0
+access_grant_proposal_portal,Grant Proposal Portal Access,grant.model_grant_proposal,base.group_portal,1,1,1,0
+access_grant_fund_portal,Grant Fund Portal Access,grant.model_grant_fund,base.group_portal,1,1,1,0
+access_grant_fund_user,Grant Fund User Access,grant.model_grant_fund,base.group_user,1,0,0,0
+access_grant_proposal_user,Grant Proposal User Access,grant.model_grant_proposal,base.group_user,1,0,0,0
+access_grant_requirement_portal,Grant Requirement Portal Access,grant.model_grant_requirement,base.group_portal,1,1,1,0
+access_grant_reportcontent_portal,Grant Report Content Portal Access,grant.model_grant_reportcontent,base.group_portal,1,1,1,0

@@ -1,0 +1,28 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* hr_expense_hatter
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-05-12 15:12+0000\n"
+"PO-Revision-Date: 2024-05-12 17:12+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.1\n"
+
+#. module: hr_expense_hatter
+#: model:ir.actions.act_window,name:hr_expense_hatter.hr_expense_actions_all
+msgid "All Expenses"
+msgstr "Összes költség"
+
+#. module: hr_expense_hatter
+#: model:ir.ui.menu,name:hr_expense_hatter.menu_hr_expense_expenses
+msgid "Expenses"
+msgstr "Költségek"

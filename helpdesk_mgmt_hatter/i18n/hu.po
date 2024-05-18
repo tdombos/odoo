@@ -4,18 +4,18 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 13.0\n"
+"Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-04-16 13:38+0000\n"
-"PO-Revision-Date: 2021-04-16 16:02+0200\n"
+"POT-Creation-Date: 2024-04-26 18:53+0000\n"
+"PO-Revision-Date: 2024-04-26 20:55+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
+"Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: \n"
-"Language: hu\n"
-"X-Generator: Poedit 2.4.2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.1\n"
 
 #. module: helpdesk_mgmt_hatter
 #: model:ir.model.fields.selection,name:helpdesk_mgmt_hatter.selection__helpdesk_ticket__settlement__abroad
@@ -103,7 +103,7 @@ msgstr ""
 #. module: helpdesk_mgmt_hatter
 #: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_document__checksum
 msgid "Checksum/SHA1"
-msgstr "Checksum/SHA1"
+msgstr ""
 
 #. module: helpdesk_mgmt_hatter
 #: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_ticket_tag__child_ids
@@ -121,9 +121,14 @@ msgid "Company"
 msgstr "Vállalat"
 
 #. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_ticket__complete_name
+msgid "Complete Name"
+msgstr "Teljes név"
+
+#. module: helpdesk_mgmt_hatter
 #: model:ir.model,name:helpdesk_mgmt_hatter.model_res_partner
 msgid "Contact"
-msgstr "Partner"
+msgstr "Kapcsolat"
 
 #. module: helpdesk_mgmt_hatter
 #: model_terms:ir.ui.view,arch_db:helpdesk_mgmt_hatter.ticket_view_form
@@ -235,13 +240,23 @@ msgstr "Nő"
 
 #. module: helpdesk_mgmt_hatter
 #: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_document__datas
-msgid "File Content"
-msgstr "Fájltartalom"
+msgid "File Content (base64)"
+msgstr ""
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_document__raw
+msgid "File Content (raw)"
+msgstr ""
 
 #. module: helpdesk_mgmt_hatter
 #: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_document__file_size
 msgid "File Size"
 msgstr "A fájl mérete"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_document__filename
+msgid "Filename"
+msgstr "Fájlnév"
 
 #. module: helpdesk_mgmt_hatter
 #: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_ticket__gender
@@ -312,7 +327,6 @@ msgstr ""
 
 #. module: helpdesk_mgmt_hatter
 #: model:ir.model.fields,help:helpdesk_mgmt_hatter.field_helpdesk_doctype__active
-#: model:ir.model.fields,help:helpdesk_mgmt_hatter.field_helpdesk_ticket_tag__active
 msgid ""
 "If the active field is set to False, it will allow you to hide the tag "
 "without removing it."
@@ -349,6 +363,11 @@ msgstr "Indexált tartalom"
 #: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_document__public
 msgid "Is public document"
 msgstr "Nyilvános irat"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_document__key
+msgid "Key"
+msgstr "Kulcs"
 
 #. module: helpdesk_mgmt_hatter
 #: model:ir.model.fields.selection,name:helpdesk_mgmt_hatter.selection__helpdesk_ticket__settlement__city
@@ -417,6 +436,11 @@ msgstr "Nem"
 #: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_ticket__doc_count
 msgid "Number of documents attached"
 msgstr "Mellékelt iratok száma"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_document__original_id
+msgid "Original (unoptimized, unresized) attachment"
+msgstr "Eredeti (átméretezés és optimalizálás nélküli) melléklet"
 
 #. module: helpdesk_mgmt_hatter
 #: model:ir.model.fields.selection,name:helpdesk_mgmt_hatter.selection__helpdesk_ticket__gender__other
@@ -542,6 +566,13 @@ msgid "Team"
 msgstr "Csapat"
 
 #. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,help:helpdesk_mgmt_hatter.field_helpdesk_document__key
+msgid ""
+"Technical field used to resolve multiple attachments in a multi-website "
+"environment."
+msgstr ""
+
+#. module: helpdesk_mgmt_hatter
 #: model:ir.model.fields,help:helpdesk_mgmt_hatter.field_helpdesk_document__res_model
 msgid "The database object this attachment will be attached to."
 msgstr "Az adatbázis objektum, amelyhez ez a melléklet kapcsolódik."
@@ -550,6 +581,11 @@ msgstr "Az adatbázis objektum, amelyhez ez a melléklet kapcsolódik."
 #: model:ir.model.fields,help:helpdesk_mgmt_hatter.field_helpdesk_document__res_id
 msgid "The record id this is attached to."
 msgstr "Az a rekord azonosító, amelyhez ez a melléklet kapcsolódik."
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_document__theme_template_id
+msgid "Theme Template"
+msgstr ""
 
 #. module: helpdesk_mgmt_hatter
 #: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_document__ticket_id
@@ -600,6 +636,16 @@ msgstr "Ismeretlen"
 #: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_document__url
 msgid "Url"
 msgstr "URL"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_document__website_id
+msgid "Website"
+msgstr "Honlap"
+
+#. module: helpdesk_mgmt_hatter
+#: model:ir.model.fields,field_description:helpdesk_mgmt_hatter.field_helpdesk_document__website_url
+msgid "Website URL"
+msgstr "Honlap címe"
 
 #. module: helpdesk_mgmt_hatter
 #: model:ir.model.fields.selection,name:helpdesk_mgmt_hatter.selection__helpdesk_ticket__trans__trans

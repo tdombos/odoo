@@ -1,0 +1,324 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* dev_hr_expense_portal_hatter
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-05-12 01:08+0000\n"
+"PO-Revision-Date: 2024-05-12 03:29+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: hu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.4.1\n"
+
+#. module: dev_hr_expense_portal_hatter
+#: model_terms:ir.ui.view,arch_db:dev_hr_expense_portal_hatter.expense_portal_content_extend
+msgid "<b>Amount Due</b>"
+msgstr "<b>Utalandó összeg</b>"
+
+#. module: dev_hr_expense_portal_hatter
+#: model_terms:ir.ui.view,arch_db:dev_hr_expense_portal_hatter.expense_portal_content_extend
+msgid "<b>Analytic Account</b>"
+msgstr "<b>Projekt</b>"
+
+#. module: dev_hr_expense_portal_hatter
+#: model_terms:ir.ui.view,arch_db:dev_hr_expense_portal_hatter.expense_portal_content_extend
+msgid "<b>Bill Reference</b>"
+msgstr "<b>Bizonylat száma</b>"
+
+#. module: dev_hr_expense_portal_hatter
+#: model_terms:ir.ui.view,arch_db:dev_hr_expense_portal_hatter.expense_portal_content_extend
+msgid "<b>Email</b>"
+msgstr "<b>Email</b>"
+
+#. module: dev_hr_expense_portal_hatter
+#: model_terms:ir.ui.view,arch_db:dev_hr_expense_portal_hatter.expense_portal_content_extend
+msgid "<b>Expense Date</b>"
+msgstr "<b>Számla dátuma</b>"
+
+#. module: dev_hr_expense_portal_hatter
+#: model_terms:ir.ui.view,arch_db:dev_hr_expense_portal_hatter.expense_portal_content_extend
+msgid "<b>Partner name</b>"
+msgstr "<b>Partner neve</b>"
+
+#. module: dev_hr_expense_portal_hatter
+#: model_terms:ir.ui.view,arch_db:dev_hr_expense_portal_hatter.expense_portal_content_extend
+msgid "<b>Payment mode</b>"
+msgstr "<b>Fizetési mód</b>"
+
+#. module: dev_hr_expense_portal_hatter
+#: model_terms:ir.ui.view,arch_db:dev_hr_expense_portal_hatter.expense_portal_content_extend
+msgid "<b>Product</b>"
+msgstr "<b>Termék</b>"
+
+#. module: dev_hr_expense_portal_hatter
+#: model_terms:ir.ui.view,arch_db:dev_hr_expense_portal_hatter.expense_portal_content_extend
+msgid "<b>Tax number</b>"
+msgstr "<b>Adószám</b>"
+
+#. module: dev_hr_expense_portal_hatter
+#: model_terms:ir.ui.view,arch_db:dev_hr_expense_portal_hatter.expense_portal_content_extend
+msgid "<b>Total</b>"
+msgstr "<b>Számla összege</b>"
+
+#. module: dev_hr_expense_portal_hatter
+#: model_terms:ir.ui.view,arch_db:dev_hr_expense_portal_hatter.portal_my_expense_simplify
+msgid "<em class=\"font-weight-normal text-muted\">Account:</em>"
+msgstr "<em class=\"font-weight-normal text-muted\">Számla:</em>"
+
+#. module: dev_hr_expense_portal_hatter
+#: model_terms:ir.ui.view,arch_db:dev_hr_expense_portal_hatter.portal_my_expense_simplify
+msgid "<em class=\"font-weight-normal text-muted\">Analytic account:</em>"
+msgstr "<em class=\"font-weight-normal text-muted\">Projekt:</em>"
+
+#. module: dev_hr_expense_portal_hatter
+#: model_terms:ir.ui.view,arch_db:dev_hr_expense_portal_hatter.portal_my_expense_simplify
+msgid "<em class=\"font-weight-normal text-muted\">Product:</em>"
+msgstr "<em class=\"font-weight-normal text-muted\">Termék:</em>"
+
+#. module: dev_hr_expense_portal_hatter
+#: model_terms:ir.ui.view,arch_db:dev_hr_expense_portal_hatter.expense_portal_content_extend
+msgid "<strong class=\"d-block mb-2\">Attachments</strong>"
+msgstr "<strong class=\"d-block mb-2\">Mellékletek</strong>"
+
+#. module: dev_hr_expense_portal_hatter
+#: code:addons/dev_hr_expense_portal_hatter/controllers/portal.py:0
+#, python-format
+msgid "Account"
+msgstr "Számla"
+
+#. module: dev_hr_expense_portal_hatter
+#: code:addons/dev_hr_expense_portal_hatter/controllers/portal.py:0
+#, python-format
+msgid "All"
+msgstr "Összes"
+
+#. module: dev_hr_expense_portal_hatter
+#: model_terms:ir.ui.view,arch_db:dev_hr_expense_portal_hatter.portal_my_expense_simplify
+msgid "Amount"
+msgstr "Összeg"
+
+#. module: dev_hr_expense_portal_hatter
+#: model_terms:ir.ui.view,arch_db:dev_hr_expense_portal_hatter.portal_my_expense_simplify
+msgid "Amount Due"
+msgstr "Utalandó összeg"
+
+#. module: dev_hr_expense_portal_hatter
+#: code:addons/dev_hr_expense_portal_hatter/controllers/portal.py:0
+#, python-format
+msgid "Analytic"
+msgstr "Projekt"
+
+#. module: dev_hr_expense_portal_hatter
+#: model:ir.model.fields,field_description:dev_hr_expense_portal_hatter.field_hr_expense__attachment_ids
+msgid "Attachments"
+msgstr "Mellékletek"
+
+#. module: dev_hr_expense_portal_hatter
+#: model_terms:ir.ui.view,arch_db:dev_hr_expense_portal_hatter.portal_my_expense_simplify
+msgid "Bill Reference"
+msgstr "Bizonylat száma"
+
+#. module: dev_hr_expense_portal_hatter
+#: model_terms:ir.ui.view,arch_db:dev_hr_expense_portal_hatter.portal_my_expense_simplify
+msgid "Company (pro futuro)"
+msgstr "Szervezet (előzetes egyeztetés)"
+
+#. module: dev_hr_expense_portal_hatter
+#: model:ir.model.fields.selection,name:dev_hr_expense_portal_hatter.selection__hr_expense__payment_mode__compay_card
+msgid "Company card"
+msgstr "Bankkártya"
+
+#. module: dev_hr_expense_portal_hatter
+#: model_terms:ir.ui.view,arch_db:dev_hr_expense_portal_hatter.portal_my_expense_simplify
+msgid "Company card (pro futuro)"
+msgstr "Bankkártya (előzetes egyeztetés)"
+
+#. module: dev_hr_expense_portal_hatter
+#: model_terms:ir.ui.view,arch_db:dev_hr_expense_portal_hatter.portal_my_home_menu_expense_format
+msgid "Create Expense Request"
+msgstr "Új költség"
+
+#. module: dev_hr_expense_portal_hatter
+#: model_terms:ir.ui.view,arch_db:dev_hr_expense_portal_hatter.portal_my_expense_simplify
+msgid "Current stage of the Expense"
+msgstr "Költség állapota"
+
+#. module: dev_hr_expense_portal_hatter
+#: model_terms:ir.ui.view,arch_db:dev_hr_expense_portal_hatter.portal_my_expense_simplify
+msgid "Description"
+msgstr "Leírás"
+
+#. module: dev_hr_expense_portal_hatter
+#: model_terms:ir.ui.view,arch_db:dev_hr_expense_portal_hatter.portal_my_expense_simplify
+msgid "Employee (reimburse)"
+msgstr "Munkavállaló (utólag téríteni)"
+
+#. module: dev_hr_expense_portal_hatter
+#: model:ir.model,name:dev_hr_expense_portal_hatter.model_hr_expense
+msgid "Expense"
+msgstr "Költség"
+
+#. module: dev_hr_expense_portal_hatter
+#: model_terms:ir.ui.view,arch_db:dev_hr_expense_portal_hatter.portal_my_expense_simplify
+msgid "Expense Date"
+msgstr "Beadás dátuma"
+
+#. module: dev_hr_expense_portal_hatter
+#: code:addons/dev_hr_expense_portal_hatter/controllers/portal.py:0
+#, python-format
+msgid "Last 30 Days"
+msgstr "Utóbbi 30 napban"
+
+#. module: dev_hr_expense_portal_hatter
+#: code:addons/dev_hr_expense_portal_hatter/controllers/portal.py:0
+#, python-format
+msgid "Last 7 Days"
+msgstr "Utóbbi 7 napban"
+
+#. module: dev_hr_expense_portal_hatter
+#: code:addons/dev_hr_expense_portal_hatter/controllers/portal.py:0
+#, python-format
+msgid "Last Week"
+msgstr "Múlthéten"
+
+#. module: dev_hr_expense_portal_hatter
+#: code:addons/dev_hr_expense_portal_hatter/controllers/portal.py:0
+#: model_terms:ir.ui.view,arch_db:dev_hr_expense_portal_hatter.portal_my_expense_simplify
+#, python-format
+msgid "Name"
+msgstr "Név"
+
+#. module: dev_hr_expense_portal_hatter
+#: model:ir.model.fields,field_description:dev_hr_expense_portal_hatter.field_hr_expense__payment_mode
+msgid "Paid By"
+msgstr "Fizeti"
+
+#. module: dev_hr_expense_portal_hatter
+#: model_terms:ir.ui.view,arch_db:dev_hr_expense_portal_hatter.portal_my_expense_simplify
+msgid "Paid by"
+msgstr "Fizeti"
+
+#. module: dev_hr_expense_portal_hatter
+#: model_terms:ir.ui.view,arch_db:dev_hr_expense_portal_hatter.portal_my_expense_simplify
+msgid "Partner"
+msgstr "Partner"
+
+#. module: dev_hr_expense_portal_hatter
+#: model:ir.model.fields,field_description:dev_hr_expense_portal_hatter.field_hr_expense__partner_email
+#: model_terms:ir.ui.view,arch_db:dev_hr_expense_portal_hatter.portal_my_expense_simplify
+msgid "Partner email"
+msgstr "Partner email címe"
+
+#. module: dev_hr_expense_portal_hatter
+#: model:ir.model.fields,field_description:dev_hr_expense_portal_hatter.field_hr_expense__partner_name
+msgid "Partner name"
+msgstr "Partner neve"
+
+#. module: dev_hr_expense_portal_hatter
+#: model:ir.model.fields,field_description:dev_hr_expense_portal_hatter.field_hr_expense__partner_tax
+msgid "Partner tax"
+msgstr "Partner adószáma"
+
+#. module: dev_hr_expense_portal_hatter
+#: model_terms:ir.ui.view,arch_db:dev_hr_expense_portal_hatter.portal_my_expense_simplify
+msgid "Partner tax number"
+msgstr "Partner adószám"
+
+#. module: dev_hr_expense_portal_hatter
+#: code:addons/dev_hr_expense_portal_hatter/controllers/portal.py:0
+#: model_terms:ir.ui.view,arch_db:dev_hr_expense_portal_hatter.portal_my_expense_simplify
+#, python-format
+msgid "Product"
+msgstr "Termék"
+
+#. module: dev_hr_expense_portal_hatter
+#: model_terms:ir.ui.view,arch_db:dev_hr_expense_portal_hatter.portal_my_expense_simplify
+msgid "Project"
+msgstr "Projekt"
+
+#. module: dev_hr_expense_portal_hatter
+#: code:addons/dev_hr_expense_portal_hatter/controllers/portal.py:0
+#, python-format
+msgid "Search in All"
+msgstr "Keresés mindenütt"
+
+#. module: dev_hr_expense_portal_hatter
+#: code:addons/dev_hr_expense_portal_hatter/controllers/portal.py:0
+#, python-format
+msgid "Search in Name"
+msgstr "Keresés a névben"
+
+#. module: dev_hr_expense_portal_hatter
+#: code:addons/dev_hr_expense_portal_hatter/controllers/portal.py:0
+#, python-format
+msgid "Search in Product"
+msgstr "Keresés a termékben"
+
+#. module: dev_hr_expense_portal_hatter
+#: code:addons/dev_hr_expense_portal_hatter/controllers/portal.py:0
+#, python-format
+msgid "Search in State"
+msgstr "Keresés az állapotban"
+
+#. module: dev_hr_expense_portal_hatter
+#: model_terms:ir.ui.view,arch_db:dev_hr_expense_portal_hatter.portal_my_expense_simplify
+msgid "Stage"
+msgstr "Állapot"
+
+#. module: dev_hr_expense_portal_hatter
+#: code:addons/dev_hr_expense_portal_hatter/controllers/portal.py:0
+#, python-format
+msgid "State"
+msgstr "Állapot"
+
+#. module: dev_hr_expense_portal_hatter
+#: code:addons/dev_hr_expense_portal_hatter/controllers/portal.py:0
+#, python-format
+msgid "This Month"
+msgstr "E hónapban"
+
+#. module: dev_hr_expense_portal_hatter
+#: code:addons/dev_hr_expense_portal_hatter/controllers/portal.py:0
+#, python-format
+msgid "This Week"
+msgstr "E héten"
+
+#. module: dev_hr_expense_portal_hatter
+#: code:addons/dev_hr_expense_portal_hatter/controllers/portal.py:0
+#, python-format
+msgid "This Year"
+msgstr "Idén"
+
+#. module: dev_hr_expense_portal_hatter
+#: code:addons/dev_hr_expense_portal_hatter/controllers/portal.py:0
+#, python-format
+msgid "Today"
+msgstr "Ma"
+
+#. module: dev_hr_expense_portal_hatter
+#: model_terms:ir.ui.view,arch_db:dev_hr_expense_portal_hatter.portal_my_expense_simplify
+msgid "Total"
+msgstr "Összesen"
+
+#. module: dev_hr_expense_portal_hatter
+#: model_terms:ir.ui.view,arch_db:dev_hr_expense_portal_hatter.portal_my_expense_simplify
+msgid "Upload Document"
+msgstr "Dokumentum feltöltése"
+
+#. module: dev_hr_expense_portal_hatter
+#: model_terms:ir.ui.view,arch_db:dev_hr_expense_portal_hatter.portal_my_expense_simplify
+msgid "VAT number for company, tax-number for private person..."
+msgstr "Cég esetén adószám, magánszemély esetén adóazonosító jel"
+
+#. module: dev_hr_expense_portal_hatter
+#: code:addons/dev_hr_expense_portal_hatter/controllers/portal.py:0
+#, python-format
+msgid "Yesterday"
+msgstr "Tegnap"

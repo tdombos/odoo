@@ -3,14 +3,16 @@
     <record id="proposal_portal_rule" model="ir.rule">
       <field name="name">Grant Proposal Portal Access</field>
       <field name="model_id" ref="grant.model_grant_proposal"/>
-        <field name="domain_force">[('message_partner_ids','in',[user.partner_id.id])]</field>
+      <field name="domain_force">[('message_partner_ids','in',[user.partner_id.id])]</field>
       <field name="groups" eval="[(4, ref('base.group_user')),(4,ref('base.group_portal'))]"/>
     </record>
-    <record id="proposal_portal_rule" model="ir.rule">
+    <record id="fund_portal_rule" model="ir.rule">
       <field name="name">Grant Fund Portal Access</field>
-      <field name="model_id" ref="grant.model_grant_proposal"/>
-        <field name="domain_force">[('message_partner_ids','in',[user.partner_id.id])]</field>
+      <field name="model_id" ref="grant.model_grant_fund"/>
+      <field name="domain_force">[('message_partner_ids','in',[user.partner_id.id])]</field>
       <field name="groups" eval="[(4, ref('base.group_user')),(4,ref('base.group_portal'))]"/>
+	  <field name="perm_write" eval="False"/>
+      <field name="perm_create" eval="False"/>
     </record>
 	<record id="grant_call_public" model="ir.rule">
         <field name="name">Grant Calls: Public</field>
