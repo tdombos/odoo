@@ -9,7 +9,7 @@
             <field name="name">partner</field>
             <field name="description">Project partner organization for the project</field>
         </record>
-        <record id="fund_account_group" model="account.analytic.group">
+        <record id="fund_account_analytic_plan" model="account.analytic.plan">
             <field name="name">Funds</field>
         </record>
 		<record id="ir_cron_scheduler_expire_grant_call" model="ir.cron">
@@ -39,7 +39,7 @@
             <field name="list_price">0.0</field>
             <field name="standard_price">0.0</field>
             <field name="type">service</field>
-			<field name="taxes_id" eval="[(5)]"/>
+			<field name="taxes_id" eval="False"/>
         </record>
 		<record id="grant_account_journal_in" model="account.journal">
             <field name="name">Grants received</field>

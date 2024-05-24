@@ -6,6 +6,7 @@
   "depends": [
     "grant",
     "portal",
+    "website",
   ],
   "data": [
     "security/ir.model.access.csv",
@@ -17,7 +18,7 @@
   ],
   'assets': {
     'web.assets_frontend': [
-        'grant_portal/static/src/js/grant_portal_sidebar.js',
+        
     ]
     }
 }

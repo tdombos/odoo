@@ -15,11 +15,13 @@ class CustomerPortal(portal.CustomerPortal):
         values = super()._prepare_home_portal_values(counters)
         if "grant_proposals_count" in counters:
             domain = []
-            count = request.env["grant.proposal"].search_count(domain)
+            count = request.env["grant.proposal"].search_count(domain) \
+                if request.env['grant.proposal'].check_access_rights('read', raise_exception=False) else 0
             values["grant_proposals_count"] = count
         if "grant_funds_count" in counters:
             domain = []
-            count = request.env["grant.fund"].search_count(domain)
+            count = request.env["grant.fund"].search_count(domain) \
+                if request.env['grant.fund'].check_access_rights('read', raise_exception=False) else 0
             values["grant_funds_count"] = count
         return values
 
@@ -51,11 +53,7 @@ class CustomerPortal(portal.CustomerPortal):
         )
         return request.render("grant_portal.my_grant_proposals", values)
 
-    @route(
-        ["/my/funds", "/my/funds/page/<int:page>"],
-        auth="user",
-        website=True,
-    )
+    @route(["/my/funds", "/my/funds/page/<int:page>"], auth="user", website=True)
     def my_funds(self, page=1, **kw):
         Fund = request.env["grant.fund"]
         domain = [["direction","=","in"]]

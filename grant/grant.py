@@ -163,6 +163,7 @@ class grant_proposal(models.Model):
         new = Fund.create({
             'name':self.name,
             'donor_id':self.donor_id.id,
+            'title':self.title,
             'title_orig':self.title,
             'call_id':self.call_id.id,
             'proposal_id':self.id,
@@ -230,7 +231,9 @@ class grant_fund(models.Model):
     members = fields.Many2many('res.partner', string='Project Members', required=True, tracking=True)
     title = fields.Char('Full title', size=255, tracking=True)
     title_orig = fields.Char('Full title (original)', size=255, tracking=True)
-    description = fields.Html('Description', tracking=True)
+    description = fields.Html('Description', 
+    #tracking=True
+    )
     fundtype_id = fields.Many2one('grant.fundtype', required=True, string='Fund Type', ondelete='restrict', help='Type of fund')
     proposal_id = fields.Many2one('grant.proposal', string='Proposal', tracking=True)
     call_id = fields.Many2one('grant.call',string='Call', related='proposal_id.call_id', readonly=True, tracking=True)
@@ -375,3 +378,4 @@ class res_partner(models.Model):
 class Project(models.Model):
     _inherit = ['project.project']
     fund_ids = fields.One2many('grant.fund', 'project_id', string='Funds', auto_join=True)
+    commercial_partner_id = fields.Many2one(related="partner_id.commercial_partner_id")
