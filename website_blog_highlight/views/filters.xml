@@ -1,0 +1,34 @@
+<odoo>
+    <data>
+        <!-- Filters for Dynamic Filter -->
+        <record id="dynamic_snippet_highlighted_blog_post_filter" model="ir.filters">
+            <field name="name">Highlighted Blog Posts</field>
+            <field name="model_id">blog.post</field>
+            <field name="user_id" eval="False" />
+            <field name="domain">[('post_date', '&lt;=', context_today()), ('is_highlighted', '!=', False)]</field>
+            <field name="sort">["post_date desc"]</field>
+            <field name="action_id" ref="website.action_website"/>
+        </record>
+        <record id="dynamic_snippet_not_highlighted_blog_post_filter" model="ir.filters">
+            <field name="name">Not highlighted Blog Posts</field>
+            <field name="model_id">blog.post</field>
+            <field name="user_id" eval="False" />
+            <field name="domain">[('post_date', '&lt;=', context_today()), ('is_highlighted', '!=', True)]</field>
+            <field name="sort">["post_date desc"]</field>
+            <field name="action_id" ref="website.action_website"/>
+        </record>
+        <!-- Dynamic Filter -->
+        <record id="dynamic_filter_highlighted_blog_posts" model="website.snippet.filter">
+            <field name="name">Highlighted Blog Posts</field>
+            <field name="filter_id" ref="website_blog_highlight.dynamic_snippet_highlighted_blog_post_filter"/>
+            <field name="field_names">name,teaser,subtitle</field>
+            <field name="limit" eval="16"/>
+        </record>
+        <record id="dynamic_filter_not_highlighted_blog_posts" model="website.snippet.filter">
+            <field name="name">Not Highlighted Blog Posts</field>
+            <field name="filter_id" ref="website_blog_highlight.dynamic_snippet_not_highlighted_blog_post_filter"/>
+            <field name="field_names">name,teaser,subtitle</field>
+            <field name="limit" eval="16"/>
+        </record>
+    </data>
+</odoo>

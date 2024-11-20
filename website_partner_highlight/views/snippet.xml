@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="partner_list">
+        <section class="partners_snippet">
+            <div class="container">
+                <div class="partner-list">
+                    <div class="alert alert-info d-flex align-items-center justify-content-center"
+                         style="min-height:300px;">
+                        <span class="muted">Customize block first</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <template id="snippets" inherit_id="website.snippets" name="Employees list">
+        <xpath expr="//div[@id='snippet_effect']//t[@t-snippet][last()]" position="after">
+            <t t-snippet="website_partner_highlight.partner_list"/>
+        </xpath>
+    </template>
+
+    <template id="snippet_options" inherit_id="website.snippet_options">
+        <xpath expr="." position="inside">
+            <div data-selector=".partners_snippet">
+                <we-select string="Category" data-name="category_id_opt" data-attribute-name="categoryId">
+                    <we-button
+                            t-foreach="request.env['res.partner'].fields_get(['web_category'])['web_category']['selection']"
+                            t-as="category" t-att-data-select-data-attribute="category[0]" t-esc="category[1]"
+                            data-set-on-click="true"/>
+                </we-select>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="list">
+        <t t-foreach="partners" t-as="partner">
+            <a class="h-100 flex-column" t-attf-href="#{partner.website}" target="_blank">
+                <img t-attf-src="/web/image/res.partner/#{partner.id}/avatar_128" alt="Partner"/>
+            </a>
+        </t>
+    </template>
+</odoo>
+
+

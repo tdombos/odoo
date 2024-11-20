@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<record id="shape_circle_01" model="ir.attachment">
+    <field name="name">circle</field>
+    <field name="datas" type="base64" file="theme_hatter/static/shapes/circles/01.svg"/>
+    <field name="url">/web_editor/shape/illustration/circles/01.svg</field>
+    <field name="public" eval="True"/>
+</record>
+</odoo>

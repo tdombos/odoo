@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_website_page_properties_form_background" model="ir.ui.view">
+        <field name="name">website.page.properties.form.background</field>
+        <field name="model">website.page</field>
+        <field name="inherit_id" ref="website.website_page_properties_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='url']" position="after">
+                <field name="background_image" widget="image" class="oe_avatar"
+                       options="{'preview_image': 'background_image'}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_website_page_form_background" model="ir.ui.view">
+        <field name="name">website.page.form.background</field>
+        <field name="model">website.page</field>
+        <field name="inherit_id" ref="website.website_pages_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='url']" position="after">
+                <field name="background_image" widget="image" class="oe_avatar"
+                       options="{'preview_image': 'background_image'}"/>
+            </xpath>
+        </field>
+    </record>
+
+
+    <template id="website_page_background" inherit_id="website.layout" name="Custom Background for Pages">
+        <xpath expr="//main" position="attributes">
+            <attribute name="class" add="o_page_background"/>
+            <attribute name="t-attf-style" t-if="main_object.background_image">background-image: url('/web/image/website.page/#{main_object.id}/background_image')</attribute>
+        </xpath>
+    </template>
+
+</odoo>
+
+<!--  -->

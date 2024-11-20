@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="hr_profile_page_employee_card" name="Employees">
+        <section class="employee_card_snippet">
+            <div class="container o_not_editable">
+                <div class="employee-cards">
+                    <div class="alert alert-info d-flex align-items-center justify-content-center"
+                         style="min-height:300px;">
+                        <span class="muted">Customize block first</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <template id="hr_profile_page_employee_card_bar" inherit_id="website.snippets" name="Employees list">
+        <xpath expr="//div[@id='snippet_effect']//t[@t-snippet][last()]" position="after">
+            <t t-snippet="hr_profile_page.hr_profile_page_employee_card"/>
+        </xpath>
+    </template>
+
+    <template id="employee_category_snippet_options" inherit_id="website.snippet_options">
+        <xpath expr="." position="inside">
+            <div data-selector=".employee_card_snippet">
+                <we-select string="Category" data-name="category_id_opt" data-attribute-name="categoryId">
+                    <we-button
+                            t-foreach="request.env['hr.employee'].fields_get(['web_category'])['web_category']['selection']"
+                            t-as="category" t-att-data-select-data-attribute="category[0]" t-esc="category[1]"
+                            data-set-on-click="true"/>
+                </we-select>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="employee_card_list" name="Employee Card List Template">
+        <div class="row g-4">
+            <t t-foreach="employees" t-as="employee">
+                <div class="col-sm-6 col-md-4 col-lg-3">
+                    <a class="h-100 flex-column" t-attf-href="/egyesuletunk/munkatarsaink/#{slug(employee)}">
+                        <div class="card h-100">
+                            <div class="w-100"
+                                 t-attf-style="background-image:url(/web/image/hr.employee/#{employee.id}/avatar_512); background-size:cover; aspect-ratio:1">
+                                <div class="d-none" t-esc="employee.display_name"/>
+                            </div>
+                            <div class="card-body">
+                                <div class="employee-name h3" t-esc="employee.display_name"/>
+                                <div class="employee-title" t-esc="employee.job_title"/>
+                            </div>
+
+                        </div>
+                    </a>
+                </div>
+            </t>
+        </div>
+    </template>
+
+    <template id="employee_detail" name="Employee details">
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="container">
+                    <h1 t-field="employee.display_name"/>
+                    <div class="row">
+                        <div t-field="employee.avatar_512"
+                             class="col-md-4 col-lg-3"
+                             t-options='{"widget": "image", "qweb_img_responsive": False, "class": "w-100"}'
+                        />
+                        <div class="col-md-8 col-lg-9">
+                            <div t-field="employee.job_title"/>
+                            <div class="my-2" t-field="employee.introduction"/>
+                            <a t-if="employee.work_email" t-attf-href="mailto:#{employee.work_email}"
+                               t-field="employee.work_email"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="oe_structure"/>
+            </div>
+        </t>
+    </template>
+</odoo>
+
+
