@@ -413,5 +413,15 @@ header {
 
 
 
-
-
+#footer {
+  background: url(/theme_hatter/static/images/footer-separator.png) no-repeat top center;
+  background-size: 100%;
+  line-height: 2;
+}
+footer p {
+  margin-bottom: 0px !important;
+}
+footer.o_footer a:not(.btn):hover {
+  color: #108185;
+  text-decoration: none;
+}

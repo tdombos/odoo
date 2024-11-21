@@ -6,6 +6,7 @@
         <field name="inherit_id" ref="website.website_page_properties_view_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='url']" position="after">
+                <field name="background_image_enabled" widget="boolean_toggle"/>
                 <field name="background_image" widget="image" class="oe_avatar"
                        options="{'preview_image': 'background_image'}"/>
             </xpath>
@@ -18,6 +19,7 @@
         <field name="inherit_id" ref="website.website_pages_form_view"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='url']" position="after">
+                <field name="background_image_enabled" widget="boolean_toggle"/>
                 <field name="background_image" widget="image" class="oe_avatar"
                        options="{'preview_image': 'background_image'}"/>
             </xpath>
@@ -27,8 +29,8 @@
 
     <template id="website_page_background" inherit_id="website.layout" name="Custom Background for Pages">
         <xpath expr="//main" position="attributes">
-            <attribute name="class" add="o_page_background"/>
-            <attribute name="t-attf-style" t-if="main_object.background_image">background-image: url('/web/image/website.page/#{main_object.id}/background_image')</attribute>
+            <attribute name="class" add="o_page_background" />
+            <attribute name="t-attf-style">background-image: url('/web/image/website.page/#{main_object.id}/background_image')</attribute>
         </xpath>
     </template>
 

@@ -11,26 +11,31 @@ odoo.define('website_partner_highlight.dynamic_list_snippet', ["@web/legacy/js/p
         disabledInEditableMode: false,
 
         start: function () {
-            this._fetchEmployees(this.$el[0].dataset.categoryId);
+            this._fetchPartners(this.$el[0].dataset.categoryId);
             return this._super.apply(this, arguments);
         },
 
         _onCategoryChange: function (ev) {
-            this._fetchEmployees(this.$el[0].dataset.categoryId);
+            this._fetchPartners(this.$el[0].dataset.categoryId);
         },
 
-        _fetchEmployees: function (categoryId) {
+        _fetchPartners: function (categoryId) {
             const self = this;
             if (categoryId) {
                 rpc.jsonrpc('/api/partnersByCategory', {category_id: categoryId}).then(function (data) {
-                    self._renderPartners(data.html);
+                    self._renderPartners(data);
                 });
             }
         },
 
-        _renderPartners: function (html) {
+        _renderPartners: function (partners) {
             const $container = this.$('.partner-list');
-            $container.html(html);
+            const items = Array.isArray(partners)?partners.map(function (partner) {
+                return `<a class="h-100 flex-column" href="${partner.website}" target="_blank">
+                <img src="/web/image/res.partner/${partner.id}/avatar_128" alt=${partner.name}/>
+            </a>`;
+            }):[];
+            $container.html(items.join('\n'));
         },
     });
 });
