@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <template id="partner_list">
-        <section class="partners_snippet">
+        <section class="partners_snippet pt32 pb32">
             <div class="container">
                 <div class="partner-list">
                     <div class="alert alert-info d-flex align-items-center justify-content-center"

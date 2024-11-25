@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <template id="hr_profile_page_employee_card" name="Employees">
-        <section class="employee_card_snippet">
+        <section class="employee_card_snippet pt32 pb32">
             <div class="container o_not_editable">
                 <div class="employee-cards">
                     <div class="alert alert-info d-flex align-items-center justify-content-center"
@@ -57,6 +57,7 @@
     <template id="employee_detail" name="Employee details">
         <t t-call="website.layout">
             <div id="wrap">
+                <section class="pt32 pb32">
                 <div class="container">
                     <h1 t-field="employee.display_name"/>
                     <div class="row">
@@ -72,6 +73,7 @@
                         </div>
                     </div>
                 </div>
+                </section>
                 <div class="oe_structure"/>
             </div>
         </t>
