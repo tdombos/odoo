@@ -1,4 +1,4 @@
-odoo.define('website_partner_highlight.dynamic_list_snippet', ["@web/legacy/js/public/public_widget","@web/core/network/rpc_service"], function (require) {
+odoo.define('website_partner_highlight.dynamic_list_snippet', ["@web/legacy/js/public/public_widget", "@web/core/network/rpc_service"], function (require) {
 
     const publicWidget = require("@web/legacy/js/public/public_widget")[Symbol.for("default")];
     const rpc = require("@web/core/network/rpc_service");
@@ -30,11 +30,15 @@ odoo.define('website_partner_highlight.dynamic_list_snippet', ["@web/legacy/js/p
 
         _renderPartners: function (partners) {
             const $container = this.$('.partner-list');
-            const items = Array.isArray(partners)?partners.map(function (partner) {
-                return `<a class="h-100 flex-column" href="${partner.website}" target="_blank">
-                <img src="/web/image/res.partner/${partner.id}/avatar_128" alt=${partner.name}/>
-            </a>`;
-            }):[];
+            const items = Array.isArray(partners) ? partners.map(function (partner) {
+                if (partner.website) {
+                    return `<a class="h-100 flex-column" href="${partner.website}" target="_blank">
+                <img src="/web/image/res.partner/${partner.id}/avatar_128" alt=${partner.name}/></a>`;
+                } else {
+                    return `<span class="h-100 flex-column">
+                <img src="/web/image/res.partner/${partner.id}/avatar_128" alt=${partner.name}/></span>`;
+                }
+            }) : [];
             $container.html(items.join('\n'));
         },
     });
