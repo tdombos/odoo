@@ -4,8 +4,8 @@
         <section class="clickable-cards">
             <div class="container">
                 <div class="row">
-                    <div class="col">
-                        <a class="card" href="/">
+                    <div class="col-md-4">
+                        <a class="card" href="#">
                             <div class="card-header">
                                 <span>Lorem ipsum</span>
                             </div>
@@ -16,8 +16,8 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
-                        <a class="card" href="/">
+                    <div class="col-md-4">
+                        <a class="card" href="#">
                             <div class="card-header">
                                 <span>Lorem ipsum</span>
                             </div>
@@ -28,8 +28,8 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col">
-                        <a class="card" href="/">
+                    <div class="col-md-4">
+                        <a class="card" href="#">
                             <div class="card-header">
                                 <span>Lorem ipsum</span>
                             </div>
