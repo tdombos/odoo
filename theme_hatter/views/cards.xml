@@ -16,30 +16,6 @@
                             </div>
                         </a>
                     </div>
-                    <div class="col-md-4">
-                        <a class="card" href="#">
-                            <div class="card-header">
-                                <span>Lorem ipsum</span>
-                            </div>
-                            <div class="card-body">
-                                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eget felis sed dui
-                                    rutrum congue. Curabitur aliquam urna ut nisi.
-                                </span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-4">
-                        <a class="card" href="#">
-                            <div class="card-header">
-                                <span>Lorem ipsum</span>
-                            </div>
-                            <div class="card-body">
-                                <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eget felis sed dui
-                                    rutrum congue. Curabitur aliquam urna ut nisi.
-                                </span>
-                            </div>
-                        </a>
-                    </div>
                 </div>
             </div>
         </section>
