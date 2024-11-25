@@ -1,13 +1,27 @@
-$o-brand-primary: #108185;
+/*$o-brand-primary: #108185;*/
+
 $o-theme-font-configs: (
         'Quicksand': (
                 'family': ('Quicksand', sans-serif),
-                'url': 'Roboto:300,300i,400,400i,500,500i,700,700i',
+                'url': 'Quicksand:300,300i,400,400i,500,500i,700,700i',
         ),
+);
+
+$o-color-palettes: map-merge($o-color-palettes,
+        (
+                'hatter': (
+                        'o-color-1': #108185,
+                        'o-color-2': #EDEDED,
+                        'o-color-3': #F5F5F5,
+                        'o-color-4': #FFFFFF,
+                        'o-color-5': #333333
+                )
+        )
 );
 
 $o-website-values-palettes: (
         (
+                'color-palettes-name': 'hatter',
                 'font': 'Quicksand',
                 'headings-font': 'Quicksand',
                 'navbar-font': 'Quicksand',
