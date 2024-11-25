@@ -7,7 +7,7 @@ class EmployeeSnippetController(http.Controller):
        @http.route('/api/employeesByCategory', type='json', auth='public', website=True)
        def employees_by_category(self, category_id=None):
            domain = [('web_category', '=', category_id)]
-           employees = request.env['hr.employee'].search(domain, order="name asc")
+           employees = request.env['hr.employee'].sudo().search(domain, order="name asc")
            employee_cards = request.env['ir.ui.view']._render_template(
                'hr_profile_page.employee_card_list',
                {'employees': employees}
