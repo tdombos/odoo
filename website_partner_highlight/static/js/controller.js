@@ -33,10 +33,10 @@ odoo.define('website_partner_highlight.dynamic_list_snippet', ["@web/legacy/js/p
             const items = Array.isArray(partners) ? partners.map(function (partner) {
                 if (partner.website) {
                     return `<a class="h-100 flex-column" href="${partner.website}" target="_blank">
-                <img src="/web/image/res.partner/${partner.id}/avatar_128" alt=${partner.name}/></a>`;
+                <img src="/public/image/partner/${partner.id}" alt=${partner.name}/></a>`;
                 } else {
                     return `<span class="h-100 flex-column">
-                <img src="/web/image/res.partner/${partner.id}/avatar_128" alt=${partner.name}/></span>`;
+                <img src="/public/image/partner/${partner.id}" alt=${partner.name}/></span>`;
                 }
             }) : [];
             $container.html(items.join('\n'));
