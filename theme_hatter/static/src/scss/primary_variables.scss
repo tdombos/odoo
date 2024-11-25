@@ -1,4 +1,4 @@
-/*$o-brand-primary: #108185;*/
+
 
 $o-theme-font-configs: (
         'Quicksand': (
@@ -28,6 +28,9 @@ $o-website-values-palettes: (
                 'buttons-font': 'Quicksand',
         ),
 );
+
+$o-brand-primary:  o-color('primary');
+$o-brand-secondary:  o-color('secondary');
 
 $headings-font-weight: 700 !default;
 
