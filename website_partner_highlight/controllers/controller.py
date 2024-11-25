@@ -7,7 +7,7 @@ class EmployeeSnippetController(http.Controller):
        @http.route('/api/partnersByCategory', type='json', auth='public', website=True)
        def employees_by_category(self, category_id=None):
            domain = [('web_category', '=', category_id)]
-           partners = request.env['res.partner'].search(domain, order="name asc")
+           partners = request.env['res.partner'].sudo().search(domain, order="name asc")
            ##listTpl = request.env['ir.ui.view']._render_template(
            ##    'website_partner_highlight.list',
            ##    {'partners': partners}
