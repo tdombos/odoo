@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<record id="theme_hatterhu.primary_variables_scss" model="theme.ir.asset">
+    <field name="key">theme_hatterhu.primary_variables_scss</field>
+    <field name="name">Primary variables SCSS</field>
+    <field name="bundle">web._assets_primary_variables</field>
+    <field name="path">theme_hatterhu/static/src/scss/primary_variables.scss</field>
+</record>
+
+<record id="theme_hatterhu.bootstrap_overridden_scss" model="theme.ir.asset">
+    <field name="key">theme_hatterhu.bootstrap_overridden_scss</field>
+    <field name="name">Bootstrap overridden SCSS</field>
+    <field name="bundle">web._assets_frontend_helpers</field>
+    <field name="directive">append</field>
+    <field name="path">theme_hatterhu/static/src/scss/bootstrap_overridden.scss</field>
+</record>
+
+<record id="theme_hatterhu.styles_scss" model="theme.ir.asset">
+    <field name="key">theme_hatterhu.styles_scss</field>
+    <field name="name">Styles SCSS</field>
+    <field name="bundle">web.assets_frontend</field>
+    <field name="directive">append</field>
+    <field name="path">theme_hatterhu/static/src/scss/styles.scss</field>
+</record>
+
+</odoo>

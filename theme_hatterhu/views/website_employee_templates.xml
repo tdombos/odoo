@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="employee_list" name="Employee list">
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="oe_structure">
+                    <section class="container">
+                        <h1>
+                            Munkatársaink
+                        </h1>
+                    </section>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <t t-foreach="employees" t-as="employee">
+                            <div class="media mt-3 col-12 col-md-6 col-lg-4">
+                                <div class="card w-100">
+                                    <div class="card-body d-flex">
+                                        <a t-attf-href="/egyesuletunk/munkatarsaink/#{slug(employee)}"
+                                           t-field="employee.avatar_128"
+                                           class="d-block mr-3 text-center o_width_128"
+                                           t-options='{"widget": "image", "qweb_img_responsive": False, "class": "o_image_128_max"}'
+                                        />
+                                        <div class="media-body" style="min-height: 64px;">
+                                            <a t-attf-href="/egyesuletunk/munkatarsaink/#{slug(employee)}">
+                                                <b t-field="employee.display_name"/>
+                                            </a>
+                                            <div t-field="employee.job_title"/>
+                                            <!--div t-field="employee.website_short_description"/-->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </div>
+                </div>
+                <div class="oe_structure">
+                    <a t-attf-href="/egyesuletunk/munkatarsaink/korabbi-munkatarsaink">Korábbi munkatársaink</a>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="employee_detail" name="Employee details">
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="container">
+                    <div class="row">
+                        <div class="media mt-3">
+                            <a t-attf-href="/egyesuletunk/munkatarsaink/#{slug(employee)}"
+                               t-field="employee.avatar_128"
+                               class="d-block mr-3 text-center o_width_128"
+                               t-options='{"widget": "image", "qweb_img_responsive": False, "class": "o_image_128_max"}'
+                            />
+                            <div class="media-body" style="min-height: 64px;">
+                                <a t-attf-href="/egyesuletunk/munkatarsaink/#{slug(employee)}">
+                                    <span t-field="employee.display_name"/>
+                                </a>
+                                <div t-field="e.website_description"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="oe_structure"/>
+            </div>
+        </t>
+    </template>
+</odoo>
