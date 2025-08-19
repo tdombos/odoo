@@ -1,7 +1,7 @@
 <odoo>
     <template id="portal_my_home_menu_expense_format" name="Portal layout : HR Expense Button size" inherit_id="dev_hr_expense_portal.portal_my_home_menu_expense" priority="20">
         <xpath expr="//ol[hasclass('o_portal_submenu')]//a[hasclass('btn-primary')]" position="replace">
-			<a  t-if="page_name == 'expense_tree' or expense_tree" role="button" class="btn btn-sm btn-primary float-right" data-toggle="modal" style="margin-left:200px;" data-target="#modeledit" href="#">Create Expense Request</a>
+			<a  t-if="page_name == 'expense_tree' or expense_tree" role="button" class="btn btn-primary float-right" data-bs-toggle="modal" style="margin-left:200px;" data-bs-target="#modeledit" href="#">Create Expense Request</a>
         </xpath>
     </template>
     <template id="portal_my_expense_simplify" name="My Expense Simplified" inherit_id="dev_hr_expense_portal.portal_my_expense" priority="20">
@@ -54,11 +54,11 @@
 			<main class="modal-body">
 				<input type="hidden" name="quantity" required="1" value="1" /> 
                 <input type="hidden" name="unit_amount" required="1" value="0" /> 
-				<div class="form-group field-login">
+				<div class="form-group">
 					<label for="name">Short description</label>
 					<input type="Char" class="form-control form-control-sm" name="name" required="1"  /> 
 				</div>
-                <div class="form-group field-login">
+                <div class="form-group">
 					<label for="product_id">Product</label>
 					<select class="custom-select" name="product_id" id="product_id" required="True" >
 						<t t-foreach="product_ids or []" t-as="product">
@@ -66,7 +66,7 @@
 						</t>
 					 </select>
 				</div>
-				<div class="form-group field-login">
+				<div class="form-group">
 					<fieldset id="paidby">
 						<legend>Paid by</legend>
 						<div>
@@ -79,31 +79,31 @@
 						</div>
 					</fieldset>
 				</div>
-				<div class="form-group field-login">
+				<div class="form-group">
 					<label for="payment_online">Online payment by company card?</label>
 					<input type="checkbox" class="form-control form-control-sm" name="payment_online" />
 				</div>
-				<div class="form-group field-login">
+				<div class="form-group">
 					<label for="amount">Amount</label>
 					<input type="number" class="form-control form-control-sm" name="amount" required="1"  /> 
 				</div>
-				<div class="form-group field-login">
+				<div class="form-group">
 					<label for="bill_reference">Bill Reference</label>
 					<input type="Char" class="form-control form-control-sm" name="bill_reference" /> 
 				</div>
-				<div class="form-group field-login">
+				<div class="form-group">
 					<label for="partner_name">Partner</label>
 					<input type="Char" class="form-control form-control-sm" name="partner_name" /> 
 				</div>
-				<div class="form-group field-login">
+				<div class="form-group">
 					<label for="partner_tax">Partner tax number</label>
 					<input type="Char" class="form-control form-control-sm" name="partner_tax" placeholder="VAT number for company, tax-number for private person..."/> 
 				</div>	
-				<div class="form-group field-login">
+				<div class="form-group">
 					<label for="partner_email">Partner email</label>
 					<input type="Char" class="form-control form-control-sm" name="partner_email" /> 
 				</div>				
-				<div class="form-group field-login">
+				<div class="form-group">
 					<label for="analytic_account_id">Project</label>
 					<select class="custom-select" name="analytic_account_id" id="analytic_account_id" required="True" >
 						<t t-foreach="analytic_account_ids or []" t-as="analytic_account">
@@ -111,11 +111,11 @@
 						</t>
 					 </select>
 				</div>
-                <div class="form-group field-login">
+                <div class="form-group">
 					<label for="description">Description</label>
 					<textarea class="form-control form-control-sm" name="description" style="min-height: 120px" placeholder="Please describe in detail what goods or services you paid for or want to order..."/>
 				</div>
-				<div class="form-group field-login">
+				<div class="form-group">
 					<label for="date">Upload Document</label>
 					<input type="file" class="form-control" name="expense_file" multiple="true" data-show-upload="true"  /> 
 				</div>

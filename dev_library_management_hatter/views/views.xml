@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_product_template_book_form" model="ir.ui.view">
+        <field name="name">view.product.template.book.tree</field>
+        <field name="model">product.product</field>
+        <field name="arch" type="xml">
+            <form string="Book Form View">
+                 <header>
+                    <button name="maintenance_request" string="Create Maintenance Request" type="object" class="oe_highlight"/>
+                     <button name="create_issue_request" string="Create Issue Request" type="object" class="oe_highlight" invisible="current_status != 'available'"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button string="Book Maintenanse Request" name="action_book_request" type="object" class="oe_highlight" icon="fa-external-link"  invisible="book_m_request == 0">
+                    	 <field string="Book Maintenanse Request" name="book_m_request" widget="statinfo"/> 
+                </button>
+                        
+                        <button name="action_view_issue_book" type="object" class="oe_stat_button" icon="fa-book" 
+                                invisible = "issue_book_count == 0">
+                            <field string="Issue Books" name="issue_book_count" widget="statinfo"/>
+                        </button>
+                        <button name="action_view_issue_book_history" type="object" class="oe_stat_button" icon="fa-book" 
+                                invisible = "issue_book_his_count == 0">
+                            <field string="Issue History" name="issue_book_his_count" widget="statinfo"/>
+                        </button>
+                    </div>
+                    <field name="cover_images" widget="image" class="oe_avatar" />
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1 class="o_row">
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <div>
+                        <h3>
+                            
+                            <field name="is_book"/>
+                            <label for="is_book"/>
+                        </h3>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="default_code"  string="ISBN"/>
+                            <field name="categ_id"/>
+                            <field name="publication_year" />
+                            <field name="book_category_id" />
+                            <field name="language" widget="many2many_tags"/>
+                            <field name="upload_img" />
+<!--                            <field name="total_available_book"/>-->
+                        </group>
+                        <group>
+                            <field name="tags_ids" widget="many2many_tags"  options="{'color_field': 'color'}"/>
+                            
+                            <field name="duration" />
+                            <field name="list_price" required="1"/>
+                            <field name="lc" />
+                            <field name="current_status" />
+                            <field name="copy_number" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Description">
+                            <field name="description"/>
+                        </page>
+                        <page string='Circulation History' >
+                            <field name="circulation_history_ids" >
+                                <tree editable="bottom">
+                                    <field name="member_id"/>
+                                    <field name="issue_date"/>
+                                    <field name="return_date"/>
+                                    <field name="remarks"/>
+                                </tree>
+                            </field>
+                        </page>
+                         <page string='Book Maintenanse History'>
+                            <field name="book_maintenance_ids" >
+                            </field>
+                        </page>
+                        <page string='Front Cover Image'>
+                            <field name="front_cover_image" widget="image" >
+                            </field>
+                        </page>
+                        <page string='Back Cover Image'>
+                            <field name="back_cover_image" widget="image" >
+                            </field>
+                        </page>
+                        <page string="Other Details">
+                            <group>
+                                <group>
+                                    <field name="publisher_ids"  
+                                            options="{'no_create': True, 'no_create_edit':True}"/>
+                                    <field name="author_id" string="Author" widget="many2many_tags"
+                                            options="{'no_create': True, 'no_create_edit':True}"/>
+                                    <field name="book_location_id"  
+                                           options="{'no_create': True, 'no_create_edit':True}"/>
+                                </group>
+                                <group>
+                                    <field name="copyright_id" 
+                                           options="{'no_create': True, 'no_create_edit':True}"/>
+                                    <field name="edition_id"
+                                           options="{'no_create': True, 'no_create_edit':True}"/>
+                                    <field name="pages" />
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_dev_library_card_form_membership" model="ir.ui.view">
+        <field name="name">view.dev.library.card.form.membership</field>
+        <field name="model">dev.library.card</field>
+        <field name="inherit_id" ref="dev_library_management.view_dev_library_card_form"/>
+        <field name="arch" type="xml">
+            <field name="membership_id" position="replace">
+                <field name="membership_id" options="{'no_create': True, 'no_edit': True}"
+                                    readonly = "state != 'draft'" />
+            </field>
+        </field>
+    </record>
+    <record id="view_res_partner_library_form" model="ir.ui.view">
+        <field name="name">view.res.partner.library.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+<!--             <xpath expr="//button[@name='view_membership']" position="after">
+                <button name="action_view_library_card" type="object" class="oe_stat_button" icon="fa-vcard-o" 
+                        invisible = "library_card_count == 0">
+                    <field string="Library Cards" name="library_card_count" widget="statinfo"/>
+                </button>
+                
+                <button name="action_view_issue_book" type="object" class="oe_stat_button" icon="fa-book" 
+                        invisible = "issue_book_count == 0">
+						<field string="Issue Books" name="issue_book_count" widget="statinfo"/>
+                </button>
+                <button name="action_view_issue_book_history" type="object" class="oe_stat_button" icon="fa-book" 
+                         invisible = "issue_book_his_count == 0">
+
+                    <field string="Issue History" name="issue_book_his_count" widget="statinfo"/>
+                </button>
+            </xpath> -->
+            <xpath expr="//field[@name='vat']" position="after">
+<!--                 <field name="is_member" invisible="1"/> -->
+                <group>
+                    <field name="is_author" />
+                    <field name="is_publisher" />
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_res_partner_member" model="ir.actions.act_window">
+        <field name="name">Members</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.partner</field>
+        <field name="domain">[('member_lines.account_invoice_line.product_id.categ_id', 'child_of', [7])]</field>
+        <field name="view_mode">kanban,tree,form</field>
+    </record> 
+    
+    <menuitem name="Members"
+              id="menu_library_members"
+              parent="dev_library_management.menu_library_contacts_main"
+              action="action_res_partner_member"
+              sequence="2"/>
+
+    <record id="action_res_partner_author" model="ir.actions.act_window">
+        <field name="name">Authors</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.partner</field>
+        <field name="domain">[('is_author', '=', True)]</field>
+        <field name="context">{'default_is_author' : 1}</field>
+        <field name="view_mode">kanban,tree,form</field>
+    </record>
+    
+    <menuitem name="Authors"
+              id="menu_library_authors"
+              parent="dev_library_management.menu_library_contacts_main"
+              action="action_res_partner_author"
+              sequence="3"/>
+    
+    <record id="action_res_partner_publisher" model="ir.actions.act_window">
+        <field name="name">Publishers</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.partner</field>
+        <field name="domain">[('is_publisher', '=', True)]</field>
+        <field name="context">{'default_is_publisher' : 1}</field>
+        <field name="view_mode">kanban,tree,form</field>
+    </record>
+    
+    <menuitem name="Publishers"
+              id="menu_library_publisher"
+              parent="dev_library_management.menu_library_contacts_main"
+              action="action_res_partner_publisher"
+              sequence="4"/>
+</odoo>

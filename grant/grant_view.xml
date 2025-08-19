@@ -796,19 +796,21 @@
 				  (0, 0, {'view_mode': 'form', 'view_id': ref('view_grant_installment_form')})]"/>
     </record>
     <!-- Fund Form View -->
-	<record id="view_grant_fund_form" model="ir.ui.view">
+    <record id="view_grant_fund_form2" model="ir.ui.view">
             <field name="name">grant.fund.form</field>
             <field name="model">grant.fund</field>
             <field name="arch" type="xml">
                 <form string="Fund" delete="0">
                     <field name="company_id" invisible="1"/>
+                    <field name="analytic_account_id" invisible="1"/>
+                    <field name="project_id" invisible="1" />
                     <header>
                         <button name="do_open" string="Start implementation" type="object" invisible="state not in ['draft']" groups="base.group_user" class="oe_highlight"/>
-						<!-- <button name="do_cancel" string="Cancel" type="object" states="open" groups="base.group_user"/> --> 
-						<button name="do_done" string="Implementation over" type="object" invisible="state not in ['open']" groups="base.group_user" class="oe_highlight"/>
-						<button name="do_close" string="Close" type="object" invisible="state not in ['done']" groups="base.group_user" class="oe_highlight"/>
-						<button name="do_open" string="Reopen" type="object" invisible="state not in ['done']" groups="base.group_user"/>
-						<field name="state" widget="statusbar" statusbar_visible="open,done,close" statusbar_colors='{"pending":"blue"}' />
+                        <!-- <button name="do_cancel" string="Cancel" type="object" states="open" groups="base.group_user"/> --> 
+                        <button name="do_done" string="Implementation over" type="object" invisible="state not in ['open']" groups="base.group_user" class="oe_highlight"/>
+                        <button name="do_close" string="Close" type="object" invisible="state not in ['done']" groups="base.group_user" class="oe_highlight"/>
+                        <button name="do_open" string="Reopen" type="object" invisible="state not in ['done']" groups="base.group_user"/>
+                        <field name="state" widget="statusbar" statusbar_visible="open,done,close" statusbar_colors='{"pending":"blue"}' />
                     </header>
                 <sheet string="Fund">
                     <div class="oe_button_box" name="button_box" groups="base.group_user">
@@ -818,52 +820,56 @@
                         <button class="oe_inline oe_stat_button" name="%(action_grant_installmenttogrant)d" type="action" icon="fa-dollar"  invisible="direction == 'out'" context="{'default_analytic_account_id': analytic_account_id,'analytic_account_id':analytic_account_id,'search_default_active':1,'default_journal_id':outgoing_journal_id, 'default_partner_id':donor_id,'move_type':'in_invoice','default_currency_id':fundcurrency_id}" >
                             <field string="Installments" name="installment_received" widget="statinfo"/>
                         </button>
-						<button class="oe_inline oe_stat_button" name="%(action_grant_installmenttogrant)d" type="action" icon="fa-dollar" invisible="direction == 'in'"  context="{'default_analytic_account_id': analytic_account_id,'analytic_account_id':analytic_account_id,'search_default_active':1,'default_journal_id':incoming_journal_id, 'default_partner_id':donor_id,'move_type':'out_invoice','default_currency_id':fundcurrency_id}" >
+                        <button class="oe_inline oe_stat_button" name="%(action_grant_installmenttogrant)d" type="action" icon="fa-dollar" invisible="direction == 'in'"  context="{'default_analytic_account_id': analytic_account_id,'analytic_account_id':analytic_account_id,'search_default_active':1,'default_journal_id':incoming_journal_id, 'default_partner_id':donor_id,'move_type':'out_invoice','default_currency_id':fundcurrency_id}" >
                             <field string="Installments" name="installment_received" widget="statinfo"/>
                         </button>
                         <button class="oe_inline oe_stat_button" name="%(action_grant_requirementtogrant)d" type="action" icon="fa-file-text-o" context="{'default_fund_id': active_id}" >
                             <field string="Requirements" name="requirement_count" widget="statinfo"/>
                         </button>
-                        <button class="oe_stat_button" type="action"
-                            name="%(project.act_project_project_2_project_task_all)d" icon="fa-tasks">
-                            <field string="Tasks In Progress" name="task_count" widget="statinfo" options="{'label_field': 'label_tasks'}"/>
+                        <button class="oe_stat_button" type="action" name="%(project.act_project_project_2_project_task_all)d" icon="fa-tasks">
+                            <field string="Tasks" name="open_task_count" widget="statinfo"/>
                         </button>
-                        <!-- <button name="action_view_all_rating" type="object" attrs="{'invisible': ['|', ('rating_active', '=', False), ('rating_percentage_satisfaction', '=', -1)]}" class="oe_stat_button oe_percent oe_read_only" icon="fa-smile-o" groups="project.group_project_rating">
+                        <button class="oe_stat_button" name="%(project.project_update_all_action)d" type="action" groups="project.group_project_user">
+                            <field name="last_update_color" invisible="1"/>
+                            <div class="o_stat_info">
+                                <field name="last_update_status" readonly="1" widget="status_with_color" status_label="Project Status"/>
+                            </div>
+                        </button>
+                        <!-- To Do: remove me in master -->
+                        <button class="oe_stat_button o_project_not_clickable" disabled="disabled" groups="!project.group_project_manager" invisible="1">
+                            <div>
+                                <field name="last_update_color" invisible="1"/>
+                                <field name="last_update_status" readonly="1" widget="status_with_color" status_label="Project Status"/>
+                            </div>
+                        </button>
+                        <button class="oe_stat_button" name="%(project.project_collaborator_action)d" type="action" icon="fa-users" groups="project.group_project_manager" invisible="privacy_visibility != 'portal'">
                             <div class="o_field_widget o_stat_info">
                                 <span class="o_stat_value">
-                                    <field name="rating_percentage_satisfaction" nolabel="1"/>
-                                    %
+                                    <field name="collaborator_count" nolabel="1"/>
                                 </span>
                                 <span class="o_stat_text">
-                                    Customer Satisfaction
+                                    Collaborators
                                 </span>
                             </div>
-                        </button>        -->                     
+                        </button>
                     </div>
-                    <widget name="web_ribbon" title="Archived" bg_color="bg-danger" invisible="active == True"/>
-					<field name="project_id" invisible="1" />
+                    <widget name="web_ribbon" title="Archived" bg_color="text-bg-danger" invisible="active"/>
                     <div class="oe_title">
-                        <h1>
-                            <field name="name" placeholder="Internal Code"/>
+                        <h1 class="d-flex flex-row">
+                            <field name="is_favorite" nolabel="1" widget="boolean_favorite" class="me-2"/>
+                            <field name="name" options="{'line_breaks': False}" widget="text" class="o_text_overflow" placeholder="Internal Code"/>
                         </h1>
-                        <div name="options_active">
-                            <div>
-                                <label for="label_tasks" class="oe_inline" string="Name of the tasks:"/>
-                                <field name="label_tasks" class="oe_inline oe_input_align"/>
-								<field name="partner_id" invisible="1"/>
-                            </div>
-                        </div>
                     </div>
-					<group>
+                    <group>
                         <group>
                             <field name="active" invisible="1"/>
-							<field name="incoming_journal_id" invisible="1"/>
-							<field name="outgoing_journal_id" invisible="1"/>
-                            <field name="direction" />
-							<field name="company_id" groups="base.group_multi_company"/>
-							<field name="donor_id" context="{'default_customer': 0, 'search_default_donor': 1, 'default_donor': 1}" domain="[('donor', '=', True)]" invisible="direction == 'in'" />
+                            <field name="incoming_journal_id" invisible="1"/>
+                            <field name="outgoing_journal_id" invisible="1"/>
+                            <field name="direction" invisible="1"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                            <field name="donor_id" context="{'default_customer': 0, 'search_default_donor': 1, 'default_donor': 1}" domain="[('donor', '=', True)]" invisible="direction == 'in'" />
                             <field name="fundtype_id" options="{'no_open': True}"/>
-							<field name="analytic_account_id" />
+                            <field name="analytic_account_id" />
                             <field name="code_contract" />
                             <field name="commercial_partner_id" string="Applicant" invisible="direction == 'out'"/>
                             <field name="partner_id" string="Applicant contact" invisible="direction == 'out'"/>
@@ -871,7 +877,7 @@
                                     readonly="state in ['close', 'cancelled']"
                                     context="{'default_groups_ref': ['base.group_user', 'base.group_partner_manager', 'project.group_project_manager']}"/>
                         </group>
-                        <group>    
+                        <group>
                             <field name="date_start" string="Date" widget="daterange" options='{"end_date_field": "date", "always_range": "1"}' required="date_start or date" />
                             <field name="date" invisible="1" required="date_start"/>
                             <field name="amount_granted" widget="monetary" options="{'currency_field': 'fundcurrency_id'}"/>
@@ -879,15 +885,15 @@
                         </group>
                     </group>
                     <notebook>
-                        <page string="Content">
+                        <page name="content" string="Content">
                             <group >
                                 <field name="title" />
                                 <field name="title_orig" />
                                 <field name="description" />
-                                <field name="tag_ids" widget="many2many_tags"/>
+                                <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
                             </group>
                         </page>
-                        <page string="Proposal Data">
+                        <page name="proposal" string="Proposal Data">
                             <group >
                                 <field name="proposal_id" />
                                 <field name="call_id" />
@@ -910,6 +916,8 @@
                                 <group>
                                     <div name="alias_def" colspan="2" class="pb-2">
                                         <!-- Always display the whole alias in edit mode. It depends in read only -->
+                                        <!-- Need to add alias_id in view for getting alias_domain_id by default -->
+                                        <field name="alias_id" invisible="1"/>
                                         <label for="alias_name" class="fw-bold o_form_label" string="Create tasks by sending an email to"/>
                                         <field name="alias_email" class="oe_read_only d-inline" widget="email" readonly="1" invisible="not alias_name" />
                                         <span class="oe_edit_only o_row">
@@ -927,7 +935,7 @@
                                 </group>
                             </group>
                             <group>
-                                <group name="group_tasks_managment" string="Tasks Management" col="1" class="row mt16 o_settings_container" groups="project.group_project_task_dependencies,project.group_project_milestone,project.group_project_recurring_tasks">
+                                <group name="group_tasks_managment" string="Tasks Management" col="1" class="row mt16 o_settings_container" groups="project.group_project_task_dependencies,project.group_project_milestone">
                                     <div>
                                         <setting class="col-lg-12" id="task_dependencies_setting" help="Determine the order in which to perform tasks" groups="project.group_project_task_dependencies">
                                             <field name="allow_task_dependencies"/>
@@ -948,7 +956,7 @@
                                                 <field name="rating_status" widget="radio" class="o_row"/>
                                                 <div  invisible="rating_status != 'periodic'"  required="rating_status == 'periodic'">
                                                     <label for="rating_status_period" string="Frequency"/>
-                                                    <field name="rating_status_period"/>
+                                                    <field class="mx-3 w-auto" name="rating_status_period"/>
                                                 </div>
                                                 <span colspan="2" class="text-muted o_row ps-1">
                                                     <i class="fa fa-lightbulb-o pe-2"/>
@@ -970,7 +978,8 @@
                 </sheet>
                 <div class="oe_chatter">
                     <field name="message_follower_ids" options="{'post_refresh':True}" help="Follow this project to automatically track the events associated to tasks and issues of this project." groups="base.group_user"/>
-                    <field name="message_ids" widget="mail_thread"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
                 </div>
                 </form>
             </field>
@@ -1445,6 +1454,7 @@
 	<menuitem name="Proposals" parent="menu_grant_proposal_incoming" id="menu_grant_proposal_incoming_proposal" action="action_grant_proposal_incoming" />
     <menuitem name="Supported projects" parent="menu_grant_proposal_incoming" id="menu_grant_proposal_incoming_fund" action="action_grant_fund_incoming" />
     <menuitem name="Requirements" parent="menu_grant_proposal_incoming" id="menu_grant_proposal_incoming_requirement" action="action_grant_requirement_incoming" />
+    <menuitem name="Installments" parent="menu_grant_proposal_incoming" id="menu_grant_proposal_incoming_installment" action="action_grant_installment" />
     <menuitem name="Calls" parent="menu_grant_proposal" id="menu_grant_calls" action="action_grant_call" />    
     <menuitem name="Donors" parent="menu_grant_proposal" groups="group_grant_manager" id="menu_grant_donor"  action="action_grant_donor" sequence="100"/>
     <menuitem name="Configuration" groups="grant.group_grant_manager" parent="menu_grant" id="menu_grant_config" />

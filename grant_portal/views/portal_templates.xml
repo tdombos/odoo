@@ -721,9 +721,6 @@
                                         <t t-foreach="installments" t-as="i">
                                             <div class="d-flex flex-wrap align-items-center justify-content-between">
                                                 <div>
-                                                    <t t-if="i.narration">
-                                                        <t t-esc="env['ir.fields.converter'].text_from_html(i.narration)"/>
-                                                    </t>
                                                     <t t-else="">
                                                         <span t-esc="i.name"/>
                                                     </t>

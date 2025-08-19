@@ -26,11 +26,8 @@ _logger = logging.getLogger(__name__)
 class Partner(models.Model):
     _inherit = "res.partner"
 
-    nationality_id = fields.Many2one(
-        'res.country', 'Nationality (Country)', groups="hr.group_hr_user", tracking=True)
     place_of_birth = fields.Char('Place of Birth', groups="hr.group_hr_user", tracking=True)
     country_of_birth = fields.Many2one('res.country', string="Country of Birth", groups="hr.group_hr_user", tracking=True)
-    birthday = fields.Date('Date of Birth', groups="hr.group_hr_user", tracking=True)
     ssnid = fields.Char('SSN No', help='Social Security Number', groups="hr.group_hr_user", tracking=True)
     identification_id = fields.Char(string='ID Card No',help='Identification Card Number', groups="hr.group_hr_user", tracking=True)
     passport_id = fields.Char('Passport No', groups="hr.group_hr_user", tracking=True)

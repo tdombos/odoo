@@ -18,13 +18,16 @@
 
 {
     "name": "Extra Personal Info",
-    "version": "8.0.1.0.0",
+    "version": "17.0.1.0.0",
     "author": "Dombos Tamás",
     'license': 'LGPL-3',
     "category": "Customer Relationship Management",
     "website": "https://odoo-community.org/",
     "depends": [
-        'partner_contact_personal_information_page'
+        'partner_contact_personal_information_page', 
+        'partner_contact_gender',
+        'partner_contact_nationality', 
+        'partner_contact_birthdate'
     ],
     "data": [
         "views/res_partner.xml",

@@ -13,9 +13,10 @@
                     <group>
                         <field name="nationality_id"/>
                         <field name="place_of_birth"/>
-                        <field name="birthday"/>
+                        <field name="birthdate_date"/>
                         <field name="birthname"/>
                         <field name="mothername"/>
+                        <field name="gender"/>
                     </group>
                     <group>
                         <field name="passport_id"/>

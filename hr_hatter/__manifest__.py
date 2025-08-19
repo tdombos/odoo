@@ -3,7 +3,7 @@
     'name': "Háttér customizations to hr",
 
     'summary': """
-        Make jobs and departments multivalue.""",
+        Make jobs and departments multivalue, link employee extra data to partner extra data.""",
 
     'description': """
         Long description of module's purpose
@@ -17,7 +17,7 @@
     # Check https://github.com/odoo/odoo/blob/14.0/odoo/addons/base/data/ir_module_category_data.xml
     # for the full list
     'category': 'Uncategorized',
-    'version': '14.0.0.1',
+    'version': '17.0.0.1',
 
     # any module necessary for this one to work correctly
     'depends': ['hr'],

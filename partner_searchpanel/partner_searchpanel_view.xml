@@ -8,9 +8,6 @@
             <field name="arch" type="xml">
             <group name="group_by" position="after">
                 <searchpanel>
-                     <field name="company_id" groups="base.group_multi_company" icon="fa-building"/>
-                     <field name="user_id"/>
-                     <field name="lang"/>
                      <field name="category_id" select="multi" groupby="parent_id" enable_counters="1" icon="fa-tags"/>
                  </searchpanel>
             </group>

@@ -5,23 +5,25 @@
             <field name="model">hr.employee</field>
             <field name="inherit_id" ref="hr.view_employee_form"/>
             <field name="arch" type="xml">
-                <field name="department_id" position="after">
+                <field name="department_id" position="replace">
                     <field name="job_ids" widget="many2many_tags" />
                     <field name="department_ids" widget="many2many_tags"/>
                 </field>
                 <field name="mobile_phone" position="before">
                     <field name="ref"/>
                 </field>
-                <field name="address_home_id" position="attributes">
-                    <attribute name="required">True</attribute>
+                <field name="work_contact_id" position="attributes" >
+                    <attribute name="invisible">False</attribute>
                 </field>
-                <field name="passport_id" position="after">
-                    <field name="ssnid"/>
-                    <field name="sinid"/>
+                <field name="work_email" position="after">
+                    <field name="work_contact_id" position="move" />
                 </field>
                 <field name="coach_id" position="replace"/>
                 <field name="job_id" position="replace"/>
-                
+                <field name="ssnid" position="after">
+                    <field name="sinid" />
+                </field>
+
             </field>
     </record>
      <record id="hr_view_employee_filter_multi" model="ir.ui.view">
@@ -51,7 +53,7 @@
 				</xpath>
                 <filter name="group_department" position="replace"/>
             </field>
-    </record> 
+    </record>
     <!-- explicit list view definition -->
 <!--
     <record model="ir.ui.view" id="hr_hatter.list">
